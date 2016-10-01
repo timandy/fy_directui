@@ -1,0 +1,36 @@
+using System;
+
+namespace Microsoft.Windows.Forms
+{
+    /// <summary>
+    /// ±ß¿òÑùÊ½
+    /// </summary>
+    [Flags]
+    public enum BorderVisibleStyle : int
+    {
+        /// <summary>
+        /// ÎÞ
+        /// </summary>
+        None = 0x0000,
+        /// <summary>
+        /// ×ó±ß¿ò
+        /// </summary>
+        Left = 0x0001,
+        /// <summary>
+        /// ÉÏ±ß¿ò
+        /// </summary>
+        Top = 0x0002,
+        /// <summary>
+        /// ÓÒ±ß¿ò
+        /// </summary>
+        Right = 0x0004,
+        /// <summary>
+        /// ÏÂ±ß¿ò
+        /// </summary>
+        Bottom = 0x0008,
+        /// <summary>
+        /// ËùÓÐ±ß¿ò
+        /// </summary>
+        All = 0x000F,
+    }
+}
