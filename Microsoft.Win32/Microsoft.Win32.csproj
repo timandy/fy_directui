@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B1D6B045-127C-47FC-ADF2-CE3957F4D694}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Win32</RootNamespace>
+    <AssemblyName>Microsoft.Win32</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\_Output\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\_Output\Debug\Microsoft.Win32.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\_Output\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\_Output\Release\Microsoft.Win32.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NativeMethods\Consts\AC_SRC.cs" />
+    <Compile Include="NativeMethods\Consts\AW.cs" />
+    <Compile Include="NativeMethods\Consts\BKMODE.cs" />
+    <Compile Include="NativeMethods\Consts\BOOLEAN.cs" />
+    <Compile Include="NativeMethods\Consts\CCHILDREN.cs" />
+    <Compile Include="NativeMethods\Consts\CS.cs" />
+    <Compile Include="NativeMethods\Consts\CW.cs" />
+    <Compile Include="NativeMethods\Consts\DCX.cs" />
+    <Compile Include="NativeMethods\Consts\DriverStringOptions.cs" />
+    <Compile Include="NativeMethods\Consts\DS.cs" />
+    <Compile Include="NativeMethods\Consts\ERROR.cs" />
+    <Compile Include="NativeMethods\Consts\FLASHW.cs" />
+    <Compile Include="NativeMethods\Consts\FORMAT_MESSAGE.cs" />
+    <Compile Include="NativeMethods\Consts\GA.cs" />
+    <Compile Include="NativeMethods\Consts\GCL.cs" />
+    <Compile Include="NativeMethods\Consts\GRADIENT_FILL.cs" />
+    <Compile Include="NativeMethods\Consts\GW.cs" />
+    <Compile Include="NativeMethods\Consts\GWL.cs" />
+    <Compile Include="NativeMethods\Consts\HANDLE.cs" />
+    <Compile Include="NativeMethods\Consts\HKL.cs" />
+    <Compile Include="NativeMethods\Consts\HT.cs" />
+    <Compile Include="NativeMethods\Consts\HWND.cs" />
+    <Compile Include="NativeMethods\Consts\INFINITE.cs" />
+    <Compile Include="NativeMethods\Consts\INPUT.cs" />
+    <Compile Include="NativeMethods\Consts\IOC.cs" />
+    <Compile Include="NativeMethods\Consts\KEYEVENTF.cs" />
+    <Compile Include="NativeMethods\Consts\KLF.cs" />
+    <Compile Include="NativeMethods\Consts\MA.cs" />
+    <Compile Include="NativeMethods\Consts\MK.cs" />
+    <Compile Include="NativeMethods\Consts\MMIO.cs" />
+    <Compile Include="NativeMethods\Consts\MOUSEDATA.cs" />
+    <Compile Include="NativeMethods\Consts\MOUSEEVENTF.cs" />
+    <Compile Include="NativeMethods\Consts\NULL.cs" />
+    <Compile Include="NativeMethods\Consts\OBJID.cs" />
+    <Compile Include="NativeMethods\Consts\RDW.cs" />
+    <Compile Include="NativeMethods\Consts\RGN.cs" />
+    <Compile Include="NativeMethods\Consts\ROP.cs" />
+    <Compile Include="NativeMethods\Consts\SB.cs" />
+    <Compile Include="NativeMethods\Consts\SBM.cs" />
+    <Compile Include="NativeMethods\Consts\SC.cs" />
+    <Compile Include="NativeMethods\Consts\SCR.cs" />
+    <Compile Include="NativeMethods\Consts\SIF.cs" />
+    <Compile Include="NativeMethods\Consts\SIO.cs" />
+    <Compile Include="NativeMethods\Consts\SM.cs" />
+    <Compile Include="NativeMethods\Consts\SND.cs" />
+    <Compile Include="NativeMethods\Consts\SOMAXCONN.cs" />
+    <Compile Include="NativeMethods\Consts\SS.cs" />
+    <Compile Include="NativeMethods\Consts\STATE_SYSTEM.cs" />
+    <Compile Include="NativeMethods\Consts\SW.cs" />
+    <Compile Include="NativeMethods\Consts\SWP.cs" />
+    <Compile Include="NativeMethods\Consts\TTDT.cs" />
+    <Compile Include="NativeMethods\Consts\TTF.cs" />
+    <Compile Include="NativeMethods\Consts\TTI.cs" />
+    <Compile Include="NativeMethods\Consts\TTM.cs" />
+    <Compile Include="NativeMethods\Consts\TTN.cs" />
+    <Compile Include="NativeMethods\Consts\TTS.cs" />
+    <Compile Include="NativeMethods\Consts\ULW.cs" />
+    <Compile Include="NativeMethods\Consts\VK.cs" />
+    <Compile Include="NativeMethods\Consts\WAVE_FORMAT.cs" />
+    <Compile Include="NativeMethods\Consts\WM.cs" />
+    <Compile Include="NativeMethods\Consts\WS.cs" />
+    <Compile Include="NativeMethods\Consts\WSAID.cs" />
+    <Compile Include="NativeMethods\Consts\WSA_FLAG.cs" />
+    <Compile Include="NativeMethods\Consts\WS_EX.cs" />
+    <Compile Include="NativeMethods\Delegates\LPFN_ACCEPTEX.cs" />
+    <Compile Include="NativeMethods\Delegates\LPFN_CONNECTEX.cs" />
+    <Compile Include="NativeMethods\Delegates\LPFN_DISCONNECTEX.cs" />
+    <Compile Include="NativeMethods\Structs\BLENDFUNCTION.cs" />
+    <Compile Include="NativeMethods\Structs\COMBOBOXINFO.cs" />
+    <Compile Include="NativeMethods\Structs\COPYDATASTRUCT.cs" />
+    <Compile Include="NativeMethods\Structs\CURSORINFO.cs" />
+    <Compile Include="NativeMethods\Structs\FLASHWINFO.cs" />
+    <Compile Include="NativeMethods\Structs\GRADIENT_RECT.cs" />
+    <Compile Include="NativeMethods\Structs\GRADIENT_TRIANGLE.cs" />
+    <Compile Include="NativeMethods\Structs\HARDWAREINPUT.cs" />
+    <Compile Include="NativeMethods\Structs\INPUT.cs" />
+    <Compile Include="NativeMethods\Structs\KEYBDINPUT.cs" />
+    <Compile Include="NativeMethods\Structs\MINMAXINFO.cs" />
+    <Compile Include="NativeMethods\Structs\MMCKINFO.cs" />
+    <Compile Include="NativeMethods\Structs\MOUSEINPUT.cs" />
+    <Compile Include="NativeMethods\Structs\NMHDR.cs" />
+    <Compile Include="NativeMethods\Structs\PAINTSTRUCT.cs" />
+    <Compile Include="NativeMethods\Structs\POINT.cs" />
+    <Compile Include="NativeMethods\Structs\RECT.cs" />
+    <Compile Include="NativeMethods\Structs\SCROLLBARINFO.cs" />
+    <Compile Include="NativeMethods\Structs\SCROLLINFO.cs" />
+    <Compile Include="NativeMethods\Structs\TOOLINFO.cs" />
+    <Compile Include="NativeMethods\Structs\TRIVERTEX.cs" />
+    <Compile Include="NativeMethods\Structs\WAVEFORMATEX.cs" />
+    <Compile Include="NativeMethods\Structs\WINDOWPOS.cs" />
+    <Compile Include="NativeMethods\Structs\WSABUF.cs" />
+    <Compile Include="NativeMethods\Structs\WSAData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnsafeNativeMethods\Gdi32.cs" />
+    <Compile Include="UnsafeNativeMethods\Gdiplus.cs" />
+    <Compile Include="UnsafeNativeMethods\Kernel32.cs" />
+    <Compile Include="UnsafeNativeMethods\Msimg32.cs" />
+    <Compile Include="UnsafeNativeMethods\Shell32.cs" />
+    <Compile Include="UnsafeNativeMethods\User32.cs" />
+    <Compile Include="UnsafeNativeMethods\Winmm.cs" />
+    <Compile Include="UnsafeNativeMethods\Ws2_32.cs" />
+    <Compile Include="Util\Kernel32.cs" />
+    <Compile Include="Util\User32.cs" />
+    <Compile Include="Util\Ws2_32.cs" />
+    <Compile Include="Util\_Util.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2421B8B6-355E-4E6E-8955-1BEB1A4C1B84}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Drawing</RootNamespace>
+    <AssemblyName>Microsoft.Drawing</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\_Output\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\_Output\Debug\Microsoft.Drawing.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\_Output\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\_Output\Release\Microsoft.Drawing.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\ClipGraphics.cs" />
+    <Compile Include="Classes\DoubleBufferedGraphics.cs" />
+    <Compile Include="Classes\PixelOffsetModeGraphics.cs" />
+    <Compile Include="Classes\SmoothingModeGraphics.cs" />
+    <Compile Include="Classes\TextRenderingHintGraphics.cs" />
+    <Compile Include="Classes\TranslateGraphics.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Structs\ColorVector.cs" />
+    <Compile Include="Structs\ColorVectorConverter.cs" />
+    <Compile Include="Util\BufferedGraphicsEx.cs" />
+    <Compile Include="Util\GraphicsEx.cs" />
+    <Compile Include="Util\PointEx.cs" />
+    <Compile Include="Util\RectangleEx.cs" />
+    <Compile Include="Util\SizeEx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Win32\Microsoft.Win32.csproj">
+      <Project>{b1d6b045-127c-47fc-adf2-ce3957f4d694}</Project>
+      <Name>Microsoft.Win32</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft\Microsoft.csproj">
+      <Project>{f2a4d4c2-a948-4351-9d46-117f372ab4a4}</Project>
+      <Name>Microsoft</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
