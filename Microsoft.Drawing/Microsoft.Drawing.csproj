@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Classes\ClipGraphics.cs" />
     <Compile Include="Classes\DoubleBufferedGraphics.cs" />
+    <Compile Include="Classes\LockedBitmapData.cs" />
     <Compile Include="Classes\PixelOffsetModeGraphics.cs" />
     <Compile Include="Classes\SmoothingModeGraphics.cs" />
     <Compile Include="Classes\TextRenderingHintGraphics.cs" />
