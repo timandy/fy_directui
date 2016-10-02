@@ -13,7 +13,7 @@ namespace Microsoft.Windows.Forms
         /// 获取精灵
         /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        protected Sprite Sprite
+        protected virtual Sprite Sprite
         {
             get
             {

@@ -10,7 +10,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 获取精灵
         /// </summary>
-        protected Sprite Sprite
+        protected virtual Sprite Sprite
         {
             get
             {
