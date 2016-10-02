@@ -60,6 +60,16 @@ namespace Microsoft.Windows.Forms
         /// </summary>
         /// <param name="window">可双缓冲渲染的控件(客户区)</param>
         /// <param name="m">消息</param>
+        public static void WmPaint(IUIWindow window, ref Message m)
+        {
+            WmPaint(window, ref m, null);
+        }
+
+        /// <summary>
+        /// WM_PAINT消息处理
+        /// </summary>
+        /// <param name="window">可双缓冲渲染的控件(客户区)</param>
+        /// <param name="m">消息</param>
         /// <param name="e">如果该值为null,则自动创建默认PaintEventArgs.否则将直接使用该值作为OnPaint的参数</param>
         public static void WmPaint(IUIWindow window, ref Message m, PaintEventArgs e)
         {
