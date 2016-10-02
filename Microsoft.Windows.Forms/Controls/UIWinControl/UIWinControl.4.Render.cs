@@ -111,7 +111,7 @@ namespace Microsoft.Windows.Forms
                 if (this.Visible)
                 {
                     Util.EndUpdate(this.Handle);
-                    this.Invalidate();
+                    this.Refresh();
                 }
             }
             else if (forceUpdate)
