@@ -1,19 +1,18 @@
-using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
-using Microsoft.Win32;
 
 namespace Microsoft.Drawing
 {
     /// <summary>
     /// 双缓冲区
     /// </summary>
-    public sealed class DoubleBufferedGraphics : Disposable
+    public class DoubleBufferedGraphics : Disposable
     {
         private bool m_IsCreating;                      //是否正在创建缓冲区
-        private IWin32Window m_Owner;                   //拥有该缓冲区的窗口
+        private IWindow m_Owner;                        //拥有该缓冲区的窗口
+        private Graphics m_OwnerGraphics;               //拥有该缓冲区的窗口的绘图画面
         private BufferedGraphics m_BufferedGraphics;    //缓冲区
 
 
@@ -23,7 +22,7 @@ namespace Microsoft.Drawing
         /// 构造函数
         /// </summary>
         /// <param name="owner">拥有者</param>
-        public DoubleBufferedGraphics(IWin32Window owner)
+        public DoubleBufferedGraphics(IWindow owner)
         {
             this.m_Owner = owner;
         }
@@ -209,50 +208,9 @@ namespace Microsoft.Drawing
         #region 私有方法
 
         /// <summary>
-        /// 重新创建缓冲区
-        /// </summary>
-        /// <returns>创建成功返回true,正在创建或失败返回false</returns>
-        private bool RecreateBuffer()
-        {
-            //设置状态
-            if (this.m_IsCreating)
-                return false;
-            this.m_IsCreating = true;
-
-            //检查资源
-            if (this.IsDisposed)
-                throw new ObjectDisposedException(this.GetType().FullName);
-
-            //区域大小检查
-            Rectangle wndRect = new Rectangle(Point.Empty, Util.GetSize(this.m_Owner.Handle));
-            if (wndRect.Width <= 0 || wndRect.Height <= 0)
-            {
-                this.m_IsCreating = false;
-                return false;
-            }
-
-            //缓冲上下文
-            BufferedGraphicsContext bufferedGraphicsContext = BufferedGraphicsManager.Current;
-            bufferedGraphicsContext.MaximumBuffer = wndRect.Size;
-
-            //创建
-            if (this.m_BufferedGraphics != null)
-                this.m_BufferedGraphics.Dispose();
-            this.m_BufferedGraphics = bufferedGraphicsContext.Allocate(Graphics.FromHwndInternal(this.m_Owner.Handle), wndRect);
-
-            //初始化绘图对象
-            this.InitGraphics(this.m_BufferedGraphics.Graphics);
-            this.m_Size = wndRect.Size;
-
-            //不创建
-            this.m_IsCreating = false;
-            return true;
-        }
-
-        /// <summary>
         /// 初始化绘图画面
         /// </summary>
-        /// <param name="g">绘图对象</param>
+        /// <param name="g">绘图画面</param>
         private void InitGraphics(Graphics g)
         {
             g.CompositingMode = this.m_CompositingMode;
@@ -275,14 +233,61 @@ namespace Microsoft.Drawing
         /// <returns>成功返回true,否则返回false</returns>
         public bool Prepare()
         {
-            return (!this.IsDisposed) && (this.m_BufferedGraphics != null && this.m_Size == Util.GetSize(this.m_Owner.Handle) || this.RecreateBuffer());
+            //检查资源
+            this.CheckDisposed();
+
+            //检查资源
+            this.m_Owner.CheckDisposed();
+
+            //判断句柄
+            if (!this.m_Owner.IsHandleCreated)
+                return false;
+
+            //判断可见
+            if (!this.m_Owner.Visible)
+                return false;
+
+            //判断大小
+            Size wndSize = this.m_Owner.Size;
+            if (wndSize.Width <= 0 || (wndSize.Height <= 0))
+                return false;
+
+            //已创建
+            Size bufferSize = this.m_Size;
+            if (this.m_BufferedGraphics != null
+                && bufferSize.Width >= wndSize.Width && bufferSize.Width < wndSize.Width + 10
+                && bufferSize.Height >= wndSize.Height && bufferSize.Height < wndSize.Height + 10)
+                return true;
+
+            //设置状态
+            if (this.m_IsCreating)
+                return false;
+            this.m_IsCreating = true;
+
+            //缓冲上下文
+            BufferedGraphicsContext bufferedGraphicsContext = BufferedGraphicsManager.Current;
+            bufferedGraphicsContext.MaximumBuffer = wndSize;
+
+            //执行创建
+            if (this.m_OwnerGraphics == null)
+                this.m_OwnerGraphics = this.m_Owner.CreateGraphics();
+            if (this.m_BufferedGraphics != null)
+                this.m_BufferedGraphics.Dispose();
+            this.m_BufferedGraphics = bufferedGraphicsContext.Allocate(this.m_OwnerGraphics, new Rectangle(0, 0, wndSize.Width, wndSize.Height));
+
+            //初始化绘图对象
+            this.InitGraphics(this.m_BufferedGraphics.Graphics);
+            this.m_Size = wndSize;
+
+            //不创建
+            this.m_IsCreating = false;
+            return true;
         }
 
         /// <summary>
         /// 在目标设备上混合渲染
         /// </summary>
         /// <param name="g">目标设备渲染数据</param>
-        /// <returns>成功返回true,否则返回false</returns>
         public void BlendRender(Graphics g)
         {
             BufferedGraphicsEx.BlendRender(this.m_BufferedGraphics, g);
@@ -292,7 +297,6 @@ namespace Microsoft.Drawing
         /// 在目标设备上混合渲染
         /// </summary>
         /// <param name="e">目标设备渲染数据</param>
-        /// <returns>成功返回true,否则返回false</returns>
         public void BlendRender(PaintEventArgs e)
         {
             BufferedGraphicsEx.BlendRender(this.m_BufferedGraphics, e.Graphics, e.ClipRectangle);
@@ -302,7 +306,6 @@ namespace Microsoft.Drawing
         /// 在目标设备上复制渲染
         /// </summary>
         /// <param name="g">目标设备渲染数据</param>
-        /// <returns>成功返回true,否则返回false</returns>
         public void Render(Graphics g)
         {
             this.m_BufferedGraphics.Render(g);
@@ -312,7 +315,6 @@ namespace Microsoft.Drawing
         /// 在目标设备上复制渲染
         /// </summary>
         /// <param name="e">目标设备渲染数据</param>
-        /// <returns>成功返回true,否则返回false</returns>
         public void Render(PaintEventArgs e)
         {
             BufferedGraphicsEx.Render(this.m_BufferedGraphics, e.Graphics, e.ClipRectangle);
@@ -329,12 +331,17 @@ namespace Microsoft.Drawing
         /// <param name="disposing">释放托管资源为true,否则为false</param>
         protected override void Dispose(bool disposing)
         {
-            this.m_Owner = null;//取消引用
             if (this.m_BufferedGraphics != null)
             {
                 this.m_BufferedGraphics.Dispose();
                 this.m_BufferedGraphics = null;
             }
+            if (this.m_OwnerGraphics != null)
+            {
+                this.m_OwnerGraphics.Dispose();
+                this.m_OwnerGraphics = null;
+            }
+            this.m_Owner = null;//取消引用
         }
 
         #endregion
