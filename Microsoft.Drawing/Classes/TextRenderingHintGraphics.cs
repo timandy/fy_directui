@@ -6,7 +6,7 @@ namespace Microsoft.Drawing
     /// <summary>
     /// 暂时修改绘图对象的文本呈现模式,释放时改为原来模式
     /// </summary>
-    public class TextRenderingHintGraphics : DisposableMini
+    public sealed class TextRenderingHintGraphics : DisposableMini
     {
         private TextRenderingHint m_OldHint;    //原始的文本呈现模式
         private Graphics m_Graphics;            //要修改文本呈现模式的绘图对象

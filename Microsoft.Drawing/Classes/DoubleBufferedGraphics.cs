@@ -10,7 +10,7 @@ namespace Microsoft.Drawing
     /// <summary>
     /// 双缓冲区
     /// </summary>
-    public class DoubleBufferedGraphics : Disposable
+    public sealed class DoubleBufferedGraphics : Disposable
     {
         private bool m_IsCreating;                      //是否正在创建缓冲区
         private IWin32Window m_Owner;                   //拥有该缓冲区的窗口
