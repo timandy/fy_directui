@@ -455,10 +455,9 @@ namespace Microsoft.Windows.Forms
         /// </summary>
         public void SendToBack()
         {
-            if (this.m_UIParent == null)
-                return;
-
             IUIControl parent = this.m_UIParent;
+            if (parent == null)
+                return;
             parent.SuspendLayout();
             try
             {
@@ -476,10 +475,9 @@ namespace Microsoft.Windows.Forms
         /// </summary>
         public void BringToFront()
         {
-            if (this.m_UIParent == null)
-                return;
-
             IUIControl parent = this.m_UIParent;
+            if (parent == null)
+                return;
             parent.SuspendLayout();
             try
             {
