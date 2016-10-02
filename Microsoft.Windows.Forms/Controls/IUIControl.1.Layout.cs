@@ -1,13 +1,9 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Microsoft.Windows.Forms
 {
-    /// <summary>
-    /// 虚拟控件接口
-    /// </summary>
-    public partial interface IUIControl : IDisposable
+    partial interface IUIControl
     {
         /// <summary>
         /// 获取或设置父控件
