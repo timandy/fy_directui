@@ -88,7 +88,7 @@ namespace Microsoft.Windows.Forms
         /// </summary>
         public void BeginUpdate()
         {
-            if (this.m_UpdateSuspendCount++ == 0)
+            if (this.m_UpdateSuspendCount++ == 0 && this.Visible)
                 Util.BeginUpdate(this.Handle);
         }
 
@@ -108,14 +108,20 @@ namespace Microsoft.Windows.Forms
         {
             if (--this.m_UpdateSuspendCount == 0)
             {
-                Util.EndUpdate(this.Handle);
-                this.Invalidate();
+                if (this.Visible)
+                {
+                    Util.EndUpdate(this.Handle);
+                    this.Invalidate();
+                }
             }
             else if (forceUpdate)
             {
-                Util.EndUpdate(this.Handle);
-                this.Refresh();
-                Util.BeginUpdate(this.Handle);
+                if (this.Visible)
+                {
+                    Util.EndUpdate(this.Handle);
+                    this.Refresh();
+                    Util.BeginUpdate(this.Handle);
+                }
             }
         }
 
