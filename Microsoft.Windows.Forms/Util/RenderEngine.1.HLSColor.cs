@@ -147,16 +147,6 @@ namespace Microsoft.Windows.Forms
                 {
                     int oneLum = 0;
                     int zeroLum = NewLuma(ShadowAdj, true);
-
-                    /*                                        
-                    if (luminosity < 40) {
-                        zeroLum = NewLuma(120, ShadowAdj, true);
-                    }
-                    else {
-                        zeroLum = NewLuma(ShadowAdj, true);
-                    }
-                    */
-
                     return ColorFromHLS(hue, zeroLum - (int)((zeroLum - oneLum) * percDarker), saturation);
                 }
             }
@@ -248,18 +238,6 @@ namespace Microsoft.Windows.Forms
                 {
                     int zeroLum = luminosity;
                     int oneLum = NewLuma(HilightAdj, true);
-
-                    /*
-                    if (luminosity < 40) {
-                        zeroLum = 120;
-                        oneLum = NewLuma(120, HilightAdj, true);
-                    }
-                    else {
-                        zeroLum = luminosity;
-                        oneLum = NewLuma(HilightAdj, true);
-                    }
-                    */
-
                     return ColorFromHLS(hue, zeroLum + (int)((oneLum - zeroLum) * percLighter), saturation);
                 }
             }

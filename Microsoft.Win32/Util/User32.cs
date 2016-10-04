@@ -116,11 +116,7 @@ namespace Microsoft.Win32
             input[0].type = NativeMethods.INPUT_KEYBOARD;
             input[0].ki.wVk = vKey;
             input[0].ki.time = UnsafeNativeMethods.GetTickCount();
-
-            if (UnsafeNativeMethods.SendInput((uint)input.Length, input, Marshal.SizeOf(input[0])) < input.Length)
-            {
-                //throw new Win32Exception(Marshal.GetLastWin32Error());
-            }
+            UnsafeNativeMethods.SendInput((uint)input.Length, input, Marshal.SizeOf(input[0]));
         }
         /// <summary>
         /// 弹起键盘键
@@ -133,11 +129,7 @@ namespace Microsoft.Win32
             input[0].ki.wVk = vKey;
             input[0].ki.dwFlags = NativeMethods.KEYEVENTF_KEYUP;
             input[0].ki.time = UnsafeNativeMethods.GetTickCount();
-
-            if (UnsafeNativeMethods.SendInput((uint)input.Length, input, Marshal.SizeOf(input[0])) < input.Length)
-            {
-                //throw new Win32Exception(Marshal.GetLastWin32Error());
-            }
+            UnsafeNativeMethods.SendInput((uint)input.Length, input, Marshal.SizeOf(input[0]));
         }
         /// <summary>
         /// 按一下并弹起键盘键

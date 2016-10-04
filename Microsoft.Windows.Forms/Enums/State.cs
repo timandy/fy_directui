@@ -1,36 +1,5 @@
-
 namespace Microsoft.Windows.Forms
 {
-    /*
-        switch (this.State)
-        {
-            //正常无焦点
-            case State .Normal:
-                break;
-
-            //鼠标移上
-            case State .Hovered:
-            case State .HoveredFocused:
-                break;
-
-            //鼠标按下
-            case State .Pressed:
-            case State .PressedFocused:
-                break;
-
-            //获取焦点
-            case State .NormalFocused:
-                break;
-
-            //状态禁用
-            case State .Disabled:
-                break;
-
-            //其他状态
-            default:
-                break;
-        }
-   */
     /// <summary>
     /// 控件的状态。(Disabled)(Focused与Noraml,Hovered,Pressed组合)
     /// </summary>
