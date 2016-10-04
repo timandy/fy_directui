@@ -175,12 +175,6 @@ namespace Microsoft.Windows.Forms
         void DoLayout();
 
         /// <summary>
-        /// 重新计算子控件布局,可选择是否强制执行布局
-        /// </summary>
-        /// <param name="performLayout">如果强制则为 true, 否则为 false</param>
-        void DoLayout(bool performLayout);
-
-        /// <summary>
         /// 将控件置于 Z 轴底层
         /// </summary>
         void SendToBack();
