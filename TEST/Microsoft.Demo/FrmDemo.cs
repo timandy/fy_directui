@@ -105,7 +105,7 @@ namespace Microsoft.Demo
             Assert.AreEqual(target.FindUIChild("in2"), this.btnInner2);
             //PointToClient
             Point p = new Point(15, 35);//window client
-            Point sp = target.PointToScreen(p);//;
+            Point sp = target.PointToScreen(p);
             Assert.AreEqual(target.PointToClient(sp), p);
             Assert.AreEqual(this.btnOut.PointToClient(sp), new Point(5, 15));
             Assert.AreEqual(this.btnInner.PointToClient(sp), Point.Empty);
