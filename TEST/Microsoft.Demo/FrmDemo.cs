@@ -123,7 +123,7 @@ namespace Microsoft.Demo
             Assert.AreEqual(this.btnInner.PointToUIWindow(Point.Empty), p);
             //RectangleToClient
             Rectangle r = new Rectangle(15, 35, 10, 20);//window client
-            Rectangle sr = target.RectangleToScreen(r);//;
+            Rectangle sr = target.RectangleToScreen(r);
             Assert.AreEqual(target.RectangleToClient(sr), r);
             Assert.AreEqual(this.btnOut.RectangleToClient(sr), new Rectangle(5, 15, 10, 20));
             Assert.AreEqual(this.btnInner.RectangleToClient(sr), new Rectangle(0, 0, 10, 20));
@@ -166,9 +166,6 @@ namespace Microsoft.Demo
 
         private void btnAddFrame_Click(object sender, EventArgs e)
         {
-            //this.progress.Percentage += 20;
-            //if (this.progress.Percentage > 100)
-            //    this.progress.Percentage = 0;
             this.image.AddFrame();
             this.image.AddFrame();
             this.image.AddFrame();
@@ -180,7 +177,6 @@ namespace Microsoft.Demo
         private void btnClearFrame_Click(object sender, EventArgs e)
         {
             this.image.ClearFrame();
-
         }
     }
 }
