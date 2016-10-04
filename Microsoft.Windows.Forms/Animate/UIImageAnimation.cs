@@ -10,7 +10,7 @@ namespace Microsoft.Windows.Forms.Animate
     /// <summary>
     /// 图片动画
     /// </summary>
-    public sealed class ImageAnimation : Animation<Bitmap>
+    public sealed class UIImageAnimation : Animation<Bitmap>
     {
         /// <summary>
         /// 默认动画是否随机
@@ -112,7 +112,7 @@ namespace Microsoft.Windows.Forms.Animate
         /// <summary>
         /// 构造函数
         /// </summary>
-        public ImageAnimation()
+        public UIImageAnimation()
         {
             base.Span = DEFAULT_ANIMATION_SPAN;
         }

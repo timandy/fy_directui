@@ -13,7 +13,7 @@ namespace Microsoft.Windows.Forms
     {
         internal const int DEFAULT_ANIMATION_INTERVAL = 8000;           //默认动画触发时间间隔
         internal const int DEFAULT_FRAME_INTERVAL = 40;                 //默认帧间隔
-        private ImageAnimation m_Animation = new ImageAnimation();      //图片动画
+        private UIImageAnimation m_Animation = new UIImageAnimation();  //图片动画
         private Timer m_AnimationTimer = new Timer();                   //动画触发定时器
         private Timer m_FrameTimer = new Timer();                       //帧定时器
 
