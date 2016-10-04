@@ -1,10 +1,59 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace Microsoft.Windows.Forms
 {
     partial class UIWinControl
     {
+        /// <summary>
+        /// 获取或设置字体
+        /// </summary>
+        [DefaultValue(typeof(Font), DefaultTheme._Font)]
+        public override Font Font
+        {
+            get
+            {
+                return base.Font;
+            }
+            set
+            {
+                base.Font = value;
+            }
+        }
+
+        /// <summary>
+        /// 获取或设置背景色
+        /// </summary>
+        [DefaultValue(typeof(Font), DefaultTheme._BackColor)]
+        public override Color BackColor
+        {
+            get
+            {
+                return base.BackColor;
+            }
+            set
+            {
+                base.BackColor = value;
+            }
+        }
+
+        /// <summary>
+        /// 获取或设置前景色
+        /// </summary>
+        [DefaultValue(typeof(Font), DefaultTheme._ForeColor)]
+        public override Color ForeColor
+        {
+            get
+            {
+                return base.ForeColor;
+            }
+            set
+            {
+                base.ForeColor = value;
+            }
+        }
+
         private State m_State;
         /// <summary>
         /// 获取状态

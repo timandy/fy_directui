@@ -70,6 +70,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Microsoft.Drawing\Microsoft.Drawing.csproj">
+      <Project>{2421b8b6-355e-4e6e-8955-1beb1a4c1b84}</Project>
+      <Name>Microsoft.Drawing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Microsoft.Windows.Forms\Microsoft.Windows.Forms.csproj">
       <Project>{3C753557-ECBB-4963-904C-E42E79E0D344}</Project>
       <Name>Microsoft.Windows.Forms</Name>

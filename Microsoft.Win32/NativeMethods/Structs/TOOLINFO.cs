@@ -50,7 +50,7 @@ namespace Microsoft.Win32
             ///// <summary>
             ///// Windows XP and later. Reserved. Must be set to NULL.
             ///// </summary>
-            //public void* lpReserved;
+            public IntPtr lpReserved;
         }
     }
 }

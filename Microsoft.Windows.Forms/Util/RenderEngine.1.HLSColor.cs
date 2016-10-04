@@ -1,28 +1,92 @@
 using System;
 using System.Drawing;
-using System.Runtime.InteropServices;
 
 namespace Microsoft.Windows.Forms
 {
     public static partial class RenderEngine
     {
         /// <summary>
-        /// 色度,亮度,饱和度颜色
+        /// 色调,亮度,饱和度颜色
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
         private struct HLSColor
         {
             private const int ShadowAdj = -333;
             private const int HilightAdj = 500;
             private const int WatermarkAdj = -50;
             private const int Range = 240;
-            private const int HLSMax = 240;
-            private const int RGBMax = 0xff;
-            private const int Undefined = 160;
+            private const int HLSMax = Range;
+            private const int RGBMax = 255;
+            private const int Undefined = HLSMax * 2 / 3;
+
             private int hue;
             private int saturation;
             private int luminosity;
             private bool isSystemColors_Control;
+
+            /// <summary>
+            /// 构造函数
+            /// </summary>
+            /// <param name="color">RGBA颜色</param>
+            public HLSColor(Color color)
+            {
+                isSystemColors_Control = (color.ToKnownColor() == SystemColors.Control.ToKnownColor());
+                int r = color.R;
+                int g = color.G;
+                int b = color.B;
+                int max, min;        /* max and min RGB values */
+                int sum, dif;
+                int Rdelta, Gdelta, Bdelta;  /* intermediate value: % of spread from max */
+
+                /* calculate lightness */
+                max = Math.Max(Math.Max(r, g), b);
+                min = Math.Min(Math.Min(r, g), b);
+                sum = max + min;
+
+                luminosity = (((sum * HLSMax) + RGBMax) / (2 * RGBMax));
+
+                dif = max - min;
+                if (dif == 0)
+                {       /* r=g=b --> achromatic case */
+                    saturation = 0;                         /* saturation */
+                    hue = Undefined;                 /* hue */
+                }
+                else
+                {                           /* chromatic case */
+                    /* saturation */
+                    if (luminosity <= (HLSMax / 2))
+                        saturation = (int)(((dif * (int)HLSMax) + (sum / 2)) / sum);
+                    else
+                        saturation = (int)((int)((dif * (int)HLSMax) + (int)((2 * RGBMax - sum) / 2))
+                                            / (2 * RGBMax - sum));
+                    /* hue */
+                    Rdelta = (int)((((max - r) * (int)(HLSMax / 6)) + (dif / 2)) / dif);
+                    Gdelta = (int)((((max - g) * (int)(HLSMax / 6)) + (dif / 2)) / dif);
+                    Bdelta = (int)((((max - b) * (int)(HLSMax / 6)) + (dif / 2)) / dif);
+
+                    if ((int)r == max)
+                        hue = Bdelta - Gdelta;
+                    else if ((int)g == max)
+                        hue = (HLSMax / 3) + Rdelta - Bdelta;
+                    else /* B == cMax */
+                        hue = ((2 * HLSMax) / 3) + Gdelta - Rdelta;
+
+                    if (hue < 0)
+                        hue += HLSMax;
+                    if (hue > HLSMax)
+                        hue -= HLSMax;
+                }
+            }
+
+            /// <summary>
+            /// 色调
+            /// </summary>
+            public int Hue
+            {
+                get
+                {
+                    return hue;
+                }
+            }
 
             /// <summary>
             /// 亮度
@@ -31,63 +95,18 @@ namespace Microsoft.Windows.Forms
             {
                 get
                 {
-                    return this.luminosity;
+                    return luminosity;
                 }
             }
 
             /// <summary>
-            /// 构造函数
+            /// 饱和度
             /// </summary>
-            /// <param name="color">RGBA颜色</param>
-            public HLSColor(Color color)
+            public int Saturation
             {
-                this.isSystemColors_Control = color.ToKnownColor() == SystemColors.Control.ToKnownColor();
-                int r = color.R;
-                int g = color.G;
-                int b = color.B;
-                int num4 = Math.Max(Math.Max(r, g), b);
-                int num5 = Math.Min(Math.Min(r, g), b);
-                int num6 = num4 + num5;
-                this.luminosity = ((num6 * 240) + 0xff) / 510;
-                int num7 = num4 - num5;
-                if (num7 == 0)
+                get
                 {
-                    this.saturation = 0;
-                    this.hue = 160;
-                }
-                else
-                {
-                    if (this.luminosity <= 120)
-                    {
-                        this.saturation = ((num7 * 240) + (num6 / 2)) / num6;
-                    }
-                    else
-                    {
-                        this.saturation = ((num7 * 240) + ((510 - num6) / 2)) / (510 - num6);
-                    }
-                    int num8 = (((num4 - r) * 40) + (num7 / 2)) / num7;
-                    int num9 = (((num4 - g) * 40) + (num7 / 2)) / num7;
-                    int num10 = (((num4 - b) * 40) + (num7 / 2)) / num7;
-                    if (r == num4)
-                    {
-                        this.hue = num10 - num9;
-                    }
-                    else if (g == num4)
-                    {
-                        this.hue = (80 + num8) - num10;
-                    }
-                    else
-                    {
-                        this.hue = (160 + num9) - num8;
-                    }
-                    if (this.hue < 0)
-                    {
-                        this.hue += 240;
-                    }
-                    if (this.hue > 240)
-                    {
-                        this.hue -= 240;
-                    }
+                    return saturation;
                 }
             }
 
@@ -98,26 +117,38 @@ namespace Microsoft.Windows.Forms
             /// <returns>新的颜色</returns>
             public Color Darker(float percDarker)
             {
-                if (this.isSystemColors_Control)
+                if (isSystemColors_Control)
                 {
-                    if (percDarker == 0f)
+                    // With the usual color scheme, ControlDark/DarkDark is not exactly
+                    // what we would otherwise calculate
+                    if (percDarker == 0.0f)
                     {
                         return SystemColors.ControlDark;
                     }
-                    if (percDarker == 1f)
+                    else if (percDarker == 1.0f)
                     {
                         return SystemColors.ControlDarkDark;
                     }
-                    Color controlDark = SystemColors.ControlDark;
-                    Color controlDarkDark = SystemColors.ControlDarkDark;
-                    int num = controlDark.R - controlDarkDark.R;
-                    int num2 = controlDark.G - controlDarkDark.G;
-                    int num3 = controlDark.B - controlDarkDark.B;
-                    return Color.FromArgb((byte)(controlDark.R - ((byte)(num * percDarker))), (byte)(controlDark.G - ((byte)(num2 * percDarker))), (byte)(controlDark.B - ((byte)(num3 * percDarker))));
+                    else
+                    {
+                        Color dark = SystemColors.ControlDark;
+                        Color darkDark = SystemColors.ControlDarkDark;
+
+                        int dr = dark.R - darkDark.R;
+                        int dg = dark.G - darkDark.G;
+                        int db = dark.B - darkDark.B;
+
+                        return Color.FromArgb((byte)(dark.R - (byte)(dr * percDarker)),
+                                              (byte)(dark.G - (byte)(dg * percDarker)),
+                                              (byte)(dark.B - (byte)(db * percDarker)));
+                    }
                 }
-                int num4 = 0;
-                int num5 = this.NewLuma(-333, true);
-                return this.ColorFromHLS(this.hue, num5 - ((int)((num5 - num4) * percDarker)), this.saturation);
+                else
+                {
+                    int oneLum = 0;
+                    int zeroLum = NewLuma(ShadowAdj, true);
+                    return ColorFromHLS(hue, zeroLum - (int)((zeroLum - oneLum) * percDarker), saturation);
+                }
             }
 
             /// <summary>
@@ -131,8 +162,12 @@ namespace Microsoft.Windows.Forms
                 {
                     return false;
                 }
-                HLSColor color = (HLSColor)o;
-                return ((((this.hue == color.hue) && (this.saturation == color.saturation)) && (this.luminosity == color.luminosity)) && (this.isSystemColors_Control == color.isSystemColors_Control));
+
+                HLSColor c = (HLSColor)o;
+                return hue == c.hue &&
+                       saturation == c.saturation &&
+                       luminosity == c.luminosity &&
+                       isSystemColors_Control == c.isSystemColors_Control;
             }
 
             /// <summary>
@@ -163,7 +198,7 @@ namespace Microsoft.Windows.Forms
             /// <returns>哈希码</returns>
             public override int GetHashCode()
             {
-                return (((this.hue << 6) | (this.saturation << 2)) | this.luminosity);
+                return hue << 6 | saturation << 2 | luminosity;
             }
 
             /// <summary>
@@ -173,114 +208,124 @@ namespace Microsoft.Windows.Forms
             /// <returns>新的颜色</returns>
             public Color Lighter(float percLighter)
             {
-                if (this.isSystemColors_Control)
+                if (isSystemColors_Control)
                 {
-                    if (percLighter == 0f)
+                    // With the usual color scheme, ControlLight/LightLight is not exactly
+                    // what we would otherwise calculate
+                    if (percLighter == 0.0f)
                     {
                         return SystemColors.ControlLight;
                     }
-                    if (percLighter == 1f)
+                    else if (percLighter == 1.0f)
                     {
                         return SystemColors.ControlLightLight;
                     }
-                    Color controlLight = SystemColors.ControlLight;
-                    Color controlLightLight = SystemColors.ControlLightLight;
-                    int num = controlLight.R - controlLightLight.R;
-                    int num2 = controlLight.G - controlLightLight.G;
-                    int num3 = controlLight.B - controlLightLight.B;
-                    return Color.FromArgb((byte)(controlLight.R - ((byte)(num * percLighter))), (byte)(controlLight.G - ((byte)(num2 * percLighter))), (byte)(controlLight.B - ((byte)(num3 * percLighter))));
+                    else
+                    {
+                        Color light = SystemColors.ControlLight;
+                        Color lightLight = SystemColors.ControlLightLight;
+
+                        int dr = light.R - lightLight.R;
+                        int dg = light.G - lightLight.G;
+                        int db = light.B - lightLight.B;
+
+                        return Color.FromArgb((byte)(light.R - (byte)(dr * percLighter)),
+                                              (byte)(light.G - (byte)(dg * percLighter)),
+                                              (byte)(light.B - (byte)(db * percLighter)));
+                    }
                 }
-                int luminosity = this.luminosity;
-                int num5 = this.NewLuma(500, true);
-                return this.ColorFromHLS(this.hue, luminosity + ((int)((num5 - luminosity) * percLighter)), this.saturation);
+                else
+                {
+                    int zeroLum = luminosity;
+                    int oneLum = NewLuma(HilightAdj, true);
+                    return ColorFromHLS(hue, zeroLum + (int)((oneLum - zeroLum) * percLighter), saturation);
+                }
             }
 
             private int NewLuma(int n, bool scale)
             {
-                return this.NewLuma(this.luminosity, n, scale);
+                return NewLuma(luminosity, n, scale);
             }
 
             private int NewLuma(int luminosity, int n, bool scale)
             {
                 if (n == 0)
-                {
                     return luminosity;
-                }
+
                 if (scale)
                 {
                     if (n > 0)
                     {
-                        return (int)(((luminosity * (0x3e8 - n)) + (0xf1L * n)) / 0x3e8L);
+                        return (int)(((int)luminosity * (1000 - n) + (Range + 1L) * n) / 1000);
                     }
-                    return ((luminosity * (n + 0x3e8)) / 0x3e8);
+                    else
+                    {
+                        return (int)(((int)luminosity * (n + 1000)) / 1000);
+                    }
                 }
-                int num = luminosity;
-                num += (int)((n * 240L) / 0x3e8L);
-                if (num < 0)
-                {
-                    num = 0;
-                }
-                if (num > 240)
-                {
-                    num = 240;
-                }
-                return num;
+
+                int newLum = luminosity;
+                newLum += (int)((long)n * Range / 1000);
+
+                if (newLum < 0)
+                    newLum = 0;
+                if (newLum > HLSMax)
+                    newLum = HLSMax;
+
+                return newLum;
             }
 
             private Color ColorFromHLS(int hue, int luminosity, int saturation)
             {
-                byte num;
-                byte num2;
-                byte num3;
+                byte r, g, b;                      /* RGB component values */
+                int magic1, magic2;       /* calculated magic numbers (really!) */
+
                 if (saturation == 0)
-                {
-                    num = num2 = num3 = (byte)((luminosity * 0xff) / 240);
-                    if (hue == 160)
+                {                /* achromatic case */
+                    r = g = b = (byte)((luminosity * RGBMax) / HLSMax);
+                    if (hue != Undefined)
                     {
+                        /* ERROR */
                     }
                 }
                 else
-                {
-                    int num5;
-                    if (luminosity <= 120)
-                    {
-                        num5 = ((luminosity * (240 + saturation)) + 120) / 240;
-                    }
+                {                         /* chromatic case */
+                    /* set up magic numbers */
+                    if (luminosity <= (HLSMax / 2))
+                        magic2 = (int)((luminosity * ((int)HLSMax + saturation) + (HLSMax / 2)) / HLSMax);
                     else
-                    {
-                        num5 = (luminosity + saturation) - (((luminosity * saturation) + 120) / 240);
-                    }
-                    int num4 = (2 * luminosity) - num5;
-                    num = (byte)(((this.HueToRGB(num4, num5, hue + 80) * 0xff) + 120) / 240);
-                    num2 = (byte)(((this.HueToRGB(num4, num5, hue) * 0xff) + 120) / 240);
-                    num3 = (byte)(((this.HueToRGB(num4, num5, hue - 80) * 0xff) + 120) / 240);
+                        magic2 = luminosity + saturation - (int)(((luminosity * saturation) + (int)(HLSMax / 2)) / HLSMax);
+                    magic1 = 2 * luminosity - magic2;
+
+                    /* get RGB, change units from HLSMax to RGBMax */
+                    r = (byte)(((HueToRGB(magic1, magic2, (int)(hue + (int)(HLSMax / 3))) * (int)RGBMax + (HLSMax / 2))) / (int)HLSMax);
+                    g = (byte)(((HueToRGB(magic1, magic2, hue) * (int)RGBMax + (HLSMax / 2))) / HLSMax);
+                    b = (byte)(((HueToRGB(magic1, magic2, (int)(hue - (int)(HLSMax / 3))) * (int)RGBMax + (HLSMax / 2))) / (int)HLSMax);
                 }
-                return Color.FromArgb(num, num2, num3);
+                return Color.FromArgb(r, g, b);
             }
 
             private int HueToRGB(int n1, int n2, int hue)
             {
+                /* range check: note values passed add/subtract thirds of range */
+
+                /* The following is redundant for WORD (unsigned int) */
                 if (hue < 0)
-                {
-                    hue += 240;
-                }
-                if (hue > 240)
-                {
-                    hue -= 240;
-                }
-                if (hue < 40)
-                {
-                    return (n1 + ((((n2 - n1) * hue) + 20) / 40));
-                }
-                if (hue < 120)
-                {
-                    return n2;
-                }
-                if (hue < 160)
-                {
-                    return (n1 + ((((n2 - n1) * (160 - hue)) + 20) / 40));
-                }
-                return n1;
+                    hue += HLSMax;
+
+                if (hue > HLSMax)
+                    hue -= HLSMax;
+
+                /* return r,g, or b value from this tridrant */
+                if (hue < (HLSMax / 6))
+                    return (n1 + (((n2 - n1) * hue + (HLSMax / 12)) / (HLSMax / 6)));
+                if (hue < (HLSMax / 2))
+                    return (n2);
+                if (hue < ((HLSMax * 2) / 3))
+                    return (n1 + (((n2 - n1) * (((HLSMax * 2) / 3) - hue) + (HLSMax / 12)) / (HLSMax / 6)));
+                else
+                    return (n1);
+
             }
         }
     }

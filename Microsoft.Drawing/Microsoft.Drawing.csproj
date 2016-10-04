@@ -40,10 +40,12 @@
   <ItemGroup>
     <Compile Include="Classes\ClipGraphics.cs" />
     <Compile Include="Classes\DoubleBufferedGraphics.cs" />
+    <Compile Include="Classes\LockedBitmapData.cs" />
     <Compile Include="Classes\PixelOffsetModeGraphics.cs" />
     <Compile Include="Classes\SmoothingModeGraphics.cs" />
     <Compile Include="Classes\TextRenderingHintGraphics.cs" />
     <Compile Include="Classes\TranslateGraphics.cs" />
+    <Compile Include="Interfaces\IWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs\ColorVector.cs" />
     <Compile Include="Structs\ColorVectorConverter.cs" />

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Microsoft.Windows.Forms
 {
-    /// <summary>
-    /// 虚拟控件接口
-    /// </summary>
-    public partial interface IUIControl : IDisposable
+    partial interface IUIControl
     {
         /// <summary>
         /// 获取或设置父控件
@@ -177,12 +173,6 @@ namespace Microsoft.Windows.Forms
         /// 如果未挂起布局操作则重新计算子控件布局
         /// </summary>
         void DoLayout();
-
-        /// <summary>
-        /// 重新计算子控件布局,可选择是否强制执行布局
-        /// </summary>
-        /// <param name="performLayout">如果强制则为 true, 否则为 false</param>
-        void DoLayout(bool performLayout);
 
         /// <summary>
         /// 将控件置于 Z 轴底层

@@ -197,6 +197,9 @@ namespace Microsoft.Windows.Forms
             this.Sprite.ImageAlign = this.ImageAlign;
             this.Sprite.Font = this.Font;
             this.Sprite.ForeColor = this.ForeColor;
+            this.Sprite.ForeColorHovered = this.ForeColor;
+            this.Sprite.ForeColorPressed = this.ForeColor;
+            this.Sprite.ForeColorDisabled = this.ForeColor;
             this.Sprite.Text = this.Text;
             this.Sprite.TextRenderingHint = this.TextRenderingHint;
             this.Sprite.TextAlign = this.TextAlign;
