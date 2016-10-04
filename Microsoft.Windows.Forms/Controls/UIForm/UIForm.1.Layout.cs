@@ -63,7 +63,7 @@ namespace Microsoft.Windows.Forms
         public new void ResumeLayout(bool performLayout)
         {
             this.m_LayoutSuspendCount--;
-            this.DoLayout(performLayout);
+            this.DoLayoutCore(performLayout);
             base.ResumeLayout(performLayout);
         }
 
@@ -72,14 +72,14 @@ namespace Microsoft.Windows.Forms
         /// </summary>
         public void DoLayout()
         {
-            this.DoLayout(false);
+            this.DoLayoutCore(false);
         }
 
         /// <summary>
         /// 重新计算子控件布局,可选择是否强制执行布局
         /// </summary>
         /// <param name="performLayout">如果强制则为 true, 否则为 false</param>
-        public void DoLayout(bool performLayout)
+        protected void DoLayoutCore(bool performLayout)
         {
             if (performLayout || this.m_LayoutSuspendCount == 0)
                 UIControl.DoLayoutInternal(this);

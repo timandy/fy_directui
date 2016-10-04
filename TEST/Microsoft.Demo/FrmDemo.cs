@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Windows.Forms;
@@ -12,13 +13,19 @@ namespace Microsoft.Demo
         UIButton btnOut;
         UIButton btnInner;
         UIButton btnInner2;
-
         UILabel label;
         UIProgress progress;
         UILine line;
+        UIImage image;
+
         public FrmDemo()
         {
             InitializeComponent();
+
+            image = new UIImage();
+            image.Dock = DockStyle.Right;
+            image.Width = 400;
+            this.UIControls.Add(image);
             //
             line = new UILine();
             line.Location = new Point(300, 270);
@@ -26,7 +33,7 @@ namespace Microsoft.Demo
             line.LineBlendStyle = BlendStyle.FadeInFadeOut;
             line.LineColor = Color.Red;
             line.LineWidth = 2;
-            line.LineDashStyle =DashStyle.Dash;
+            line.LineDashStyle = DashStyle.Dash;
             this.UIControls.Add(line);
             //
             label = new UILabel();
@@ -36,7 +43,8 @@ namespace Microsoft.Demo
             this.UIControls.Add(label);
             //
             progress = new UIProgress();
-            progress.Location = new Point(250, 200);
+            progress.Location = new Point(300, 200);
+            progress.Percentage = 20;
             progress.Size = new Size(600, 50);
             progress.Anchor = AnchorStyles.None;
             this.UIControls.Add(progress);
@@ -49,8 +57,7 @@ namespace Microsoft.Demo
             btnOut.Name = "out";
             btnOut.Text = btnOut.Name;
             btnOut.Font = new Font(btnOut.Font.FontFamily, 45f);
-            btnOut.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            btnOut.ForeColor = Color.Black;
+            btnOut.TextRenderingHint = TextRenderingHint.AntiAlias;
             this.UIControls.Add(btnOut);
 
             //
@@ -66,13 +73,12 @@ namespace Microsoft.Demo
             btnInner.Size = new Size(50, 20);
             btnInner.Location = new Point(5, 15);
             btnInner.UIParent = this.btnOut;
-            btnInner.Name = "in";
+            btnInner.Name = "in文本测试";
             btnInner.Text = btnInner.Name;
             this.btnOut.UIControls.Add(btnInner);
 
 
         }
-
 
         public void TestCore(FormBorderStyle border, IUIWindow target)
         {
@@ -99,7 +105,7 @@ namespace Microsoft.Demo
             Assert.AreEqual(target.FindUIChild("in2"), this.btnInner2);
             //PointToClient
             Point p = new Point(15, 35);//window client
-            Point sp = target.PointToScreen(p);//;
+            Point sp = target.PointToScreen(p);
             Assert.AreEqual(target.PointToClient(sp), p);
             Assert.AreEqual(this.btnOut.PointToClient(sp), new Point(5, 15));
             Assert.AreEqual(this.btnInner.PointToClient(sp), Point.Empty);
@@ -117,7 +123,7 @@ namespace Microsoft.Demo
             Assert.AreEqual(this.btnInner.PointToUIWindow(Point.Empty), p);
             //RectangleToClient
             Rectangle r = new Rectangle(15, 35, 10, 20);//window client
-            Rectangle sr = target.RectangleToScreen(r);//;
+            Rectangle sr = target.RectangleToScreen(r);
             Assert.AreEqual(target.RectangleToClient(sr), r);
             Assert.AreEqual(this.btnOut.RectangleToClient(sr), new Rectangle(5, 15, 10, 20));
             Assert.AreEqual(this.btnInner.RectangleToClient(sr), new Rectangle(0, 0, 10, 20));
@@ -138,8 +144,6 @@ namespace Microsoft.Demo
             this.btnOut.BringToFront();
         }
 
-
-
         private void btnWithBorder_Click(object sender, EventArgs e)
         {
             this.TestCore(FormBorderStyle.Sizable, this);
@@ -150,22 +154,29 @@ namespace Microsoft.Demo
             this.TestCore(FormBorderStyle.None, this);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnWithBorder2_Click(object sender, EventArgs e)
         {
             this.TestCore(FormBorderStyle.Sizable, this.uiWinControl1);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnNoBorder2_Click(object sender, EventArgs e)
         {
             this.TestCore(FormBorderStyle.None, this.uiWinControl1);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnAddFrame_Click(object sender, EventArgs e)
         {
-            //this.progress.Percentage += 20;
-            //if (this.progress.Percentage > 100)
-            //    this.progress.Percentage = 0;
-            this.btnOut.Dock = DockStyle.Right;
+            this.image.AddFrame();
+            this.image.AddFrame();
+            this.image.AddFrame();
+            this.image.AddFrame();
+            this.image.AddFrame();
+            this.image.AddFrame();
+        }
+
+        private void btnClearFrame_Click(object sender, EventArgs e)
+        {
+            this.image.ClearFrame();
         }
     }
 }

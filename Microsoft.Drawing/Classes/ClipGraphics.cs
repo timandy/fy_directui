@@ -6,7 +6,7 @@ namespace Microsoft.Drawing
     /// <summary>
     /// 暂时修改绘图剪切区,释放时改为原来剪切区
     /// </summary>
-    public class ClipGraphics : DisposableMini
+    public sealed class ClipGraphics : DisposableMini
     {
         private Region m_OldClip;           //原始的剪切区
         private Graphics m_Graphics;        //要修改剪切区的绘图对象

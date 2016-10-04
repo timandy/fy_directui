@@ -6,7 +6,7 @@ namespace Microsoft.Drawing
     /// <summary>
     /// 暂时修改绘图对象的平滑模式,释放时改为原来模式
     /// </summary>
-    public class SmoothingModeGraphics : DisposableMini
+    public sealed class SmoothingModeGraphics : DisposableMini
     {
         private SmoothingMode m_OldMode;    //原始的平滑模式
         private Graphics m_Graphics;        //要修改平滑模式的绘图对象

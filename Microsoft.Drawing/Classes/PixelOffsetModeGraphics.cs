@@ -6,7 +6,7 @@ namespace Microsoft.Drawing
     /// <summary>
     /// 暂时修改绘图对象的像素偏移模式,释放时改为原来模式
     /// </summary>
-    public class PixelOffsetModeGraphics : DisposableMini
+    public sealed class PixelOffsetModeGraphics : DisposableMini
     {
         private PixelOffsetMode m_OldMode;  //原始的像素偏移模式
         private Graphics m_Graphics;        //要修改像素偏移模式的绘图对象

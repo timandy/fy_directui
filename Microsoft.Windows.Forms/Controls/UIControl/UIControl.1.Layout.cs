@@ -429,7 +429,7 @@ namespace Microsoft.Windows.Forms
         public void ResumeLayout(bool performLayout)
         {
             this.m_LayoutSuspendCount--;
-            this.DoLayout(performLayout);
+            this.DoLayoutCore(performLayout);
         }
 
         /// <summary>
@@ -437,14 +437,14 @@ namespace Microsoft.Windows.Forms
         /// </summary>
         public void DoLayout()
         {
-            this.DoLayout(false);
+            this.DoLayoutCore(false);
         }
 
         /// <summary>
         /// 重新计算子控件布局,可选择是否强制执行布局
         /// </summary>
         /// <param name="performLayout">如果强制则为 true, 否则为 false</param>
-        public void DoLayout(bool performLayout)
+        protected void DoLayoutCore(bool performLayout)
         {
             if (performLayout || this.m_LayoutSuspendCount == 0)
                 DoLayoutInternal(this);
@@ -455,10 +455,9 @@ namespace Microsoft.Windows.Forms
         /// </summary>
         public void SendToBack()
         {
-            if (this.m_UIParent == null)
-                return;
-
             IUIControl parent = this.m_UIParent;
+            if (parent == null)
+                return;
             parent.SuspendLayout();
             try
             {
@@ -476,10 +475,9 @@ namespace Microsoft.Windows.Forms
         /// </summary>
         public void BringToFront()
         {
-            if (this.m_UIParent == null)
-                return;
-
             IUIControl parent = this.m_UIParent;
+            if (parent == null)
+                return;
             parent.SuspendLayout();
             try
             {

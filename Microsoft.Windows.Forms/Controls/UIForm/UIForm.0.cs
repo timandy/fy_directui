@@ -18,6 +18,9 @@ namespace Microsoft.Windows.Forms
                ControlStyles.OptimizedDoubleBuffer |
                ControlStyles.ResizeRedraw |
                ControlStyles.SupportsTransparentBackColor, true);
+            this.Font = DefaultTheme.Font;
+            this.BackColor = DefaultTheme.BackColor;
+            this.ForeColor = DefaultTheme.ForeColor;
         }
     }
 }

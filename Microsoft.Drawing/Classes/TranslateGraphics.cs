@@ -5,7 +5,7 @@ namespace Microsoft.Drawing
     /// <summary>
     /// 平移变换
     /// </summary>
-    public class TranslateGraphics : DisposableMini
+    public sealed class TranslateGraphics : DisposableMini
     {
         private int m_X;                    //水平平移
         private int m_Y;                    //垂直平移
