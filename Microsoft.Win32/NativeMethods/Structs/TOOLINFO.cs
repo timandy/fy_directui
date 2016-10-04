@@ -47,9 +47,9 @@ namespace Microsoft.Win32
             /// Version 4.70 and later. A 32-bit application-defined value that is associated with the tool.
             /// </summary>
             public int lParam;
-            ///// <summary>
-            ///// Windows XP and later. Reserved. Must be set to NULL.
-            ///// </summary>
+            /// <summary>
+            /// Windows XP and later. Reserved. Must be set to NULL.
+            /// </summary>
             public IntPtr lpReserved;
         }
     }
