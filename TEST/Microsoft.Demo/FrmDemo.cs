@@ -31,7 +31,6 @@ namespace Microsoft.Demo
             line.Location = new Point(300, 270);
             line.Size = new Size(500, 50);
             line.LineBlendStyle = BlendStyle.FadeInFadeOut;
-            line.LineColor = Color.Red;
             line.LineWidth = 2;
             line.LineDashStyle = DashStyle.Dash;
             this.UIControls.Add(line);

@@ -50,7 +50,7 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        private Color m_LineColor = DefaultTheme.LightBackColor;
+        private Color m_LineColor = DefaultTheme.DarkDarkBorderColor;
         /// <summary>
         /// 获取或设置直线颜色
         /// </summary>

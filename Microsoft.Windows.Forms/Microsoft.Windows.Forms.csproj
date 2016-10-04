@@ -161,7 +161,7 @@
     <Compile Include="Util\RenderEngine.3.Image.cs" />
     <Compile Include="Util\RenderEngine.4.Brush.cs" />
     <Compile Include="Util\RenderEngine.5.GraphicsPath.cs" />
-    <Compile Include="Util\RenderEngine.6.Renderer.cs" />
+    <Compile Include="Util\RenderEngine.6.Render.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Drawing\Microsoft.Drawing.csproj">
