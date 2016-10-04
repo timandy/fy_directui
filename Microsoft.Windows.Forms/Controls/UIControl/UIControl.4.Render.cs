@@ -87,7 +87,7 @@ namespace Microsoft.Windows.Forms
         public void EndUpdate(bool forceUpdate)
         {
             this.m_UpdateSuspendCount--;
-            this.Invalidate(forceUpdate);
+            this.InvalidateCore(this.ClientRectangle, false, forceUpdate);
         }
 
         /// <summary>
@@ -95,7 +95,16 @@ namespace Microsoft.Windows.Forms
         /// </summary>
         public void Invalidate()
         {
-            this.Invalidate(false);
+            this.InvalidateCore(this.ClientRectangle, false, false);
+        }
+
+        /// <summary>
+        /// 使控件工作区无效
+        /// </summary>
+        /// <param name="invalidateChildren">使控件所在的 Win32 窗口的子控件无效为 true,否则为 false</param>
+        public void Invalidate(bool invalidateChildren)
+        {
+            this.InvalidateCore(this.ClientRectangle, invalidateChildren, false);
         }
 
         /// <summary>
@@ -104,24 +113,26 @@ namespace Microsoft.Windows.Forms
         /// <param name="rc">无效矩形</param>
         public void Invalidate(Rectangle rc)
         {
-            this.Invalidate(rc, false);
+            this.InvalidateCore(rc, false, false);
         }
 
         /// <summary>
-        /// 使控件工作区无效,可以选择是否强制更新
+        /// 使控件矩形无效
         /// </summary>
-        /// <param name="forceUpdate">强制更新为 true,否则为false</param>
-        protected void Invalidate(bool forceUpdate)
+        /// <param name="rc">无效矩形</param>
+        /// <param name="invalidateChildren">使控件所在的 Win32 窗口的子控件无效为 true,否则为 false</param>
+        public void Invalidate(Rectangle rc, bool invalidateChildren)
         {
-            this.Invalidate(this.ClientRectangle, forceUpdate);
+            this.InvalidateCore(rc, invalidateChildren, false);
         }
 
         /// <summary>
         /// 使控件矩形无效,可以选择是否强制更新
         /// </summary>
         /// <param name="rc">无效矩形</param>
+        /// <param name="invalidateChildren">使控件所在的 Win32 窗口的子控件无效为 true,否则为 false</param>
         /// <param name="forceUpdate">强制更新为 true,否则为false</param>
-        protected void Invalidate(Rectangle rc, bool forceUpdate)
+        protected void InvalidateCore(Rectangle rc, bool invalidateChildren, bool forceUpdate)
         {
             if (forceUpdate || this.m_UpdateSuspendCount == 0)
             {
@@ -134,7 +145,7 @@ namespace Microsoft.Windows.Forms
                 }
                 if (window == null)
                     return;
-                window.Invalidate(rc);
+                window.Invalidate(rc, invalidateChildren);
             }
         }
 
@@ -143,14 +154,14 @@ namespace Microsoft.Windows.Forms
         /// </summary>
         public void Update()
         {
-            this.Update(false);
+            this.UpdateCore(false);
         }
 
         /// <summary>
         /// 重绘所在 Win32 窗口的无效区域,可以选择是否强制更新
         /// </summary>
         /// <param name="forceUpdate">强制更新为 true,否则为false</param>
-        protected void Update(bool forceUpdate)
+        protected void UpdateCore(bool forceUpdate)
         {
             if (forceUpdate || this.m_UpdateSuspendCount == 0)
             {
@@ -165,18 +176,18 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// 立即刷新所在 Win32 窗口
+        /// 立即刷新所在 Win32 窗口和其子控件
         /// </summary>
         public void Refresh()
         {
-            this.Refresh(false);
+            this.RefreshCore(false);
         }
 
         /// <summary>
-        /// 立即刷新所在 Win32 窗口,可以选择是否强制更新
+        /// 立即刷新所在 Win32 窗口和其子控件,可以选择是否强制更新
         /// </summary>
         /// <param name="forceUpdate">强制更新为 true,否则为false</param>
-        protected void Refresh(bool forceUpdate)
+        protected void RefreshCore(bool forceUpdate)
         {
             if (forceUpdate || this.m_UpdateSuspendCount == 0)
             {
@@ -190,7 +201,7 @@ namespace Microsoft.Windows.Forms
                 }
                 if (window == null)
                     return;
-                window.Invalidate(rc);
+                window.Invalidate(rc, true);
                 window.Update();
             }
         }
