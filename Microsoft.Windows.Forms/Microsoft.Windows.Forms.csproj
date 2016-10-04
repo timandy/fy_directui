@@ -21,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\_Output\Debug\Microsoft.Windows.Forms.XML</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\_Output\Release\Microsoft.Windows.Forms.XML</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -38,6 +40,13 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animate\Animation.cs" />
+    <Compile Include="Animate\AnimationFrame.cs" />
+    <Compile Include="Animate\AnimationFrameType.cs" />
+    <Compile Include="Animate\IAnimation.cs" />
+    <Compile Include="Animate\UIImageAnimation.cs" />
+    <Compile Include="Animate\UIProgressAnimation.cs" />
+    <Compile Include="Controls\IUIControl.0.cs" />
     <Compile Include="Controls\IUIControl.1.Layout.cs" />
     <Compile Include="Controls\IUIControl.2.Behaviour.cs" />
     <Compile Include="Controls\IUIControl.3.Appearance.cs" />
@@ -78,6 +87,7 @@
     <Compile Include="Controls\UIForm\UIForm.7.Dispose.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\UIImage\UIImage.cs" />
     <Compile Include="Controls\UILabel\UILabel.cs" />
     <Compile Include="Controls\UILine\UILine.cs" />
     <Compile Include="Controls\UIProgress\UIProgress.cs" />
