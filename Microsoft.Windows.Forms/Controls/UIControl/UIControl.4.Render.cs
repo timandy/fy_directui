@@ -138,11 +138,11 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// 使控件矩形无效,可以选择是否强制更新
+        /// 使控件矩形无效,可以选择是否强制刷新
         /// </summary>
         /// <param name="rc">无效矩形</param>
         /// <param name="invalidateChildren">使控件所在的 Win32 窗口的子控件无效为 true,否则为 false</param>
-        /// <param name="forceUpdate">强制更新为 true,否则为false</param>
+        /// <param name="forceUpdate">强制刷新为 true,否则为false</param>
         protected void InvalidateCore(Rectangle rc, bool invalidateChildren, bool forceUpdate)
         {
             if (forceUpdate || !this.UpdateSuspended)
@@ -169,9 +169,9 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// 重绘所在 Win32 窗口的无效区域,可以选择是否强制更新
+        /// 重绘所在 Win32 窗口的无效区域,可以选择是否强制刷新
         /// </summary>
-        /// <param name="forceUpdate">强制更新为 true,否则为false</param>
+        /// <param name="forceUpdate">强制刷新为 true,否则为false</param>
         protected void UpdateCore(bool forceUpdate)
         {
             if (forceUpdate || !this.UpdateSuspended)
@@ -195,9 +195,9 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// 立即刷新所在 Win32 窗口和其子控件,可以选择是否强制更新
+        /// 立即刷新所在 Win32 窗口和其子控件,可以选择是否强制刷新
         /// </summary>
-        /// <param name="forceUpdate">强制更新为 true,否则为false</param>
+        /// <param name="forceUpdate">强制刷新为 true,否则为false</param>
         protected void RefreshCore(bool forceUpdate)
         {
             if (forceUpdate || !this.UpdateSuspended)
