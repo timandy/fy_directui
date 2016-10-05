@@ -35,8 +35,7 @@ namespace Microsoft.Windows.Forms
                 if (value != this.m_Visible)
                 {
                     this.m_Visible = value;
-                    if (this.m_UIParent != null)
-                        this.m_UIParent.DoLayout();
+                    this.SetBounds();
                 }
             }
         }

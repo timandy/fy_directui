@@ -129,6 +129,7 @@ namespace Microsoft.Windows.Forms
         //初始下边距
         private int? m_BottomToParent;
 
+        private int m_PreferredX;
         private int m_X;
         /// <summary>
         /// 获取或设置距离父控件的左边距
@@ -143,11 +144,13 @@ namespace Microsoft.Windows.Forms
             {
                 if (value != this.m_X)
                 {
-                    this.SetBounds(value, this.m_Y, this.m_Width, this.m_Height);
+                    this.m_PreferredX = value;
+                    this.SetBounds();
                 }
             }
         }
 
+        private int m_PreferredY;
         private int m_Y;
         /// <summary>
         /// 获取或设置距离父控件的上边距
@@ -162,11 +165,13 @@ namespace Microsoft.Windows.Forms
             {
                 if (value != this.m_Y)
                 {
-                    this.SetBounds(this.m_X, value, this.m_Width, this.m_Height);
+                    this.m_PreferredY = value;
+                    this.SetBounds();
                 }
             }
         }
 
+        private int m_PreferredWidth;
         private int m_Width;
         /// <summary>
         /// 获取或设置宽度
@@ -181,11 +186,13 @@ namespace Microsoft.Windows.Forms
             {
                 if (value != this.m_Width)
                 {
-                    this.SetBounds(this.m_X, this.m_Y, value, this.m_Height);
+                    this.m_PreferredWidth = value;
+                    this.SetBounds();
                 }
             }
         }
 
+        private int m_PreferredHeight;
         private int m_Height;
         /// <summary>
         /// 获取或设置高度
@@ -200,7 +207,8 @@ namespace Microsoft.Windows.Forms
             {
                 if (value != this.m_Height)
                 {
-                    this.SetBounds(this.m_X, this.m_Y, this.m_Width, value);
+                    this.m_PreferredHeight = value;
+                    this.SetBounds();
                 }
             }
         }
@@ -240,7 +248,9 @@ namespace Microsoft.Windows.Forms
             {
                 if (value != this.Location)
                 {
-                    this.SetBounds(value.X, value.Y, this.m_Width, this.m_Height);
+                    this.m_PreferredX = value.X;
+                    this.m_PreferredY = value.Y;
+                    this.SetBounds();
                 }
             }
         }
@@ -258,7 +268,9 @@ namespace Microsoft.Windows.Forms
             {
                 if (value != this.Size)
                 {
-                    this.SetBounds(this.m_X, this.m_Y, value.Width, value.Height);
+                    this.m_PreferredWidth = value.Width;
+                    this.m_PreferredHeight = value.Height;
+                    this.SetBounds();
                 }
             }
         }
@@ -276,7 +288,11 @@ namespace Microsoft.Windows.Forms
             {
                 if (value != this.Bounds)
                 {
-                    this.SetBounds(value.X, value.Y, value.Width, value.Height);
+                    this.m_PreferredX = value.X;
+                    this.m_PreferredY = value.Y;
+                    this.m_PreferredWidth = value.Width;
+                    this.m_PreferredHeight = value.Height;
+                    this.SetBounds();
                 }
             }
         }
@@ -327,85 +343,56 @@ namespace Microsoft.Windows.Forms
             }
         }
 
+        private int m_LayoutSuspendCount;
+        /// <summary>
+        /// 获取布局操作是否被挂起
+        /// </summary>
+        public bool LayoutSuspended
+        {
+            get
+            {
+                return this.m_LayoutSuspendCount != 0 || (this.m_UIParent != null && this.m_UIParent.LayoutSuspended);
+            }
+        }
+
         /// <summary>
         /// 设置控件位置和大小,先计算后设置
         /// </summary>
-        /// <param name="x">左边距</param>
-        /// <param name="y">上边距</param>
-        /// <param name="width">宽度</param>
-        /// <param name="height">高度</param>
-        private void SetBounds(int x, int y, int width, int height)
+        private void SetBounds()
         {
-            //实际
-            int _x = this.m_X;
-            int _y = this.m_Y;
-            int _width = this.m_Width;
-            int _height = this.m_Height;
-            switch (this.Dock)
+            if (this.m_UIParent == null || this.Dock == DockStyle.None)
             {
-                case DockStyle.Left:
-                    _width = width;
-                    break;
-
-                case DockStyle.Top:
-                    _height = height;
-                    break;
-
-                case DockStyle.Right:
-                    _x = this.Right - width;
-                    _width = width;
-                    break;
-
-                case DockStyle.Bottom:
-                    _y = this.Bottom - height;
-                    _height = height;
-                    break;
-
-                case DockStyle.Fill:
-                    break;
-
-                default:
-                    _x = x;
-                    _y = y;
-                    _width = width;
-                    _height = height;
-                    break;
+                this.SetBoundsCore();
+                this.DoLayout();
             }
-
-            this.SetBoundsCore(_x, _y, _width, _height);
+            else
+            {
+                this.m_UIParent.DoLayout();
+            }
         }
 
         /// <summary>
         /// 设置控件位置和大小,直接设置
         /// </summary>
-        /// <param name="x">左边距</param>
-        /// <param name="y">上边距</param>
-        /// <param name="width">宽度</param>
-        /// <param name="height">高度</param>
-        private void SetBoundsCore(int x, int y, int width, int height)
+        private void SetBoundsCore()
         {
-            if (x != this.m_X || y != this.m_Y)
+            if (this.m_PreferredX != this.m_X || this.m_PreferredY != this.m_Y)
             {
-                this.m_X = x;
-                this.m_Y = y;
-                //OnLocationChanged
-                this.OnLocationChanged(EventArgs.Empty);
+                this.m_X = this.m_PreferredX;
+                this.m_Y = this.m_PreferredY;
                 if (this.m_UIParent != null)
                     this.m_UIParent.Invalidate();
+                this.OnLocationChanged(EventArgs.Empty);
             }
-            if (width != this.m_Width || height != this.m_Height)
+            if (this.m_PreferredWidth != this.m_Width || this.m_PreferredHeight != this.m_Height)
             {
-                this.m_Width = width;
-                this.m_Height = height;
-                //OnSizeChanged
+                this.m_Width = this.m_PreferredWidth;
+                this.m_Height = this.m_PreferredHeight;
+                this.Invalidate();
                 this.OnSizeChanged(EventArgs.Empty);
-                this.DoLayout();
-                if (this.m_UIParent != null && this.m_Dock != DockStyle.None)
-                    this.m_UIParent.DoLayout();
             }
         }
 
-        private int m_LayoutSuspendCount;
         /// <summary>
         /// 挂起布局操作
         /// </summary>
@@ -446,7 +433,7 @@ namespace Microsoft.Windows.Forms
         /// <param name="performLayout">如果强制则为 true, 否则为 false</param>
         protected void DoLayoutCore(bool performLayout)
         {
-            if (performLayout || this.m_LayoutSuspendCount == 0)
+            if (performLayout || !this.LayoutSuspended)
                 DoLayoutInternal(this);
         }
 

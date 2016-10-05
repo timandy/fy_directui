@@ -21,6 +21,18 @@ namespace Microsoft.Windows.Forms
             }
         }
 
+        private int m_UpdateSuspendCount;
+        /// <summary>
+        /// 获取刷新操作是否被挂起
+        /// </summary>
+        public bool UpdateSuspended
+        {
+            get
+            {
+                return this.m_UpdateSuspendCount != 0 || (this.m_UIParent != null && this.m_UIParent.UpdateSuspended);
+            }
+        }
+
         /// <summary>
         /// 渲染控件
         /// </summary>
@@ -63,7 +75,6 @@ namespace Microsoft.Windows.Forms
             this.RenderChildren(e);
         }
 
-        private int m_UpdateSuspendCount;
         /// <summary>
         /// 挂起刷新 UI
         /// </summary>
@@ -134,7 +145,7 @@ namespace Microsoft.Windows.Forms
         /// <param name="forceUpdate">强制更新为 true,否则为false</param>
         protected void InvalidateCore(Rectangle rc, bool invalidateChildren, bool forceUpdate)
         {
-            if (forceUpdate || this.m_UpdateSuspendCount == 0)
+            if (forceUpdate || !this.UpdateSuspended)
             {
                 IUIControl parent = this;
                 IUIWindow window = null;
@@ -163,7 +174,7 @@ namespace Microsoft.Windows.Forms
         /// <param name="forceUpdate">强制更新为 true,否则为false</param>
         protected void UpdateCore(bool forceUpdate)
         {
-            if (forceUpdate || this.m_UpdateSuspendCount == 0)
+            if (forceUpdate || !this.UpdateSuspended)
             {
                 IUIControl parent = this;
                 IUIWindow window = null;
@@ -189,7 +200,7 @@ namespace Microsoft.Windows.Forms
         /// <param name="forceUpdate">强制更新为 true,否则为false</param>
         protected void RefreshCore(bool forceUpdate)
         {
-            if (forceUpdate || this.m_UpdateSuspendCount == 0)
+            if (forceUpdate || !this.UpdateSuspended)
             {
                 IUIControl parent = this;
                 IUIWindow window = null;
