@@ -7,116 +7,127 @@ namespace Microsoft.Windows.Forms
     partial class UIControl
     {
         /// <summary>
-        /// 对指定控件的子控件重新计算布局
+        /// 对指定控件的所有子控件重新计算布局
         /// </summary>
         /// <param name="control">指定控件</param>
         internal static void DoLayoutInternal(IUIControl control)
         {
-            //实际
-            int _x;
-            int _y;
-            int _width;
-            int _height;
-            Rectangle rect = control.ClientRectangle;
+            if (control.UIControls.Count <= 0)
+                return;
             control.BeginUpdate();
             try
             {
+                Rectangle rcClient = control.ClientRectangle;
+                Rectangle rcDock = rcClient;
                 foreach (UIControl child in control.UIControls)
                 {
-                    //停靠
-                    switch (child.Dock)
+                    try
                     {
-                        case DockStyle.Left:
-                            child.SetBoundsCore(rect.Left, rect.Top, child.m_Width, rect.Height);
-                            if (child.Visible)
-                                rect = RectangleEx.Subtract(rect, new Padding(child.m_Width, 0, 0, 0));
-                            continue;
-
-                        case DockStyle.Top:
-                            child.SetBoundsCore(rect.Left, rect.Top, rect.Width, child.m_Height);
-                            if (child.Visible)
-                                rect = RectangleEx.Subtract(rect, new Padding(0, child.m_Height, 0, 0));
-                            continue;
-
-                        case DockStyle.Right:
-                            child.SetBoundsCore(rect.Width - child.m_Width, rect.Top, child.m_Width, rect.Height);
-                            if (child.Visible)
-                                rect = RectangleEx.Subtract(rect, new Padding(0, 0, child.m_Width, 0));
-                            continue;
-
-                        case DockStyle.Bottom:
-                            child.SetBoundsCore(rect.Left, rect.Height - child.m_Height, rect.Width, child.m_Height);
-                            if (child.Visible)
-                                rect = RectangleEx.Subtract(rect, new Padding(0, 0, 0, child.m_Height));
-                            continue;
-
-                        case DockStyle.Fill:
-                            child.SetBoundsCore(rect.Left, rect.Top, rect.Width, rect.Height);
-                            if (child.Visible)
-                                rect = Rectangle.Empty;
-                            continue;
-                    }
-                    //锚定
-                    if (child.m_TopToParent == null || child.m_BottomToParent == null)
-                    {
-                        _y = child.m_Y;
-                        _height = child.m_Height;
-                        child.m_TopToParent = child.m_Y;
-                        child.m_BottomToParent = rect.Height - child.Bottom;
-                    }
-                    else
-                    {
-                        switch (child.Anchor & (AnchorStyles.Top | AnchorStyles.Bottom))
+                        //停靠
+                        switch (child.Dock)
                         {
-                            case AnchorStyles.Top:
-                                _y = child.m_TopToParent.Value;
-                                _height = child.m_Height;
-                                break;
-                            case AnchorStyles.Bottom:
-                                _y = rect.Height - child.m_BottomToParent.Value - child.m_Height;
-                                _height = child.m_Height;
-                                break;
-                            case AnchorStyles.Top | AnchorStyles.Bottom:
-                                _y = child.m_TopToParent.Value;
-                                _height = rect.Height - child.m_TopToParent.Value - child.m_BottomToParent.Value;
-                                break;
-                            default:
-                                _y = child.m_TopToParent.Value + (rect.Height - child.m_TopToParent.Value - child.m_Height - child.m_BottomToParent.Value) / 2;
-                                _height = child.m_Height;
-                                break;
+                            case DockStyle.Left:
+                                child.m_PreferredX = rcDock.Left;
+                                child.m_PreferredY = rcDock.Top;
+                                child.m_PreferredHeight = rcDock.Height;
+                                child.SetBoundsCore();
+                                if (child.Visible)
+                                    rcDock = RectangleEx.Subtract(rcDock, new Padding(child.m_PreferredWidth, 0, 0, 0));
+                                continue;
+
+                            case DockStyle.Top:
+                                child.m_PreferredX = rcDock.Left;
+                                child.m_PreferredY = rcDock.Top;
+                                child.m_PreferredWidth = rcDock.Width;
+                                child.SetBoundsCore();
+                                if (child.Visible)
+                                    rcDock = RectangleEx.Subtract(rcDock, new Padding(0, child.m_PreferredHeight, 0, 0));
+                                continue;
+
+                            case DockStyle.Right:
+                                child.m_PreferredX = rcDock.Right - child.m_PreferredWidth;
+                                child.m_PreferredY = rcDock.Top;
+                                child.m_PreferredHeight = rcDock.Height;
+                                child.SetBoundsCore();
+                                if (child.Visible)
+                                    rcDock = RectangleEx.Subtract(rcDock, new Padding(0, 0, child.m_PreferredWidth, 0));
+                                continue;
+
+                            case DockStyle.Bottom:
+                                child.m_PreferredX = rcDock.Left;
+                                child.m_PreferredY = rcDock.Bottom - child.m_PreferredHeight;
+                                child.m_PreferredWidth = rcDock.Width;
+                                child.SetBoundsCore();
+                                if (child.Visible)
+                                    rcDock = RectangleEx.Subtract(rcDock, new Padding(0, 0, 0, child.m_PreferredHeight));
+                                continue;
+
+                            case DockStyle.Fill:
+                                child.m_PreferredX = rcDock.Left;
+                                child.m_PreferredY = rcDock.Top;
+                                child.m_PreferredWidth = rcDock.Width;
+                                child.m_PreferredHeight = rcDock.Height;
+                                child.SetBoundsCore();
+                                if (child.Visible)
+                                    rcDock = control.ClientRectangle; //下一轮重新布局
+                                continue;
                         }
-                    }
-                    //zuoyou
-                    if (child.m_LeftToParent == null || child.m_RightToParent == null)
-                    {
-                        _x = child.m_X;
-                        _width = child.m_Width;
-                        child.m_LeftToParent = child.m_X;
-                        child.m_RightToParent = rect.Width - child.Right;
-                    }
-                    else
-                    {
-                        switch (child.Anchor & (AnchorStyles.Left | AnchorStyles.Right))
+                        //锚定左右
+                        if (child.m_LeftToParent == null || child.m_RightToParent == null)
                         {
-                            case AnchorStyles.Left:
-                                _x = child.m_LeftToParent.Value;
-                                _width = child.m_Width;
-                                break;
-                            case AnchorStyles.Right:
-                                _x = rect.Width - child.m_RightToParent.Value - child.m_Width;
-                                _width = child.m_Width;
-                                break;
-                            case AnchorStyles.Left | AnchorStyles.Right:
-                                _x = child.m_LeftToParent.Value;
-                                _width = rect.Width - child.m_LeftToParent.Value - child.m_BottomToParent.Value;
-                                break;
-                            default:
-                                _x = child.m_LeftToParent.Value + (rect.Width - child.m_LeftToParent.Value - child.m_Width - child.m_RightToParent.Value) / 2;
-                                _width = child.m_Width;
-                                break;
+                            child.m_LeftToParent = child.m_PreferredX;
+                            child.m_RightToParent = rcClient.Width - child.m_PreferredX - child.m_PreferredWidth;
                         }
+                        else
+                        {
+                            switch (child.Anchor & (AnchorStyles.Left | AnchorStyles.Right))
+                            {
+                                case AnchorStyles.Left:
+                                    child.m_PreferredX = child.m_LeftToParent.Value;
+                                    break;
+                                case AnchorStyles.Right:
+                                    child.m_PreferredX = rcClient.Width - child.m_RightToParent.Value - child.m_PreferredWidth;
+                                    break;
+                                case AnchorStyles.Left | AnchorStyles.Right:
+                                    child.m_PreferredX = child.m_LeftToParent.Value;
+                                    child.m_PreferredWidth = rcClient.Width - child.m_LeftToParent.Value - child.m_RightToParent.Value;
+                                    break;
+                                default:
+                                    child.m_PreferredX = child.m_LeftToParent.Value + (rcClient.Width - child.m_LeftToParent.Value - child.m_PreferredWidth - child.m_RightToParent.Value) / 2;
+                                    break;
+                            }
+                        }
+                        //锚定上下
+                        if (child.m_TopToParent == null || child.m_BottomToParent == null)
+                        {
+                            child.m_TopToParent = child.m_PreferredY;
+                            child.m_BottomToParent = rcClient.Height - child.m_PreferredY - child.m_PreferredHeight;
+                        }
+                        else
+                        {
+                            switch (child.Anchor & (AnchorStyles.Top | AnchorStyles.Bottom))
+                            {
+                                case AnchorStyles.Top:
+                                    child.m_PreferredY = child.m_TopToParent.Value;
+                                    break;
+                                case AnchorStyles.Bottom:
+                                    child.m_PreferredY = rcClient.Height - child.m_BottomToParent.Value - child.m_PreferredHeight;
+                                    break;
+                                case AnchorStyles.Top | AnchorStyles.Bottom:
+                                    child.m_PreferredY = child.m_TopToParent.Value;
+                                    child.m_PreferredHeight = rcClient.Height - child.m_TopToParent.Value - child.m_BottomToParent.Value;
+                                    break;
+                                default:
+                                    child.m_PreferredY = child.m_TopToParent.Value + (rcClient.Height - child.m_TopToParent.Value - child.m_PreferredHeight - child.m_BottomToParent.Value) / 2;
+                                    break;
+                            }
+                        }
+                        child.SetBoundsCore();
                     }
-                    child.SetBoundsCore(_x, _y, _width, _height);
+                    finally
+                    {
+                        DoLayoutInternal(child);
+                    }
                 }
             }
             finally

@@ -40,6 +40,18 @@ namespace Microsoft.Windows.Forms
             }
         }
 
+        private int m_UpdateSuspendCount;
+        /// <summary>
+        /// 获取布局操作是否被挂起
+        /// </summary>
+        public bool UpdateSuspended
+        {
+            get
+            {
+                return this.m_UpdateSuspendCount != 0;
+            }
+        }
+
         /// <summary>
         /// 渲染控件
         /// </summary>
@@ -82,14 +94,14 @@ namespace Microsoft.Windows.Forms
             this.RenderChildren(e);
         }
 
-        private int m_UpdateSuspendCount;
         /// <summary>
         /// 挂起刷新 UI
         /// </summary>
         public void BeginUpdate()
         {
-            if (this.m_UpdateSuspendCount++ == 0 && this.Visible)
+            if (this.m_UpdateSuspendCount == 0 && this.Visible)
                 Util.BeginUpdate(this.Handle);
+            this.m_UpdateSuspendCount++;
         }
 
         /// <summary>
@@ -106,7 +118,8 @@ namespace Microsoft.Windows.Forms
         /// <param name="forceUpdate">若要执行刷新为 true,否则为 false</param>
         public void EndUpdate(bool forceUpdate)
         {
-            if (--this.m_UpdateSuspendCount == 0)
+            this.m_UpdateSuspendCount--;
+            if (!this.UpdateSuspended)
             {
                 if (this.Visible)
                 {

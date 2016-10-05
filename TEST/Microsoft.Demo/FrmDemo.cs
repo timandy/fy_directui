@@ -37,7 +37,8 @@ namespace Microsoft.Demo
             //
             label = new UILabel();
             label.Location = new Point(250, 200);
-            label.Size = new Size(50, 50);
+            label.Size = new Size(100, 50);
+            label.Font = new Font("微软雅黑", 13f);
             label.Text = "测试文本测试文本测试文本测试文本测试文本";
             this.UIControls.Add(label);
             //
@@ -57,6 +58,7 @@ namespace Microsoft.Demo
             btnOut.Text = btnOut.Name;
             btnOut.Font = new Font(btnOut.Font.FontFamily, 45f);
             btnOut.TextRenderingHint = TextRenderingHint.AntiAlias;
+            btnOut.Click += (sender, e) => Console.WriteLine("单击out");
             this.UIControls.Add(btnOut);
 
             //
@@ -66,14 +68,16 @@ namespace Microsoft.Demo
             btnInner2.UIParent = this.btnOut;
             btnInner2.Name = "in2";
             btnInner2.Text = btnInner2.Name;
+            btnInner2.Click += (sender, e) => MessageBox.Show("单击in2");
             this.btnOut.UIControls.Add(btnInner2);
             //
             btnInner = new UIButton();
             btnInner.Size = new Size(50, 20);
             btnInner.Location = new Point(5, 15);
             btnInner.UIParent = this.btnOut;
-            btnInner.Name = "in文本测试";
+            btnInner.Name = "in";
             btnInner.Text = btnInner.Name;
+            btnInner.Click += (sender, e) => Console.WriteLine("单击in");
             this.btnOut.UIControls.Add(btnInner);
 
 

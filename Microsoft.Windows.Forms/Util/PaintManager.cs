@@ -12,16 +12,6 @@ namespace Microsoft.Windows.Forms
     public static class PaintManager
     {
         /// <summary>
-        /// 捕获鼠标消息的虚拟控件
-        /// </summary>
-        public static UIControl CaptureControl
-        {
-            get;
-            internal set;
-        }
-
-
-        /// <summary>
         /// 先在缓冲区渲染再复制到目标设备(客户区)
         /// </summary>
         /// <param name="window">可双缓冲渲染的控件</param>

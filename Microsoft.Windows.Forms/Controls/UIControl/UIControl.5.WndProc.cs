@@ -29,7 +29,6 @@ namespace Microsoft.Windows.Forms
                         this.OnClick(EventArgs.Empty);
                     break;
             }
-
             this.State = this.GetState();
         }
     }

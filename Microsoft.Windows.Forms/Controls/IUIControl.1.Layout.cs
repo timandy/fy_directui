@@ -154,6 +154,14 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
+        /// 获取布局操作是否被挂起
+        /// </summary>
+        bool LayoutSuspended
+        {
+            get;
+        }
+
+        /// <summary>
         /// 挂起布局操作
         /// </summary>
         void SuspendLayout();

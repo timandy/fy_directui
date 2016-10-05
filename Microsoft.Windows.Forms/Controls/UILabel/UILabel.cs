@@ -51,21 +51,6 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// 获取状态
-        /// </summary>
-        public override State State
-        {
-            get
-            {
-                return base.State == State.Disabled ? State.Disabled : State.Normal;
-            }
-            protected set
-            {
-                base.State = value;
-            }
-        }
-
-        /// <summary>
         /// 渲染控件
         /// </summary>
         /// <param name="e">数据</param>
@@ -76,6 +61,7 @@ namespace Microsoft.Windows.Forms
             Rectangle rect = RectangleEx.Subtract(this.ClientRectangle, this.Padding);
             //渲染
             this.Sprite.BackColor = this.BackColor;
+            this.Sprite.Font = this.Font;
             this.Sprite.Text = this.Text;
             this.Sprite.TextRenderingHint = this.TextRenderingHint;
             this.Sprite.TextAlign = this.TextAlign;

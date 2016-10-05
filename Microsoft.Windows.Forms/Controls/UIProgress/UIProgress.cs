@@ -15,7 +15,7 @@ namespace Microsoft.Windows.Forms
         private Timer m_FrameTimer = new Timer();                               //动画定时器
         private UIProgressAnimation m_Animation = new UIProgressAnimation();    //动画对象
 
-        private Color m_ProgressColor = DefaultTheme.LightLightTransparent;
+        private Color m_ProgressColor = DefaultTheme.LightTransparent;
         /// <summary>
         /// 获取或设置进度条颜色
         /// </summary>
@@ -73,21 +73,6 @@ namespace Microsoft.Windows.Forms
                     this.m_FrameTimer.Start();
                     this.m_Animation.Next(this.m_Percentage);
                 }
-            }
-        }
-
-        /// <summary>
-        /// 获取状态
-        /// </summary>
-        public override State State
-        {
-            get
-            {
-                return base.State == State.Disabled ? State.Disabled : State.Normal;
-            }
-            protected set
-            {
-                base.State = value;
             }
         }
 
