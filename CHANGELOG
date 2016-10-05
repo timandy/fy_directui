@@ -1,5 +1,9 @@
 请在 master 分支上查看此文件。
 
+v1.0.4
+修复图像动画第一帧播放错误的 bug
+UIImage 控件增加边框属性
+
 v1.0.3
 修复 UILabel 渲染没有使用字体的 bug
 修改 UIProgress 默认颜色

@@ -62,6 +62,46 @@ namespace Microsoft.Windows.Forms
             }
         }
 
+        private Color m_BorderColor = DefaultTheme.BorderColor;
+        /// <summary>
+        /// 获取或设置边框颜色
+        /// </summary>
+        public Color BorderColor
+        {
+            get
+            {
+                return this.m_BorderColor;
+            }
+            set
+            {
+                if (value != this.m_BorderColor)
+                {
+                    this.m_BorderColor = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
+        private BorderVisibleStyle m_BorderVisibleStyle;
+        /// <summary>
+        /// 获取或设置边框样式
+        /// </summary>
+        public BorderVisibleStyle BorderVisibleStyle
+        {
+            get
+            {
+                return this.m_BorderVisibleStyle;
+            }
+            set
+            {
+                if (value != this.m_BorderVisibleStyle)
+                {
+                    this.m_BorderVisibleStyle = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -132,10 +172,12 @@ namespace Microsoft.Windows.Forms
             //渲染
             this.Sprite.BackgroundImage = this.m_Animation.Current;
             this.Sprite.BackgroundImageLayout = ImageLayout.None;
-            this.Sprite.BorderVisibleStyle = BorderVisibleStyle.None;
+            this.Sprite.BorderColor = this.BorderColor;
+            this.Sprite.BorderVisibleStyle = this.BorderVisibleStyle;
             this.Sprite.State = this.State;
             this.Sprite.BeginRender(g);
             this.Sprite.RenderBackgroundImage(rect);
+            this.Sprite.RenderBorder(rect);
             this.Sprite.EndRender();
         }
 
