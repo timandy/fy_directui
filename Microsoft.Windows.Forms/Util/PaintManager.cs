@@ -11,13 +11,20 @@ namespace Microsoft.Windows.Forms
     /// </summary>
     public static class PaintManager
     {
+        private static UIControl m_CaptureControl;
         /// <summary>
         /// 捕获鼠标消息的虚拟控件
         /// </summary>
         public static UIControl CaptureControl
         {
-            get;
-            internal set;
+            get
+            {
+                return m_CaptureControl;
+            }
+            internal set
+            {
+                m_CaptureControl = value;
+            }
         }
 
 
