@@ -21,6 +21,18 @@ namespace Microsoft.Windows.Forms
             }
         }
 
+        private int m_UpdateSuspendCount;
+        /// <summary>
+        /// 获取刷新操作是否被挂起
+        /// </summary>
+        public bool UpdateSuspended
+        {
+            get
+            {
+                return this.m_UpdateSuspendCount != 0 || (this.m_UIParent != null && this.m_UIParent.UpdateSuspended);
+            }
+        }
+
         /// <summary>
         /// 渲染控件
         /// </summary>
@@ -63,7 +75,6 @@ namespace Microsoft.Windows.Forms
             this.RenderChildren(e);
         }
 
-        private int m_UpdateSuspendCount;
         /// <summary>
         /// 挂起刷新 UI
         /// </summary>
@@ -127,14 +138,14 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// 使控件矩形无效,可以选择是否强制更新
+        /// 使控件矩形无效,可以选择是否强制刷新
         /// </summary>
         /// <param name="rc">无效矩形</param>
         /// <param name="invalidateChildren">使控件所在的 Win32 窗口的子控件无效为 true,否则为 false</param>
-        /// <param name="forceUpdate">强制更新为 true,否则为false</param>
+        /// <param name="forceUpdate">强制刷新为 true,否则为false</param>
         protected void InvalidateCore(Rectangle rc, bool invalidateChildren, bool forceUpdate)
         {
-            if (forceUpdate || this.m_UpdateSuspendCount == 0)
+            if (forceUpdate || !this.UpdateSuspended)
             {
                 IUIControl parent = this;
                 IUIWindow window = null;
@@ -158,12 +169,12 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// 重绘所在 Win32 窗口的无效区域,可以选择是否强制更新
+        /// 重绘所在 Win32 窗口的无效区域,可以选择是否强制刷新
         /// </summary>
-        /// <param name="forceUpdate">强制更新为 true,否则为false</param>
+        /// <param name="forceUpdate">强制刷新为 true,否则为false</param>
         protected void UpdateCore(bool forceUpdate)
         {
-            if (forceUpdate || this.m_UpdateSuspendCount == 0)
+            if (forceUpdate || !this.UpdateSuspended)
             {
                 IUIControl parent = this;
                 IUIWindow window = null;
@@ -184,12 +195,12 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// 立即刷新所在 Win32 窗口和其子控件,可以选择是否强制更新
+        /// 立即刷新所在 Win32 窗口和其子控件,可以选择是否强制刷新
         /// </summary>
-        /// <param name="forceUpdate">强制更新为 true,否则为false</param>
+        /// <param name="forceUpdate">强制刷新为 true,否则为false</param>
         protected void RefreshCore(bool forceUpdate)
         {
-            if (forceUpdate || this.m_UpdateSuspendCount == 0)
+            if (forceUpdate || !this.UpdateSuspended)
             {
                 IUIControl parent = this;
                 IUIWindow window = null;

@@ -171,6 +171,32 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        protected override State GetState()
+        {
+            if (this.Enabled)
+            {
+                if (this.Capture)
+                {
+                    if ((Control.MouseButtons & MouseButtons.Left) != 0)//左键按下
+                        return State.Pressed;
+                    else
+                        return State.Hovered;
+                }
+                else
+                {
+                    return State.Normal;
+                }
+            }
+            else
+            {
+                return State.Disabled;
+            }
+        }
+
+        /// <summary>
         /// 构造函数
         /// </summary>
         public UIButton()
@@ -207,8 +233,7 @@ namespace Microsoft.Windows.Forms
             this.Sprite.State = this.State;
             this.Sprite.BeginRender(g);
             this.Sprite.RenderBackColor(rect);
-            this.Sprite.RenderImage(rect);
-            this.Sprite.RenderText(rect);
+            this.Sprite.RenderTextAndImage(rect);
             this.Sprite.EndRender();
         }
     }
