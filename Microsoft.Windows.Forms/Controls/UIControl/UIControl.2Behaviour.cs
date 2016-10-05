@@ -61,20 +61,21 @@ namespace Microsoft.Windows.Forms
             }
         }
 
+        private bool m_Capture;
         /// <summary>
         /// 获取或设置控件是否捕获鼠标
-        /// </summary>
+        /// </summary> 
         public bool Capture
         {
             get
             {
-                return this == PaintManager.CaptureControl;
+                return this.m_Capture;
             }
             set
             {
                 if (value != this.Capture)
                 {
-                    PaintManager.CaptureControl = value ? this : null;
+                    this.m_Capture = value;
                     this.State = this.GetState();
                     if (value)
                         this.OnEnter(EventArgs.Empty);
