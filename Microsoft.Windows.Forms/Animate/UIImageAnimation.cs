@@ -73,8 +73,10 @@ namespace Microsoft.Windows.Forms.Animate
                         ResizeBitmap(ref this.m_From, oldSize, this.m_Size);
                     this.RecreateFrames();//to 列表
                     if (this.m_Current != null)//current
+                    {
                         this.m_Current.Dispose();
-                    this.m_Current = new Bitmap(this.m_Size.Width, this.m_Size.Height, PixelFormat.Format32bppArgb);
+                        this.m_Current = null;
+                    }
                 }
             }
         }
@@ -87,13 +89,25 @@ namespace Microsoft.Windows.Forms.Animate
         {
             get
             {
-                //已停止
-                if (this.Stopped && this.m_From != null)
-                    return this.m_Current;
-                //计算信息
+                //信息
                 byte[] from;
                 byte[] to;
                 bool stopped;
+                //已停止
+                if (this.Stopped)
+                {
+                    if (this.m_Current == null)
+                    {
+                        this.m_Current = new Bitmap(this.m_Size.Width, this.m_Size.Height, PixelFormat.Format32bppArgb);
+                        this.GetCurrentInfo(out from, out to, out stopped);
+                        if (from != null)
+                            CopyBitmap(from, this.m_Current);
+                        else if (to != null)
+                            CopyBitmap(to, this.m_Current);
+                    }
+                    return this.m_Current;
+                }
+                //计算信息
                 this.GetCurrentInfo(out from, out to, out stopped);
                 //图像处理
                 BlendBitmap(from, to, this.m_Current, stopped ? STOPPED : this.Percentage);
@@ -332,8 +346,8 @@ namespace Microsoft.Windows.Forms.Animate
         /// <summary>
         /// 从图像创建帧数据
         /// </summary>
-        /// <param name="srcBmp">图像</param>
-        /// <param name="destData">帧数据</param>
+        /// <param name="srcBmp">源图像</param>
+        /// <param name="destData">目标帧数据</param>
         private static void CopyBitmap(Bitmap srcBmp, ref byte[] destData)
         {
             if (destData == null)
@@ -343,15 +357,26 @@ namespace Microsoft.Windows.Forms.Animate
         }
 
         /// <summary>
-        /// 从图像快照帧数据
+        /// 从帧数据快照帧数据
         /// </summary>
-        /// <param name="srcData">源图像数据</param>
-        /// <param name="destData">目标图像数据</param>
+        /// <param name="srcData">源帧数据</param>
+        /// <param name="destData">目标帧数据</param>
         private static void CopyBitmap(byte[] srcData, ref byte[] destData)
         {
             if (destData == null)
                 destData = new byte[srcData.Length];
             Array.Copy(srcData, destData, srcData.Length);
+        }
+
+        /// <summary>
+        /// 从帧数据快照图像
+        /// </summary>
+        /// <param name="srcData">源帧数据</param>
+        /// <param name="destBmp">目标图像</param>
+        private static void CopyBitmap(byte[] srcData, Bitmap destBmp)
+        {
+            using (LockedBitmapData bmpData = new LockedBitmapData(destBmp, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb))
+                Marshal.Copy(srcData, 0, bmpData.Scan0, srcData.Length);
         }
 
         /// <summary>
