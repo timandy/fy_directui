@@ -61,6 +61,7 @@ namespace Microsoft.Windows.Forms
             Rectangle rect = RectangleEx.Subtract(this.ClientRectangle, this.Padding);
             //渲染
             this.Sprite.BackColor = this.BackColor;
+            this.Sprite.Font = this.Font;
             this.Sprite.Text = this.Text;
             this.Sprite.TextRenderingHint = this.TextRenderingHint;
             this.Sprite.TextAlign = this.TextAlign;
