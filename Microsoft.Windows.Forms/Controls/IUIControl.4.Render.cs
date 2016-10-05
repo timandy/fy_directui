@@ -6,6 +6,14 @@ namespace Microsoft.Windows.Forms
     partial interface IUIControl
     {
         /// <summary>
+        /// 获取刷新操作是否被挂起
+        /// </summary>
+        bool UpdateSuspended
+        {
+            get;
+        }
+
+        /// <summary>
         /// 渲染控件和子控件
         /// </summary>
         /// <param name="e">数据</param>
