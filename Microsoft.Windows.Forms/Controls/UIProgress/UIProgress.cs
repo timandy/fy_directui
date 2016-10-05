@@ -77,21 +77,6 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// 获取状态
-        /// </summary>
-        public override State State
-        {
-            get
-            {
-                return base.State == State.Disabled ? State.Disabled : State.Normal;
-            }
-            protected set
-            {
-                base.State = value;
-            }
-        }
-
-        /// <summary>
         /// 构造函数
         /// </summary>
         public UIProgress()

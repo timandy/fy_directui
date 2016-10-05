@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace Microsoft.Windows.Forms
 {
@@ -114,24 +113,7 @@ namespace Microsoft.Windows.Forms
         /// <returns>状态</returns>
         protected virtual State GetState()
         {
-            if (this.Enabled)
-            {
-                if (this.Capture)
-                {
-                    if ((Control.MouseButtons & MouseButtons.Left) != 0)//左键按下
-                        return State.Pressed;
-                    else
-                        return State.Hovered;
-                }
-                else
-                {
-                    return State.Normal;
-                }
-            }
-            else
-            {
-                return State.Disabled;
-            }
+            return this.Enabled ? State.Normal : State.Disabled;
         }
     }
 }
