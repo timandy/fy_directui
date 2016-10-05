@@ -82,7 +82,7 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        private BorderVisibleStyle m_BorderVisibleStyle = BorderVisibleStyle.All;
+        private BorderVisibleStyle m_BorderVisibleStyle;
         /// <summary>
         /// 获取或设置边框样式
         /// </summary>
