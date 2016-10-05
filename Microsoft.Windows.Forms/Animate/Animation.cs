@@ -13,7 +13,7 @@ namespace Microsoft.Windows.Forms.Animate
         /// </summary>
         protected const double STOPPED = 1d;
 
-        private bool m_Stopped;
+        private bool m_Stopped = true;
         /// <summary>
         /// 获取动画是否已停止
         /// </summary>

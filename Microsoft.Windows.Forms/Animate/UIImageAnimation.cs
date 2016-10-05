@@ -75,7 +75,6 @@ namespace Microsoft.Windows.Forms.Animate
                     if (this.m_Current != null)//current
                         this.m_Current.Dispose();
                     this.m_Current = new Bitmap(this.m_Size.Width, this.m_Size.Height, PixelFormat.Format32bppArgb);
-                    this.Start();//失效,下次调用 current 将获取新的
                 }
             }
         }
@@ -89,7 +88,7 @@ namespace Microsoft.Windows.Forms.Animate
             get
             {
                 //已停止
-                if (this.Stopped)
+                if (this.Stopped && this.m_From != null)
                     return this.m_Current;
                 //计算信息
                 byte[] from;
