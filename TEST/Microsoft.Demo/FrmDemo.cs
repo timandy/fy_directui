@@ -37,7 +37,8 @@ namespace Microsoft.Demo
             //
             label = new UILabel();
             label.Location = new Point(250, 200);
-            label.Size = new Size(50, 50);
+            label.Size = new Size(100, 50);
+            label.Font = new Font("微软雅黑", 13f);
             label.Text = "测试文本测试文本测试文本测试文本测试文本";
             this.UIControls.Add(label);
             //
