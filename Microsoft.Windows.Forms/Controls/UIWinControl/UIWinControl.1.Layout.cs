@@ -40,6 +40,17 @@ namespace Microsoft.Windows.Forms
 
         private int m_LayoutSuspendCount;
         /// <summary>
+        /// 获取布局操作是否被挂起
+        /// </summary>
+        public bool LayoutSuspended
+        {
+            get
+            {
+                return this.m_LayoutSuspendCount != 0;
+            }
+        }
+
+        /// <summary>
         /// 挂起布局操作
         /// </summary>
         public new void SuspendLayout()
@@ -81,7 +92,7 @@ namespace Microsoft.Windows.Forms
         /// <param name="performLayout">如果强制则为 true, 否则为 false</param>
         protected void DoLayoutCore(bool performLayout)
         {
-            if (performLayout || this.m_LayoutSuspendCount == 0)
+            if (performLayout || !this.LayoutSuspended)
                 UIControl.DoLayoutInternal(this);
         }
 
