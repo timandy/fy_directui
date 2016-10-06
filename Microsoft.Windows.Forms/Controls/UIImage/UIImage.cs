@@ -171,7 +171,7 @@ namespace Microsoft.Windows.Forms
             Rectangle rect = RectangleEx.Subtract(this.ClientRectangle, this.Padding);
             //渲染
             this.Sprite.BackgroundImage = this.m_Animation.Current;
-            this.Sprite.BackgroundImageLayout = ImageLayout.None;
+            this.Sprite.BackgroundImageLayout = ImageLayout.Stretch;
             this.Sprite.BorderColor = this.BorderColor;
             this.Sprite.BorderVisibleStyle = this.BorderVisibleStyle;
             this.Sprite.State = this.State;

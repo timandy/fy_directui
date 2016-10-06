@@ -43,6 +43,7 @@
     <Compile Include="Animate\Animation.cs" />
     <Compile Include="Animate\AnimationFrame.cs" />
     <Compile Include="Animate\AnimationFrameType.cs" />
+    <Compile Include="Animate\AnimationOperations.cs" />
     <Compile Include="Animate\IAnimation.cs" />
     <Compile Include="Animate\UIImageAnimation.cs" />
     <Compile Include="Animate\UIProgressAnimation.cs" />

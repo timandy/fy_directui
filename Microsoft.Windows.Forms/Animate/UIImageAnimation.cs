@@ -25,12 +25,13 @@ namespace Microsoft.Windows.Forms.Animate
         /// </summary>
         public const int NONE_INDEX = -1;
 
-        private List<AnimationFrame> m_Origins = new List<AnimationFrame>();    //原始图片集合
-        private List<byte[]> m_Frames = new List<byte[]>();                     //截至帧集合
-        private Random m_Random = new Random();                                 //随机数生成器
-        private byte[] m_From;                                                  //起始帧数据
-        private int m_ToIndex = NONE_INDEX;                                     //截至帧索引
-
+        private List<AnimationFrame> m_Origins = new List<AnimationFrame>();        //原始图片集合
+        private List<byte[]> m_Frames = new List<byte[]>();                         //截至帧集合
+        private AnimationOperations m_SuspendedOps = new AnimationOperations();     //挂起的操作
+        private Random m_Random = new Random();                                     //随机数生成器
+        private byte[] m_From;                                                      //起始帧数据
+        private int m_ToIndex = NONE_INDEX;                                         //截至帧索引
+        private bool m_CurrentValid;                                                //当前帧是否有效
 
         #region 属性
 
@@ -56,28 +57,17 @@ namespace Microsoft.Windows.Forms.Animate
         /// </summary>
         public Size Size
         {
-            get { return this.m_Size; }
+            get
+            {
+                return this.m_Size;
+            }
             set
             {
                 if (value.Width == 0)
                     value.Width = 1;
                 if (value.Height == 0)
                     value.Height = 1;
-                if (value != this.m_Size)
-                {
-                    //暂存
-                    Size oldSize = this.m_Size;
-                    //赋值
-                    this.m_Size = value;
-                    if (this.m_From != null)//以前有数据
-                        ResizeBitmap(ref this.m_From, oldSize, this.m_Size);
-                    this.RecreateFrames();//to 列表
-                    if (this.m_Current != null)//current
-                    {
-                        this.m_Current.Dispose();
-                        this.m_Current = null;
-                    }
-                }
+                this.Resize(value);
             }
         }
 
@@ -89,30 +79,24 @@ namespace Microsoft.Windows.Forms.Animate
         {
             get
             {
-                //信息
-                byte[] from;
-                byte[] to;
-                bool stopped;
                 //已停止
                 if (this.Stopped)
                 {
-                    if (this.m_Current == null)
+                    if (!this.m_CurrentValid)
                     {
-                        this.m_Current = new Bitmap(this.m_Size.Width, this.m_Size.Height, PixelFormat.Format32bppArgb);
-                        this.GetCurrentInfo(out from, out to, out stopped);
-                        if (from != null)
-                            CopyBitmap(from, this.m_Current);
-                        else if (to != null)
-                            CopyBitmap(to, this.m_Current);
+                        byte[] current = this.UpdateCurrent();
+                        if (current != null)
+                            CopyBitmap(current, this.m_Current);
+                        this.m_CurrentValid = true;
                     }
                     return this.m_Current;
                 }
                 //计算信息
-                this.GetCurrentInfo(out from, out to, out stopped);
+                byte[] from = this.m_From;
+                byte[] to = this.m_ToIndex == NONE_INDEX ? null : this.m_Frames[this.m_ToIndex];
                 //图像处理
-                BlendBitmap(from, to, this.m_Current, stopped ? STOPPED : this.Percentage);
-                if (stopped)
-                    this.Stop();
+                BlendBitmap(from, to, this.m_Current, this.Percentage);
+                this.m_CurrentValid = true;
                 return this.m_Current;
             }
         }
@@ -136,37 +120,24 @@ namespace Microsoft.Windows.Forms.Animate
         #region 动画操作
 
         /// <summary>
-        /// 获取当前帧信息
+        /// 动画停止状态,当前帧无效时重新获取当前帧数据
         /// </summary>
-        /// <param name="from">起始数据</param>
-        /// <param name="to">停止数据</param>
-        /// <param name="stopped">是否停止</param>
-        private void GetCurrentInfo(out byte[] from, out byte[] to, out bool stopped)
+        /// <returns>帧数据</returns>
+        private byte[] UpdateCurrent()
         {
             int count = this.m_Origins.Count;
             switch (count)
             {
                 case 0:
-                    from = this.m_From;
-                    to = null;
-                    stopped = from == null;
-                    break;
+                    this.m_ToIndex = NONE_INDEX;
+                    return null;
                 case 1:
-                    from = this.m_From;
-                    to = this.m_Frames[0];
-                    stopped = from == null;
-                    break;
+                    this.m_ToIndex = 0;
+                    return this.m_Frames[0];
                 default:
-                    if (this.m_From == null)
-                    {
+                    if (this.m_ToIndex < 0 || this.m_ToIndex >= count)
                         this.m_ToIndex = this.GetNextIndex();
-                        CopyBitmap(this.m_Frames[this.m_ToIndex], ref this.m_From);
-                        this.m_ToIndex = this.GetNextIndex();
-                    }
-                    from = this.m_From;
-                    to = (this.m_ToIndex < 0 || this.m_ToIndex > count - 1) ? null : this.m_Frames[this.m_ToIndex];
-                    stopped = false;
-                    break;
+                    return this.m_Frames[this.m_ToIndex];
             }
         }
 
@@ -176,7 +147,6 @@ namespace Microsoft.Windows.Forms.Animate
         /// <returns>下一个目标帧</returns>
         private int GetNextIndex()
         {
-            //随机
             int count = this.m_Origins.Count;
             if (this.m_RandomPlay)
             {
@@ -188,8 +158,10 @@ namespace Microsoft.Windows.Forms.Animate
                 } while (temp == current);
                 return temp;
             }
-            //非随机
-            return (this.m_ToIndex >= (count - 1)) ? 0 : this.m_ToIndex + 1;
+            else
+            {
+                return (this.m_ToIndex + 1 >= count) ? 0 : (this.m_ToIndex + 1);
+            }
         }
 
         /// <summary>
@@ -197,24 +169,25 @@ namespace Microsoft.Windows.Forms.Animate
         /// </summary>
         public void Next()
         {
+            //动画未结束
+            if (!this.Stopped)
+                return;
+            //恢复挂起的操作,截止帧变起始帧
+            this.Resume();
+            //查找下一个截止帧
             switch (this.m_Origins.Count)
             {
                 case 0:
                     this.m_ToIndex = NONE_INDEX;
-                    if (this.m_From != null && this.m_Current != null)
-                        CopyBitmap(this.m_Current, ref this.m_From);//创建快照
                     break;
                 case 1:
                     this.m_ToIndex = 0;
-                    if (this.m_From != null && this.m_Current != null)
-                        CopyBitmap(this.m_Current, ref this.m_From);//创建快照
                     break;
                 default:
                     this.m_ToIndex = this.GetNextIndex();
-                    if (this.m_Current != null)
-                        CopyBitmap(this.m_Current, ref this.m_From);//创建快照
                     break;
             }
+            //开始动画
             this.Start();
         }
 
@@ -224,38 +197,102 @@ namespace Microsoft.Windows.Forms.Animate
         #region 集合操作
 
         /// <summary>
-        /// 添加图片到帧集合
+        /// 恢复大小改变操作,重新创建所有帧
         /// </summary>
-        /// <param name="frame">图片</param>
-        private void AddCore(AnimationFrame frame)
+        private void ResumeResize(Size size)
         {
-            byte[] frameData = null;
-            switch (frame.FrameType)
-            {
-                case AnimationFrameType.Image:
-                    using (Bitmap bmp = new Bitmap((Image)frame.Value, this.m_Size.Width, this.m_Size.Height))
-                    {
-                        CopyBitmap(bmp, ref frameData);
-                        this.m_Frames.Add(frameData);
-                    }
-                    break;
-                case AnimationFrameType.Color:
-                    CopyColor((Color)frame.Value, this.m_Size, ref frameData);
-                    this.m_Frames.Add(frameData);
-                    break;
-                default:
-                    throw new ArgumentException("frame type error.");
-            }
+            //赋值
+            this.m_Size = size;
+            //重新创建关键帧
+            this.m_Frames.Clear();
+            foreach (AnimationFrame frame in this.m_Origins)
+                this.m_Frames.Add(GetFrameData(frame, size));
+            //重新创建当前图像
+            if (this.m_Current != null)
+                this.m_Current.Dispose();
+            this.m_Current = new Bitmap(this.m_Size.Width, this.m_Size.Height, PixelFormat.Format32bppArgb);
+            this.m_CurrentValid = false;
         }
 
         /// <summary>
-        /// 重新创建所有帧,一般在大小改变后调用
+        /// 恢复添加关键帧操作
         /// </summary>
-        private void RecreateFrames()
+        /// <param name="frame">关键帧</param>
+        private void ResumeAddFrame(AnimationFrame frame)
         {
-            this.m_Frames.Clear();
+            this.m_Origins.Add(frame);
+            this.m_Frames.Add(GetFrameData(frame, this.m_Size));
+        }
+
+        /// <summary>
+        /// 恢复清空关键帧操作
+        /// </summary>
+        private void ResumeClearFrame()
+        {
             foreach (AnimationFrame frame in this.m_Origins)
-                this.AddCore(frame);
+                frame.Dispose();
+            this.m_Origins.Clear();
+            this.m_Frames.Clear();
+        }
+
+        /// <summary>
+        /// 恢复挂起的操作,截止帧变起始帧
+        /// </summary>
+        private void Resume()
+        {
+            //截止帧变起始帧
+            bool getLater = false;
+            if (this.m_ToIndex == NONE_INDEX)
+            {
+                this.m_From = null;
+            }
+            else if (this.m_SuspendedOps.Resized)
+            {
+                if (this.m_SuspendedOps.Cleared)
+                    this.m_From = GetFrameData(this.m_Origins[this.m_ToIndex], this.m_SuspendedOps.Size);
+                else
+                    getLater = true;
+            }
+            else
+            {
+                this.m_From = this.m_Frames[this.m_ToIndex];
+            }
+
+            //清理帧
+            if (this.m_SuspendedOps.Cleared)
+                this.ResumeClearFrame();
+
+            //大小改变
+            if (this.m_SuspendedOps.Resized)
+                this.ResumeResize(this.m_SuspendedOps.Size);
+
+            //大小改变后获取
+            if (getLater)
+                this.m_From = this.m_Frames[this.m_ToIndex];
+
+            //添加帧
+            foreach (AnimationFrame frame in this.m_SuspendedOps)
+                this.ResumeAddFrame(frame);
+
+            //清空操作
+            this.m_SuspendedOps.Clear();
+        }
+
+        #endregion
+
+
+        #region 用户操作
+
+        /// <summary>
+        /// 大小改变
+        /// </summary>
+        /// <param name="size">大小</param>
+        private void Resize(Size size)
+        {
+            if (this.m_Current == null)
+                this.ResumeResize(size);
+            else
+                this.m_SuspendedOps.Resize(size);
         }
 
         /// <summary>
@@ -267,11 +304,11 @@ namespace Microsoft.Windows.Forms.Animate
             if (image == null)
                 throw new ArgumentNullException("image");
 
-            //添加到原始图
             AnimationFrame frame = new AnimationFrame(image);
-            this.m_Origins.Add(frame);
-            //添加到缓存
-            this.AddCore(frame);
+            if (this.m_SuspendedOps.Cleared)
+                this.m_SuspendedOps.AddFrame(frame);
+            else
+                this.ResumeAddFrame(frame);
         }
 
         /// <summary>
@@ -280,11 +317,11 @@ namespace Microsoft.Windows.Forms.Animate
         /// <param name="color">颜色</param>
         public void AddFrame(Color color)
         {
-            //添加到原始图
             AnimationFrame frame = new AnimationFrame(color);
-            this.m_Origins.Add(frame);
-            //添加到缓存
-            this.AddCore(frame);
+            if (this.m_SuspendedOps.Cleared)
+                this.m_SuspendedOps.AddFrame(frame);
+            else
+                this.ResumeAddFrame(frame);
         }
 
         /// <summary>
@@ -292,11 +329,11 @@ namespace Microsoft.Windows.Forms.Animate
         /// </summary>
         public void AddFrame()
         {
-            //添加到原始图
             AnimationFrame frame = new AnimationFrame();
-            this.m_Origins.Add(frame);
-            //添加到缓存
-            this.AddCore(frame);
+            if (this.m_SuspendedOps.Cleared)
+                this.m_SuspendedOps.AddFrame(frame);
+            else
+                this.ResumeAddFrame(frame);
         }
 
         /// <summary>
@@ -304,15 +341,7 @@ namespace Microsoft.Windows.Forms.Animate
         /// </summary>
         public void ClearFrame()
         {
-            //释放资源
-            foreach (AnimationFrame frame in this.m_Origins)
-                frame.Dispose();
-            //清空原始
-            this.m_Origins.Clear();
-            //清空缓存
-            this.m_Frames.Clear();
-            //启动动画
-            this.Next();
+            this.m_SuspendedOps.ClearFrame();
         }
 
         #endregion
@@ -357,18 +386,6 @@ namespace Microsoft.Windows.Forms.Animate
         }
 
         /// <summary>
-        /// 从帧数据快照帧数据
-        /// </summary>
-        /// <param name="srcData">源帧数据</param>
-        /// <param name="destData">目标帧数据</param>
-        private static void CopyBitmap(byte[] srcData, ref byte[] destData)
-        {
-            if (destData == null)
-                destData = new byte[srcData.Length];
-            Array.Copy(srcData, destData, srcData.Length);
-        }
-
-        /// <summary>
         /// 从帧数据快照图像
         /// </summary>
         /// <param name="srcData">源帧数据</param>
@@ -377,24 +394,6 @@ namespace Microsoft.Windows.Forms.Animate
         {
             using (LockedBitmapData bmpData = new LockedBitmapData(destBmp, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb))
                 Marshal.Copy(srcData, 0, bmpData.Scan0, srcData.Length);
-        }
-
-        /// <summary>
-        /// 图像改变大小
-        /// </summary>
-        /// <param name="srcData">原图像数据</param>
-        /// <param name="srcSize">原大小</param>
-        /// <param name="destSize">目标大小</param>
-        private static void ResizeBitmap(ref byte[] srcData, Size srcSize, Size destSize)
-        {
-            byte[] destData = new byte[destSize.Width * destSize.Height * 4];
-            int srcWidth = srcSize.Width * 4;
-            int destWidth = destSize.Width * 4;
-            int width = Math.Min(srcWidth, destWidth);
-            int height = Math.Min(srcSize.Height, destSize.Height);
-            for (int i = 0; i < height; i++)
-                Array.Copy(srcData, srcWidth * i, destData, destWidth * i, width);
-            srcData = destData;
         }
 
         /// <summary>
@@ -451,6 +450,29 @@ namespace Microsoft.Windows.Forms.Animate
             }
         }
 
+        /// <summary>
+        /// 获取帧数据
+        /// </summary>
+        /// <param name="frame">原始帧</param>
+        /// <param name="size">帧数据图像大小</param>
+        /// <returns>帧数据</returns>
+        private static byte[] GetFrameData(AnimationFrame frame, Size size)
+        {
+            byte[] frameData = null;
+            switch (frame.FrameType)
+            {
+                case AnimationFrameType.Image:
+                    using (Bitmap bmp = new Bitmap((Image)frame.Value, size.Width, size.Height))
+                        CopyBitmap(bmp, ref frameData);
+                    return frameData;
+                case AnimationFrameType.Color:
+                    CopyColor((Color)frame.Value, size, ref frameData);
+                    return frameData;
+                default:
+                    throw new ArgumentException("frame type error.");
+            }
+        }
+
         #endregion
 
 
@@ -473,6 +495,11 @@ namespace Microsoft.Windows.Forms.Animate
             {
                 this.m_Frames.Clear();
                 this.m_Frames = null;
+            }
+            if (this.m_SuspendedOps != null)
+            {
+                this.m_SuspendedOps.Dispose();
+                this.m_SuspendedOps = null;
             }
             if (this.m_Current != null)
             {
