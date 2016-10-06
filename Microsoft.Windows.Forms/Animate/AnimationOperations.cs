@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Microsoft.Windows.Forms.Animate
@@ -6,7 +7,7 @@ namespace Microsoft.Windows.Forms.Animate
     /// <summary>
     /// 动画操作集合
     /// </summary>
-    internal class AnimationOperations : DisposableMini
+    internal class AnimationOperations : DisposableMini, IEnumerable<AnimationFrame>
     {
         //操作集合
         private List<AnimationFrame> m_Frames = new List<AnimationFrame>();
@@ -83,6 +84,24 @@ namespace Microsoft.Windows.Forms.Animate
             this.m_Frames.Clear();
             this.m_Cleared = false;
             this.m_Size = null;
+        }
+
+        /// <summary>
+        /// 获取枚举器
+        /// </summary>
+        /// <returns>枚举器</returns>
+        public IEnumerator<AnimationFrame> GetEnumerator()
+        {
+            return this.m_Frames.GetEnumerator();
+        }
+
+        /// <summary>
+        /// 获取枚举器
+        /// </summary>
+        /// <returns>枚举器</returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return (this.m_Frames as IEnumerable).GetEnumerator();
         }
 
         /// <summary>
