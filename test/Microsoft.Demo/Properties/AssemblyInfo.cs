@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Microsoft.Drawing")]
+[assembly: AssemblyTitle("Microsoft.Demo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("北京维富友科技发展有限公司")]
-[assembly: AssemblyProduct("Microsoft.Drawing")]
+[assembly: AssemblyProduct("Microsoft.Demo")]
 [assembly: AssemblyCopyright("Copyright © 北京维富友科技发展有限公司 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("80a5a30e-9819-4bcc-99d8-e6b470dc79ef")]
+[assembly: Guid("07ed1191-fe77-494f-9d99-2444c35204b3")]
 
 // 程序集的版本信息由下面四个值组成: 
 //
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: 
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.7.0")]
-[assembly: AssemblyFileVersion("1.0.7.0")]
+[assembly: AssemblyVersion("1.0.8.0")]
+[assembly: AssemblyFileVersion("1.0.8.0")]

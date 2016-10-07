@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Microsoft")]
+[assembly: AssemblyTitle("Microsoft.Win32")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("北京维富友科技发展有限公司")]
-[assembly: AssemblyProduct("Microsoft")]
+[assembly: AssemblyProduct("Microsoft.Win32")]
 [assembly: AssemblyCopyright("Copyright © 北京维富友科技发展有限公司 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("532fcad6-c894-4bb5-ba79-706e7e4925a8")]
+[assembly: Guid("25981434-d281-4373-972e-e91f057fd1f7")]
 
 // 程序集的版本信息由下面四个值组成: 
 //
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: 
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.7.0")]
-[assembly: AssemblyFileVersion("1.0.7.0")]
+[assembly: AssemblyVersion("1.0.8.0")]
+[assembly: AssemblyFileVersion("1.0.8.0")]
