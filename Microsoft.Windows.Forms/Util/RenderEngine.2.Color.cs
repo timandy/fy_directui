@@ -88,7 +88,7 @@ namespace Microsoft.Windows.Forms
         {
             if (RANDOM_COLOR_HUE == null)
             {
-                Random random = new Random();
+                Random random = new Random(unchecked((int)DateTime.Now.Ticks));
                 RANDOM_COLOR_HUE = (float)random.NextDouble();
             }
             float hue = RANDOM_COLOR_HUE.Value;

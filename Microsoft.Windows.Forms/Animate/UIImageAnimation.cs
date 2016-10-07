@@ -25,13 +25,13 @@ namespace Microsoft.Windows.Forms.Animate
         /// </summary>
         public const int NONE_INDEX = -1;
 
-        private List<AnimationFrame> m_Origins = new List<AnimationFrame>();        //原始图片集合
-        private List<byte[]> m_Frames = new List<byte[]>();                         //截至帧集合
-        private AnimationOperations m_SuspendedOps = new AnimationOperations();     //挂起的操作
-        private Random m_Random = new Random();                                     //随机数生成器
-        private byte[] m_From;                                                      //起始帧数据
-        private int m_ToIndex = NONE_INDEX;                                         //截至帧索引
-        private bool m_CurrentValid;                                                //当前帧是否有效
+        private List<AnimationFrame> m_Origins = new List<AnimationFrame>();            //原始图片集合
+        private List<byte[]> m_Frames = new List<byte[]>();                             //截至帧集合
+        private AnimationOperations m_SuspendedOps = new AnimationOperations();         //挂起的操作
+        private Random m_Random = new Random(unchecked((int)DateTime.Now.Ticks));       //随机数生成器
+        private byte[] m_From;                                                          //起始帧数据
+        private int m_ToIndex = NONE_INDEX;                                             //截至帧索引
+        private bool m_CurrentValid;                                                    //当前帧是否有效
 
         #region 属性
 
