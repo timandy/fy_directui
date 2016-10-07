@@ -10,6 +10,7 @@ namespace Microsoft.Drawing
     /// </summary>
     public class DoubleBufferedGraphics : Disposable
     {
+        private const int PRE_ALLOC = 10;               //预分配大小
         private bool m_IsCreating;                      //是否正在创建缓冲区
         private IWindow m_Owner;                        //拥有该缓冲区的窗口
         private Graphics m_OwnerGraphics;               //拥有该缓冲区的窗口的绘图画面
@@ -255,9 +256,15 @@ namespace Microsoft.Drawing
             //已创建
             Size bufferSize = this.m_Size;
             if (this.m_BufferedGraphics != null
-                && bufferSize.Width >= wndSize.Width && bufferSize.Width < wndSize.Width + 10
-                && bufferSize.Height >= wndSize.Height && bufferSize.Height < wndSize.Height + 10)
+                && bufferSize.Width >= wndSize.Width && bufferSize.Width <= wndSize.Width + PRE_ALLOC
+                && bufferSize.Height >= wndSize.Height && bufferSize.Height <= wndSize.Height + PRE_ALLOC)
                 return true;
+
+            //预分配
+            if (bufferSize.Width < wndSize.Width)
+                wndSize.Width += PRE_ALLOC;
+            if (bufferSize.Height < wndSize.Height)
+                wndSize.Height += PRE_ALLOC;
 
             //设置状态
             if (this.m_IsCreating)
