@@ -1,5 +1,9 @@
 请在 master 分支上查看此文件。
 
+v1.0.9
+修复 UIControl 更改可见性后不刷新的 bug
+释放 UIControlCollection 资源时判断子控件数量
+
 v1.0.8
 代码目录结构调整
 

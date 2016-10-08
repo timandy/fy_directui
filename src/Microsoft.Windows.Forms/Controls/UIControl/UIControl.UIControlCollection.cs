@@ -137,19 +137,22 @@ namespace Microsoft.Windows.Forms
             {
                 if (this.m_Owner != null)
                 {
-                    this.m_Owner.SuspendLayout();
-                    try
+                    if (this.Count > 0)
                     {
+                        this.m_Owner.SuspendLayout();
+                        try
+                        {
 
-                        UIControl[] array = new UIControl[this.Count];
-                        this.CopyTo(array, 0);
-                        foreach (UIControl control in array)
-                            control.Dispose();
-                        base.ClearItems();
-                    }
-                    finally
-                    {
-                        this.m_Owner.ResumeLayout();
+                            UIControl[] array = new UIControl[this.Count];
+                            this.CopyTo(array, 0);
+                            foreach (UIControl control in array)
+                                control.Dispose();
+                            base.ClearItems();
+                        }
+                        finally
+                        {
+                            this.m_Owner.ResumeLayout();
+                        }
                     }
                     this.m_Owner = null;
                 }
