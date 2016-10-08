@@ -36,6 +36,7 @@ namespace Microsoft.Windows.Forms
                 {
                     this.m_Visible = value;
                     this.SetBounds();
+                    this.Invalidate();
                 }
             }
         }
