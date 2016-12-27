@@ -28,6 +28,22 @@ namespace Microsoft.Windows.Forms
                     if (this.Capture)
                         this.OnClick(EventArgs.Empty);
                     break;
+
+                case NativeMethods.WM_MOUSEMOVE:
+                    MouseButtons buttons = MouseButtons.None;
+                    int wParam = m.WParam.ToInt32();
+                    if ((wParam & NativeMethods.MK_LBUTTON) != 0)
+                        buttons &= MouseButtons.Left;
+                    if ((wParam & NativeMethods.MK_RBUTTON) != 0)
+                        buttons &= MouseButtons.Right;
+                    if ((wParam & NativeMethods.MK_MBUTTON) != 0)
+                        buttons &= MouseButtons.Middle;
+                    if ((wParam & NativeMethods.MK_XBUTTON1) != 0)
+                        buttons &= MouseButtons.XButton1;
+                    if ((wParam & NativeMethods.MK_XBUTTON2) != 0)
+                        buttons &= MouseButtons.XButton2;
+                    this.OnMouseMove(new MouseEventArgs(buttons, 1, Util.GET_X_LPARAM(m.LParam), Util.GET_Y_LPARAM(m.LParam), 0));
+                    break;
             }
             this.State = this.GetState();
         }
