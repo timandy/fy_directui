@@ -94,7 +94,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 图片对齐方式
         /// </summary>
-        public ContentAlignment ImageAlign
+        public virtual ContentAlignment ImageAlign
         {
             get
             {
@@ -114,7 +114,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 文本呈现质量
         /// </summary>
-        public TextRenderingHint TextRenderingHint
+        public virtual TextRenderingHint TextRenderingHint
         {
             get
             {
@@ -134,7 +134,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 文本对齐方式
         /// </summary>
-        public ContentAlignment TextAlign
+        public virtual ContentAlignment TextAlign
         {
             get
             {
@@ -154,7 +154,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 文本图片关系
         /// </summary>
-        public TextImageRelation TextImageRelation
+        public virtual TextImageRelation TextImageRelation
         {
             get
             {

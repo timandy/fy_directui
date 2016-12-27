@@ -66,7 +66,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 获取或设置边框颜色
         /// </summary>
-        public Color BorderColor
+        public virtual Color BorderColor
         {
             get
             {
@@ -86,7 +86,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 获取或设置边框样式
         /// </summary>
-        public BorderVisibleStyle BorderVisibleStyle
+        public virtual BorderVisibleStyle BorderVisibleStyle
         {
             get
             {
