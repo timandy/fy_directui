@@ -14,7 +14,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 文本呈现质量
         /// </summary>
-        public TextRenderingHint TextRenderingHint
+        public virtual TextRenderingHint TextRenderingHint
         {
             get
             {
@@ -34,7 +34,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 文本对齐方式
         /// </summary>
-        public ContentAlignment TextAlign
+        public virtual ContentAlignment TextAlign
         {
             get
             {

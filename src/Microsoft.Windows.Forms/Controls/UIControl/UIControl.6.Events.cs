@@ -187,6 +187,32 @@ namespace Microsoft.Windows.Forms
                 handler(this, e);
         }
 
+        private static readonly object EVENT_MOUSE_MOVE = new object();
+        /// <summary>
+        /// 鼠标移动事件
+        /// </summary>
+        public event MouseEventHandler MouseMove
+        {
+            add
+            {
+                base.Events.AddHandler(EVENT_MOUSE_MOVE, value);
+            }
+            remove
+            {
+                base.Events.RemoveHandler(EVENT_MOUSE_MOVE, value);
+            }
+        }
+        /// <summary>
+        /// 触发鼠标移动事件
+        /// </summary>
+        /// <param name="e">数据</param>
+        protected virtual void OnMouseMove(MouseEventArgs e)
+        {
+            MouseEventHandler handler = base.Events[EVENT_MOUSE_MOVE] as MouseEventHandler;
+            if (handler != null)
+                handler(this, e);
+        }
+
         private static readonly object EVENT_CLICK = new object();
         /// <summary>
         /// 单击事件

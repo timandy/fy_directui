@@ -14,7 +14,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 获取或设置是否水平线.true表示水平线,false表示垂直线
         /// </summary>
-        public bool Horizontal
+        public virtual bool Horizontal
         {
             get
             {
@@ -74,7 +74,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 渲染方式
         /// </summary>
-        public BlendStyle LineBlendStyle
+        public virtual BlendStyle LineBlendStyle
         {
             get
             {
