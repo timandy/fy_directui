@@ -70,6 +70,66 @@ namespace Microsoft.Windows.Forms
             }
         }
 
+        private Image m_ImageHovered;
+        /// <summary>
+        /// 图片
+        /// </summary>
+        public virtual Image ImageHovered
+        {
+            get
+            {
+                return this.m_ImageHovered;
+            }
+            set
+            {
+                if (value != this.m_ImageHovered)
+                {
+                    this.m_ImageHovered = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
+        private Image m_ImagePressed;
+        /// <summary>
+        /// 图片
+        /// </summary>
+        public virtual Image ImagePressed
+        {
+            get
+            {
+                return this.m_ImagePressed;
+            }
+            set
+            {
+                if (value != this.m_ImagePressed)
+                {
+                    this.m_ImagePressed = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
+        private Image m_ImageDisabled;
+        /// <summary>
+        /// 图片
+        /// </summary>
+        public virtual Image ImageDisabled
+        {
+            get
+            {
+                return this.m_ImageDisabled;
+            }
+            set
+            {
+                if (value != this.m_ImageDisabled)
+                {
+                    this.m_ImageDisabled = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
         private Size m_ImageSize;
         /// <summary>
         /// 图片大小
@@ -219,6 +279,9 @@ namespace Microsoft.Windows.Forms
             this.Sprite.BackColorHovered = this.HoveredBackColor;
             this.Sprite.BackColorPressed = this.PressedBackColor;
             this.Sprite.Image = this.Image;
+            this.Sprite.ImageHovered = this.ImageHovered;
+            this.Sprite.ImagePressed = this.ImagePressed;
+            this.Sprite.ImageDisabled = this.ImageDisabled;
             this.Sprite.ImageSize = this.ImageSize;
             this.Sprite.ImageAlign = this.ImageAlign;
             this.Sprite.Font = this.Font;
