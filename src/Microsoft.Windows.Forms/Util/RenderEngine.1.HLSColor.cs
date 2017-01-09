@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 
 namespace Microsoft.Windows.Forms
@@ -6,7 +6,7 @@ namespace Microsoft.Windows.Forms
     public static partial class RenderEngine
     {
         /// <summary>
-        /// É«µ÷,ÁÁ¶È,±¥ºÍ¶ÈÑÕÉ«
+        /// è‰²è°ƒ,äº®åº¦,é¥±å’Œåº¦é¢œè‰²
         /// </summary>
         private struct HLSColor
         {
@@ -24,9 +24,9 @@ namespace Microsoft.Windows.Forms
             private bool isSystemColors_Control;
 
             /// <summary>
-            /// ¹¹Ôìº¯Êı
+            /// æ„é€ å‡½æ•°
             /// </summary>
-            /// <param name="color">RGBAÑÕÉ«</param>
+            /// <param name="color">RGBAé¢œè‰²</param>
             public HLSColor(Color color)
             {
                 isSystemColors_Control = (color.ToKnownColor() == SystemColors.Control.ToKnownColor());
@@ -78,7 +78,7 @@ namespace Microsoft.Windows.Forms
             }
 
             /// <summary>
-            /// É«µ÷
+            /// è‰²è°ƒ
             /// </summary>
             public int Hue
             {
@@ -89,7 +89,7 @@ namespace Microsoft.Windows.Forms
             }
 
             /// <summary>
-            /// ÁÁ¶È
+            /// äº®åº¦
             /// </summary>
             public int Luminosity
             {
@@ -100,7 +100,7 @@ namespace Microsoft.Windows.Forms
             }
 
             /// <summary>
-            /// ±¥ºÍ¶È
+            /// é¥±å’Œåº¦
             /// </summary>
             public int Saturation
             {
@@ -111,10 +111,10 @@ namespace Microsoft.Windows.Forms
             }
 
             /// <summary>
-            /// »ñÈ¡¼õĞ¡Ö¸¶¨ÁÁ¶ÈºóµÄÑÕÉ«
+            /// è·å–å‡å°æŒ‡å®šäº®åº¦åçš„é¢œè‰²
             /// </summary>
-            /// <param name="percDarker">Òª¼õĞ¡µÄÁÁ¶È</param>
-            /// <returns>ĞÂµÄÑÕÉ«</returns>
+            /// <param name="percDarker">è¦å‡å°çš„äº®åº¦</param>
+            /// <returns>æ–°çš„é¢œè‰²</returns>
             public Color Darker(float percDarker)
             {
                 if (isSystemColors_Control)
@@ -152,10 +152,10 @@ namespace Microsoft.Windows.Forms
             }
 
             /// <summary>
-            /// ÊÇ·ñÏàµÈ
+            /// æ˜¯å¦ç›¸ç­‰
             /// </summary>
-            /// <param name="o">Òª±È½ÏµÄ¶ÔÏó</param>
-            /// <returns>ÏàµÈ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+            /// <param name="o">è¦æ¯”è¾ƒçš„å¯¹è±¡</param>
+            /// <returns>ç›¸ç­‰è¿”å›true,å¦åˆ™è¿”å›false</returns>
             public override bool Equals(object o)
             {
                 if (!(o is HLSColor))
@@ -171,41 +171,41 @@ namespace Microsoft.Windows.Forms
             }
 
             /// <summary>
-            /// ÊÇ·ñÏàµÈ
+            /// æ˜¯å¦ç›¸ç­‰
             /// </summary>
-            /// <param name="a">ÑÕÉ«a</param>
-            /// <param name="b">ÑÕÉ«b</param>
-            /// <returns>ÏàµÈ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+            /// <param name="a">é¢œè‰²a</param>
+            /// <param name="b">é¢œè‰²b</param>
+            /// <returns>ç›¸ç­‰è¿”å›true,å¦åˆ™è¿”å›false</returns>
             public static bool operator ==(HLSColor a, HLSColor b)
             {
                 return a.Equals(b);
             }
 
             /// <summary>
-            /// ÊÇ·ñ²»µÈ
+            /// æ˜¯å¦ä¸ç­‰
             /// </summary>
-            /// <param name="a">ÑÕÉ«a</param>
-            /// <param name="b">ÑÕÉ«b</param>
-            /// <returns>²»µÈ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+            /// <param name="a">é¢œè‰²a</param>
+            /// <param name="b">é¢œè‰²b</param>
+            /// <returns>ä¸ç­‰è¿”å›true,å¦åˆ™è¿”å›false</returns>
             public static bool operator !=(HLSColor a, HLSColor b)
             {
                 return !a.Equals(b);
             }
 
             /// <summary>
-            /// »ñÈ¡¹şÏ£Âë
+            /// è·å–å“ˆå¸Œç 
             /// </summary>
-            /// <returns>¹şÏ£Âë</returns>
+            /// <returns>å“ˆå¸Œç </returns>
             public override int GetHashCode()
             {
                 return hue << 6 | saturation << 2 | luminosity;
             }
 
             /// <summary>
-            /// »ñÈ¡Ôö¼ÓÖ¸¶¨ÁÁ¶ÈºóµÄÑÕÉ«
+            /// è·å–å¢åŠ æŒ‡å®šäº®åº¦åçš„é¢œè‰²
             /// </summary>
-            /// <param name="percLighter">ÒªÔö¼ÓµÄÁÁ¶È</param>
-            /// <returns>ĞÂµÄÑÕÉ«</returns>
+            /// <param name="percLighter">è¦å¢åŠ çš„äº®åº¦</param>
+            /// <returns>æ–°çš„é¢œè‰²</returns>
             public Color Lighter(float percLighter)
             {
                 if (isSystemColors_Control)

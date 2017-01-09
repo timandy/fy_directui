@@ -1,11 +1,11 @@
-namespace Microsoft.Windows.Forms
+ï»¿namespace Microsoft.Windows.Forms
 {
     partial class Sprite
     {
         /// <summary>
-        /// ×ª»»Îª×Ö·û´®
+        /// è½¬æ¢ä¸ºå­—ç¬¦ä¸²
         /// </summary>
-        /// <returns>×Ö·û´®</returns>
+        /// <returns>å­—ç¬¦ä¸²</returns>
         public override string ToString()
         {
             return "[VisualObject]";

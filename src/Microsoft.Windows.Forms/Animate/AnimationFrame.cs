@@ -33,14 +33,6 @@ namespace Microsoft.Windows.Forms.Animate
         }
 
         /// <summary>
-        /// 创建一个随机的颜色帧
-        /// </summary>
-        public AnimationFrame()
-            : this(RenderEngine.RandomColor())
-        {
-        }
-
-        /// <summary>
         /// 创建一个颜色帧
         /// </summary>
         /// <param name="color">颜色</param>

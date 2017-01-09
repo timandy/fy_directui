@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
@@ -7,34 +7,34 @@ namespace Microsoft.Windows.Forms
     public static partial class RenderEngine
     {
         /// <summary>
-        /// ´´½¨Â·¾¶¡£
+        /// åˆ›å»ºè·¯å¾„ã€‚
         /// </summary>
-        /// <param name="rect">¾ØĞÎ¡£</param>
-        /// <returns>´´½¨µÄÂ·¾¶¡£</returns>
+        /// <param name="rect">çŸ©å½¢ã€‚</param>
+        /// <returns>åˆ›å»ºçš„è·¯å¾„ã€‚</returns>
         public static GraphicsPath CreateGraphicsPath(Rectangle rect)
         {
             return CreateGraphicsPath(rect.X, rect.Y, rect.Width, rect.Height);
         }
 
         /// <summary>
-        /// ´´½¨Â·¾¶¡£
+        /// åˆ›å»ºè·¯å¾„ã€‚
         /// </summary>
-        /// <param name="pt">×óÉÏ½Ç¡£</param>
-        /// <param name="sz">´óĞ¡</param>
-        /// <returns>´´½¨µÄÂ·¾¶¡£</returns>
+        /// <param name="pt">å·¦ä¸Šè§’ã€‚</param>
+        /// <param name="sz">å¤§å°</param>
+        /// <returns>åˆ›å»ºçš„è·¯å¾„ã€‚</returns>
         public static GraphicsPath CreateGraphicsPath(Point pt, Size sz)
         {
             return CreateGraphicsPath(pt.X, pt.Y, sz.Width, sz.Height);
         }
 
         /// <summary>
-        /// ´´½¨Â·¾¶¡£
+        /// åˆ›å»ºè·¯å¾„ã€‚
         /// </summary>
-        /// <param name="x">×óÉÏ½ÇË®Æ½×ø±ê¡£</param>
-        /// <param name="y">×óÉÏ½Ç´¹Ö±×ø±ê</param>
-        /// <param name="width">¿í¶È¡£</param>
-        /// <param name="height">¸ß¶È¡£</param>
-        /// <returns>´´½¨µÄÂ·¾¢¡£</returns>
+        /// <param name="x">å·¦ä¸Šè§’æ°´å¹³åæ ‡ã€‚</param>
+        /// <param name="y">å·¦ä¸Šè§’å‚ç›´åæ ‡</param>
+        /// <param name="width">å®½åº¦ã€‚</param>
+        /// <param name="height">é«˜åº¦ã€‚</param>
+        /// <returns>åˆ›å»ºçš„è·¯åŠ²ã€‚</returns>
         public static GraphicsPath CreateGraphicsPath(int x, int y, int width, int height)
         {
             Point[] points = new Point[4];
@@ -48,59 +48,59 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// ´´½¨Â·¾¶¡£
+        /// åˆ›å»ºè·¯å¾„ã€‚
         /// </summary>
-        /// <param name="rect">ÓÃÀ´´´½¨Â·¾¶µÄ¾ØĞÎ¡£</param>
-        /// <param name="cornerStyle">Ô²½ÇÍäÇúÑùÊ½¡£</param>
-        /// <param name="roundStyle">Ô²½ÇµÄÑùÊ½¡£</param>
-        /// <param name="radius">Ô²½Ç°ë¾¶¡£</param>
-        /// <param name="correct">ÊÇ·ñ°Ñ¾ØĞÎ³¤¿í¼õ 1,ÒÔ±ã»­³ö±ß¿ò¡£</param>
-        /// <returns>´´½¨µÄÂ·¾¶¡£</returns>
+        /// <param name="rect">ç”¨æ¥åˆ›å»ºè·¯å¾„çš„çŸ©å½¢ã€‚</param>
+        /// <param name="cornerStyle">åœ†è§’å¼¯æ›²æ ·å¼ã€‚</param>
+        /// <param name="roundStyle">åœ†è§’çš„æ ·å¼ã€‚</param>
+        /// <param name="radius">åœ†è§’åŠå¾„ã€‚</param>
+        /// <param name="correct">æ˜¯å¦æŠŠçŸ©å½¢é•¿å®½å‡ 1,ä»¥ä¾¿ç”»å‡ºè¾¹æ¡†ã€‚</param>
+        /// <returns>åˆ›å»ºçš„è·¯å¾„ã€‚</returns>
         public static GraphicsPath CreateGraphicsPath(Rectangle rect, CornerStyle cornerStyle, RoundStyle roundStyle, float radius, bool correct)
         {
-            //-----------------Ğ£×¼-----------------
+            //-----------------æ ¡å‡†-----------------
             if (correct)
             {
                 rect.Width--;
                 rect.Height--;
             }
 
-            //-----------------¶¨Òå·µ»ØÖµ-----------------
+            //-----------------å®šä¹‰è¿”å›å€¼-----------------
             GraphicsPath path = new GraphicsPath();
-            //-----------------ÌØÊâÇé¿ö´¦Àí-----------------
+            //-----------------ç‰¹æ®Šæƒ…å†µå¤„ç†-----------------
             if (float.IsNaN(radius) || radius <= 0f)
             {
                 path.AddRectangle(rect);
                 return path;
             }
-            //-----------------ÁÙÊ±±äÁ¿¶¨Òå-----------------
-            float diameter = radius * 2;//Ö±¾¶
-            float halfWidth = rect.Width / 2f;//¿í¶ÈÒ»°ë
-            float halfHeight = rect.Height / 2f;//¸ß¶ÈÒ»°ë
-            PointF ptMiddleCenter = new PointF(rect.X + halfWidth, rect.Y + halfHeight);//ÖĞĞÄµã            
-            float lrDegrees = 0f;//°ë¾¶´óÓÚ°ë¸ß,Ô²ĞÄ½Ç
-            float lrOffset = 0f;//°ë¾¶´óÓÚ°ë¸ß,Ô²»¡µ½±ß¾àÀë
+            //-----------------ä¸´æ—¶å˜é‡å®šä¹‰-----------------
+            float diameter = radius * 2;//ç›´å¾„
+            float halfWidth = rect.Width / 2f;//å®½åº¦ä¸€åŠ
+            float halfHeight = rect.Height / 2f;//é«˜åº¦ä¸€åŠ
+            PointF ptMiddleCenter = new PointF(rect.X + halfWidth, rect.Y + halfHeight);//ä¸­å¿ƒç‚¹            
+            float lrDegrees = 0f;//åŠå¾„å¤§äºåŠé«˜,åœ†å¿ƒè§’
+            float lrOffset = 0f;//åŠå¾„å¤§äºåŠé«˜,åœ†å¼§åˆ°è¾¹è·ç¦»
             if ((roundStyle & RoundStyle.All) != 0 && radius > halfHeight)
             {
-                double lrRadian = Math.Acos((radius - halfHeight) / radius);//»¡¶È
-                lrDegrees = (float)MathEx.ToDegrees(lrRadian);//½Ç¶È
+                double lrRadian = Math.Acos((radius - halfHeight) / radius);//å¼§åº¦
+                lrDegrees = (float)MathEx.ToDegrees(lrRadian);//è§’åº¦
                 lrOffset = (float)(radius * Math.Sin(lrRadian));
             }
-            float tbDegrees = 0f;//°ë¾¶´óÓÚ°ë¿í,Ô²ĞÄ½Ç
-            float tbOffset = 0f;//°ë¾¶´óÓÚ°ì¿í,Ô²»¡µ½±ß¾àÀë
+            float tbDegrees = 0f;//åŠå¾„å¤§äºåŠå®½,åœ†å¿ƒè§’
+            float tbOffset = 0f;//åŠå¾„å¤§äºåŠå®½,åœ†å¼§åˆ°è¾¹è·ç¦»
             if ((roundStyle & RoundStyle.All) != 0 && radius > halfWidth)
             {
-                double tbRadian = Math.Acos((radius - halfWidth) / radius);//»¡¶È
-                tbDegrees = (float)MathEx.ToDegrees(tbRadian);//½Ç¶È
+                double tbRadian = Math.Acos((radius - halfWidth) / radius);//å¼§åº¦
+                tbDegrees = (float)MathEx.ToDegrees(tbRadian);//è§’åº¦
                 tbOffset = (float)(radius * Math.Sin(tbRadian));
             }
-            //ÁÙÊ±±äÁ¿
+            //ä¸´æ—¶å˜é‡
             PointF ptBegin;
             PointF ptEnd;
 
 
-            #region ×óÉÏ
-            if ((roundStyle & RoundStyle.TopLeft) == 0)//Ö±½Ç
+            #region å·¦ä¸Š
+            if ((roundStyle & RoundStyle.TopLeft) == 0)//ç›´è§’
             {
                 if ((cornerStyle & CornerStyle.LeftIn) != 0)
                 {
@@ -132,7 +132,7 @@ namespace Microsoft.Windows.Forms
                     path.AddLine(ptBegin, ptEnd);
                 }
             }
-            else//Ô²½Ç
+            else//åœ†è§’
             {
                 if ((cornerStyle & CornerStyle.LeftIn) != 0)
                 {
@@ -170,7 +170,7 @@ namespace Microsoft.Windows.Forms
             #endregion
 
 
-            #region ÓÒÉÏ
+            #region å³ä¸Š
             if ((roundStyle & RoundStyle.TopRight) == 0)
             {
                 if ((cornerStyle & CornerStyle.RightIn) != 0)
@@ -197,7 +197,7 @@ namespace Microsoft.Windows.Forms
                     ptEnd = new PointF(rect.Right, rect.Y + radius);
                     path.AddLine(ptBegin, ptEnd);
                 }
-                else//¾ØĞÎ
+                else//çŸ©å½¢
                 {
                     ptBegin = ptEnd = new PointF(rect.Right, rect.Y);
                     path.AddLine(ptBegin, ptEnd);
@@ -241,7 +241,7 @@ namespace Microsoft.Windows.Forms
             #endregion
 
 
-            #region ÓÒÏÂ
+            #region å³ä¸‹
             if ((roundStyle & RoundStyle.BottomRight) == 0)
             {
                 if ((cornerStyle & CornerStyle.RightIn) != 0)
@@ -268,7 +268,7 @@ namespace Microsoft.Windows.Forms
                     ptEnd = new PointF(ptMiddleCenter.X, rect.Bottom);
                     path.AddLine(ptBegin, ptEnd);
                 }
-                else//¾ØĞÎ
+                else//çŸ©å½¢
                 {
                     ptBegin = ptEnd = new PointF(rect.Right, rect.Bottom);
                     path.AddLine(ptBegin, ptEnd);
@@ -312,7 +312,7 @@ namespace Microsoft.Windows.Forms
             #endregion
 
 
-            #region ×óÏÂ
+            #region å·¦ä¸‹
             if ((roundStyle & RoundStyle.BottomLeft) == 0)
             {
                 if ((cornerStyle & CornerStyle.LeftIn) != 0)
@@ -383,25 +383,25 @@ namespace Microsoft.Windows.Forms
             #endregion
 
 
-            //±ÕºÏ·µ»Ø
+            //é—­åˆè¿”å›
             path.CloseFigure();
             return path;
         }
 
         /// <summary>
-        /// ½¨Á¢´øÓĞÔ²½ÇÑùÊ½ºÍ±êÌâµÄÂ·¾¶¡£
+        /// å»ºç«‹å¸¦æœ‰åœ†è§’æ ·å¼å’Œæ ‡é¢˜çš„è·¯å¾„ã€‚
         /// </summary>
-        /// <param name="rect">ÓÃÀ´¼òÀúÂ·¾¶µÄ¾ØĞÎ¡£</param>
-        /// <param name="style">Ô²½ÇÑùÊ½¡£</param>
-        /// <param name="radius">Ô²½Ç´óĞ¡¡£</param>
-        /// <param name="tabSize">±êÌâ´óĞ¡¡£</param>
-        /// <param name="tabRound">±êÌâÊÇ·ñÔ²½Ç¡£</param>
-        /// <param name="tabRadius">±êÌâÔ²½Ç´óĞ¡¡£</param>
-        /// <param name="correct">ÊÇ·ñ°Ñ¾ØĞÎ³¤¿í¼õ 1,ÒÔ±ã»­³ö±ß¿ò¡£</param>
-        /// <returns>¼òÀúµÄÂ·¾¶¡£</returns>
+        /// <param name="rect">ç”¨æ¥ç®€å†è·¯å¾„çš„çŸ©å½¢ã€‚</param>
+        /// <param name="style">åœ†è§’æ ·å¼ã€‚</param>
+        /// <param name="radius">åœ†è§’å¤§å°ã€‚</param>
+        /// <param name="tabSize">æ ‡é¢˜å¤§å°ã€‚</param>
+        /// <param name="tabRound">æ ‡é¢˜æ˜¯å¦åœ†è§’ã€‚</param>
+        /// <param name="tabRadius">æ ‡é¢˜åœ†è§’å¤§å°ã€‚</param>
+        /// <param name="correct">æ˜¯å¦æŠŠçŸ©å½¢é•¿å®½å‡ 1,ä»¥ä¾¿ç”»å‡ºè¾¹æ¡†ã€‚</param>
+        /// <returns>ç®€å†çš„è·¯å¾„ã€‚</returns>
         public static GraphicsPath CreateGroupBoxTabGraphicsPath(Rectangle rect, RoundStyle style, float radius, Size tabSize, bool tabRound, float tabRadius, bool correct)
         {
-            //Ğ£Õı
+            //æ ¡æ­£
             if (correct)
             {
                 rect.Width--;
@@ -410,14 +410,14 @@ namespace Microsoft.Windows.Forms
             style = (float.IsNaN(radius) || radius <= 0f) ? RoundStyle.None : style;
             tabRound = (float.IsNaN(tabRadius) || tabRadius <= 0f) ? false : tabRound;
 
-            //¶¨Òå
+            //å®šä¹‰
             GraphicsPath path = new GraphicsPath();
             Rectangle tabRect = new Rectangle(rect.Location, tabSize);
             float diameter = radius * 2;
             float tabDiameter = tabRadius * 2;
             Point pt;
 
-            //×óÉÏ
+            //å·¦ä¸Š
             if ((style & RoundStyle.TopLeft) == 0)
             {
                 pt = new Point(rect.X, rect.Y);
@@ -428,20 +428,20 @@ namespace Microsoft.Windows.Forms
                 path.AddArc(rect.X, rect.Y, diameter, diameter, 180, 90);
             }
 
-            //TabÓÒÉÏ
+            //Tabå³ä¸Š
             if (tabRound)
             {
-                if (tabRadius > tabRect.Height)//²»µ½90¶È
+                if (tabRadius > tabRect.Height)//ä¸åˆ°90åº¦
                 {
                     double radians = Math.Acos((tabRadius - tabRect.Height) / tabRadius);
                     path.AddArc((float)(tabRect.Right - tabRadius * Math.Sin(radians) - tabRadius),
                         tabRect.Y, tabDiameter, tabDiameter, 270, (float)MathEx.ToDegrees(radians));
                 }
-                else//µ½90¶È
+                else//åˆ°90åº¦
                 {
                     path.AddArc(tabRect.Right - tabDiameter, tabRect.Y, tabDiameter, tabDiameter, 270, 90);
 
-                    //TabÓÒÏÂ
+                    //Tabå³ä¸‹
                     pt = new Point(tabRect.Right, tabRect.Bottom);
                     path.AddLine(pt, pt);
                 }
@@ -451,12 +451,12 @@ namespace Microsoft.Windows.Forms
                 pt = new Point(tabRect.Right, tabRect.Y);
                 path.AddLine(pt, pt);
 
-                //TabÓÒÏÂ
+                //Tabå³ä¸‹
                 pt = new Point(tabRect.Right, tabRect.Bottom);
                 path.AddLine(pt, pt);
             }
 
-            //ÓÒÉÏ
+            //å³ä¸Š
             if ((style & RoundStyle.TopRight) == 0)
             {
                 pt = new Point(rect.Right, tabRect.Bottom);
@@ -467,7 +467,7 @@ namespace Microsoft.Windows.Forms
                 path.AddArc(rect.Right - diameter, tabRect.Bottom, diameter, diameter, 270, 90);
             }
 
-            //ÓÒÏÂ
+            //å³ä¸‹
             if ((style & RoundStyle.BottomRight) == 0)
             {
                 pt = new Point(rect.Right, rect.Bottom);
@@ -478,7 +478,7 @@ namespace Microsoft.Windows.Forms
                 path.AddArc(rect.Right - diameter, rect.Bottom - diameter, diameter, diameter, 0, 90);
             }
 
-            //×óÏÂ
+            //å·¦ä¸‹
             if ((style & RoundStyle.BottomLeft) == 0)
             {
                 pt = new Point(rect.X, rect.Bottom);
@@ -489,7 +489,7 @@ namespace Microsoft.Windows.Forms
                 path.AddArc(rect.X, rect.Bottom - diameter, diameter, diameter, 90, 90);
             }
 
-            //±ÕºÏ·µ»Ø
+            //é—­åˆè¿”å›
             path.CloseFigure();
             return path;
         }

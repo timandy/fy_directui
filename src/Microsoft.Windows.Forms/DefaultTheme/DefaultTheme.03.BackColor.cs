@@ -1,101 +1,101 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using Microsoft.Drawing;
 
 namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// Ä¬ÈÏÖµ·½°¸
+    /// é»˜è®¤å€¼æ–¹æ¡ˆ
     /// </summary>
     public static partial class DefaultTheme
     {
         /// <summary>
-        /// ÉîÉî±³¾°É«
+        /// æ·±æ·±èƒŒæ™¯è‰²
         /// </summary>
         public static Color DarkDarkBackColor = Color.FromArgb(30, 30, 30);
         /// <summary>
-        /// ÉîÉî±³¾°É«
+        /// æ·±æ·±èƒŒæ™¯è‰²
         /// </summary>
         public const string _DarkDarkBackColor = "30, 30, 30";
 
         /// <summary>
-        /// Éî±³¾°É«
+        /// æ·±èƒŒæ™¯è‰²
         /// </summary>
         public static Color DarkBackColor = Color.FromArgb(37, 37, 37);
         /// <summary>
-        /// Éî±³¾°É«
+        /// æ·±èƒŒæ™¯è‰²
         /// </summary>
         public const string _DarkBackColor = "37, 37, 37";
 
         /// <summary>
-        /// ±³¾°É«
+        /// èƒŒæ™¯è‰²
         /// </summary>
         public static Color BackColor = Color.FromArgb(45, 45, 45);
         /// <summary>
-        /// ±³¾°É«
+        /// èƒŒæ™¯è‰²
         /// </summary>
         public const string _BackColor = "45, 45, 45";
 
         /// <summary>
-        /// Ç³±³¾°É«
+        /// æµ…èƒŒæ™¯è‰²
         /// </summary>
         public static Color LightBackColor = Color.FromArgb(51, 51, 51);
         /// <summary>
-        /// Ç³±³¾°É«
+        /// æµ…èƒŒæ™¯è‰²
         /// </summary>
         public const string _LightBackColor = "51, 51, 51";
 
         /// <summary>
-        /// Ç³Ç³±³¾°É«
+        /// æµ…æµ…èƒŒæ™¯è‰²
         /// </summary>
         public static Color LightLightBackColor = Color.FromArgb(62, 62, 62);
         /// <summary>
-        /// Ç³Ç³±³¾°É«
+        /// æµ…æµ…èƒŒæ™¯è‰²
         /// </summary>
         public const string _LightLightBackColor = "62, 62, 62";
 
 
         /// <summary>
-        /// ±³¾°Êó±êÒÆÉÏÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯é¼ æ ‡ç§»ä¸Šé¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector BackColorHoveredVector = ColorVector.FromArgb(10, 10, 10);
         /// <summary>
-        /// ±³¾°Êó±êÒÆÉÏÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯é¼ æ ‡ç§»ä¸Šé¢œè‰²å‘é‡
         /// </summary>
         public const string _BackColorHoveredVector = "10, 10, 10";
 
         /// <summary>
-        /// ±³¾°Êó±ê°´ÏÂÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯é¼ æ ‡æŒ‰ä¸‹é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector BackColorPressedVector = ColorVector.FromArgb(20, 20, 20);
         /// <summary>
-        /// ±³¾°Êó±ê°´ÏÂÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯é¼ æ ‡æŒ‰ä¸‹é¢œè‰²å‘é‡
         /// </summary>
         public const string _BackColorPressedVector = "20, 20, 20";
 
         /// <summary>
-        /// ±³¾°ÓµÓĞ½¹µãÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯æ‹¥æœ‰ç„¦ç‚¹é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector BackColorFocusedVector = ColorVector.FromArgb(0, 0, 0);
         /// <summary>
-        /// ±³¾°ÓµÓĞ½¹µãÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯æ‹¥æœ‰ç„¦ç‚¹é¢œè‰²å‘é‡
         /// </summary>
         public const string _BackColorFocusedVector = "0, 0, 0";
 
         /// <summary>
-        /// ±³¾°×´Ì¬½ûÓÃÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯çŠ¶æ€ç¦ç”¨é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector BackColorDisabledVector = ColorVector.FromArgb(-255, 255, 255, 255);
         /// <summary>
-        /// ±³¾°×´Ì¬½ûÓÃÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯çŠ¶æ€ç¦ç”¨é¢œè‰²å‘é‡
         /// </summary>
         public const string _BackColorDisabledVector = "-255, 255, 255, 255";
 
         /// <summary>
-        /// ±³¾°¸ßÁÁÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯é«˜äº®é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector BackColorHighlightVector = ColorVector.FromArgb(-255, 60, -142);
         /// <summary>
-        /// ±³¾°¸ßÁÁÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯é«˜äº®é¢œè‰²å‘é‡
         /// </summary>
         public const string _BackColorHighlightVector = "-255, 60, -142";
     }

@@ -1,4 +1,4 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Drawing.Imaging;
 
 namespace Microsoft.Windows.Forms
@@ -6,82 +6,82 @@ namespace Microsoft.Windows.Forms
     public static partial class RenderEngine
     {
         /// <summary>
-        /// »ñÈ¡ºÚ°×Í¼Ïñ(·µ»ØÁËĞÂµÄÍ¼Ïñ,Ê¹ÓÃÍêºóĞèÒªÊÖ¶¯ÊÍ·Å)
+        /// è·å–é»‘ç™½å›¾åƒ(è¿”å›äº†æ–°çš„å›¾åƒ,ä½¿ç”¨å®Œåéœ€è¦æ‰‹åŠ¨é‡Šæ”¾)
         /// </summary>
-        /// <param name="originImage">Ô­Í¼</param>
-        /// <returns>ºÚ°×Í¼</returns>
+        /// <param name="originImage">åŸå›¾</param>
+        /// <returns>é»‘ç™½å›¾</returns>
         public static Bitmap GetGrayImage(Image originImage)
         {
             int width = originImage.Width;
             int height = originImage.Height;
             Bitmap newBitmap = new Bitmap(width, height);
 
-            //»æÖÆĞÂÍ¼Ïñ
+            //ç»˜åˆ¶æ–°å›¾åƒ
             using (Graphics g = Graphics.FromImage(newBitmap))
             {
-                //»æÍ¼²ÎÊı¼ì²é
+                //ç»˜å›¾å‚æ•°æ£€æŸ¥
                 if (m_DisabledImageAttr == null)
                 {
-                    //ÑÕÉ«±ä»»¾ØÕó,µÚÒ»ĞĞµ½µÚÎåĞĞ·Ö±ğ±íÊ¾RGBAĞéÄâ,µÚÒ»ÁĞµ½µÚÎåÁĞ·Ö±ğ±íÊ¾RGBAĞéÄâ.
+                    //é¢œè‰²å˜æ¢çŸ©é˜µ,ç¬¬ä¸€è¡Œåˆ°ç¬¬äº”è¡Œåˆ†åˆ«è¡¨ç¤ºRGBAè™šæ‹Ÿ,ç¬¬ä¸€åˆ—åˆ°ç¬¬äº”åˆ—åˆ†åˆ«è¡¨ç¤ºRGBAè™šæ‹Ÿ.
                     ColorMatrix colorMatrix = new ColorMatrix(new float[][]
                     {
-                        new float[] {0.2125f, 0.2125f, 0.2125f, 000f, 000f},//ĞÂµÄR=¾ÉµÄR*0.2125f+¾ÉµÄG*0.2125f+¾ÉµÄB*0.2125f
+                        new float[] {0.2125f, 0.2125f, 0.2125f, 000f, 000f},//æ–°çš„R=æ—§çš„R*0.2125f+æ—§çš„G*0.2125f+æ—§çš„B*0.2125f
                         new float[] {0.2577f, 0.2577f, 0.2577f, 000f, 000f},
                         new float[] {0.0361f, 0.0361f, 0.0361f, 000f, 000f},
                         new float[] {000000f, 000000f, 000000f, 001f, 000f},
                         new float[] {0.3800f, 0.3800f, 0.3800f, 000f, 001f}
                     });
 
-                    //´´½¨»æÍ¼²ÎÊı
+                    //åˆ›å»ºç»˜å›¾å‚æ•°
                     m_DisabledImageAttr = new ImageAttributes();
                     m_DisabledImageAttr.SetColorMatrix(colorMatrix);
                 }
 
-                //»æÍ¼
+                //ç»˜å›¾
                 g.DrawImage(originImage, new Rectangle(0, 0, width, height), 0, 0, width, height, GraphicsUnit.Pixel, m_DisabledImageAttr);
             }
 
-            //·µ»Ø
+            //è¿”å›
             return newBitmap;
         }
 
         /// <summary>
-        /// »ñÈ¡Í¸Ã÷Í¼Ïñ(·µ»ØÁËĞÂµÄÍ¼Ïñ,Ê¹ÓÃÍêºóĞèÒªÊÖ¶¯ÊÍ·Å)
+        /// è·å–é€æ˜å›¾åƒ(è¿”å›äº†æ–°çš„å›¾åƒ,ä½¿ç”¨å®Œåéœ€è¦æ‰‹åŠ¨é‡Šæ”¾)
         /// </summary>
-        /// <param name="originImage">Ô­Í¼</param>
-        /// <param name="opacity">Í¸Ã÷¶È[0-1]</param>
-        /// <returns>Í¸Ã÷Í¼Ïñ</returns>
+        /// <param name="originImage">åŸå›¾</param>
+        /// <param name="opacity">é€æ˜åº¦[0-1]</param>
+        /// <returns>é€æ˜å›¾åƒ</returns>
         public static Bitmap GetTransparentImage(Image originImage, float opacity)
         {
             int width = originImage.Width;
             int height = originImage.Height;
             Bitmap newBitmap = new Bitmap(width, height);
 
-            //»æÖÆĞÂÍ¼Ïñ
+            //ç»˜åˆ¶æ–°å›¾åƒ
             using (Graphics graphics = Graphics.FromImage(newBitmap))
             {
-                //»æÍ¼²ÎÊı
+                //ç»˜å›¾å‚æ•°
                 using (ImageAttributes imgAttr = new ImageAttributes())
                 {
                     ColorMatrix clrMatrix = new ColorMatrix();
                     clrMatrix.Matrix33 = opacity;
                     imgAttr.SetColorMatrix(clrMatrix);
 
-                    //»æÍ¼
+                    //ç»˜å›¾
                     graphics.DrawImage(originImage, new Rectangle(0, 0, width, height), 0, 0, width, height, GraphicsUnit.Pixel, imgAttr);
                 }
             }
 
-            //·µ»Ø
+            //è¿”å›
             return newBitmap;
         }
 
         /// <summary>
-        /// Ëõ·ÅÍ¼Ïñ(·µ»ØÁËĞÂµÄÍ¼Ïñ,Ê¹ÓÃÍêºóĞèÒªÊÖ¶¯ÊÍ·Å)
+        /// ç¼©æ”¾å›¾åƒ(è¿”å›äº†æ–°çš„å›¾åƒ,ä½¿ç”¨å®Œåéœ€è¦æ‰‹åŠ¨é‡Šæ”¾)
         /// </summary>
-        /// <param name="originImage">ÒªËõ·ÅµÄÍ¼Ïñ</param>
-        /// <param name="size">ÒªËõ·ÅÎªµÄ´óĞ¡</param>
-        /// <returns>Ëõ·ÅºóµÄÍ¼Ïñ</returns>
+        /// <param name="originImage">è¦ç¼©æ”¾çš„å›¾åƒ</param>
+        /// <param name="size">è¦ç¼©æ”¾ä¸ºçš„å¤§å°</param>
+        /// <returns>ç¼©æ”¾åçš„å›¾åƒ</returns>
         public static Bitmap GetStretchImage(Image originImage, Size size)
         {
             if (originImage == null || size.Width <= 0 || size.Height <= 0)

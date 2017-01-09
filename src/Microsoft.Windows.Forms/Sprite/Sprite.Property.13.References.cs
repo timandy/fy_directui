@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -8,10 +8,10 @@ namespace Microsoft.Windows.Forms
 {
     public partial class Sprite
     {
-        //µ±Ç°×´Ì¬µÄ±³¾°É«
+        //å½“å‰çŠ¶æ€çš„èƒŒæ™¯è‰²
         private Color? m_CurrentBackColor;
         /// <summary>
-        /// µ±Ç°×´Ì¬µÄ±³¾°É«
+        /// å½“å‰çŠ¶æ€çš„èƒŒæ™¯è‰²
         /// </summary>
         internal Color CurrentBackColor
         {
@@ -60,10 +60,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //±³¾°É«ÊÇ·ñ·´Ïò»æÖÆ
+        //èƒŒæ™¯è‰²æ˜¯å¦åå‘ç»˜åˆ¶
         private bool? m_CurrentBackColorReverse;
         /// <summary>
-        /// ±³¾°É«ÊÇ·ñ·´Ïò»æÖÆ
+        /// èƒŒæ™¯è‰²æ˜¯å¦åå‘ç»˜åˆ¶
         /// </summary>
         internal bool CurrentBackColorReverse
         {
@@ -77,10 +77,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //±³¾°É«½¥±äÄ£Ê½
+        //èƒŒæ™¯è‰²æ¸å˜æ¨¡å¼
         private LinearGradientMode? m_CurrentBackColorMode;
         /// <summary>
-        /// ±³¾°É«½¥±äÄ£Ê½
+        /// èƒŒæ™¯è‰²æ¸å˜æ¨¡å¼
         /// </summary>
         internal LinearGradientMode CurrentBackColorMode
         {
@@ -94,10 +94,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //±³¾°É«ÏŞÖÆÇøÓòµÄ¾ØĞÎ
+        //èƒŒæ™¯è‰²é™åˆ¶åŒºåŸŸçš„çŸ©å½¢
         private Rectangle? m_CurrentBackColorPathRect;
         /// <summary>
-        /// ±³¾°É«ÏŞÖÆÇøÓòµÄ¾ØĞÎ
+        /// èƒŒæ™¯è‰²é™åˆ¶åŒºåŸŸçš„çŸ©å½¢
         /// </summary>
         internal Rectangle CurrentBackColorPathRect
         {
@@ -106,7 +106,7 @@ namespace Microsoft.Windows.Forms
                 if (this.m_CurrentBackColorPathRect == null)
                 {
                     Rectangle rect = this.m_BackColorRect;
-                    //×ó²à
+                    //å·¦ä¾§
                     if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Left) != 0)
                     {
                         rect.X += 2;
@@ -118,7 +118,7 @@ namespace Microsoft.Windows.Forms
                         rect.Width -= 1;
                     }
 
-                    //ÉÏ±ß
+                    //ä¸Šè¾¹
                     if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Top) != 0)
                     {
                         rect.Y += 2;
@@ -130,7 +130,7 @@ namespace Microsoft.Windows.Forms
                         rect.Height -= 1;
                     }
 
-                    //ÓÒ±ß
+                    //å³è¾¹
                     if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Right) != 0)
                     {
                         rect.Width -= 2;
@@ -140,7 +140,7 @@ namespace Microsoft.Windows.Forms
                         rect.Width -= 1;
                     }
 
-                    //ÏÂ±ß
+                    //ä¸‹è¾¹
                     if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Bottom) != 0)
                     {
                         rect.Height -= 2;
@@ -151,16 +151,16 @@ namespace Microsoft.Windows.Forms
                     }
                     RectangleEx.MakeNotEmpty(ref rect);
                     this.m_CurrentBackColorPathRect = rect;
-                    this.m_Graphics.SetClip(this.m_CurrentBackColorPathRect.Value, CombineMode.Intersect);//ÉèÖÃ¼ôÇĞÇø
+                    this.m_Graphics.SetClip(this.m_CurrentBackColorPathRect.Value, CombineMode.Intersect);//è®¾ç½®å‰ªåˆ‡åŒº
                 }
                 return this.m_CurrentBackColorPathRect.Value;
             }
         }
 
-        //±³¾°É«ÏŞÖÆÇøÓòµÄ¾ØĞÎ(ÒªFillµÄPath)
+        //èƒŒæ™¯è‰²é™åˆ¶åŒºåŸŸçš„çŸ©å½¢(è¦Fillçš„Path)
         private GraphicsPath m_CurrentBackColorPath;
         /// <summary>
-        /// ±³¾°É«ÏŞÖÆÇøÓòµÄ¾ØĞÎ(ÒªFillµÄPath)
+        /// èƒŒæ™¯è‰²é™åˆ¶åŒºåŸŸçš„çŸ©å½¢(è¦Fillçš„Path)
         /// </summary>
         internal GraphicsPath CurrentBackColorPath
         {
@@ -177,10 +177,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //±³¾°É«»­Ë¢¾ØĞÎ
+        //èƒŒæ™¯è‰²ç”»åˆ·çŸ©å½¢
         private Rectangle? m_CurrentBackColorBrushRect;
         /// <summary>
-        /// ±³¾°É«»­Ë¢¾ØĞÎ
+        /// èƒŒæ™¯è‰²ç”»åˆ·çŸ©å½¢
         /// </summary>
         internal Rectangle CurrentBackColorBrushRect
         {
@@ -197,10 +197,10 @@ namespace Microsoft.Windows.Forms
         }
 
 
-        //µ±Ç°±³¾°Í¼
+        //å½“å‰èƒŒæ™¯å›¾
         private Image m_CurrentBackgroundImage;
         /// <summary>
-        /// µ±Ç°±³¾°Í¼
+        /// å½“å‰èƒŒæ™¯å›¾
         /// </summary>
         internal Image CurrentBackgroundImage
         {
@@ -249,10 +249,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //±³¾°Í¼»æÖÆ¾ØĞÎ
+        //èƒŒæ™¯å›¾ç»˜åˆ¶çŸ©å½¢
         private Rectangle? m_CurrentBackgroundImageRect;
         /// <summary>
-        /// ±³¾°Í¼»æÖÆ¾ØĞÎ
+        /// èƒŒæ™¯å›¾ç»˜åˆ¶çŸ©å½¢
         /// </summary>
         internal Rectangle CurrentBackgroundImageRect
         {
@@ -269,10 +269,10 @@ namespace Microsoft.Windows.Forms
         }
 
 
-        //µ±Ç°¾Å¹¬¸ñ±³¾°Í¼
+        //å½“å‰ä¹å®«æ ¼èƒŒæ™¯å›¾
         private Image m_CurrentBackgroundImage9;
         /// <summary>
-        /// µ±Ç°¾Å¹¬¸ñ±³¾°Í¼
+        /// å½“å‰ä¹å®«æ ¼èƒŒæ™¯å›¾
         /// </summary>
         internal Image CurrentBackgroundImage9
         {
@@ -321,10 +321,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //¾Å¹¬¸ñ±³¾°Í¼»æÖÆ¾ØĞÎ
+        //ä¹å®«æ ¼èƒŒæ™¯å›¾ç»˜åˆ¶çŸ©å½¢
         private Rectangle? m_CurrentBackgroundImage9Rect;
         /// <summary>
-        /// ¾Å¹¬¸ñ±³¾°Í¼»æÖÆ¾ØĞÎ
+        /// ä¹å®«æ ¼èƒŒæ™¯å›¾ç»˜åˆ¶çŸ©å½¢
         /// </summary>
         internal Rectangle CurrentBackgroundImage9Rect
         {
@@ -341,10 +341,10 @@ namespace Microsoft.Windows.Forms
         }
 
 
-        //µ±Ç°±ß¿òÑÕÉ«
+        //å½“å‰è¾¹æ¡†é¢œè‰²
         private Color? m_CurrentBorderColor;
         /// <summary>
-        /// µ±Ç°±ß¿òÑÕÉ«
+        /// å½“å‰è¾¹æ¡†é¢œè‰²
         /// </summary>
         internal Color CurrentBorderColor
         {
@@ -393,10 +393,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //±ß¿òÂ·¾¶¾ØĞÎ
+        //è¾¹æ¡†è·¯å¾„çŸ©å½¢
         private Rectangle? m_CurrentBorderPathRect;
         /// <summary>
-        /// ±ß¿òÂ·¾¶¾ØĞÎ
+        /// è¾¹æ¡†è·¯å¾„çŸ©å½¢
         /// </summary>
         internal Rectangle CurrentBorderPathRect
         {
@@ -413,10 +413,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //±ß¿ò»­Ë¢¾ØĞÎ
+        //è¾¹æ¡†ç”»åˆ·çŸ©å½¢
         private Rectangle? m_CurrentBorderBrushRect;
         /// <summary>
-        /// ±ß¿ò»­Ë¢¾ØĞÎ
+        /// è¾¹æ¡†ç”»åˆ·çŸ©å½¢
         /// </summary>
         internal Rectangle CurrentBorderBrushRect
         {
@@ -430,10 +430,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //µ±Ç°ÄÚ±ß¿òÑÕÉ«
+        //å½“å‰å†…è¾¹æ¡†é¢œè‰²
         private Color? m_CurrentInnerBorderColor;
         /// <summary>
-        /// µ±Ç°ÄÚ±ß¿òÑÕÉ«
+        /// å½“å‰å†…è¾¹æ¡†é¢œè‰²
         /// </summary>
         internal Color CurrentInnerBorderColor
         {
@@ -482,10 +482,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //ÄÚ±ß¿òÂ·¾¶¾ØĞÎ
+        //å†…è¾¹æ¡†è·¯å¾„çŸ©å½¢
         private Rectangle? m_CurrentInnerBorderPathRect;
         /// <summary>
-        /// ÄÚ±ß¿òÂ·¾¶¾ØĞÎ
+        /// å†…è¾¹æ¡†è·¯å¾„çŸ©å½¢
         /// </summary>
         internal Rectangle CurrentInnerBorderPathRect
         {
@@ -518,10 +518,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //ÄÚ±ß¿ò»­Ë¢¾ØĞÎ
+        //å†…è¾¹æ¡†ç”»åˆ·çŸ©å½¢
         private Rectangle? m_CurrentInnerBorderBrushRect;
         /// <summary>
-        /// ÄÚ±ß¿ò»­Ë¢¾ØĞÎ
+        /// å†…è¾¹æ¡†ç”»åˆ·çŸ©å½¢
         /// </summary>
         internal Rectangle CurrentInnerBorderBrushRect
         {
@@ -536,10 +536,10 @@ namespace Microsoft.Windows.Forms
         }
 
 
-        //×Ö·û´®»æÖÆÇøÓò¾ØĞÎ,´«µİ½øÀ´µÄÖµ
+        //å­—ç¬¦ä¸²ç»˜åˆ¶åŒºåŸŸçŸ©å½¢,ä¼ é€’è¿›æ¥çš„å€¼
         private Rectangle? m_CurrentStringClientRect;
         /// <summary>
-        /// ×Ö·û´®»æÖÆÇøÓò¾ØĞÎ,´«µİ½øÀ´µÄÖµ
+        /// å­—ç¬¦ä¸²ç»˜åˆ¶åŒºåŸŸçŸ©å½¢,ä¼ é€’è¿›æ¥çš„å€¼
         /// </summary>
         internal Rectangle CurrentStringClientRect
         {
@@ -553,10 +553,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //×Ö·û´®Êµ¼Ê»æÖÆÇøÓò¾ØĞÎ,¼õÈ¥±ß¾à²¢Æ«ÒÆ
+        //å­—ç¬¦ä¸²å®é™…ç»˜åˆ¶åŒºåŸŸçŸ©å½¢,å‡å»è¾¹è·å¹¶åç§»
         private Rectangle? m_CurrentStringRect;
         /// <summary>
-        /// ×Ö·û´®Êµ¼Ê»æÖÆÇøÓò¾ØĞÎ,¼õÈ¥±ß¾à²¢Æ«ÒÆ
+        /// å­—ç¬¦ä¸²å®é™…ç»˜åˆ¶åŒºåŸŸçŸ©å½¢,å‡å»è¾¹è·å¹¶åç§»
         /// </summary>
         internal Rectangle CurrentStringRect
         {
@@ -572,10 +572,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //×Ö·û´®Â·¾¶µÄ¾ØĞÎ
+        //å­—ç¬¦ä¸²è·¯å¾„çš„çŸ©å½¢
         private Rectangle? m_CurrentStringPathRect;
         /// <summary>
-        /// ×Ö·û´®Â·¾¶µÄ¾ØĞÎ
+        /// å­—ç¬¦ä¸²è·¯å¾„çš„çŸ©å½¢
         /// </summary>
         internal Rectangle CurrentStringPathRect
         {
@@ -589,10 +589,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //×Ö·û´®´óĞ¡
+        //å­—ç¬¦ä¸²å¤§å°
         private Size? m_CurrentStringSize;
         /// <summary>
-        /// ×Ö·û´®´óĞ¡
+        /// å­—ç¬¦ä¸²å¤§å°
         /// </summary>
         internal Size CurrentStringSize
         {
@@ -607,10 +607,10 @@ namespace Microsoft.Windows.Forms
         }
 
 
-        //ÎÄ±¾Í¼Æ¬»æÖÆÇøÓò¾ØĞÎ,´«µİ½øÀ´µÄÖµ
+        //æ–‡æœ¬å›¾ç‰‡ç»˜åˆ¶åŒºåŸŸçŸ©å½¢,ä¼ é€’è¿›æ¥çš„å€¼
         private Rectangle? m_CurrentTextImageClientRect;
         /// <summary>
-        /// ÎÄ±¾Í¼Æ¬»æÖÆÇøÓò¾ØĞÎ,´«µİ½øÀ´µÄÖµ
+        /// æ–‡æœ¬å›¾ç‰‡ç»˜åˆ¶åŒºåŸŸçŸ©å½¢,ä¼ é€’è¿›æ¥çš„å€¼
         /// </summary>
         internal Rectangle CurrentTextImageClientRect
         {
@@ -624,10 +624,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //¿ÉÒÔÈİÄÉÎÄ±¾Í¼Æ¬µÄ¾ØĞÎÇøÓò
+        //å¯ä»¥å®¹çº³æ–‡æœ¬å›¾ç‰‡çš„çŸ©å½¢åŒºåŸŸ
         private Rectangle? m_CurrentTextImagePreferredRect;
         /// <summary>
-        /// ¿ÉÒÔÈİÄÉÎÄ±¾Í¼Æ¬µÄ¾ØĞÎÇøÓò
+        /// å¯ä»¥å®¹çº³æ–‡æœ¬å›¾ç‰‡çš„çŸ©å½¢åŒºåŸŸ
         /// </summary>
         internal Rectangle CurrentTextImagePreferredRect
         {
@@ -650,10 +650,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //¿ÉÒÔÈİÄÉÎÄ±¾µÄ¾ØĞÎÇøÓò
+        //å¯ä»¥å®¹çº³æ–‡æœ¬çš„çŸ©å½¢åŒºåŸŸ
         private Rectangle? m_CurrentTextPreferredRect;
         /// <summary>
-        /// ¿ÉÒÔÈİÄÉÎÄ±¾µÄ¾ØĞÎÇøÓò
+        /// å¯ä»¥å®¹çº³æ–‡æœ¬çš„çŸ©å½¢åŒºåŸŸ
         /// </summary>
         internal Rectangle CurrentTextPreferredRect
         {
@@ -707,10 +707,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //µ±Ç°Ç°¾°É«
+        //å½“å‰å‰æ™¯è‰²
         private Color? m_CurrentForeColor;
         /// <summary>
-        /// µ±Ç°Ç°¾°É«
+        /// å½“å‰å‰æ™¯è‰²
         /// </summary>
         internal Color CurrentForeColor
         {
@@ -759,10 +759,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //¿ÉÒÔÈİÄÉÍ¼Æ¬µÄ¾ØĞÎÇøÓò
+        //å¯ä»¥å®¹çº³å›¾ç‰‡çš„çŸ©å½¢åŒºåŸŸ
         private Rectangle? m_CurrentImagePreferredRect;
         /// <summary>
-        /// ¿ÉÒÔÈİÄÉÍ¼Æ¬µÄ¾ØĞÎÇøÓò
+        /// å¯ä»¥å®¹çº³å›¾ç‰‡çš„çŸ©å½¢åŒºåŸŸ
         /// </summary>
         internal Rectangle CurrentImagePreferredRect
         {
@@ -817,10 +817,10 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        //µ±Ç°Í¼Æ¬
+        //å½“å‰å›¾ç‰‡
         private Image m_CurrentImage;
         /// <summary>
-        /// µ±Ç°Í¼Æ¬
+        /// å½“å‰å›¾ç‰‡
         /// </summary>
         internal Image CurrentImage
         {
@@ -870,10 +870,10 @@ namespace Microsoft.Windows.Forms
         }
 
 
-        //µ±Ç°Ö±ÏßÑÕÉ«
+        //å½“å‰ç›´çº¿é¢œè‰²
         private Color? m_CurrentLineColor;
         /// <summary>
-        /// µ±Ç°Ö±ÏßÑÕÉ«
+        /// å½“å‰ç›´çº¿é¢œè‰²
         /// </summary>
         internal Color CurrentLineColor
         {

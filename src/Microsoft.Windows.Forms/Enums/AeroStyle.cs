@@ -1,27 +1,27 @@
-using System;
+ï»¿using System;
 
 namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// ±³¾°É«»æÖÆÍêºóÔÙ»æÖÆµÄÄÚÈÝµÄÀàÐÍ
+    /// èƒŒæ™¯è‰²ç»˜åˆ¶å®ŒåŽå†ç»˜åˆ¶çš„å†…å®¹çš„ç±»åž‹
     /// </summary>
     [Flags]
     public enum AeroStyle : int
     {
         /// <summary>
-        /// ²»»æÖÆ
+        /// ä¸ç»˜åˆ¶
         /// </summary>
         None = 0x0000,
         /// <summary>
-        /// »æÖÆ°ëÍ¸Ã÷Ä£ºý,Ò»°ãÎ»ÓÚ¿Ø¼þ¶¥²¿»ò×ó²à
+        /// ç»˜åˆ¶åŠé€æ˜Žæ¨¡ç³Š,ä¸€èˆ¬ä½äºŽæŽ§ä»¶é¡¶éƒ¨æˆ–å·¦ä¾§
         /// </summary>
         Blur = 0x0001,
         /// <summary>
-        /// »æÖÆÔ²²£Á§Ð§¹û,Ò»°ãÎ»ÓÚµ×²¿»òÓÒ²à
+        /// ç»˜åˆ¶åœ†çŽ»ç’ƒæ•ˆæžœ,ä¸€èˆ¬ä½äºŽåº•éƒ¨æˆ–å³ä¾§
         /// </summary>
         Glass = 0x0002,
         /// <summary>
-        /// Á½¸ö¸öÐ§¹û¶¼»æÖÆ
+        /// ä¸¤ä¸ªä¸ªæ•ˆæžœéƒ½ç»˜åˆ¶
         /// </summary>
         All = 0x0003,
     }

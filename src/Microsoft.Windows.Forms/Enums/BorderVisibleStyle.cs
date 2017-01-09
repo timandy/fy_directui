@@ -1,35 +1,35 @@
-using System;
+ï»¿using System;
 
 namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// ±ß¿òÑùÊ½
+    /// è¾¹æ¡†æ ·å¼
     /// </summary>
     [Flags]
     public enum BorderVisibleStyle : int
     {
         /// <summary>
-        /// ÎŞ
+        /// æ— 
         /// </summary>
         None = 0x0000,
         /// <summary>
-        /// ×ó±ß¿ò
+        /// å·¦è¾¹æ¡†
         /// </summary>
         Left = 0x0001,
         /// <summary>
-        /// ÉÏ±ß¿ò
+        /// ä¸Šè¾¹æ¡†
         /// </summary>
         Top = 0x0002,
         /// <summary>
-        /// ÓÒ±ß¿ò
+        /// å³è¾¹æ¡†
         /// </summary>
         Right = 0x0004,
         /// <summary>
-        /// ÏÂ±ß¿ò
+        /// ä¸‹è¾¹æ¡†
         /// </summary>
         Bottom = 0x0008,
         /// <summary>
-        /// ËùÓĞ±ß¿ò
+        /// æ‰€æœ‰è¾¹æ¡†
         /// </summary>
         All = 0x000F,
     }

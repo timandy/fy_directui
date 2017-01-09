@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using Microsoft.Drawing;
@@ -8,22 +8,22 @@ namespace Microsoft.Windows.Forms
     public static partial class RenderEngine
     {
         /// <summary>
-        /// »ñÈ¡Ïß¶ÎÓëË®Æ½XÖá¼Ğ½Ç(½Ç¶È±íÊ¾)
+        /// è·å–çº¿æ®µä¸æ°´å¹³Xè½´å¤¹è§’(è§’åº¦è¡¨ç¤º)
         /// </summary>
-        /// <param name="pt1">Æğµã</param>
-        /// <param name="pt2">ÖÕµã</param>
-        /// <returns>¼Ğ½Ç</returns>
+        /// <param name="pt1">èµ·ç‚¹</param>
+        /// <param name="pt2">ç»ˆç‚¹</param>
+        /// <returns>å¤¹è§’</returns>
         public static float GetLineDegrees(Point pt1, Point pt2)
         {
             return (float)MathEx.ToDegrees(Math.Atan(((double)pt2.Y - (double)pt1.Y) / ((double)pt2.X - (double)pt1.X)));
         }
 
         /// <summary>
-        /// »ñÈ¡°üº¬Ïß¶ÎµÄ×îĞ¡¾ØĞÎ(·Ç¿Õ)
+        /// è·å–åŒ…å«çº¿æ®µçš„æœ€å°çŸ©å½¢(éç©º)
         /// </summary>
-        /// <param name="pt1">Æğµã</param>
-        /// <param name="pt2">ÖÕµã</param>
-        /// <returns>¾ØĞÎ</returns>
+        /// <param name="pt1">èµ·ç‚¹</param>
+        /// <param name="pt2">ç»ˆç‚¹</param>
+        /// <returns>çŸ©å½¢</returns>
         public static Rectangle GetLineRect(Point pt1, Point pt2)
         {
             Rectangle rect = Rectangle.FromLTRB(Math.Min(pt1.X, pt2.X), Math.Min(pt1.Y, pt2.Y), Math.Max(pt1.X, pt2.X), Math.Max(pt1.Y, pt2.Y));
@@ -33,16 +33,16 @@ namespace Microsoft.Windows.Forms
 
 
         /// <summary>
-        /// ´´½¨»­Ë¢,äÖÈ¾±³¾°ºÍ±ß¿òÊ¹ÓÃ
+        /// åˆ›å»ºç”»åˆ·,æ¸²æŸ“èƒŒæ™¯å’Œè¾¹æ¡†ä½¿ç”¨
         /// </summary>
-        /// <param name="rect">»­Ë¢ÇøÓò</param>
-        /// <param name="baseColor">»ùÉ«</param>
-        /// <param name="pos1">»ùÉ«Î»ÖÃ1</param>
-        /// <param name="pos2">»ùÉ«Î»ÖÃ2</param>
-        /// <param name="reverse">ÊÇ·ñ·´×ª</param>
-        /// <param name="mode">½¥±äÄ£Ê½</param>
-        /// <param name="style">ÑùÊ½</param>
-        /// <returns>»­Ë¢</returns>
+        /// <param name="rect">ç”»åˆ·åŒºåŸŸ</param>
+        /// <param name="baseColor">åŸºè‰²</param>
+        /// <param name="pos1">åŸºè‰²ä½ç½®1</param>
+        /// <param name="pos2">åŸºè‰²ä½ç½®2</param>
+        /// <param name="reverse">æ˜¯å¦åè½¬</param>
+        /// <param name="mode">æ¸å˜æ¨¡å¼</param>
+        /// <param name="style">æ ·å¼</param>
+        /// <returns>ç”»åˆ·</returns>
         public static Brush CreateBrush(Rectangle rect, Color baseColor, float pos1, float pos2, bool reverse, LinearGradientMode mode, BlendStyle style)
         {
             Brush brush = null;
@@ -60,7 +60,7 @@ namespace Microsoft.Windows.Forms
                 case BlendStyle.Gradient:
                     {
                         LinearGradientBrush brushTmp = new LinearGradientBrush(rect, Color.Empty, Color.Empty, mode);
-                        //»­Ë¢ÉèÖÃ
+                        //ç”»åˆ·è®¾ç½®
                         ColorBlend blendTmp = new ColorBlend();
                         Color[] colors;
                         float[] positions;
@@ -77,7 +77,7 @@ namespace Microsoft.Windows.Forms
                 case BlendStyle.FadeIn:
                     {
                         LinearGradientBrush brushTmp = new LinearGradientBrush(rect, Color.Empty, Color.Empty, mode);
-                        //»­Ë¢ÉèÖÃ
+                        //ç”»åˆ·è®¾ç½®
                         ColorBlend blendTmp = new ColorBlend();
                         Color[] colors;
                         float[] positions;
@@ -94,7 +94,7 @@ namespace Microsoft.Windows.Forms
                 case BlendStyle.FadeOut:
                     {
                         LinearGradientBrush brushTmp = new LinearGradientBrush(rect, Color.Empty, Color.Empty, mode);
-                        //»­Ë¢ÉèÖÃ
+                        //ç”»åˆ·è®¾ç½®
                         ColorBlend blendTmp = new ColorBlend();
                         Color[] colors;
                         float[] positions;
@@ -111,7 +111,7 @@ namespace Microsoft.Windows.Forms
                 case BlendStyle.FadeInFadeOut:
                     {
                         LinearGradientBrush brushTmp = new LinearGradientBrush(rect, Color.Empty, Color.Empty, mode);
-                        //»­Ë¢ÉèÖÃ
+                        //ç”»åˆ·è®¾ç½®
                         ColorBlend blendTmp = new ColorBlend();
                         Color[] colors;
                         float[] positions;
@@ -132,13 +132,13 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// ´´½¨»­Ë¢,äÖÈ¾Ïß¶ÎÊ¹ÓÃ
+        /// åˆ›å»ºç”»åˆ·,æ¸²æŸ“çº¿æ®µä½¿ç”¨
         /// </summary>
-        /// <param name="pt1">Æğµã</param>
-        /// <param name="pt2">ÖÕµã</param>
-        /// <param name="baseColor">»ùÉ«</param>
-        /// <param name="style">ÑùÊ½</param>
-        /// <returns>»­Ë¢</returns>
+        /// <param name="pt1">èµ·ç‚¹</param>
+        /// <param name="pt2">ç»ˆç‚¹</param>
+        /// <param name="baseColor">åŸºè‰²</param>
+        /// <param name="style">æ ·å¼</param>
+        /// <returns>ç”»åˆ·</returns>
         public static Brush CreateBrush(Point pt1, Point pt2, Color baseColor, BlendStyle style)
         {
             Brush brush = null;
@@ -155,7 +155,7 @@ namespace Microsoft.Windows.Forms
                 case BlendStyle.Gradient:
                     {
                         LinearGradientBrush brushTmp = new LinearGradientBrush(GetLineRect(pt1, pt2), Color.Empty, Color.Empty, GetLineDegrees(pt1, pt2));
-                        //»­Ë¢ÉèÖÃ
+                        //ç”»åˆ·è®¾ç½®
                         ColorBlend blendTmp = new ColorBlend();
                         Color[] colors;
                         float[] positions;
@@ -172,7 +172,7 @@ namespace Microsoft.Windows.Forms
                 case BlendStyle.FadeIn:
                     {
                         LinearGradientBrush brushTmp = new LinearGradientBrush(GetLineRect(pt1, pt2), Color.Empty, Color.Empty, GetLineDegrees(pt1, pt2));
-                        //»­Ë¢ÉèÖÃ
+                        //ç”»åˆ·è®¾ç½®
                         ColorBlend blendTmp = new ColorBlend();
                         Color[] colors;
                         float[] positions;
@@ -189,7 +189,7 @@ namespace Microsoft.Windows.Forms
                 case BlendStyle.FadeOut:
                     {
                         LinearGradientBrush brushTmp = new LinearGradientBrush(GetLineRect(pt1, pt2), Color.Empty, Color.Empty, GetLineDegrees(pt1, pt2));
-                        //»­Ë¢ÉèÖÃ
+                        //ç”»åˆ·è®¾ç½®
                         ColorBlend blendTmp = new ColorBlend();
                         Color[] colors;
                         float[] positions;
@@ -206,7 +206,7 @@ namespace Microsoft.Windows.Forms
                 case BlendStyle.FadeInFadeOut:
                     {
                         LinearGradientBrush brushTmp = new LinearGradientBrush(GetLineRect(pt1, pt2), Color.Empty, Color.Empty, GetLineDegrees(pt1, pt2));
-                        //»­Ë¢ÉèÖÃ
+                        //ç”»åˆ·è®¾ç½®
                         ColorBlend blendTmp = new ColorBlend();
                         Color[] colors;
                         float[] positions;
@@ -227,15 +227,15 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// ´´½¨»­±Ê
+        /// åˆ›å»ºç”»ç¬”
         /// </summary>
-        /// <param name="brush">»­Ë¢</param>
-        /// <param name="width">Ö±Ïß¿í¶È</param>
-        /// <param name="style">ĞéÏßÑùÊ½</param>
-        /// <param name="pattern">µãÏß³¤¶ÈÊı×é</param>
-        /// <param name="cap">Ã¿¸öÏß¶Î¼üÃ±ÑùÊ½</param>
-        /// <param name="offset">Ö±ÏßµÄÆğµãµ½¶Ì»®ÏßÍ¼°¸ÆğÊ¼´¦µÄ¾àÀë</param>
-        /// <returns>»­±Ê</returns>
+        /// <param name="brush">ç”»åˆ·</param>
+        /// <param name="width">ç›´çº¿å®½åº¦</param>
+        /// <param name="style">è™šçº¿æ ·å¼</param>
+        /// <param name="pattern">ç‚¹çº¿é•¿åº¦æ•°ç»„</param>
+        /// <param name="cap">æ¯ä¸ªçº¿æ®µé”®å¸½æ ·å¼</param>
+        /// <param name="offset">ç›´çº¿çš„èµ·ç‚¹åˆ°çŸ­åˆ’çº¿å›¾æ¡ˆèµ·å§‹å¤„çš„è·ç¦»</param>
+        /// <returns>ç”»ç¬”</returns>
         public static Pen CreatePen(Brush brush, int width, DashStyle style, float[] pattern, DashCap cap, float offset)
         {
             Pen pen = new Pen(brush);
