@@ -1,30 +1,30 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Drawing.Text;
 
 namespace Microsoft.Drawing
 {
     /// <summary>
-    /// ÔİÊ±ĞŞ¸Ä»æÍ¼¶ÔÏóµÄÎÄ±¾³ÊÏÖÄ£Ê½,ÊÍ·ÅÊ±¸ÄÎªÔ­À´Ä£Ê½
+    /// æš‚æ—¶ä¿®æ”¹ç»˜å›¾å¯¹è±¡çš„æ–‡æœ¬å‘ˆç°æ¨¡å¼,é‡Šæ”¾æ—¶æ”¹ä¸ºåŸæ¥æ¨¡å¼
     /// </summary>
     public sealed class TextRenderingHintGraphics : DisposableMini
     {
-        private TextRenderingHint m_OldHint;    //Ô­Ê¼µÄÎÄ±¾³ÊÏÖÄ£Ê½
-        private Graphics m_Graphics;            //ÒªĞŞ¸ÄÎÄ±¾³ÊÏÖÄ£Ê½µÄ»æÍ¼¶ÔÏó
+        private TextRenderingHint m_OldHint;    //åŸå§‹çš„æ–‡æœ¬å‘ˆç°æ¨¡å¼
+        private Graphics m_Graphics;            //è¦ä¿®æ”¹æ–‡æœ¬å‘ˆç°æ¨¡å¼çš„ç»˜å›¾å¯¹è±¡
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı,ÔİÊ±ĞŞ¸ÄÎª¿¹¾â³İ
+        /// æ„é€ å‡½æ•°,æš‚æ—¶ä¿®æ”¹ä¸ºæŠ—é”¯é½¿
         /// </summary>
-        /// <param name="graphics">»æÍ¼¶ÔÏó</param>
+        /// <param name="graphics">ç»˜å›¾å¯¹è±¡</param>
         public TextRenderingHintGraphics(Graphics graphics)
             : this(graphics, TextRenderingHint.AntiAlias)
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı
+        /// æ„é€ å‡½æ•°
         /// </summary>
-        /// <param name="graphics">»æÍ¼¶ÔÏó</param>
-        /// <param name="newHint">ĞÂÎÄ±¾³ÊÏÖÄ£Ê½</param>
+        /// <param name="graphics">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="newHint">æ–°æ–‡æœ¬å‘ˆç°æ¨¡å¼</param>
         public TextRenderingHintGraphics(Graphics graphics, TextRenderingHint newHint)
         {
             this.m_Graphics = graphics;
@@ -33,9 +33,9 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ÊÍ·Å×ÊÔ´
+        /// é‡Šæ”¾èµ„æº
         /// </summary>
-        /// <param name="disposing">ÊÍ·ÅÍĞ¹Ü×ÊÔ´Îªtrue,·ñÔòÎªfalse</param>
+        /// <param name="disposing">é‡Šæ”¾æ‰˜ç®¡èµ„æºä¸ºtrue,å¦åˆ™ä¸ºfalse</param>
         protected override void Dispose(bool disposing)
         {
             if (this.m_Graphics != null)

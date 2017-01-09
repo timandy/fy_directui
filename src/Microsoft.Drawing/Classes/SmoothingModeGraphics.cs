@@ -1,30 +1,30 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace Microsoft.Drawing
 {
     /// <summary>
-    /// ÔİÊ±ĞŞ¸Ä»æÍ¼¶ÔÏóµÄÆ½»¬Ä£Ê½,ÊÍ·ÅÊ±¸ÄÎªÔ­À´Ä£Ê½
+    /// æš‚æ—¶ä¿®æ”¹ç»˜å›¾å¯¹è±¡çš„å¹³æ»‘æ¨¡å¼,é‡Šæ”¾æ—¶æ”¹ä¸ºåŸæ¥æ¨¡å¼
     /// </summary>
     public sealed class SmoothingModeGraphics : DisposableMini
     {
-        private SmoothingMode m_OldMode;    //Ô­Ê¼µÄÆ½»¬Ä£Ê½
-        private Graphics m_Graphics;        //ÒªĞŞ¸ÄÆ½»¬Ä£Ê½µÄ»æÍ¼¶ÔÏó
+        private SmoothingMode m_OldMode;    //åŸå§‹çš„å¹³æ»‘æ¨¡å¼
+        private Graphics m_Graphics;        //è¦ä¿®æ”¹å¹³æ»‘æ¨¡å¼çš„ç»˜å›¾å¯¹è±¡
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı,ÔİÊ±ĞŞ¸ÄÎª¿¹¾â³İ
+        /// æ„é€ å‡½æ•°,æš‚æ—¶ä¿®æ”¹ä¸ºæŠ—é”¯é½¿
         /// </summary>
-        /// <param name="graphics">»æÍ¼¶ÔÏó</param>
+        /// <param name="graphics">ç»˜å›¾å¯¹è±¡</param>
         public SmoothingModeGraphics(Graphics graphics)
             : this(graphics, SmoothingMode.AntiAlias)
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı
+        /// æ„é€ å‡½æ•°
         /// </summary>
-        /// <param name="graphics">»æÍ¼¶ÔÏó</param>
-        /// <param name="newMode">ĞÂÆ½»¬Ä£Ê½</param>
+        /// <param name="graphics">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="newMode">æ–°å¹³æ»‘æ¨¡å¼</param>
         public SmoothingModeGraphics(Graphics graphics, SmoothingMode newMode)
         {
             this.m_Graphics = graphics;
@@ -33,9 +33,9 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ÊÍ·Å×ÊÔ´
+        /// é‡Šæ”¾èµ„æº
         /// </summary>
-        /// <param name="disposing">ÊÍ·ÅÍĞ¹Ü×ÊÔ´Îªtrue,·ñÔòÎªfalse</param>
+        /// <param name="disposing">é‡Šæ”¾æ‰˜ç®¡èµ„æºä¸ºtrue,å¦åˆ™ä¸ºfalse</param>
         protected override void Dispose(bool disposing)
         {
             if (this.m_Graphics != null)

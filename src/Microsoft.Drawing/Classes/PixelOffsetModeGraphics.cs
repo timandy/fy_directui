@@ -1,30 +1,30 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace Microsoft.Drawing
 {
     /// <summary>
-    /// ÔİÊ±ĞŞ¸Ä»æÍ¼¶ÔÏóµÄÏñËØÆ«ÒÆÄ£Ê½,ÊÍ·ÅÊ±¸ÄÎªÔ­À´Ä£Ê½
+    /// æš‚æ—¶ä¿®æ”¹ç»˜å›¾å¯¹è±¡çš„åƒç´ åç§»æ¨¡å¼,é‡Šæ”¾æ—¶æ”¹ä¸ºåŸæ¥æ¨¡å¼
     /// </summary>
     public sealed class PixelOffsetModeGraphics : DisposableMini
     {
-        private PixelOffsetMode m_OldMode;  //Ô­Ê¼µÄÏñËØÆ«ÒÆÄ£Ê½
-        private Graphics m_Graphics;        //ÒªĞŞ¸ÄÏñËØÆ«ÒÆÄ£Ê½µÄ»æÍ¼¶ÔÏó
+        private PixelOffsetMode m_OldMode;  //åŸå§‹çš„åƒç´ åç§»æ¨¡å¼
+        private Graphics m_Graphics;        //è¦ä¿®æ”¹åƒç´ åç§»æ¨¡å¼çš„ç»˜å›¾å¯¹è±¡
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı,ÔİÊ±ĞŞ¸ÄÎªÄ¬ÈÏÏñËØÆ«ÒÆ
+        /// æ„é€ å‡½æ•°,æš‚æ—¶ä¿®æ”¹ä¸ºé»˜è®¤åƒç´ åç§»
         /// </summary>
-        /// <param name="graphics">»æÍ¼¶ÔÏó</param>
+        /// <param name="graphics">ç»˜å›¾å¯¹è±¡</param>
         public PixelOffsetModeGraphics(Graphics graphics)
             : this(graphics, PixelOffsetMode.Default)
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı
+        /// æ„é€ å‡½æ•°
         /// </summary>
-        /// <param name="graphics">»æÍ¼¶ÔÏó</param>
-        /// <param name="newMode">ĞÂÏñËØÆ«ÒÆÄ£Ê½</param>
+        /// <param name="graphics">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="newMode">æ–°åƒç´ åç§»æ¨¡å¼</param>
         public PixelOffsetModeGraphics(Graphics graphics, PixelOffsetMode newMode)
         {
             this.m_Graphics = graphics;
@@ -33,9 +33,9 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ÊÍ·Å×ÊÔ´
+        /// é‡Šæ”¾èµ„æº
         /// </summary>
-        /// <param name="disposing">ÊÍ·ÅÍĞ¹Ü×ÊÔ´Îªtrue,·ñÔòÎªfalse</param>
+        /// <param name="disposing">é‡Šæ”¾æ‰˜ç®¡èµ„æºä¸ºtrue,å¦åˆ™ä¸ºfalse</param>
         protected override void Dispose(bool disposing)
         {
             if (this.m_Graphics != null)

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -7,13 +7,13 @@ using System.Text;
 namespace Microsoft.Drawing
 {
     /// <summary>
-    /// ÑÕÉ«ÏòÁ¿,Ö»Ö§³Ö¼Ó¼õ²Ù×÷,²»Ö§³Ö³Ë³ı²Ù×÷
+    /// é¢œè‰²å‘é‡,åªæ”¯æŒåŠ å‡æ“ä½œ,ä¸æ”¯æŒä¹˜é™¤æ“ä½œ
     /// Copyright (c) JajaSoft
     /// </summary>
     [Serializable, StructLayout(LayoutKind.Sequential), ComVisible(true), TypeConverter(typeof(ColorVectorConverter))]
     public struct ColorVector
     {
-        #region ¾²Ì¬
+        #region é™æ€
 
         /// <summary>
         /// A=0,R=0,G=0,B=0
@@ -21,7 +21,7 @@ namespace Microsoft.Drawing
         public static readonly ColorVector Empty;
 
         /// <summary>
-        /// ¾²Ì¬¹¹Ôì
+        /// é™æ€æ„é€ 
         /// </summary>
         static ColorVector()
         {
@@ -29,13 +29,13 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// Éú³ÉLong,¸÷Õ¼16Î»¹²64Î»
+        /// ç”ŸæˆLong,å„å 16ä½å…±64ä½
         /// </summary>
         /// <param name="alpha">A</param>
         /// <param name="red">R</param>
         /// <param name="green">G</param>
         /// <param name="blue">B</param>
-        /// <returns>³¤ÕûĞÍÊıÖµ</returns>
+        /// <returns>é•¿æ•´å‹æ•°å€¼</returns>
         private static long MakeLong(int alpha, int red, int green, int blue)
         {
             ulong ulA = (ulong)(alpha & ushort.MaxValue);
@@ -47,67 +47,67 @@ namespace Microsoft.Drawing
 
 
         /// <summary>
-        /// ´ÓÒ»¸ö64Î»ÕûÊı´´½¨ColorVector½á¹¹
+        /// ä»ä¸€ä¸ª64ä½æ•´æ•°åˆ›å»ºColorVectorç»“æ„
         /// </summary>
-        /// <param name="value">64Î»ÕûÊı</param>
-        /// <returns>ColorVector½á¹¹</returns>
+        /// <param name="value">64ä½æ•´æ•°</param>
+        /// <returns>ColorVectorç»“æ„</returns>
         public static ColorVector FromArgb(long value)
         {
             return new ColorVector(value);
         }
 
         /// <summary>
-        /// ´ÓÒ»¸öColor½á¹¹´´½¨ColorVector½á¹¹
+        /// ä»ä¸€ä¸ªColorç»“æ„åˆ›å»ºColorVectorç»“æ„
         /// </summary>
-        /// <param name="color">Color½á¹¹</param>
-        /// <returns>ColorVector½á¹¹</returns>
+        /// <param name="color">Colorç»“æ„</param>
+        /// <returns>ColorVectorç»“æ„</returns>
         public static ColorVector FromArgb(Color color)
         {
             return new ColorVector(color.A, color.R, color.G, color.B);
         }
 
         /// <summary>
-        /// ´ÓÒ»¸öColor½á¹¹´´½¨ColorVector½á¹¹,µ«AlphaÊ¹ÓÃÖ¸¶¨µÄÖµ
+        /// ä»ä¸€ä¸ªColorç»“æ„åˆ›å»ºColorVectorç»“æ„,ä½†Alphaä½¿ç”¨æŒ‡å®šçš„å€¼
         /// </summary>
-        /// <param name="alpha">AlphaÖ¸¶¨Öµ</param>
-        /// <param name="color">Color½á¹¹</param>
-        /// <returns>ColorVector½á¹¹</returns>
+        /// <param name="alpha">AlphaæŒ‡å®šå€¼</param>
+        /// <param name="color">Colorç»“æ„</param>
+        /// <returns>ColorVectorç»“æ„</returns>
         public static ColorVector FromArgb(int alpha, Color color)
         {
             return new ColorVector(alpha, color.R, color.G, color.B);
         }
 
         /// <summary>
-        /// ´ÓÒ»¸öColorVector½á¹¹´´½¨ColorVector½á¹¹,µ«AlphaÊ¹ÓÃÖ¸¶¨Öµ
+        /// ä»ä¸€ä¸ªColorVectorç»“æ„åˆ›å»ºColorVectorç»“æ„,ä½†Alphaä½¿ç”¨æŒ‡å®šå€¼
         /// </summary>
-        /// <param name="alpha">AlphaÖ¸¶¨Öµ</param>
-        /// <param name="vector">ColorVector½á¹¹</param>
-        /// <returns>ColorVector½á¹¹</returns>
+        /// <param name="alpha">AlphaæŒ‡å®šå€¼</param>
+        /// <param name="vector">ColorVectorç»“æ„</param>
+        /// <returns>ColorVectorç»“æ„</returns>
         public static ColorVector FromArgb(int alpha, ColorVector vector)
         {
             return new ColorVector(alpha, vector.R, vector.G, vector.B);
         }
 
         /// <summary>
-        /// ´ÓÈı¸ö16Î»ÕûÊı´´½¨ColorVector½á¹¹,AlphaÊ¹ÓÃ0
+        /// ä»ä¸‰ä¸ª16ä½æ•´æ•°åˆ›å»ºColorVectorç»“æ„,Alphaä½¿ç”¨0
         /// </summary>
-        /// <param name="red">RedÖµ</param>
-        /// <param name="green">GreenÖµ</param>
-        /// <param name="blue">BlueÖµ</param>
-        /// <returns>ColorVector½á¹¹</returns>
+        /// <param name="red">Redå€¼</param>
+        /// <param name="green">Greenå€¼</param>
+        /// <param name="blue">Blueå€¼</param>
+        /// <returns>ColorVectorç»“æ„</returns>
         public static ColorVector FromArgb(int red, int green, int blue)
         {
             return new ColorVector(0, red, green, blue);
         }
 
         /// <summary>
-        /// ´ÓËÄ¸ö16Î»ÕûÊı´´½¨ColorVector½á¹¹
+        /// ä»å››ä¸ª16ä½æ•´æ•°åˆ›å»ºColorVectorç»“æ„
         /// </summary>
-        /// <param name="alpha">AlphaÖµ</param>
-        /// <param name="red">RedÖµ</param>
-        /// <param name="green">GreenÖµ</param>
-        /// <param name="blue">BlueÖµ</param>
-        /// <returns>ColorVector½á¹¹</returns>
+        /// <param name="alpha">Alphaå€¼</param>
+        /// <param name="red">Redå€¼</param>
+        /// <param name="green">Greenå€¼</param>
+        /// <param name="blue">Blueå€¼</param>
+        /// <returns>ColorVectorç»“æ„</returns>
         public static ColorVector FromArgb(int alpha, int red, int green, int blue)
         {
             return new ColorVector(alpha, red, green, blue);
@@ -116,13 +116,13 @@ namespace Microsoft.Drawing
         #endregion
 
 
-        #region ×Ö¶ÎÊôĞÔ
+        #region å­—æ®µå±æ€§
 
-        //64Î»Öµ
+        //64ä½å€¼
         private long Value;
 
         /// <summary>
-        /// Alpha·ÖÁ¿ÉÏµÄÆ«ÒÆÁ¿
+        /// Alphaåˆ†é‡ä¸Šçš„åç§»é‡
         /// </summary>
         public short A
         {
@@ -133,7 +133,7 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ºìÉ«·ÖÁ¿ÉÏµÄÆ«ÒÆÁ¿
+        /// çº¢è‰²åˆ†é‡ä¸Šçš„åç§»é‡
         /// </summary>
         public short R
         {
@@ -144,7 +144,7 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ÂÌÉ«·ÖÁ¿ÉÏµÄÆ«ÒÆÁ¿
+        /// ç»¿è‰²åˆ†é‡ä¸Šçš„åç§»é‡
         /// </summary>
         public short G
         {
@@ -155,7 +155,7 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// À¶É«·ÖÁ¿ÉÏµÄÆ«ÒÆÁ¿
+        /// è“è‰²åˆ†é‡ä¸Šçš„åç§»é‡
         /// </summary>
         public short B
         {
@@ -168,19 +168,19 @@ namespace Microsoft.Drawing
         #endregion
 
 
-        #region ¹¹Ôìº¯Êı
+        #region æ„é€ å‡½æ•°
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı
+        /// æ„é€ å‡½æ•°
         /// </summary>
-        /// <param name="value">³¤ÕûĞÍÊıÖµ</param>
+        /// <param name="value">é•¿æ•´å‹æ•°å€¼</param>
         private ColorVector(long value)
         {
             this.Value = value;
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı,¸÷Õ¼16Î».short(-32768,32767)
+        /// æ„é€ å‡½æ•°,å„å 16ä½.short(-32768,32767)
         /// </summary>
         /// <param name="alpha">A</param>
         /// <param name="red">R</param>
@@ -194,21 +194,21 @@ namespace Microsoft.Drawing
         #endregion
 
 
-        #region ¹«¹²·½·¨
+        #region å…¬å…±æ–¹æ³•
 
         /// <summary>
-        /// »ñÈ¡HashÖµ
+        /// è·å–Hashå€¼
         /// </summary>
-        /// <returns>·µ»Ø</returns>
+        /// <returns>è¿”å›</returns>
         public override int GetHashCode()
         {
             return this.Value.GetHashCode();
         }
 
         /// <summary>
-        /// ×ª»»Îª×Ö·û´®
+        /// è½¬æ¢ä¸ºå­—ç¬¦ä¸²
         /// </summary>
-        /// <returns>×Ö·û´®</returns>
+        /// <returns>å­—ç¬¦ä¸²</returns>
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder(0x20);
@@ -234,10 +234,10 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ÅĞ¶ÏÁ½¸öÊÇ·ñÏàµÈ
+        /// åˆ¤æ–­ä¸¤ä¸ªæ˜¯å¦ç›¸ç­‰
         /// </summary>
-        /// <param name="obj">Ä¿±ê¶ÔÏó</param>
-        /// <returns>ÏàµÈ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+        /// <param name="obj">ç›®æ ‡å¯¹è±¡</param>
+        /// <returns>ç›¸ç­‰è¿”å›true,å¦åˆ™è¿”å›false</returns>
         public override bool Equals(object obj)
         {
             if (obj is ColorVector)
@@ -249,9 +249,9 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ×ª»»ÎªÑÕÉ«
+        /// è½¬æ¢ä¸ºé¢œè‰²
         /// </summary>
-        /// <returns>ÑÕÉ«</returns>
+        /// <returns>é¢œè‰²</returns>
         public Color ToColor()
         {
             return Color.FromArgb(MathEx.Clamp(this.A, (byte)0, (byte)255),
@@ -263,36 +263,36 @@ namespace Microsoft.Drawing
         #endregion
 
 
-        #region ²Ù×÷·û
+        #region æ“ä½œç¬¦
 
         /// <summary>
-        /// µÈÓÚ
+        /// ç­‰äº
         /// </summary>
-        /// <param name="left">×óÖµ</param>
-        /// <param name="right">ÓÒÖµ</param>
-        /// <returns>ÏàµÈ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+        /// <param name="left">å·¦å€¼</param>
+        /// <param name="right">å³å€¼</param>
+        /// <returns>ç›¸ç­‰è¿”å›true,å¦åˆ™è¿”å›false</returns>
         public static bool operator ==(ColorVector left, ColorVector right)
         {
             return left.Value == right.Value;
         }
 
         /// <summary>
-        /// µÈÓÚ
+        /// ç­‰äº
         /// </summary>
-        /// <param name="left">×óÖµ</param>
-        /// <param name="right">ÓÒÖµ</param>
-        /// <returns>²»µÈ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+        /// <param name="left">å·¦å€¼</param>
+        /// <param name="right">å³å€¼</param>
+        /// <returns>ä¸ç­‰è¿”å›true,å¦åˆ™è¿”å›false</returns>
         public static bool operator !=(ColorVector left, ColorVector right)
         {
             return !(left == right);
         }
 
         /// <summary>
-        /// ´óÓÚ
+        /// å¤§äº
         /// </summary>
-        /// <param name="left">×óÖµ</param>
-        /// <param name="right">ÓÒÖµ</param>
-        /// <returns>A,R,G,BÈ«²¿´óÓÚ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+        /// <param name="left">å·¦å€¼</param>
+        /// <param name="right">å³å€¼</param>
+        /// <returns>A,R,G,Bå…¨éƒ¨å¤§äºè¿”å›true,å¦åˆ™è¿”å›false</returns>
         public static bool operator >(ColorVector left, ColorVector right)
         {
             return left.A > right.A
@@ -302,11 +302,11 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ´óÓÚµÈÓÚ
+        /// å¤§äºç­‰äº
         /// </summary>
-        /// <param name="left">×óÖµ</param>
-        /// <param name="right">ÓÒÖµ</param>
-        /// <returns>A,R,G,BÈ«²¿´óÓÚµÈÓÚ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+        /// <param name="left">å·¦å€¼</param>
+        /// <param name="right">å³å€¼</param>
+        /// <returns>A,R,G,Bå…¨éƒ¨å¤§äºç­‰äºè¿”å›true,å¦åˆ™è¿”å›false</returns>
         public static bool operator >=(ColorVector left, ColorVector right)
         {
             return left.A >= right.A
@@ -316,11 +316,11 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// Ğ¡ÓÚ
+        /// å°äº
         /// </summary>
-        /// <param name="left">×óÖµ</param>
-        /// <param name="right">ÓÒÖµ</param>
-        /// <returns>A,R,G,BÈ«²¿Ğ¡ÓÚ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+        /// <param name="left">å·¦å€¼</param>
+        /// <param name="right">å³å€¼</param>
+        /// <returns>A,R,G,Bå…¨éƒ¨å°äºè¿”å›true,å¦åˆ™è¿”å›false</returns>
         public static bool operator <(ColorVector left, ColorVector right)
         {
             return left.A < right.A
@@ -330,11 +330,11 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// Ğ¡ÓÚµÈÓÚ
+        /// å°äºç­‰äº
         /// </summary>
-        /// <param name="left">×óÖµ</param>
-        /// <param name="right">ÓÒÖµ</param>
-        /// <returns>A,R,G,BÈ«²¿Ğ¡ÓÚµÈÓÚ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+        /// <param name="left">å·¦å€¼</param>
+        /// <param name="right">å³å€¼</param>
+        /// <returns>A,R,G,Bå…¨éƒ¨å°äºç­‰äºè¿”å›true,å¦åˆ™è¿”å›false</returns>
         public static bool operator <=(ColorVector left, ColorVector right)
         {
             return left.A <= right.A
@@ -344,22 +344,22 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// Á½¸öÑÕÉ«ÏòÁ¿Ïà¼Ó
+        /// ä¸¤ä¸ªé¢œè‰²å‘é‡ç›¸åŠ 
         /// </summary>
-        /// <param name="left">×óÖµ</param>
-        /// <param name="right">ÓÒÖµ</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«ÏòÁ¿</returns>
+        /// <param name="left">å·¦å€¼</param>
+        /// <param name="right">å³å€¼</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²å‘é‡</returns>
         public static ColorVector operator +(ColorVector left, ColorVector right)
         {
             return new ColorVector(left.A + right.A, left.R + right.R, left.G + right.G, left.B + right.B);
         }
 
         /// <summary>
-        /// ÑÕÉ«¼ÓÉÏÑÕÉ«ÏòÁ¿
+        /// é¢œè‰²åŠ ä¸Šé¢œè‰²å‘é‡
         /// </summary>
-        /// <param name="left">ÑÕÉ«</param>
-        /// <param name="right">ÑÕÉ«ÏòÁ¿</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«</returns>
+        /// <param name="left">é¢œè‰²</param>
+        /// <param name="right">é¢œè‰²å‘é‡</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²</returns>
         public static Color operator +(Color left, ColorVector right)
         {
             return Color.FromArgb(MathEx.Clamp(left.A + right.A, (byte)0, (byte)255),
@@ -369,22 +369,22 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// Á½¸öÑÕÉ«ÏòÁ¿Ïà¼õ
+        /// ä¸¤ä¸ªé¢œè‰²å‘é‡ç›¸å‡
         /// </summary>
-        /// <param name="left">×óÖµ</param>
-        /// <param name="right">ÓÒÖµ</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«ÏòÁ¿</returns>
+        /// <param name="left">å·¦å€¼</param>
+        /// <param name="right">å³å€¼</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²å‘é‡</returns>
         public static ColorVector operator -(ColorVector left, ColorVector right)
         {
             return new ColorVector(left.A - right.A, left.R - right.R, left.G - right.G, left.B - right.B);
         }
 
         /// <summary>
-        /// ÑÕÉ«¼õÈ¥ÑÕÉ«ÏòÁ¿
+        /// é¢œè‰²å‡å»é¢œè‰²å‘é‡
         /// </summary>
-        /// <param name="left">ÑÕÉ«</param>
-        /// <param name="right">ÑÕÉ«ÏòÁ¿</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«</returns>
+        /// <param name="left">é¢œè‰²</param>
+        /// <param name="right">é¢œè‰²å‘é‡</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²</returns>
         public static Color operator -(Color left, ColorVector right)
         {
             return Color.FromArgb(MathEx.Clamp(left.A - right.A, (byte)0, (byte)255),
@@ -394,88 +394,88 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ÑÕÉ«ÏòÁ¿³ËÒÔ¸¡µãÊı
+        /// é¢œè‰²å‘é‡ä¹˜ä»¥æµ®ç‚¹æ•°
         /// </summary>
-        /// <param name="left">ÑÕÉ«ÏòÁ¿</param>
-        /// <param name="right">¸¡µãÊı</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«ÏòÁ¿</returns>
+        /// <param name="left">é¢œè‰²å‘é‡</param>
+        /// <param name="right">æµ®ç‚¹æ•°</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²å‘é‡</returns>
         public static ColorVector operator *(ColorVector left, float right)
         {
             return new ColorVector((int)(left.A * right), (int)(left.R * right), (int)(left.G * right), (int)(left.B * right));
         }
 
         /// <summary>
-        /// ¸¡µãÊı³ËÒÔÑÕÉ«ÏòÁ¿
+        /// æµ®ç‚¹æ•°ä¹˜ä»¥é¢œè‰²å‘é‡
         /// </summary>
-        /// <param name="left">¸¡µãÊı</param>
-        /// <param name="right">ÑÕÉ«ÏòÁ¿</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«ÏòÁ¿</returns>
+        /// <param name="left">æµ®ç‚¹æ•°</param>
+        /// <param name="right">é¢œè‰²å‘é‡</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²å‘é‡</returns>
         public static ColorVector operator *(float left, ColorVector right)
         {
             return new ColorVector((int)(left * right.A), (int)(left * right.R), (int)(left * right.G), (int)(left * right.B));
         }
 
         /// <summary>
-        /// ÑÕÉ«ÏòÁ¿³ËÒÔÕûÊı
+        /// é¢œè‰²å‘é‡ä¹˜ä»¥æ•´æ•°
         /// </summary>
-        /// <param name="left">ÑÕÉ«ÏòÁ¿</param>
-        /// <param name="right">¸¡µãÊı</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«ÏòÁ¿</returns>
+        /// <param name="left">é¢œè‰²å‘é‡</param>
+        /// <param name="right">æµ®ç‚¹æ•°</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²å‘é‡</returns>
         public static ColorVector operator *(ColorVector left, int right)
         {
             return new ColorVector(left.A * right, left.R * right, left.G * right, left.B * right);
         }
 
         /// <summary>
-        /// ÕûÊı³ËÒÔÑÕÉ«ÏòÁ¿
+        /// æ•´æ•°ä¹˜ä»¥é¢œè‰²å‘é‡
         /// </summary>
-        /// <param name="left">ÕûÊı</param>
-        /// <param name="right">ÑÕÉ«ÏòÁ¿</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«ÏòÁ¿</returns>
+        /// <param name="left">æ•´æ•°</param>
+        /// <param name="right">é¢œè‰²å‘é‡</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²å‘é‡</returns>
         public static ColorVector operator *(int left, ColorVector right)
         {
             return new ColorVector(left * right.A, left * right.R, left * right.G, left * right.B);
         }
 
         /// <summary>
-        /// ÑÕÉ«ÏòÁ¿³ıÒÔ¸¡µãÊı
+        /// é¢œè‰²å‘é‡é™¤ä»¥æµ®ç‚¹æ•°
         /// </summary>
-        /// <param name="left">ÑÕÉ«ÏòÁ¿</param>
-        /// <param name="right">¸¡µãÊı</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«ÏòÁ¿</returns>
+        /// <param name="left">é¢œè‰²å‘é‡</param>
+        /// <param name="right">æµ®ç‚¹æ•°</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²å‘é‡</returns>
         public static ColorVector operator /(ColorVector left, float right)
         {
             return new ColorVector((int)(left.A / right), (int)(left.R / right), (int)(left.G / right), (int)(left.B / right));
         }
 
         /// <summary>
-        /// ¸¡µãÊı³ıÒÔÑÕÉ«ÏòÁ¿
+        /// æµ®ç‚¹æ•°é™¤ä»¥é¢œè‰²å‘é‡
         /// </summary>
-        /// <param name="left">¸¡µãÊı</param>
-        /// <param name="right">ÑÕÉ«ÏòÁ¿</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«ÏòÁ¿</returns>
+        /// <param name="left">æµ®ç‚¹æ•°</param>
+        /// <param name="right">é¢œè‰²å‘é‡</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²å‘é‡</returns>
         public static ColorVector operator /(float left, ColorVector right)
         {
             return new ColorVector((int)(left / right.A), (int)(left / right.R), (int)(left / right.G), (int)(left / right.B));
         }
 
         /// <summary>
-        /// ÑÕÉ«ÏòÁ¿³ıÒÔÕûÊı
+        /// é¢œè‰²å‘é‡é™¤ä»¥æ•´æ•°
         /// </summary>
-        /// <param name="left">ÑÕÉ«ÏòÁ¿</param>
-        /// <param name="right">ÕûÊı</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«ÏòÁ¿</returns>
+        /// <param name="left">é¢œè‰²å‘é‡</param>
+        /// <param name="right">æ•´æ•°</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²å‘é‡</returns>
         public static ColorVector operator /(ColorVector left, int right)
         {
             return new ColorVector(left.A / right, left.R / right, left.G / right, left.B / right);
         }
 
         /// <summary>
-        /// ÕûÊı³ıÒÔÑÕÉ«ÏòÁ¿
+        /// æ•´æ•°é™¤ä»¥é¢œè‰²å‘é‡
         /// </summary>
-        /// <param name="left">ÕûÊı</param>
-        /// <param name="right">ÑÕÉ«ÏòÁ¿</param>
-        /// <returns>·µ»ØĞÂÑÕÉ«ÏòÁ¿</returns>
+        /// <param name="left">æ•´æ•°</param>
+        /// <param name="right">é¢œè‰²å‘é‡</param>
+        /// <returns>è¿”å›æ–°é¢œè‰²å‘é‡</returns>
         public static ColorVector operator /(int left, ColorVector right)
         {
             return new ColorVector(left / right.A, left / right.R, left / right.G, left / right.B);
