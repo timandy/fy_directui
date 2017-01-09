@@ -45,8 +45,9 @@
     <Compile Include="Animate\AnimationFrameType.cs" />
     <Compile Include="Animate\AnimationOperations.cs" />
     <Compile Include="Animate\IAnimation.cs" />
+    <Compile Include="Animate\UIGradientAnimation.cs" />
     <Compile Include="Animate\UIImageAnimation.cs" />
-    <Compile Include="Animate\UIProgressAnimation.cs" />
+    <Compile Include="Animate\UILinearAnimation.cs" />
     <Compile Include="Controls\IUIControl.0.cs" />
     <Compile Include="Controls\IUIControl.1.Layout.cs" />
     <Compile Include="Controls\IUIControl.2.Behaviour.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Controls\UIImage\UIImage.cs" />
     <Compile Include="Controls\UILabel\UILabel.cs" />
     <Compile Include="Controls\UILine\UILine.cs" />
+    <Compile Include="Controls\UIMarquee\UIMarquee.cs" />
     <Compile Include="Controls\UIPanel\UIPanel.cs" />
     <Compile Include="Controls\UIProgress\UIProgress.cs" />
     <Compile Include="Controls\UIWinControl\UIWinControl.0.cs">
@@ -157,6 +159,7 @@
     <Compile Include="Sprite\Sprite.Property.12.Line.cs" />
     <Compile Include="Sprite\Sprite.Property.13.References.cs" />
     <Compile Include="Util\PaintManager.cs" />
+    <Compile Include="Util\RandomColor.cs" />
     <Compile Include="Util\RenderEngine.0.cs" />
     <Compile Include="Util\RenderEngine.1.HLSColor.cs" />
     <Compile Include="Util\RenderEngine.2.Color.cs" />
@@ -179,7 +182,6 @@
       <Name>Microsoft</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
