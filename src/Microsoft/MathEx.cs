@@ -1,14 +1,14 @@
-using System;
+ï»¿using System;
 
 namespace Microsoft
 {
     /// <summary>
-    /// MathÀàÀ©Õ¹
+    /// Mathç±»æ‰©å±•
     /// Copyright (c) JajaSoft
     /// </summary>
     public static class MathEx
     {
-        #region ×Ö¶Î
+        #region å­—æ®µ
 
         /// <summary>
         /// E
@@ -39,33 +39,33 @@ namespace Microsoft
         /// </summary>
         public const float TwoPi = 6.283185f;
         /// <summary>
-        /// DoubleÀàĞÍµÄ 180d / Math.PI
+        /// Doubleç±»å‹çš„ 180d / Math.PI
         /// </summary>
         public const double Double180OverPi = 180d / Math.PI;
         /// <summary>
-        /// DoubleÀàĞÍµÄ Math.PI / 180d
+        /// Doubleç±»å‹çš„ Math.PI / 180d
         /// </summary>
         public const double DoublePiOver180 = Math.PI / 180d;
         /// <summary>
-        /// SingleÀàĞÍµÄ 180d / Math.PI
+        /// Singleç±»å‹çš„ 180d / Math.PI
         /// </summary>
         public const float Single180OverPi = (float)Double180OverPi;
         /// <summary>
-        /// SingleÀàĞÍµÄ Math.PI / 180d
+        /// Singleç±»å‹çš„ Math.PI / 180d
         /// </summary>
         public const float SinglePiOver180 = (float)DoublePiOver180;
 
         #endregion
 
-        #region ·½·¨
+        #region æ–¹æ³•
 
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static Byte Clamp(Byte value, Byte min, Byte max)
         {
             value = (value > max) ? max : value;
@@ -73,12 +73,12 @@ namespace Microsoft
             return value;
         }
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static Decimal Clamp(Decimal value, Decimal min, Decimal max)
         {
             value = (value > max) ? max : value;
@@ -86,12 +86,12 @@ namespace Microsoft
             return value;
         }
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static Double Clamp(Double value, Double min, Double max)
         {
             value = (value > max) ? max : value;
@@ -99,12 +99,12 @@ namespace Microsoft
             return value;
         }
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static Int16 Clamp(Int16 value, Int16 min, Int16 max)
         {
             value = (value > max) ? max : value;
@@ -112,12 +112,12 @@ namespace Microsoft
             return value;
         }
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static Int32 Clamp(Int32 value, Int32 min, Int32 max)
         {
             value = (value > max) ? max : value;
@@ -125,12 +125,12 @@ namespace Microsoft
             return value;
         }
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static Int64 Clamp(Int64 value, Int64 min, Int64 max)
         {
             value = (value > max) ? max : value;
@@ -138,12 +138,12 @@ namespace Microsoft
             return value;
         }
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static SByte Clamp(SByte value, SByte min, SByte max)
         {
             value = (value > max) ? max : value;
@@ -151,12 +151,12 @@ namespace Microsoft
             return value;
         }
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static Single Clamp(Single value, Single min, Single max)
         {
             value = (value > max) ? max : value;
@@ -164,12 +164,12 @@ namespace Microsoft
             return value;
         }
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static UInt16 Clamp(UInt16 value, UInt16 min, UInt16 max)
         {
             value = (value > max) ? max : value;
@@ -177,12 +177,12 @@ namespace Microsoft
             return value;
         }
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static UInt32 Clamp(UInt32 value, UInt32 min, UInt32 max)
         {
             value = (value > max) ? max : value;
@@ -190,12 +190,12 @@ namespace Microsoft
             return value;
         }
         /// <summary>
-        /// ·µ»ØÖ¸¶¨·¶Î§ÄÚµÄÏŞ¶¨Öµ
+        /// è¿”å›æŒ‡å®šèŒƒå›´å†…çš„é™å®šå€¼
         /// </summary>
-        /// <param name="value">Öµ</param>
-        /// <param name="min">×îĞ¡Öµ</param>
-        /// <param name="max">×î´óÖµ</param>
-        /// <returns>ÏŞ¶¨Öµ</returns>
+        /// <param name="value">å€¼</param>
+        /// <param name="min">æœ€å°å€¼</param>
+        /// <param name="max">æœ€å¤§å€¼</param>
+        /// <returns>é™å®šå€¼</returns>
         public static UInt64 Clamp(UInt64 value, UInt64 min, UInt64 max)
         {
             value = (value > max) ? max : value;
@@ -204,37 +204,37 @@ namespace Microsoft
         }
 
         /// <summary>
-        /// »¡¶È×ª»»Îª½Ç¶È
+        /// å¼§åº¦è½¬æ¢ä¸ºè§’åº¦
         /// </summary>
-        /// <param name="radians">»¡¶È</param>
-        /// <returns>½Ç¶È</returns>
+        /// <param name="radians">å¼§åº¦</param>
+        /// <returns>è§’åº¦</returns>
         public static Double ToDegrees(Double radians)
         {
             return (radians * Double180OverPi);
         }
         /// <summary>
-        /// »¡¶È×ª»»Îª½Ç¶È
+        /// å¼§åº¦è½¬æ¢ä¸ºè§’åº¦
         /// </summary>
-        /// <param name="radians">»¡¶È</param>
-        /// <returns>½Ç¶È</returns>
+        /// <param name="radians">å¼§åº¦</param>
+        /// <returns>è§’åº¦</returns>
         public static Single ToDegrees(Single radians)
         {
             return (radians * Single180OverPi);
         }
         /// <summary>
-        /// ½Ç¶È×ª»»Îª»¡¶È
+        /// è§’åº¦è½¬æ¢ä¸ºå¼§åº¦
         /// </summary>
-        /// <param name="degrees">½Ç¶È</param>
-        /// <returns>»¡¶È</returns>
+        /// <param name="degrees">è§’åº¦</param>
+        /// <returns>å¼§åº¦</returns>
         public static Double ToRadians(Double degrees)
         {
             return (degrees * DoublePiOver180);
         }
         /// <summary>
-        /// ½Ç¶È×ª»»Îª»¡¶È
+        /// è§’åº¦è½¬æ¢ä¸ºå¼§åº¦
         /// </summary>
-        /// <param name="degrees">½Ç¶È</param>
-        /// <returns>»¡¶È</returns>
+        /// <param name="degrees">è§’åº¦</param>
+        /// <returns>å¼§åº¦</returns>
         public static Single ToRadians(Single degrees)
         {
             return (degrees * SinglePiOver180);
