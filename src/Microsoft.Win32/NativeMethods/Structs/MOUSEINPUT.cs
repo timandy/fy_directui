@@ -1,15 +1,15 @@
-using System;
+锘縰sing System;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// MOUSEINPUT定义
+    /// MOUSEINPUT瀹氫箟
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// 鼠标输入
+        /// 榧犳爣杈撳叆
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct MOUSEINPUT

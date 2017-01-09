@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
@@ -10,30 +10,30 @@ namespace Microsoft.Win32
     public static partial class UnsafeNativeMethods
     {
         /// <summary>
-        /// ²âÊÔ×Ö·û´®´óĞ¡
+        /// æµ‹è¯•å­—ç¬¦ä¸²å¤§å°
         /// </summary>
-        /// <param name="hGraphics">»æÍ¼¶ÔÏó¾ä±ú</param>
-        /// <param name="szText">Òª²âÊÔµÄ×Ö·û´®</param>
-        /// <param name="nLength">×Ö·û´®³¤¶È</param>
-        /// <param name="hFont">×ÖÌå¾ä±ú</param>
-        /// <param name="aPositions">×ø±êÊı×é</param>
-        /// <param name="nFlags">±ê¼Ç</param>
+        /// <param name="hGraphics">ç»˜å›¾å¯¹è±¡å¥æŸ„</param>
+        /// <param name="szText">è¦æµ‹è¯•çš„å­—ç¬¦ä¸²</param>
+        /// <param name="nLength">å­—ç¬¦ä¸²é•¿åº¦</param>
+        /// <param name="hFont">å­—ä½“å¥æŸ„</param>
+        /// <param name="aPositions">åæ ‡æ•°ç»„</param>
+        /// <param name="nFlags">æ ‡è®°</param>
         /// <param name="hMatrix"></param>
-        /// <param name="tBounds">ÇøÓò</param>
+        /// <param name="tBounds">åŒºåŸŸ</param>
         /// <returns></returns>
         [DllImport("gdiplus.dll", CharSet = CharSet.Auto)]
         public extern static int GdipMeasureDriverString(IntPtr hGraphics, string szText, int nLength, IntPtr hFont, PointF[] aPositions, int nFlags, IntPtr hMatrix, ref RectangleF tBounds);
         /// <summary>
-        /// »æÖÆ×Ö·û´®
+        /// ç»˜åˆ¶å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="hGraphics">»æÍ¼¶ÔÏó</param>
-        /// <param name="szText">Òª»æÖÆµÄÎÄ±¾</param>
-        /// <param name="nLength">×Ö·û´®³¤¶È</param>
-        /// <param name="hFont">×ÖÌå¾ä±ú</param>
-        /// <param name="hBrush">»­Ë¢¾ä±ú</param>
-        /// <param name="aPositions">×ø±êÊı×é</param>
-        /// <param name="nFlags">±ê¼Ç</param>
-        /// <param name="hMatrix">ÏòÁ¿¾ØÕó</param>
+        /// <param name="hGraphics">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="szText">è¦ç»˜åˆ¶çš„æ–‡æœ¬</param>
+        /// <param name="nLength">å­—ç¬¦ä¸²é•¿åº¦</param>
+        /// <param name="hFont">å­—ä½“å¥æŸ„</param>
+        /// <param name="hBrush">ç”»åˆ·å¥æŸ„</param>
+        /// <param name="aPositions">åæ ‡æ•°ç»„</param>
+        /// <param name="nFlags">æ ‡è®°</param>
+        /// <param name="hMatrix">å‘é‡çŸ©é˜µ</param>
         /// <returns></returns>
         [DllImport("gdiplus.dll", CharSet = CharSet.Auto)]
         public extern static int GdipDrawDriverString(IntPtr hGraphics, string szText, int nLength, IntPtr hFont, IntPtr hBrush, PointF[] aPositions, int nFlags, IntPtr hMatrix);

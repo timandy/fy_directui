@@ -1,9 +1,9 @@
-using System.Runtime.InteropServices;
+ï»¿using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// SCROLLINFO¶¨Òå
+    /// SCROLLINFOå®šä¹‰
     /// </summary>
     public static partial class NativeMethods
     {

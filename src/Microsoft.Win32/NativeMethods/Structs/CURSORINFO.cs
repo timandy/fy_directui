@@ -1,15 +1,15 @@
-using System;
+锘縰sing System;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// CURSORINFO定义
+    /// CURSORINFO瀹氫箟
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// 光标信息
+        /// 鍏夋爣淇℃伅
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct CURSORINFO

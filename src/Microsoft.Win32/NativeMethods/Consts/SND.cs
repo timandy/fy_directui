@@ -1,38 +1,38 @@
-namespace Microsoft.Win32
+ï»¿namespace Microsoft.Win32
 {
-    //SND¶¨Òå
+    //SNDå®šä¹‰
     public static partial class NativeMethods
     {
         /// <summary>
-        /// Í¬²½²¥·ÅÉùÒô£¬ÔÚ²¥·ÅÍêºóPlaySoundº¯Êý²Å·µ»Ø¡£
+        /// åŒæ­¥æ’­æ”¾å£°éŸ³ï¼Œåœ¨æ’­æ”¾å®ŒåŽPlaySoundå‡½æ•°æ‰è¿”å›žã€‚
         /// </summary>
         public const int SND_SYNC = 0;
         /// <summary>
-        /// ÓÃÒì²½·½Ê½²¥·ÅÉùÒô£¬PlaySoundº¯ÊýÔÚ¿ªÊ¼²¥·ÅºóÁ¢¼´·µ»Ø¡£
+        /// ç”¨å¼‚æ­¥æ–¹å¼æ’­æ”¾å£°éŸ³ï¼ŒPlaySoundå‡½æ•°åœ¨å¼€å§‹æ’­æ”¾åŽç«‹å³è¿”å›žã€‚
         /// </summary>
         public const int SND_ASYNC = 1;
         /// <summary>
-        /// ²»²¥·ÅÈ±Ê¡ÉùÒô£¬ÈôÎÞ´Ë±êÖ¾£¬ÔòPlaySoundÔÚÃ»ÕÒµ½ÉùÒôÊ±»á²¥·ÅÈ±Ê¡ÉùÒô¡£
+        /// ä¸æ’­æ”¾ç¼ºçœå£°éŸ³ï¼Œè‹¥æ— æ­¤æ ‡å¿—ï¼Œåˆ™PlaySoundåœ¨æ²¡æ‰¾åˆ°å£°éŸ³æ—¶ä¼šæ’­æ”¾ç¼ºçœå£°éŸ³ã€‚
         /// </summary>
         public const int SND_NODEFAULT = 2;
         /// <summary>
-        /// ²¥·ÅÔØÈëµ½ÄÚ´æÖÐµÄÉùÒô£¬´ËÊ±pszSoundÊÇÖ¸ÏòÉùÒôÊý¾ÝµÄÖ¸Õë¡£
+        /// æ’­æ”¾è½½å…¥åˆ°å†…å­˜ä¸­çš„å£°éŸ³ï¼Œæ­¤æ—¶pszSoundæ˜¯æŒ‡å‘å£°éŸ³æ•°æ®çš„æŒ‡é’ˆã€‚
         /// </summary>
         public const int SND_MEMORY = 4;
         /// <summary>
-        /// ÖØ¸´²¥·ÅÉùÒô£¬±ØÐëÓëSND_ASYNC±êÖ¾Ò»¿éÊ¹ÓÃ¡£
+        /// é‡å¤æ’­æ”¾å£°éŸ³ï¼Œå¿…é¡»ä¸ŽSND_ASYNCæ ‡å¿—ä¸€å—ä½¿ç”¨ã€‚
         /// </summary>
         public const int SND_LOOP = 8;
         /// <summary>
-        /// PlaySound²»´ò¶ÏÔ­À´µÄÉùÒô²¥³ö²¢Á¢¼´·µ»ØFALSE¡£
+        /// PlaySoundä¸æ‰“æ–­åŽŸæ¥çš„å£°éŸ³æ’­å‡ºå¹¶ç«‹å³è¿”å›žFALSEã€‚
         /// </summary>
         public const int SND_NOSTOP = 0x10;
         /// <summary>
-        /// Í£Ö¹ËùÓÐÓëµ÷ÓÃÈÎÎñÓÐ¹ØµÄÉùÒô¡£Èô²ÎÊýpszSoundÎªNULL£¬¾ÍÍ£Ö¹ËùÓÐµÄÉùÒô£¬·ñÔò£¬Í£Ö¹pszSoundÖ¸¶¨µÄÉùÒô¡£
+        /// åœæ­¢æ‰€æœ‰ä¸Žè°ƒç”¨ä»»åŠ¡æœ‰å…³çš„å£°éŸ³ã€‚è‹¥å‚æ•°pszSoundä¸ºNULLï¼Œå°±åœæ­¢æ‰€æœ‰çš„å£°éŸ³ï¼Œå¦åˆ™ï¼Œåœæ­¢pszSoundæŒ‡å®šçš„å£°éŸ³ã€‚
         /// </summary>
         public const int SND_PURGE = 0x40;
         /// <summary>
-        /// pszSound²ÎÊýÖ¸¶¨ÁËWAVEÎÄ¼þÃû¡£
+        /// pszSoundå‚æ•°æŒ‡å®šäº†WAVEæ–‡ä»¶åã€‚
         /// </summary>
         public const int SND_FILENAME = 0x20000;
     }

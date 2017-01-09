@@ -1,18 +1,18 @@
-using System;
+ï»¿using System;
 using System.Text;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// Kernel32À©Õ¹
+    /// Kernel32æ‰©å±•
     /// </summary>
     public static partial class Util
     {
         /// <summary>
-        /// »ñÈ¡ÓëÖ¸¶¨µÄ Win32 ´íÎó´úÂë¹ØÁªµÄÏêÏ¸ËµÃ÷¡£
+        /// è·å–ä¸æŒ‡å®šçš„ Win32 é”™è¯¯ä»£ç å…³è”çš„è¯¦ç»†è¯´æ˜ã€‚
         /// </summary>
-        /// <param name="nErrorCode">Win32 ´íÎó´úÂë¡£</param>
-        /// <returns>´íÎóµÄÏêÏ¸ËµÃ÷¡£</returns>
+        /// <param name="nErrorCode">Win32 é”™è¯¯ä»£ç ã€‚</param>
+        /// <returns>é”™è¯¯çš„è¯¦ç»†è¯´æ˜ã€‚</returns>
         public static string GetErrorMessage(int nErrorCode)
         {
             StringBuilder lpBuffer = new StringBuilder(0x100);

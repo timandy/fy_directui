@@ -1,9 +1,9 @@
-using System.Runtime.InteropServices;
+ï»¿using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// POINT¶¨Òå
+    /// POINTå®šä¹‰
     /// </summary>
     public static partial class NativeMethods
     {
@@ -14,19 +14,19 @@ namespace Microsoft.Win32
         public struct POINT
         {
             /// <summary>
-            /// Ë®Æ½×ø±ê
+            /// æ°´å¹³åæ ‡
             /// </summary>
             public int x;
             /// <summary>
-            /// ´¹Ö±×ø±ê
+            /// å‚ç›´åæ ‡
             /// </summary>
             public int y;
 
             /// <summary>
-            /// ¹¹Ôìº¯Êı
+            /// æ„é€ å‡½æ•°
             /// </summary>
-            /// <param name="x">Ë®Æ½×ø±ê</param>
-            /// <param name="y">´¹Ö±×ø±ê</param>
+            /// <param name="x">æ°´å¹³åæ ‡</param>
+            /// <param name="y">å‚ç›´åæ ‡</param>
             public POINT(int x, int y)
             {
                 this.x = x;

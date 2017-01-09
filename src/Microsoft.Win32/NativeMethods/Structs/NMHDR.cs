@@ -1,15 +1,15 @@
-using System;
+锘縰sing System;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// NMHDR定义
+    /// NMHDR瀹氫箟
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// NMHDR结构
+        /// NMHDR缁撴瀯
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct NMHDR

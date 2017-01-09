@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -7,31 +7,31 @@ using System.Windows.Forms;
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// User32À©Õ¹
+    /// User32æ‰©å±•
     /// </summary>
     public static partial class Util
     {
         /// <summary>
-        /// ¿ªÊ¼¸üĞÂ,½ûÖ¹¿Ø¼şÖØ»æ
+        /// å¼€å§‹æ›´æ–°,ç¦æ­¢æ§ä»¶é‡ç»˜
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„</param>
         public static void BeginUpdate(IntPtr hWnd)
         {
             UnsafeNativeMethods.SendMessage(hWnd, NativeMethods.WM_SETREDRAW, 0, 0);
         }
         /// <summary>
-        /// ¿ªÊ¼¸üĞÂ,ÔÊĞí¿Ø¼şÖØ»æ
+        /// å¼€å§‹æ›´æ–°,å…è®¸æ§ä»¶é‡ç»˜
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„</param>
         public static void EndUpdate(IntPtr hWnd)
         {
             UnsafeNativeMethods.SendMessage(hWnd, NativeMethods.WM_SETREDRAW, 1, 0);
         }
 
         /// <summary>
-        /// ¿ªÊ¼ÍÏ¶¯´°¿Ú
+        /// å¼€å§‹æ‹–åŠ¨çª—å£
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú</param>
+        /// <param name="hWnd">çª—å£å¥æŸ„</param>
         public static void BeginDrag(IntPtr hWnd)
         {
             UnsafeNativeMethods.ReleaseCapture();
@@ -39,10 +39,10 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ÔÚÖ¸¶¨¾ä±ú´°¿ÚÄÚ°´ÏÂÊó±ê,²»µÈ´ıÏûÏ¢´¦ÀíÍê³ÉÁ¢¼´·µ»Ø
+        /// åœ¨æŒ‡å®šå¥æŸ„çª—å£å†…æŒ‰ä¸‹é¼ æ ‡,ä¸ç­‰å¾…æ¶ˆæ¯å¤„ç†å®Œæˆç«‹å³è¿”å›
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú</param>
-        /// <param name="pt">Ïà¶ÔÓÚ´°¿ÚµÄµã</param>
+        /// <param name="hWnd">çª—å£å¥æŸ„</param>
+        /// <param name="pt">ç›¸å¯¹äºçª—å£çš„ç‚¹</param>
         public static void PostMouseDown(IntPtr hWnd, Point pt)
         {
             IntPtr lParam = Util.MAKELPARAM(pt.X, pt.Y);
@@ -50,20 +50,20 @@ namespace Microsoft.Win32
             UnsafeNativeMethods.PostMessage(hWnd, NativeMethods.WM_LBUTTONDOWN, IntPtr.Zero, lParam);
         }
         /// <summary>
-        /// ÔÚÖ¸¶¨¾ä±ú´°¿ÚÄÚµ¯ÆğÊó±ê,²»µÈ´ıÏûÏ¢´¦ÀíÍê³ÉÁ¢¼´·µ»Ø
+        /// åœ¨æŒ‡å®šå¥æŸ„çª—å£å†…å¼¹èµ·é¼ æ ‡,ä¸ç­‰å¾…æ¶ˆæ¯å¤„ç†å®Œæˆç«‹å³è¿”å›
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú</param>
-        /// <param name="pt">Ïà¶ÔÓÚ´°¿ÚµÄµã</param>
+        /// <param name="hWnd">çª—å£å¥æŸ„</param>
+        /// <param name="pt">ç›¸å¯¹äºçª—å£çš„ç‚¹</param>
         public static void PostMouseUp(IntPtr hWnd, Point pt)
         {
             IntPtr lParam = Util.MAKELPARAM(pt.X, pt.Y);
             UnsafeNativeMethods.PostMessage(hWnd, NativeMethods.WM_LBUTTONUP, IntPtr.Zero, lParam);
         }
         /// <summary>
-        /// ÔÚÖ¸¶¨¾ä±ú´°¿ÚÄÚµ¥»÷Êó±ê,²»µÈ´ıÏûÏ¢´¦ÀíÍê³ÉÁ¢¼´·µ»Ø
+        /// åœ¨æŒ‡å®šå¥æŸ„çª—å£å†…å•å‡»é¼ æ ‡,ä¸ç­‰å¾…æ¶ˆæ¯å¤„ç†å®Œæˆç«‹å³è¿”å›
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú</param>
-        /// <param name="pt">Ïà¶ÔÓÚ´°¿ÚµÄµã</param>
+        /// <param name="hWnd">çª—å£å¥æŸ„</param>
+        /// <param name="pt">ç›¸å¯¹äºçª—å£çš„ç‚¹</param>
         public static void PostMouseClick(IntPtr hWnd, Point pt)
         {
             IntPtr lParam = Util.MAKELPARAM(pt.X, pt.Y);
@@ -73,10 +73,10 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ÔÚÖ¸¶¨¾ä±ú´°¿ÚÄÚ°´ÏÂÊó±ê,µÈ´ıÏûÏ¢´¦ÀíÍê³ÉºóÔÙ·µ»Ø
+        /// åœ¨æŒ‡å®šå¥æŸ„çª—å£å†…æŒ‰ä¸‹é¼ æ ‡,ç­‰å¾…æ¶ˆæ¯å¤„ç†å®Œæˆåå†è¿”å›
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú</param>
-        /// <param name="pt">Ïà¶ÔÓÚ´°¿ÚµÄµã</param>
+        /// <param name="hWnd">çª—å£å¥æŸ„</param>
+        /// <param name="pt">ç›¸å¯¹äºçª—å£çš„ç‚¹</param>
         public static void SendMouseDown(IntPtr hWnd, Point pt)
         {
             IntPtr lParam = Util.MAKELPARAM(pt.X, pt.Y);
@@ -84,20 +84,20 @@ namespace Microsoft.Win32
             UnsafeNativeMethods.SendMessage(hWnd, NativeMethods.WM_LBUTTONDOWN, IntPtr.Zero, lParam);
         }
         /// <summary>
-        /// ÔÚÖ¸¶¨¾ä±ú´°¿ÚÄÚµ¯ÆğÊó±ê,µÈ´ıÏûÏ¢´¦ÀíÍê³ÉºóÔÙ·µ»Ø
+        /// åœ¨æŒ‡å®šå¥æŸ„çª—å£å†…å¼¹èµ·é¼ æ ‡,ç­‰å¾…æ¶ˆæ¯å¤„ç†å®Œæˆåå†è¿”å›
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú</param>
-        /// <param name="pt">Ïà¶ÔÓÚ´°¿ÚµÄµã</param>
+        /// <param name="hWnd">çª—å£å¥æŸ„</param>
+        /// <param name="pt">ç›¸å¯¹äºçª—å£çš„ç‚¹</param>
         public static void SendMouseUp(IntPtr hWnd, Point pt)
         {
             IntPtr lParam = Util.MAKELPARAM(pt.X, pt.Y);
             UnsafeNativeMethods.SendMessage(hWnd, NativeMethods.WM_LBUTTONUP, IntPtr.Zero, lParam);
         }
         /// <summary>
-        /// ÔÚÖ¸¶¨¾ä±ú´°¿ÚÄÚµ¥»÷Êó±ê,µÈ´ıÏûÏ¢´¦ÀíÍê³ÉºóÔÙ·µ»Ø
+        /// åœ¨æŒ‡å®šå¥æŸ„çª—å£å†…å•å‡»é¼ æ ‡,ç­‰å¾…æ¶ˆæ¯å¤„ç†å®Œæˆåå†è¿”å›
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú</param>
-        /// <param name="pt">Ïà¶ÔÓÚ´°¿ÚµÄµã</param>
+        /// <param name="hWnd">çª—å£å¥æŸ„</param>
+        /// <param name="pt">ç›¸å¯¹äºçª—å£çš„ç‚¹</param>
         public static void SendMouseClick(IntPtr hWnd, Point pt)
         {
             IntPtr lParam = Util.MAKELPARAM(pt.X, pt.Y);
@@ -107,9 +107,9 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// °´ÏÂ¼üÅÌ¼ü
+        /// æŒ‰ä¸‹é”®ç›˜é”®
         /// </summary>
-        /// <param name="vKey">ĞéÄâ¼üÂë</param>
+        /// <param name="vKey">è™šæ‹Ÿé”®ç </param>
         public static void SendKeyDown(short vKey)
         {
             NativeMethods.INPUT[] input = new NativeMethods.INPUT[1];
@@ -119,9 +119,9 @@ namespace Microsoft.Win32
             UnsafeNativeMethods.SendInput((uint)input.Length, input, Marshal.SizeOf(input[0]));
         }
         /// <summary>
-        /// µ¯Æğ¼üÅÌ¼ü
+        /// å¼¹èµ·é”®ç›˜é”®
         /// </summary>
-        /// <param name="vKey">ĞéÄâ¼üÂë</param>
+        /// <param name="vKey">è™šæ‹Ÿé”®ç </param>
         public static void SendKeyUp(short vKey)
         {
             NativeMethods.INPUT[] input = new NativeMethods.INPUT[1];
@@ -132,9 +132,9 @@ namespace Microsoft.Win32
             UnsafeNativeMethods.SendInput((uint)input.Length, input, Marshal.SizeOf(input[0]));
         }
         /// <summary>
-        /// °´Ò»ÏÂ²¢µ¯Æğ¼üÅÌ¼ü
+        /// æŒ‰ä¸€ä¸‹å¹¶å¼¹èµ·é”®ç›˜é”®
         /// </summary>
-        /// <param name="vKey">ĞéÄâ¼üÂë</param>
+        /// <param name="vKey">è™šæ‹Ÿé”®ç </param>
         public static void SendKeyClick(short vKey)
         {
             SendKeyDown(vKey);
@@ -142,9 +142,9 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ÏÔÊ¾»òÒş²Ø¹â±ê.
+        /// æ˜¾ç¤ºæˆ–éšè—å…‰æ ‡.
         /// </summary>
-        /// <param name="visible">ÏÔÊ¾Îªtrue,·ñÔòÎªfalse.</param>
+        /// <param name="visible">æ˜¾ç¤ºä¸ºtrue,å¦åˆ™ä¸ºfalse.</param>
         public static void ShowCursor(bool visible)
         {
             if (visible)
@@ -157,7 +157,7 @@ namespace Microsoft.Win32
             }
         }
         /// <summary>
-        /// »ñÈ¡¹â±êÊÇ·ñÏÔÊ¾.ÏÔÊ¾Îªtrue,·ñÔòÎªfalse.
+        /// è·å–å…‰æ ‡æ˜¯å¦æ˜¾ç¤º.æ˜¾ç¤ºä¸ºtrue,å¦åˆ™ä¸ºfalse.
         /// </summary>
         public static bool GetCursorVisible()
         {
@@ -166,47 +166,47 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// »ñÈ¡Ö¸¶¨´°¿ÚµÄËùÓĞÕß´°¿Ú¡£
+        /// è·å–æŒ‡å®šçª—å£çš„æ‰€æœ‰è€…çª—å£ã€‚
         /// </summary>
-        /// <param name="hWnd">Ö¸¶¨´°¿Ú¡£</param>
-        /// <returns>ËùÓĞÕß´°¿Ú¡£</returns>
+        /// <param name="hWnd">æŒ‡å®šçª—å£ã€‚</param>
+        /// <returns>æ‰€æœ‰è€…çª—å£ã€‚</returns>
         public static IntPtr GetOwner(IntPtr hWnd)
         {
             return UnsafeNativeMethods.GetWindow(hWnd, NativeMethods.GW_OWNER);
         }
         /// <summary>
-        /// ÎªÖ¸¶¨´°¿ÚÉèÖÃĞÂµÄµÄËùÓĞÕß´°¿Ú¡£
+        /// ä¸ºæŒ‡å®šçª—å£è®¾ç½®æ–°çš„çš„æ‰€æœ‰è€…çª—å£ã€‚
         /// </summary>
-        /// <param name="hWnd">Ö¸¶¨´°¿Ú¡£</param>
-        /// <param name="hWndNewOwner">ĞÂµÄËùÓĞÕß´°¿Ú¡£</param>
+        /// <param name="hWnd">æŒ‡å®šçª—å£ã€‚</param>
+        /// <param name="hWndNewOwner">æ–°çš„æ‰€æœ‰è€…çª—å£ã€‚</param>
         public static void SetOwner(IntPtr hWnd, IntPtr hWndNewOwner)
         {
             UnsafeNativeMethods.SetWindowLong(hWnd, NativeMethods.GWL_HWNDPARENT, (int)hWndNewOwner);
         }
         /// <summary>
-        /// »ñÈ¡Ö¸¶¨´°¿ÚµÄ¸¸´°¿Ú¡£
+        /// è·å–æŒ‡å®šçª—å£çš„çˆ¶çª—å£ã€‚
         /// </summary>
-        /// <param name="hWnd">Ö¸¶¨´°¿Ú¡£</param>
-        /// <returns>¸¸´°¿Ú¡£</returns>
+        /// <param name="hWnd">æŒ‡å®šçª—å£ã€‚</param>
+        /// <returns>çˆ¶çª—å£ã€‚</returns>
         public static IntPtr GetParent(IntPtr hWnd)
         {
             return UnsafeNativeMethods.GetAncestor(hWnd, NativeMethods.GA_PARENT);
         }
         /// <summary>
-        /// ÎªÖ¸¶¨´°¿ÚÉèÖÃĞÂµÄ¸¸´°¿Ú¡£
+        /// ä¸ºæŒ‡å®šçª—å£è®¾ç½®æ–°çš„çˆ¶çª—å£ã€‚
         /// </summary>
-        /// <param name="hWnd">Ö¸¶¨´°¿Ú¡£</param>
-        /// <param name="hWndNewParent">ĞÂµÄ¸¸´°¿Ú¡£</param>
+        /// <param name="hWnd">æŒ‡å®šçª—å£ã€‚</param>
+        /// <param name="hWndNewParent">æ–°çš„çˆ¶çª—å£ã€‚</param>
         public static void SetParent(IntPtr hWnd, IntPtr hWndNewParent)
         {
             UnsafeNativeMethods.SetParent(hWnd, hWndNewParent);
         }
 
         /// <summary>
-        /// »ñÈ¡Ö¸¶¨´°¿Ú°üº¬µÄ¹ö¶¯Ìõ¡£
+        /// è·å–æŒ‡å®šçª—å£åŒ…å«çš„æ»šåŠ¨æ¡ã€‚
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú¡£</param>
-        /// <returns>·µ»ØÖµ¼û System.Windows.Forms.ScrollBars ¶¨Òå</returns>
+        /// <param name="hWnd">çª—å£å¥æŸ„ã€‚</param>
+        /// <returns>è¿”å›å€¼è§ System.Windows.Forms.ScrollBars å®šä¹‰</returns>
         public static int GetScrollBars(IntPtr hWnd)
         {
             int wndStyle = UnsafeNativeMethods.GetWindowLong(hWnd, NativeMethods.GWL_STYLE);
@@ -219,20 +219,20 @@ namespace Microsoft.Win32
                 return vsVisible ? 2 : 0;
         }
         /// <summary>
-        /// »ñÈ¡Ö¸¶¨´°¿ÚÊÇ·ñÓĞ×ó¹ö¶¯ÌõÑùÊ½¡£
+        /// è·å–æŒ‡å®šçª—å£æ˜¯å¦æœ‰å·¦æ»šåŠ¨æ¡æ ·å¼ã€‚
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú¡£</param>
-        /// <returns>´°¿ÚÓĞ×ó¹ö¶¯ÌõÑùÊ½·µ»Ø true£¬·ñÔò·µ»Ø false¡£</returns>
+        /// <param name="hWnd">çª—å£å¥æŸ„ã€‚</param>
+        /// <returns>çª—å£æœ‰å·¦æ»šåŠ¨æ¡æ ·å¼è¿”å› trueï¼Œå¦åˆ™è¿”å› falseã€‚</returns>
         public static bool GetLeftScrollBar(IntPtr hWnd)
         {
             int wndExStyle = UnsafeNativeMethods.GetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE);
             return (wndExStyle & NativeMethods.WS_EX_LEFTSCROLLBAR) != 0;
         }
         /// <summary>
-        /// »ñÈ¡Ö¸¶¨´°¿Ú±ß¿ò¿í¶È¡£
+        /// è·å–æŒ‡å®šçª—å£è¾¹æ¡†å®½åº¦ã€‚
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú¡£</param>
-        /// <returns>´°¿Ú±ß¿ò¿í¶È¡£</returns>
+        /// <param name="hWnd">çª—å£å¥æŸ„ã€‚</param>
+        /// <returns>çª—å£è¾¹æ¡†å®½åº¦ã€‚</returns>
         public static int GetBorderWidth(IntPtr hWnd)
         {
             int wndExStyle = UnsafeNativeMethods.GetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE);
@@ -248,11 +248,11 @@ namespace Microsoft.Win32
                 return 0;
         }
         /// <summary>
-        /// ´Ó GDI+ Region ´´½¨Ò»¸ö GDI Region¡£
+        /// ä» GDI+ Region åˆ›å»ºä¸€ä¸ª GDI Regionã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="region">System.Drawing.Region ¶ÔÏó¡£</param>
-        /// <returns>GDI Region ¾ä±ú¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="region">System.Drawing.Region å¯¹è±¡ã€‚</param>
+        /// <returns>GDI Region å¥æŸ„ã€‚</returns>
         public static IntPtr GetHRgn(IntPtr hWnd, Region region)
         {
             using (Graphics g = Graphics.FromHwndInternal(hWnd))
@@ -261,35 +261,35 @@ namespace Microsoft.Win32
             }
         }
         /// <summary>
-        /// »ñÈ¡´°¿ÚµÄ¿Í»§ÇøÏà¶ÔÓÚ´°¿Ú×óÉÏ½ÇµÄ¾ØĞÎ.(ÌØ±ğ×¢Òâ:Èç¹ûÓĞ·Ç¿Í»§ÇøÆğµãÒ»°ã²»Îª0,0 Èç¹ûÃ»ÓĞ·Ç¿Í»§Çø¸ÃÖµÍ¬ClientRectangleÏàµÈ).¸Ãº¯Êı·Ç³£ÌØ±ğ¾¡Á¿²»Òªµ÷ÓÃ,ÔÚ·Ç¿Í»§Çø²Ù×÷Ê±¿ÉÄÜÊ¹ÓÃµ½,ÆäÓàÎÊÌâÇë×ÉÑ¯±àĞ´ÈËÔ±. by Tim 2013.11.23
+        /// è·å–çª—å£çš„å®¢æˆ·åŒºç›¸å¯¹äºçª—å£å·¦ä¸Šè§’çš„çŸ©å½¢.(ç‰¹åˆ«æ³¨æ„:å¦‚æœæœ‰éå®¢æˆ·åŒºèµ·ç‚¹ä¸€èˆ¬ä¸ä¸º0,0 å¦‚æœæ²¡æœ‰éå®¢æˆ·åŒºè¯¥å€¼åŒClientRectangleç›¸ç­‰).è¯¥å‡½æ•°éå¸¸ç‰¹åˆ«å°½é‡ä¸è¦è°ƒç”¨,åœ¨éå®¢æˆ·åŒºæ“ä½œæ—¶å¯èƒ½ä½¿ç”¨åˆ°,å…¶ä½™é—®é¢˜è¯·å’¨è¯¢ç¼–å†™äººå‘˜. by Tim 2013.11.23
         /// </summary>
-        /// <param name="hWnd">Ö¸¶¨´°¿Ú¾ä±ú</param>
-        /// <returns>¿Í»§ÇøÏà¶ÔÓÚ´°¿Ú×ø±êÏµµÄ×ø±êºÍ´óĞ¡</returns>
+        /// <param name="hWnd">æŒ‡å®šçª—å£å¥æŸ„</param>
+        /// <returns>å®¢æˆ·åŒºç›¸å¯¹äºçª—å£åæ ‡ç³»çš„åæ ‡å’Œå¤§å°</returns>
         public static NativeMethods.RECT GetClientRect(IntPtr hWnd)
         {
-            NativeMethods.RECT wndRect = new NativeMethods.RECT();//´°¿ÚÏà¶ÔÓÚÆÁÄ»µÄ×ø±êºÍ´óĞ¡
-            NativeMethods.RECT clientRect = new NativeMethods.RECT();//ÒÔ0,0¿ªÊ¼µÄ¿Í»§Çø×ø±êºÍ´óĞ¡
+            NativeMethods.RECT wndRect = new NativeMethods.RECT();//çª—å£ç›¸å¯¹äºå±å¹•çš„åæ ‡å’Œå¤§å°
+            NativeMethods.RECT clientRect = new NativeMethods.RECT();//ä»¥0,0å¼€å§‹çš„å®¢æˆ·åŒºåæ ‡å’Œå¤§å°
 
-            UnsafeNativeMethods.GetWindowRect(hWnd, ref wndRect);//´°¿Ú
-            UnsafeNativeMethods.GetClientRect(hWnd, ref clientRect);//¿Í»§Çø
-            UnsafeNativeMethods.MapWindowPoints(hWnd, NativeMethods.HWND_DESKTOP, ref clientRect, 2);//¿Í»§ÇøÓ³Éäµ½ÆÁÄ»
+            UnsafeNativeMethods.GetWindowRect(hWnd, ref wndRect);//çª—å£
+            UnsafeNativeMethods.GetClientRect(hWnd, ref clientRect);//å®¢æˆ·åŒº
+            UnsafeNativeMethods.MapWindowPoints(hWnd, NativeMethods.HWND_DESKTOP, ref clientRect, 2);//å®¢æˆ·åŒºæ˜ å°„åˆ°å±å¹•
 
-            //Æ«ÒÆ
+            //åç§»
             clientRect.left -= wndRect.left;
             clientRect.top -= wndRect.top;
             clientRect.right -= wndRect.left;
             clientRect.bottom -= wndRect.top;
 
-            //·µ»Ø
+            //è¿”å›
             return clientRect;
         }
 
         /// <summary>
-        /// ÉÁË¸Ö¸¶¨´°¿Ú¡£
+        /// é—ªçƒæŒ‡å®šçª—å£ã€‚
         /// </summary>
-        /// <param name="hWnd">Ö¸¶¨´°¿Ú¾ä±ú¡£</param>
-        /// <param name="count">ÉÁË¸´ÎÊı¡£</param>
-        /// <returns>·µ»ØÉÁË¸Ç°´°¿ÚÊÇ·ñÒÑ±»¼¤»î¡£</returns>
+        /// <param name="hWnd">æŒ‡å®šçª—å£å¥æŸ„ã€‚</param>
+        /// <param name="count">é—ªçƒæ¬¡æ•°ã€‚</param>
+        /// <returns>è¿”å›é—ªçƒå‰çª—å£æ˜¯å¦å·²è¢«æ¿€æ´»ã€‚</returns>
         public static bool FlashWindow(IntPtr hWnd, int count)
         {
             NativeMethods.FLASHWINFO fwi = new NativeMethods.FLASHWINFO();
@@ -302,13 +302,13 @@ namespace Microsoft.Win32
         }
 
 
-        #region À©Õ¹
+        #region æ‰©å±•
 
         /// <summary>
-        /// ½«´°¿ÚÖÃ¶¥
+        /// å°†çª—å£ç½®é¡¶
         /// </summary>
-        /// <param name="lpClassName">´°¿ÚÀàÃû</param>
-        /// <param name="lpWindowName">´°¿Ú±êÌâ</param>
+        /// <param name="lpClassName">çª—å£ç±»å</param>
+        /// <param name="lpWindowName">çª—å£æ ‡é¢˜</param>
         public static void BringToFront(string lpClassName, string lpWindowName)
         {
             IntPtr hWnd = UnsafeNativeMethods.FindWindow(lpClassName, lpWindowName);
@@ -317,10 +317,10 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ½«´°¿ÚÖÃµ×
+        /// å°†çª—å£ç½®åº•
         /// </summary>
-        /// <param name="lpClassName">´°¿ÚÀàÃû</param>
-        /// <param name="lpWindowName">´°¿Ú±êÌâ</param>
+        /// <param name="lpClassName">çª—å£ç±»å</param>
+        /// <param name="lpWindowName">çª—å£æ ‡é¢˜</param>
         public static void SendToBack(string lpClassName, string lpWindowName)
         {
             IntPtr hWnd = UnsafeNativeMethods.FindWindow(lpClassName, lpWindowName);
@@ -329,11 +329,11 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ¿ç½ø³Ì,ÏòÖ¸¶¨´°¿Ú·¢ËÍWM_COPYDATAÏûÏ¢
+        /// è·¨è¿›ç¨‹,å‘æŒ‡å®šçª—å£å‘é€WM_COPYDATAæ¶ˆæ¯
         /// </summary>
-        /// <param name="lpWindowName">´°¿Ú±êÌâ</param>
-        /// <param name="flag">Çø·Ö±ê¼Ç</param>
-        /// <param name="data">Òª·¢ËÍµÄ×Ö·û´®Êı¾İ</param>
+        /// <param name="lpWindowName">çª—å£æ ‡é¢˜</param>
+        /// <param name="flag">åŒºåˆ†æ ‡è®°</param>
+        /// <param name="data">è¦å‘é€çš„å­—ç¬¦ä¸²æ•°æ®</param>
         public static void SendCopyData(string lpWindowName, int flag, string data)
         {
             IntPtr hWnd = UnsafeNativeMethods.FindWindow(null, lpWindowName);
@@ -349,9 +349,9 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ÏòÖ¸¶¨±êÌâµÄ´°¿Ú·¢ËÍWM_CLOSEÏûÏ¢
+        /// å‘æŒ‡å®šæ ‡é¢˜çš„çª—å£å‘é€WM_CLOSEæ¶ˆæ¯
         /// </summary>
-        /// <param name="lpWindowName">´°¿Ú±êÌâ</param>
+        /// <param name="lpWindowName">çª—å£æ ‡é¢˜</param>
         public static void CloseWindow(string lpWindowName)
         {
             IntPtr hWnd = UnsafeNativeMethods.FindWindow(null, lpWindowName);
@@ -362,10 +362,10 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ÉèÖÃ´°¿ÚÏÔÊ¾×´Ì¬
+        /// è®¾ç½®çª—å£æ˜¾ç¤ºçŠ¶æ€
         /// </summary>
-        /// <param name="lpWindowName">´°¿Ú±êÌâ</param>
-        /// <param name="nCmdShow">ÏÔÊ¾Ö¸Áî</param>
+        /// <param name="lpWindowName">çª—å£æ ‡é¢˜</param>
+        /// <param name="nCmdShow">æ˜¾ç¤ºæŒ‡ä»¤</param>
         public static void ShowWindow(string lpWindowName, int nCmdShow)
         {
             IntPtr hWnd = UnsafeNativeMethods.FindWindow(null, lpWindowName);
@@ -376,9 +376,9 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ÉèÖÃ¿Ø¼şTopMost(Ê¹´°¿Ú³ÉÎª¡°TopMost¡±ÀàĞÍµÄ´°¿Ú£¬ÕâÖÖÀàĞÍµÄ´°¿Ú×ÜÊÇÔÚÆäËü´°¿ÚµÄÇ°Ãæ)
+        /// è®¾ç½®æ§ä»¶TopMost(ä½¿çª—å£æˆä¸ºâ€œTopMostâ€ç±»å‹çš„çª—å£ï¼Œè¿™ç§ç±»å‹çš„çª—å£æ€»æ˜¯åœ¨å…¶å®ƒçª—å£çš„å‰é¢)
         /// </summary>
-        /// <param name="hWnd">ÒªÉèÖÃµÄ´°¿Ú</param>
+        /// <param name="hWnd">è¦è®¾ç½®çš„çª—å£</param>
         public static void SetTopMost(IntPtr hWnd)
         {
             try
@@ -391,9 +391,9 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ÉèÖÃ¿Ø¼şNoTopMost(½«´°¿Ú·ÅÔÚËùÓĞ¡°TopMost¡±ÀàĞÍ´°¿ÚµÄºóÃæ,ÆäËüÀàĞÍ´°¿ÚµÄÇ°Ãæ)
+        /// è®¾ç½®æ§ä»¶NoTopMost(å°†çª—å£æ”¾åœ¨æ‰€æœ‰â€œTopMostâ€ç±»å‹çª—å£çš„åé¢,å…¶å®ƒç±»å‹çª—å£çš„å‰é¢)
         /// </summary>
-        /// <param name="hWnd">ÒªÉèÖÃµÄ´°¿Ú</param>
+        /// <param name="hWnd">è¦è®¾ç½®çš„çª—å£</param>
         public static void SetNoTopMost(IntPtr hWnd)
         {
             try
@@ -406,7 +406,7 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ÉèÖÃ´°¿ÚµÄÓµÓĞ´°¿Ú,¿ÉÒÔ¿ç½ø³Ì
+        /// è®¾ç½®çª—å£çš„æ‹¥æœ‰çª—å£,å¯ä»¥è·¨è¿›ç¨‹
         /// </summary>
         /// <param name="child"></param>
         /// <param name="lpParentWindowName"></param>
@@ -418,7 +418,7 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ÉèÖÃ´°¿ÚµÄÓµÓĞ´°¿Ú,¿ÉÒÔ¿ç½ø³Ì
+        /// è®¾ç½®çª—å£çš„æ‹¥æœ‰çª—å£,å¯ä»¥è·¨è¿›ç¨‹
         /// </summary>
         /// <param name="lpChildWindowName"></param>
         /// <param name="parent"></param>
@@ -430,10 +430,10 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ¿ç½ø³Ì,ÏòÖ¸¶¨´°¿Ú·¢ËÍÖ¸¶¨ÏûÏ¢,Á¢¼´·µ»Ø
+        /// è·¨è¿›ç¨‹,å‘æŒ‡å®šçª—å£å‘é€æŒ‡å®šæ¶ˆæ¯,ç«‹å³è¿”å›
         /// </summary>
-        /// <param name="lpWindowName">´°¿Ú±êÌâ</param>
-        /// <param name="msg">ÏûÏ¢</param>
+        /// <param name="lpWindowName">çª—å£æ ‡é¢˜</param>
+        /// <param name="msg">æ¶ˆæ¯</param>
         /// <param name="lParam">lParam</param>
         public static void PostMessage(string lpWindowName, int msg, int lParam)
         {
@@ -445,10 +445,10 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ¿ç½ø³Ì,ÏòÖ¸¶¨´°¿Ú·¢ËÍÖ¸¶¨ÏûÏ¢,Á¢¼´·µ»Ø
+        /// è·¨è¿›ç¨‹,å‘æŒ‡å®šçª—å£å‘é€æŒ‡å®šæ¶ˆæ¯,ç«‹å³è¿”å›
         /// </summary>
-        /// <param name="lpWindowName">´°¿Ú±êÌâ</param>
-        /// <param name="msg">ÏûÏ¢</param>
+        /// <param name="lpWindowName">çª—å£æ ‡é¢˜</param>
+        /// <param name="msg">æ¶ˆæ¯</param>
         /// <param name="wParam">wParm</param>
         /// <param name="lParam">lParm</param>
         public static void PostMessage(string lpWindowName, int msg, int wParam, int lParam)
@@ -461,10 +461,10 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ¿ç½ø³Ì,ÏòÖ¸¶¨´°¿Ú·¢ËÍÖ¸¶¨ÏûÏ¢,Á¢¼´·µ»Ø
+        /// è·¨è¿›ç¨‹,å‘æŒ‡å®šçª—å£å‘é€æŒ‡å®šæ¶ˆæ¯,ç«‹å³è¿”å›
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú</param>
-        /// <param name="msg">ÏûÏ¢</param>
+        /// <param name="hWnd">çª—å£å¥æŸ„</param>
+        /// <param name="msg">æ¶ˆæ¯</param>
         /// <param name="lParam">lParam</param>
         public static void PostMessage(IntPtr hWnd, int msg, int lParam)
         {
@@ -475,10 +475,10 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ¿ç½ø³Ì,ÏòÖ¸¶¨´°¿Ú·¢ËÍÖ¸¶¨ÏûÏ¢,Á¢¼´·µ»Ø
+        /// è·¨è¿›ç¨‹,å‘æŒ‡å®šçª—å£å‘é€æŒ‡å®šæ¶ˆæ¯,ç«‹å³è¿”å›
         /// </summary>
-        /// <param name="hWnd">´°¿Ú¾ä±ú</param>
-        /// <param name="msg">ÏûÏ¢</param>
+        /// <param name="hWnd">çª—å£å¥æŸ„</param>
+        /// <param name="msg">æ¶ˆæ¯</param>
         /// <param name="wParam">wParam</param>
         /// <param name="lParam">lParam</param>
         public static void PostMessage(IntPtr hWnd, int msg, int wParam, int lParam)
@@ -492,29 +492,29 @@ namespace Microsoft.Win32
         #endregion
 
 
-        #region ´°¿Ú
+        #region çª—å£
 
         /// <summary>
-        /// ´Ó lParam ÌáÈ¡×ø±ê
+        /// ä» lParam æå–åæ ‡
         /// </summary>
-        /// <param name="lParam">ÏûÏ¢ÖĞµÄ lParam ²ÎÊı</param>
-        /// <returns>Êó±êÏà¶Ô´°¿Ú×ø±ê</returns>
+        /// <param name="lParam">æ¶ˆæ¯ä¸­çš„ lParam å‚æ•°</param>
+        /// <returns>é¼ æ ‡ç›¸å¯¹çª—å£åæ ‡</returns>
         public static Point GetMousePosition(IntPtr lParam)
         {
             return new Point(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
         }
         /// <summary>
-        /// »ñÈ¡¸Ã¿Ø¼şµÄÓÒÏÂ½ÇÏà¶ÔÓÚÆäÈİÆ÷µÄ×óÉÏ½ÇµÄ×ø±ê¡£
+        /// è·å–è¯¥æ§ä»¶çš„å³ä¸‹è§’ç›¸å¯¹äºå…¶å®¹å™¨çš„å·¦ä¸Šè§’çš„åæ ‡ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>System.Drawing.Point£¬Ëü±íÊ¾¿Ø¼şµÄÓÒÏÂ½ÇÏà¶ÔÓÚÆäÈİÆ÷µÄ×óÉÏ½Ç¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>System.Drawing.Pointï¼Œå®ƒè¡¨ç¤ºæ§ä»¶çš„å³ä¸‹è§’ç›¸å¯¹äºå…¶å®¹å™¨çš„å·¦ä¸Šè§’ã€‚</returns>
         public static Point GetBottomRight(IntPtr hWnd)
         {
             NativeMethods.RECT lpRect = new NativeMethods.RECT();
             UnsafeNativeMethods.GetWindowRect(hWnd, ref lpRect);
             NativeMethods.POINT pt = new NativeMethods.POINT(lpRect.bottom, lpRect.right);
 
-            //¸¸´°¿Ú²»Îª¿Õ×ª»»×ø±ê
+            //çˆ¶çª—å£ä¸ä¸ºç©ºè½¬æ¢åæ ‡
             IntPtr hWndParent = GetParent(hWnd);
             if (hWndParent != IntPtr.Zero)
                 UnsafeNativeMethods.MapWindowPoints(NativeMethods.HWND_DESKTOP, hWndParent, ref pt, 1);
@@ -522,74 +522,74 @@ namespace Microsoft.Win32
             return new Point(pt.x, pt.y);
         }
         /// <summary>
-        /// »ñÈ¡Ò»¸öÖµ£¬¸ÃÖµÖ¸Ê¾ÊÇ·ñ½«¿Ø¼şÏÔÊ¾Îª¶¥¼¶´°¿Ú¡£
+        /// è·å–ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ˜¯å¦å°†æ§ä»¶æ˜¾ç¤ºä¸ºé¡¶çº§çª—å£ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Èç¹ûÎª true£¬Ôò½«¿Ø¼şÏÔÊ¾Îª¶¥¼¶´°¿Ú£»·ñÔò£¬Îª false¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>å¦‚æœä¸º trueï¼Œåˆ™å°†æ§ä»¶æ˜¾ç¤ºä¸ºé¡¶çº§çª—å£ï¼›å¦åˆ™ï¼Œä¸º falseã€‚</returns>
         public static bool GetTopLevel(IntPtr hWnd)
         {
             int dwStyle = UnsafeNativeMethods.GetWindowLong(hWnd, NativeMethods.GWL_STYLE);
             return ((dwStyle & NativeMethods.WS_CHILD) == 0);
         }
         /// <summary>
-        /// »ñÈ¡Ò»¸öÖµ£¬¸ÃÖµÖ¸Ê¾¿Ø¼şÊÇ·ñÓĞÓëËü¹ØÁªµÄ¾ä±ú¡£
+        /// è·å–ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ§ä»¶æ˜¯å¦æœ‰ä¸å®ƒå…³è”çš„å¥æŸ„ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Èç¹ûÒÑ¾­Îª¿Ø¼ş·ÖÅäÁË¾ä±ú£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>å¦‚æœå·²ç»ä¸ºæ§ä»¶åˆ†é…äº†å¥æŸ„ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         public static bool GetIsHandleCreated(IntPtr hWnd)
         {
             return (hWnd != IntPtr.Zero);
         }
         /// <summary>
-        /// »ñÈ¡Ò»¸öÖµ£¬¸ÃÖµÖ¸Ê¾ÊÇ·ñÏÔÊ¾¸Ã¿Ø¼ş¼°ÆäËùÓĞ¸¸¿Ø¼ş¡£
+        /// è·å–ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ˜¯å¦æ˜¾ç¤ºè¯¥æ§ä»¶åŠå…¶æ‰€æœ‰çˆ¶æ§ä»¶ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Èç¹ûÏÔÊ¾¸Ã¿Ø¼ş¼°ÆäËùÓĞ¸¸¿Ø¼ş£¬ÔòÎª true£»·ñÔòÎª false¡£Ä¬ÈÏÎª true¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>å¦‚æœæ˜¾ç¤ºè¯¥æ§ä»¶åŠå…¶æ‰€æœ‰çˆ¶æ§ä»¶ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚é»˜è®¤ä¸º trueã€‚</returns>
         public static bool GetVisible(IntPtr hWnd)
         {
             return UnsafeNativeMethods.IsWindowVisible(hWnd);
         }
         /// <summary>
-        /// ÉèÖÃÒ»¸öÖµ£¬¸ÃÖµÖ¸Ê¾ÊÇ·ñÏÔÊ¾¸Ã¿Ø¼ş¼°ÆäËùÓĞ¸¸¿Ø¼ş¡£
+        /// è®¾ç½®ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ˜¯å¦æ˜¾ç¤ºè¯¥æ§ä»¶åŠå…¶æ‰€æœ‰çˆ¶æ§ä»¶ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">Èç¹ûÏÔÊ¾¸Ã¿Ø¼ş¼°ÆäËùÓĞ¸¸¿Ø¼ş£¬ÔòÎª true£»·ñÔòÎª false¡£Ä¬ÈÏÎª true¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">å¦‚æœæ˜¾ç¤ºè¯¥æ§ä»¶åŠå…¶æ‰€æœ‰çˆ¶æ§ä»¶ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚é»˜è®¤ä¸º trueã€‚</param>
         public static void SetVisible(IntPtr hWnd, bool value)
         {
             UnsafeNativeMethods.SetWindowPos(hWnd, IntPtr.Zero, 0, 0, 0, 0, NativeMethods.SWP_NOSIZE | NativeMethods.SWP_NOMOVE | NativeMethods.SWP_NOZORDER | NativeMethods.SWP_NOACTIVATE | (value ? NativeMethods.SWP_SHOWWINDOW : NativeMethods.SWP_HIDEWINDOW));
         }
         /// <summary>
-        /// »ñÈ¡Ò»¸öÖµ£¬¸ÃÖµÖ¸Ê¾¿Ø¼şÊÇ·ñ¿ÉÒÔ¶ÔÓÃ»§½»»¥×÷³öÏìÓ¦¡£
+        /// è·å–ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ§ä»¶æ˜¯å¦å¯ä»¥å¯¹ç”¨æˆ·äº¤äº’ä½œå‡ºå“åº”ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Èç¹û¿Ø¼ş¿ÉÒÔ¶ÔÓÃ»§½»»¥×÷³öÏìÓ¦£¬ÔòÎª true£»·ñÔòÎª false¡£Ä¬ÈÏÎª true¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>å¦‚æœæ§ä»¶å¯ä»¥å¯¹ç”¨æˆ·äº¤äº’ä½œå‡ºå“åº”ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚é»˜è®¤ä¸º trueã€‚</returns>
         public static bool GetEnabled(IntPtr hWnd)
         {
             return UnsafeNativeMethods.IsWindowEnabled(hWnd);
         }
         /// <summary>
-        /// ÉèÖÃÒ»¸öÖµ£¬¸ÃÖµÖ¸Ê¾¿Ø¼şÊÇ·ñ¿ÉÒÔ¶ÔÓÃ»§½»»¥×÷³öÏìÓ¦¡£
+        /// è®¾ç½®ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ§ä»¶æ˜¯å¦å¯ä»¥å¯¹ç”¨æˆ·äº¤äº’ä½œå‡ºå“åº”ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">Èç¹û¿Ø¼ş¿ÉÒÔ¶ÔÓÃ»§½»»¥×÷³öÏìÓ¦£¬ÔòÎª true£»·ñÔòÎª false¡£Ä¬ÈÏÎª true¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">å¦‚æœæ§ä»¶å¯ä»¥å¯¹ç”¨æˆ·äº¤äº’ä½œå‡ºå“åº”ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚é»˜è®¤ä¸º trueã€‚</param>
         public static void SetEnabled(IntPtr hWnd, bool value)
         {
             UnsafeNativeMethods.EnableWindow(hWnd, value);
         }
         /// <summary>
-        /// »ñÈ¡Ò»¸öÖµ£¬¸ÃÖµÖ¸Ê¾¿Ø¼şÊÇ·ñÓĞÊäÈë½¹µã¡£
+        /// è·å–ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ§ä»¶æ˜¯å¦æœ‰è¾“å…¥ç„¦ç‚¹ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Èç¹û¿Ø¼şÓĞ½¹µã£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>å¦‚æœæ§ä»¶æœ‰ç„¦ç‚¹ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         public static bool GetFocused(IntPtr hWnd)
         {
             return (GetIsHandleCreated(hWnd) && (UnsafeNativeMethods.GetFocus() == hWnd));
         }
         /// <summary>
-        /// »ñÈ¡Ò»¸öÖµ£¬¸ÃÖµÖ¸Ê¾¿Ø¼şÊÇ·ñ¿ÉÒÔ½ÓÊÕ½¹µã¡£
+        /// è·å–ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ§ä»¶æ˜¯å¦å¯ä»¥æ¥æ”¶ç„¦ç‚¹ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Èç¹û¿Ø¼ş¿ÉÒÔ½ÓÊÕ½¹µã£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>å¦‚æœæ§ä»¶å¯ä»¥æ¥æ”¶ç„¦ç‚¹ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         public static bool GetCanFocus(IntPtr hWnd)
         {
             if (!GetIsHandleCreated(hWnd))
@@ -598,10 +598,10 @@ namespace Microsoft.Win32
             return UnsafeNativeMethods.IsWindowVisible(hWnd) && UnsafeNativeMethods.IsWindowEnabled(hWnd);
         }
         /// <summary>
-        /// »ñÈ¡Ò»¸öÖµ£¬¸ÃÖµÖ¸Ê¾¿Ø¼ş»òËüµÄÒ»¸ö×Ó¿Ø¼şµ±Ç°ÊÇ·ñÓĞÊäÈë½¹µã¡£
+        /// è·å–ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ§ä»¶æˆ–å®ƒçš„ä¸€ä¸ªå­æ§ä»¶å½“å‰æ˜¯å¦æœ‰è¾“å…¥ç„¦ç‚¹ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Èç¹û¿Ø¼ş»òËüµÄÒ»¸ö×Ó¿Ø¼şµ±Ç°ÒÑ¾­ÓĞÊäÈë½¹µã£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>å¦‚æœæ§ä»¶æˆ–å®ƒçš„ä¸€ä¸ªå­æ§ä»¶å½“å‰å·²ç»æœ‰è¾“å…¥ç„¦ç‚¹ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         public static bool GetContainsFocus(IntPtr hWnd)
         {
             if (!GetIsHandleCreated(hWnd))
@@ -614,19 +614,19 @@ namespace Microsoft.Win32
             return ((focus == hWnd) || UnsafeNativeMethods.IsChild(hWnd, focus));
         }
         /// <summary>
-        /// »ñÈ¡Ò»¸öÖµ£¬¸ÃÖµÖ¸Ê¾¿Ø¼şÊÇ·ñÒÑ²¶»ñÊó±ê¡£
+        /// è·å–ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ§ä»¶æ˜¯å¦å·²æ•è·é¼ æ ‡ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Èç¹û¿Ø¼şÒÑ²¶»ñÊó±ê£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>å¦‚æœæ§ä»¶å·²æ•è·é¼ æ ‡ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         public static bool GetCapture(IntPtr hWnd)
         {
             return (GetIsHandleCreated(hWnd) && (UnsafeNativeMethods.GetCapture() == hWnd));
         }
         /// <summary>
-        /// ÉèÖÃÒ»¸öÖµ£¬¸ÃÖµÖ¸Ê¾¿Ø¼şÊÇ·ñÒÑ²¶»ñÊó±ê¡£
+        /// è®¾ç½®ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ§ä»¶æ˜¯å¦å·²æ•è·é¼ æ ‡ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">Èç¹û¿Ø¼şÒÑ²¶»ñÊó±ê£¬ÔòÎª true£»·ñÔòÎª false¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">å¦‚æœæ§ä»¶å·²æ•è·é¼ æ ‡ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param>
         public static void SetCapture(IntPtr hWnd, bool value)
         {
             if (value)
@@ -635,17 +635,17 @@ namespace Microsoft.Win32
                 UnsafeNativeMethods.ReleaseCapture();
         }
         /// <summary>
-        /// »ñÈ¡¸Ã¿Ø¼şµÄ×óÉÏ½ÇÏà¶ÔÓÚÆäÈİÆ÷µÄ×óÉÏ½ÇµÄ×ø±ê¡£
+        /// è·å–è¯¥æ§ä»¶çš„å·¦ä¸Šè§’ç›¸å¯¹äºå…¶å®¹å™¨çš„å·¦ä¸Šè§’çš„åæ ‡ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>System.Drawing.Point£¬Ëü±íÊ¾¿Ø¼şµÄ×óÉÏ½ÇÏà¶ÔÓÚÆäÈİÆ÷µÄ×óÉÏ½Ç¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>System.Drawing.Pointï¼Œå®ƒè¡¨ç¤ºæ§ä»¶çš„å·¦ä¸Šè§’ç›¸å¯¹äºå…¶å®¹å™¨çš„å·¦ä¸Šè§’ã€‚</returns>
         public static Point GetLocation(IntPtr hWnd)
         {
             NativeMethods.RECT lpRect = new NativeMethods.RECT();
             UnsafeNativeMethods.GetWindowRect(hWnd, ref lpRect);
             NativeMethods.POINT pt = new NativeMethods.POINT(lpRect.left, lpRect.top);
 
-            //¸¸´°¿Ú²»Îª¿Õ×ª»»×ø±ê
+            //çˆ¶çª—å£ä¸ä¸ºç©ºè½¬æ¢åæ ‡
             IntPtr hWndParent = GetParent(hWnd);
             if (hWndParent != IntPtr.Zero)
                 UnsafeNativeMethods.MapWindowPoints(NativeMethods.HWND_DESKTOP, hWndParent, ref pt, 1);
@@ -653,19 +653,19 @@ namespace Microsoft.Win32
             return new Point(pt.x, pt.y);
         }
         /// <summary>
-        /// ÉèÖÃ¸Ã¿Ø¼şµÄ×óÉÏ½ÇÏà¶ÔÓÚÆäÈİÆ÷µÄ×óÉÏ½ÇµÄ×ø±ê¡£
+        /// è®¾ç½®è¯¥æ§ä»¶çš„å·¦ä¸Šè§’ç›¸å¯¹äºå…¶å®¹å™¨çš„å·¦ä¸Šè§’çš„åæ ‡ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">System.Drawing.Point£¬Ëü±íÊ¾¿Ø¼şµÄ×óÉÏ½ÇÏà¶ÔÓÚÆäÈİÆ÷µÄ×óÉÏ½Ç¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">System.Drawing.Pointï¼Œå®ƒè¡¨ç¤ºæ§ä»¶çš„å·¦ä¸Šè§’ç›¸å¯¹äºå…¶å®¹å™¨çš„å·¦ä¸Šè§’ã€‚</param>
         public static void SetLocation(IntPtr hWnd, Point value)
         {
             UnsafeNativeMethods.SetWindowPos(hWnd, IntPtr.Zero, value.X, value.Y, 0, 0, NativeMethods.SWP_NOSIZE | NativeMethods.SWP_NOZORDER | NativeMethods.SWP_NOACTIVATE);
         }
         /// <summary>
-        /// »ñÈ¡¿Ø¼şµÄ¸ß¶ÈºÍ¿í¶È¡£
+        /// è·å–æ§ä»¶çš„é«˜åº¦å’Œå®½åº¦ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>System.Drawing.Size£¬±íÊ¾¿Ø¼şµÄ¸ß¶ÈºÍ¿í¶È£¨ÒÔÏñËØÎªµ¥Î»£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>System.Drawing.Sizeï¼Œè¡¨ç¤ºæ§ä»¶çš„é«˜åº¦å’Œå®½åº¦ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</returns>
         public static Size GetSize(IntPtr hWnd)
         {
             NativeMethods.RECT lpRect = new NativeMethods.RECT();
@@ -673,25 +673,25 @@ namespace Microsoft.Win32
             return lpRect.Size;
         }
         /// <summary>
-        /// ÉèÖÃ¿Ø¼şµÄ¸ß¶ÈºÍ¿í¶È¡£
+        /// è®¾ç½®æ§ä»¶çš„é«˜åº¦å’Œå®½åº¦ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">System.Drawing.Size£¬±íÊ¾¿Ø¼şµÄ¸ß¶ÈºÍ¿í¶È£¨ÒÔÏñËØÎªµ¥Î»£©¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">System.Drawing.Sizeï¼Œè¡¨ç¤ºæ§ä»¶çš„é«˜åº¦å’Œå®½åº¦ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</param>
         public static void SetSize(IntPtr hWnd, Size value)
         {
             UnsafeNativeMethods.SetWindowPos(hWnd, IntPtr.Zero, 0, 0, value.Width, value.Height, NativeMethods.SWP_NOMOVE | NativeMethods.SWP_NOZORDER | NativeMethods.SWP_NOACTIVATE);
         }
         /// <summary>
-        /// »ñÈ¡¿Ø¼ş£¨°üÀ¨Æä·Ç¹¤×÷ÇøÔªËØ£©Ïà¶ÔÓÚÆä¸¸¿Ø¼şµÄ´óĞ¡ºÍÎ»ÖÃ£¨ÒÔÏñËØÎªµ¥Î»£©¡£
+        /// è·å–æ§ä»¶ï¼ˆåŒ…æ‹¬å…¶éå·¥ä½œåŒºå…ƒç´ ï¼‰ç›¸å¯¹äºå…¶çˆ¶æ§ä»¶çš„å¤§å°å’Œä½ç½®ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Ïà¶ÔÓÚ¸¸¿Ø¼şµÄ System.Drawing.Rectangle£¬±íÊ¾¿Ø¼ş£¨°üÀ¨Æä·Ç¹¤×÷ÇøÔªËØ£©µÄ´óĞ¡ºÍÎ»ÖÃ£¨ÒÔÏñËØÎªµ¥Î»£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>ç›¸å¯¹äºçˆ¶æ§ä»¶çš„ System.Drawing.Rectangleï¼Œè¡¨ç¤ºæ§ä»¶ï¼ˆåŒ…æ‹¬å…¶éå·¥ä½œåŒºå…ƒç´ ï¼‰çš„å¤§å°å’Œä½ç½®ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</returns>
         public static Rectangle GetBounds(IntPtr hWnd)
         {
             NativeMethods.RECT lpRect = new NativeMethods.RECT();
             UnsafeNativeMethods.GetWindowRect(hWnd, ref lpRect);
 
-            //¸¸´°¿Ú²»Îª¿Õ×ª»»×ø±ê
+            //çˆ¶çª—å£ä¸ä¸ºç©ºè½¬æ¢åæ ‡
             IntPtr hWndParent = GetParent(hWnd);
             if (hWndParent != IntPtr.Zero)
                 UnsafeNativeMethods.MapWindowPoints(NativeMethods.HWND_DESKTOP, hWndParent, ref lpRect, 2);
@@ -699,28 +699,28 @@ namespace Microsoft.Win32
             return lpRect.ToRectangle();
         }
         /// <summary>
-        /// ÉèÖÃ¿Ø¼ş£¨°üÀ¨Æä·Ç¹¤×÷ÇøÔªËØ£©Ïà¶ÔÓÚÆä¸¸¿Ø¼şµÄ´óĞ¡ºÍÎ»ÖÃ£¨ÒÔÏñËØÎªµ¥Î»£©¡£
+        /// è®¾ç½®æ§ä»¶ï¼ˆåŒ…æ‹¬å…¶éå·¥ä½œåŒºå…ƒç´ ï¼‰ç›¸å¯¹äºå…¶çˆ¶æ§ä»¶çš„å¤§å°å’Œä½ç½®ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">Ïà¶ÔÓÚ¸¸¿Ø¼şµÄ System.Drawing.Rectangle£¬±íÊ¾¿Ø¼ş£¨°üÀ¨Æä·Ç¹¤×÷ÇøÔªËØ£©µÄ´óĞ¡ºÍÎ»ÖÃ£¨ÒÔÏñËØÎªµ¥Î»£©¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">ç›¸å¯¹äºçˆ¶æ§ä»¶çš„ System.Drawing.Rectangleï¼Œè¡¨ç¤ºæ§ä»¶ï¼ˆåŒ…æ‹¬å…¶éå·¥ä½œåŒºå…ƒç´ ï¼‰çš„å¤§å°å’Œä½ç½®ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</param>
         public static void SetBounds(IntPtr hWnd, Rectangle value)
         {
             UnsafeNativeMethods.SetWindowPos(hWnd, IntPtr.Zero, value.X, value.Y, value.Width, value.Height, NativeMethods.SWP_NOZORDER | NativeMethods.SWP_NOACTIVATE);
         }
         /// <summary>
-        /// »ñÈ¡¿Ø¼ş×ó±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷Çø×ó±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£
+        /// è·å–æ§ä»¶å·¦è¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºå·¦è¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>System.Int32 ±íÊ¾¿Ø¼ş×ó±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷Çø×ó±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>System.Int32 è¡¨ç¤ºæ§ä»¶å·¦è¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºå·¦è¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</returns>
         public static int GetLeft(IntPtr hWnd)
         {
             return GetLocation(hWnd).X;
         }
         /// <summary>
-        /// ÉèÖÃ¿Ø¼ş×ó±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷Çø×ó±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£
+        /// è®¾ç½®æ§ä»¶å·¦è¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºå·¦è¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">System.Int32 ±íÊ¾¿Ø¼ş×ó±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷Çø×ó±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">System.Int32 è¡¨ç¤ºæ§ä»¶å·¦è¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºå·¦è¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</param>
         public static void SetLeft(IntPtr hWnd, int value)
         {
             Point pt = GetLocation(hWnd);
@@ -728,19 +728,19 @@ namespace Microsoft.Win32
             SetLocation(hWnd, pt);
         }
         /// <summary>
-        /// »ñÈ¡¿Ø¼şÉÏ±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷ÇøÉÏ±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£
+        /// è·å–æ§ä»¶ä¸Šè¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºä¸Šè¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>System.Int32 ±íÊ¾¿Ø¼şÏÂ±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷ÇøÉÏ±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>System.Int32 è¡¨ç¤ºæ§ä»¶ä¸‹è¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºä¸Šè¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</returns>
         public static int GetTop(IntPtr hWnd)
         {
             return GetLocation(hWnd).Y;
         }
         /// <summary>
-        /// ÉèÖÃ¿Ø¼şÉÏ±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷ÇøÉÏ±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£
+        /// è®¾ç½®æ§ä»¶ä¸Šè¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºä¸Šè¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">System.Int32 ±íÊ¾¿Ø¼şÉÏ±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷ÇøÉÏ±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">System.Int32 è¡¨ç¤ºæ§ä»¶ä¸Šè¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºä¸Šè¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</param>
         public static void SetTop(IntPtr hWnd, int value)
         {
             Point pt = GetLocation(hWnd);
@@ -748,37 +748,37 @@ namespace Microsoft.Win32
             SetLocation(hWnd, pt);
         }
         /// <summary>
-        /// »ñÈ¡¿Ø¼şÓÒ±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷Çø×ó±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£
+        /// è·å–æ§ä»¶å³è¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºå·¦è¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>System.Int32 ±íÊ¾¿Ø¼şÓÒ±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷Çø×ó±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>System.Int32 è¡¨ç¤ºæ§ä»¶å³è¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºå·¦è¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</returns>
         public static int GetRight(IntPtr hWnd)
         {
             return GetBottomRight(hWnd).X;
         }
         /// <summary>
-        /// »ñÈ¡¿Ø¼şÏÂ±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷ÇøÉÏ±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£
+        /// è·å–æ§ä»¶ä¸‹è¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºä¸Šè¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>System.Int32 ±íÊ¾¿Ø¼şÏÂ±ßÔµÓëÆäÈİÆ÷µÄ¹¤×÷ÇøÉÏ±ßÔµÖ®¼äµÄ¾àÀë£¨ÒÔÏñËØÎªµ¥Î»£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>System.Int32 è¡¨ç¤ºæ§ä»¶ä¸‹è¾¹ç¼˜ä¸å…¶å®¹å™¨çš„å·¥ä½œåŒºä¸Šè¾¹ç¼˜ä¹‹é—´çš„è·ç¦»ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</returns>
         public static int GetBottom(IntPtr hWnd)
         {
             return GetBottomRight(hWnd).Y;
         }
         /// <summary>
-        /// »ñÈ¡¿Ø¼şµÄ¿í¶È¡£
+        /// è·å–æ§ä»¶çš„å®½åº¦ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>¿Ø¼şµÄ¿í¶È£¨ÒÔÏñËØÎªµ¥Î»£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>æ§ä»¶çš„å®½åº¦ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</returns>
         public static int GetWidth(IntPtr hWnd)
         {
             return GetSize(hWnd).Width;
         }
         /// <summary>
-        /// ÉèÖÃ¿Ø¼şµÄ¿í¶È¡£
+        /// è®¾ç½®æ§ä»¶çš„å®½åº¦ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">¿Ø¼şµÄ¿í¶È£¨ÒÔÏñËØÎªµ¥Î»£©¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">æ§ä»¶çš„å®½åº¦ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</param>
         public static void SetWidth(IntPtr hWnd, int value)
         {
             Size sz = GetSize(hWnd);
@@ -786,19 +786,19 @@ namespace Microsoft.Win32
             SetSize(hWnd, sz);
         }
         /// <summary>
-        /// »ñÈ¡¿Ø¼şµÄ¸ß¶È¡£
+        /// è·å–æ§ä»¶çš„é«˜åº¦ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>¿Ø¼şµÄ¸ß¶È£¨ÒÔÏñËØÎªµ¥Î»£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>æ§ä»¶çš„é«˜åº¦ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</returns>
         public static int GetHeight(IntPtr hWnd)
         {
             return GetSize(hWnd).Height;
         }
         /// <summary>
-        /// ÉèÖÃ¿Ø¼şµÄ¸ß¶È¡£
+        /// è®¾ç½®æ§ä»¶çš„é«˜åº¦ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">¿Ø¼şµÄ¸ß¶È£¨ÒÔÏñËØÎªµ¥Î»£©¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">æ§ä»¶çš„é«˜åº¦ï¼ˆä»¥åƒç´ ä¸ºå•ä½ï¼‰ã€‚</param>
         public static void SetHeight(IntPtr hWnd, int value)
         {
             Size sz = GetSize(hWnd);
@@ -806,10 +806,10 @@ namespace Microsoft.Win32
             SetSize(hWnd, sz);
         }
         /// <summary>
-        /// »ñÈ¡¿Ø¼şµÄ¹¤×÷ÇøµÄ¸ß¶ÈºÍ¿í¶È¡£
+        /// è·å–æ§ä»¶çš„å·¥ä½œåŒºçš„é«˜åº¦å’Œå®½åº¦ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Ò»¸ö System.Drawing.Size£¬±íÊ¾¿Ø¼şµÄ¹¤×÷ÇøµÄÎ¬Êı¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>ä¸€ä¸ª System.Drawing.Sizeï¼Œè¡¨ç¤ºæ§ä»¶çš„å·¥ä½œåŒºçš„ç»´æ•°ã€‚</returns>
         public static Size GetClientSize(IntPtr hWnd)
         {
             NativeMethods.RECT lpRect = new NativeMethods.RECT();
@@ -817,10 +817,10 @@ namespace Microsoft.Win32
             return lpRect.Size;
         }
         /// <summary>
-        /// ÉèÖÃ¿Ø¼şµÄ¹¤×÷ÇøµÄ¸ß¶ÈºÍ¿í¶È¡£
+        /// è®¾ç½®æ§ä»¶çš„å·¥ä½œåŒºçš„é«˜åº¦å’Œå®½åº¦ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">Ò»¸ö System.Drawing.Size£¬±íÊ¾¿Ø¼şµÄ¹¤×÷ÇøµÄÎ¬Êı¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">ä¸€ä¸ª System.Drawing.Sizeï¼Œè¡¨ç¤ºæ§ä»¶çš„å·¥ä½œåŒºçš„ç»´æ•°ã€‚</param>
         public static void SetClientSize(IntPtr hWnd, Size value)
         {
             NativeMethods.RECT lpRect = new NativeMethods.RECT(0, 0, value.Width, value.Height);
@@ -830,10 +830,10 @@ namespace Microsoft.Win32
             SetSize(hWnd, lpRect.Size);
         }
         /// <summary>
-        /// »ñÈ¡±íÊ¾¿Ø¼şµÄ¹¤×÷ÇøµÄ¾ØĞÎ¡£
+        /// è·å–è¡¨ç¤ºæ§ä»¶çš„å·¥ä½œåŒºçš„çŸ©å½¢ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Ò»¸ö System.Drawing.Rectangle£¬Ëü±íÊ¾¿Ø¼şµÄ¹¤×÷Çø¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>ä¸€ä¸ª System.Drawing.Rectangleï¼Œå®ƒè¡¨ç¤ºæ§ä»¶çš„å·¥ä½œåŒºã€‚</returns>
         public static Rectangle GetClientRectangle(IntPtr hWnd)
         {
             NativeMethods.RECT lpRect = new NativeMethods.RECT();
@@ -841,10 +841,10 @@ namespace Microsoft.Win32
             return lpRect.ToRectangle();
         }
         /// <summary>
-        /// »ñÈ¡Óë´Ë¿Ø¼ş¹ØÁªµÄÎÄ±¾¡£
+        /// è·å–ä¸æ­¤æ§ä»¶å…³è”çš„æ–‡æœ¬ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Óë¸Ã¿Ø¼ş¹ØÁªµÄÎÄ±¾¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>ä¸è¯¥æ§ä»¶å…³è”çš„æ–‡æœ¬ã€‚</returns>
         public static string GetText(IntPtr hWnd)
         {
             if (!GetIsHandleCreated(hWnd))
@@ -858,10 +858,10 @@ namespace Microsoft.Win32
             return lpString.ToString();
         }
         /// <summary>
-        /// ÉèÖÃÓë´Ë¿Ø¼ş¹ØÁªµÄÎÄ±¾¡£
+        /// è®¾ç½®ä¸æ­¤æ§ä»¶å…³è”çš„æ–‡æœ¬ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="value">Óë¸Ã¿Ø¼ş¹ØÁªµÄÎÄ±¾¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="value">ä¸è¯¥æ§ä»¶å…³è”çš„æ–‡æœ¬ã€‚</param>
         public static void SetText(IntPtr hWnd, string value)
         {
             if (GetIsHandleCreated(hWnd))
@@ -871,50 +871,50 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
-        /// ½«Óë´Ë¿Ø¼ş¹ØÁªµÄÎÄ±¾ÖØÖÃÎªÆäÄ¬ÈÏÖµ¡£
+        /// å°†ä¸æ­¤æ§ä»¶å…³è”çš„æ–‡æœ¬é‡ç½®ä¸ºå…¶é»˜è®¤å€¼ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
         public static void ResetText(IntPtr hWnd)
         {
             SetText(hWnd, string.Empty);
         }
         /// <summary>
-        /// ÏòÓÃ»§ÏÔÊ¾¿Ø¼ş¡£
+        /// å‘ç”¨æˆ·æ˜¾ç¤ºæ§ä»¶ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
         public static void Show(IntPtr hWnd)
         {
             SetVisible(hWnd, true);
         }
         /// <summary>
-        /// ¶ÔÓÃ»§Òş²Ø¿Ø¼ş¡£
+        /// å¯¹ç”¨æˆ·éšè—æ§ä»¶ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
         public static void Hide(IntPtr hWnd)
         {
             SetVisible(hWnd, false);
         }
         /// <summary>
-        /// ½«¿Ø¼ş´øµ½ Z Ë³ĞòµÄÇ°Ãæ¡£
+        /// å°†æ§ä»¶å¸¦åˆ° Z é¡ºåºçš„å‰é¢ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
         public static void BringToFront(IntPtr hWnd)
         {
             UnsafeNativeMethods.SetWindowPos(hWnd, NativeMethods.HWND_TOP, 0, 0, 0, 0, NativeMethods.SWP_NOSIZE | NativeMethods.SWP_NOMOVE);
         }
         /// <summary>
-        /// ½«¿Ø¼ş·¢ËÍµ½ Z Ë³ĞòµÄºóÃæ¡£
+        /// å°†æ§ä»¶å‘é€åˆ° Z é¡ºåºçš„åé¢ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
         public static void SendToBack(IntPtr hWnd)
         {
             UnsafeNativeMethods.SetWindowPos(hWnd, NativeMethods.HWND_BOTTOM, 0, 0, 0, 0, NativeMethods.SWP_NOSIZE | NativeMethods.SWP_NOMOVE);
         }
         /// <summary>
-        /// Îª¿Ø¼şÉèÖÃÊäÈë½¹µã¡£
+        /// ä¸ºæ§ä»¶è®¾ç½®è¾“å…¥ç„¦ç‚¹ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>Èç¹ûÊäÈë½¹µãÇëÇó³É¹¦£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>å¦‚æœè¾“å…¥ç„¦ç‚¹è¯·æ±‚æˆåŠŸï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         public static bool Focus(IntPtr hWnd)
         {
             if (GetCanFocus(hWnd))
@@ -923,20 +923,20 @@ namespace Microsoft.Win32
             return GetFocused(hWnd);
         }
         /// <summary>
-        /// Îª¿Ø¼ş´´½¨ System.Drawing.Graphics¡£
+        /// ä¸ºæ§ä»¶åˆ›å»º System.Drawing.Graphicsã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <returns>¿Ø¼şµÄ System.Drawing.Graphics¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <returns>æ§ä»¶çš„ System.Drawing.Graphicsã€‚</returns>
         public static Graphics CreateGraphics(IntPtr hWnd)
         {
             return Graphics.FromHwndInternal(hWnd);
         }
         /// <summary>
-        /// ½«Ö¸¶¨ÆÁÄ»µãµÄÎ»ÖÃ¼ÆËã³É¹¤×÷Çø×ø±ê¡£
+        /// å°†æŒ‡å®šå±å¹•ç‚¹çš„ä½ç½®è®¡ç®—æˆå·¥ä½œåŒºåæ ‡ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="p">Òª×ª»»µÄÆÁÄ»×ø±ê System.Drawing.Point¡£</param>
-        /// <returns>Ò»¸ö System.Drawing.Point£¬Ëü±íÊ¾×ª»»ºóµÄ System.Drawing.Point¡¢p£¨ÒÔ¹¤×÷Çø×ø±ê±íÊ¾£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="p">è¦è½¬æ¢çš„å±å¹•åæ ‡ System.Drawing.Pointã€‚</param>
+        /// <returns>ä¸€ä¸ª System.Drawing.Pointï¼Œå®ƒè¡¨ç¤ºè½¬æ¢åçš„ System.Drawing.Pointã€pï¼ˆä»¥å·¥ä½œåŒºåæ ‡è¡¨ç¤ºï¼‰ã€‚</returns>
         public static Point PointToClient(IntPtr hWnd, Point p)
         {
             NativeMethods.POINT pt = new NativeMethods.POINT(p.X, p.Y);
@@ -944,11 +944,11 @@ namespace Microsoft.Win32
             return new Point(pt.x, pt.y);
         }
         /// <summary>
-        /// ½«Ö¸¶¨¹¤×÷ÇøµãµÄÎ»ÖÃ¼ÆËã³ÉÆÁÄ»×ø±ê¡£
+        /// å°†æŒ‡å®šå·¥ä½œåŒºç‚¹çš„ä½ç½®è®¡ç®—æˆå±å¹•åæ ‡ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="p">Òª×ª»»µÄ¹¤×÷Çø×ø±ê System.Drawing.Point¡£</param>
-        /// <returns>Ò»¸ö System.Drawing.Point£¬Ëü±íÊ¾×ª»»ºóµÄ System.Drawing.Point¡¢p£¨ÒÔÆÁÄ»×ø±ê±íÊ¾£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="p">è¦è½¬æ¢çš„å·¥ä½œåŒºåæ ‡ System.Drawing.Pointã€‚</param>
+        /// <returns>ä¸€ä¸ª System.Drawing.Pointï¼Œå®ƒè¡¨ç¤ºè½¬æ¢åçš„ System.Drawing.Pointã€pï¼ˆä»¥å±å¹•åæ ‡è¡¨ç¤ºï¼‰ã€‚</returns>
         public static Point PointToScreen(IntPtr hWnd, Point p)
         {
             NativeMethods.POINT pt = new NativeMethods.POINT(p.X, p.Y);
@@ -956,11 +956,11 @@ namespace Microsoft.Win32
             return new Point(pt.x, pt.y);
         }
         /// <summary>
-        /// ¼ÆËãÖ¸¶¨ÆÁÄ»¾ØĞÎµÄ´óĞ¡ºÍÎ»ÖÃ£¨ÒÔ¹¤×÷Çø×ø±ê±íÊ¾£©¡£
+        /// è®¡ç®—æŒ‡å®šå±å¹•çŸ©å½¢çš„å¤§å°å’Œä½ç½®ï¼ˆä»¥å·¥ä½œåŒºåæ ‡è¡¨ç¤ºï¼‰ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="r">Òª×ª»»µÄÆÁÄ»×ø±ê System.Drawing.Rectangle¡£</param>
-        /// <returns>Ò»¸ö System.Drawing.Rectangle£¬Ëü±íÊ¾×ª»»ºóµÄ System.Drawing.Rectangle¡¢r£¨ÒÔ¹¤×÷Çø×ø±ê±íÊ¾£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="r">è¦è½¬æ¢çš„å±å¹•åæ ‡ System.Drawing.Rectangleã€‚</param>
+        /// <returns>ä¸€ä¸ª System.Drawing.Rectangleï¼Œå®ƒè¡¨ç¤ºè½¬æ¢åçš„ System.Drawing.Rectangleã€rï¼ˆä»¥å·¥ä½œåŒºåæ ‡è¡¨ç¤ºï¼‰ã€‚</returns>
         public static Rectangle RectangleToClient(IntPtr hWnd, Rectangle r)
         {
             NativeMethods.RECT rect = new NativeMethods.RECT(r);
@@ -968,11 +968,11 @@ namespace Microsoft.Win32
             return rect.ToRectangle();
         }
         /// <summary>
-        /// ¼ÆËãÖ¸¶¨¹¤×÷Çø¾ØĞÎµÄ´óĞ¡ºÍÎ»ÖÃ£¨ÒÔÆÁÄ»×ø±ê±íÊ¾£©¡£
+        /// è®¡ç®—æŒ‡å®šå·¥ä½œåŒºçŸ©å½¢çš„å¤§å°å’Œä½ç½®ï¼ˆä»¥å±å¹•åæ ‡è¡¨ç¤ºï¼‰ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="r">Òª×ª»»µÄ¹¤×÷Çø×ø±ê System.Drawing.Rectangle¡£</param>
-        /// <returns>Ò»¸ö System.Drawing.Rectangle£¬Ëü±íÊ¾×ª»»ºóµÄ System.Drawing.Rectangle¡¢r£¨ÒÔÆÁÄ»×ø±ê±íÊ¾£©¡£</returns>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="r">è¦è½¬æ¢çš„å·¥ä½œåŒºåæ ‡ System.Drawing.Rectangleã€‚</param>
+        /// <returns>ä¸€ä¸ª System.Drawing.Rectangleï¼Œå®ƒè¡¨ç¤ºè½¬æ¢åçš„ System.Drawing.Rectangleã€rï¼ˆä»¥å±å¹•åæ ‡è¡¨ç¤ºï¼‰ã€‚</returns>
         public static Rectangle RectangleToScreen(IntPtr hWnd, Rectangle r)
         {
             NativeMethods.RECT rect = new NativeMethods.RECT(r);
@@ -980,56 +980,56 @@ namespace Microsoft.Win32
             return rect.ToRectangle();
         }
         /// <summary>
-        /// Ê¹¿Ø¼şµÄÕû¸öÍ¼ÃæÎŞĞ§²¢µ¼ÖÂÖØ»æ¿Ø¼ş¡£
+        /// ä½¿æ§ä»¶çš„æ•´ä¸ªå›¾é¢æ— æ•ˆå¹¶å¯¼è‡´é‡ç»˜æ§ä»¶ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
         public static void Invalidate(IntPtr hWnd)
         {
             Invalidate(hWnd, false);
         }
         /// <summary>
-        /// Ê¹¿Ø¼şµÄÖ¸¶¨ÇøÓòÎŞĞ§£¨½«ÆäÌí¼Óµ½¿Ø¼şµÄ¸üĞÂÇøÓò£¬ÏÂ´Î»æÖÆ²Ù×÷Ê±½«ÖØĞÂ»æÖÆ¸üĞÂÇøÓò£©£¬²¢Ïò¿Ø¼ş·¢ËÍ»æÖÆÏûÏ¢¡£
+        /// ä½¿æ§ä»¶çš„æŒ‡å®šåŒºåŸŸæ— æ•ˆï¼ˆå°†å…¶æ·»åŠ åˆ°æ§ä»¶çš„æ›´æ–°åŒºåŸŸï¼Œä¸‹æ¬¡ç»˜åˆ¶æ“ä½œæ—¶å°†é‡æ–°ç»˜åˆ¶æ›´æ–°åŒºåŸŸï¼‰ï¼Œå¹¶å‘æ§ä»¶å‘é€ç»˜åˆ¶æ¶ˆæ¯ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="rc">Ò»¸ö System.Drawing.Rectangle£¬±íÊ¾ÒªÊ¹Ö®ÎŞĞ§µÄÇøÓò¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="rc">ä¸€ä¸ª System.Drawing.Rectangleï¼Œè¡¨ç¤ºè¦ä½¿ä¹‹æ— æ•ˆçš„åŒºåŸŸã€‚</param>
         public static void Invalidate(IntPtr hWnd, Rectangle rc)
         {
             Invalidate(hWnd, rc, false);
         }
         /// <summary>
-        /// Ê¹¿Ø¼şµÄÖ¸¶¨ÇøÓòÎŞĞ§£¨½«ÆäÌí¼Óµ½¿Ø¼şµÄ¸üĞÂÇøÓò£¬ÏÂ´Î»æÖÆ²Ù×÷Ê±½«ÖØĞÂ»æÖÆ¸üĞÂÇøÓò£©£¬²¢Ïò¿Ø¼ş·¢ËÍ»æÖÆÏûÏ¢¡£
+        /// ä½¿æ§ä»¶çš„æŒ‡å®šåŒºåŸŸæ— æ•ˆï¼ˆå°†å…¶æ·»åŠ åˆ°æ§ä»¶çš„æ›´æ–°åŒºåŸŸï¼Œä¸‹æ¬¡ç»˜åˆ¶æ“ä½œæ—¶å°†é‡æ–°ç»˜åˆ¶æ›´æ–°åŒºåŸŸï¼‰ï¼Œå¹¶å‘æ§ä»¶å‘é€ç»˜åˆ¶æ¶ˆæ¯ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="region">ÒªÊ¹Ö®ÎŞĞ§µÄ System.Drawing.Region¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="region">è¦ä½¿ä¹‹æ— æ•ˆçš„ System.Drawing.Regionã€‚</param>
         public static void Invalidate(IntPtr hWnd, Region region)
         {
             Invalidate(hWnd, region, false);
         }
         /// <summary>
-        /// Ê¹¿Ø¼şµÄÌØ¶¨ÇøÓòÎŞĞ§²¢Ïò¿Ø¼ş·¢ËÍ»æÖÆÏûÏ¢¡£»¹¿ÉÒÔÊ¹·ÖÅä¸ø¸Ã¿Ø¼şµÄ×Ó¿Ø¼şÎŞĞ§¡£
+        /// ä½¿æ§ä»¶çš„ç‰¹å®šåŒºåŸŸæ— æ•ˆå¹¶å‘æ§ä»¶å‘é€ç»˜åˆ¶æ¶ˆæ¯ã€‚è¿˜å¯ä»¥ä½¿åˆ†é…ç»™è¯¥æ§ä»¶çš„å­æ§ä»¶æ— æ•ˆã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="invalidateChildren">ÈôÒªÊ¹¿Ø¼şµÄ×Ó¿Ø¼şÎŞĞ§£¬ÔòÎª true£»·ñÔòÎª false¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="invalidateChildren">è‹¥è¦ä½¿æ§ä»¶çš„å­æ§ä»¶æ— æ•ˆï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param>
         public static void Invalidate(IntPtr hWnd, bool invalidateChildren)
         {
             if (GetIsHandleCreated(hWnd))
             {
                 if (invalidateChildren)
                 {
-                    UnsafeNativeMethods.RedrawWindow(hWnd, IntPtr.Zero, IntPtr.Zero, NativeMethods.RDW_ALLCHILDREN | NativeMethods.RDW_INVALIDATE);//.Net Framework :¶àNativeMethods.RDW_ERASE
+                    UnsafeNativeMethods.RedrawWindow(hWnd, IntPtr.Zero, IntPtr.Zero, NativeMethods.RDW_ALLCHILDREN | NativeMethods.RDW_INVALIDATE);//.Net Framework :å¤šNativeMethods.RDW_ERASE
                 }
                 else
                 {
-                    UnsafeNativeMethods.InvalidateRect(hWnd, IntPtr.Zero, false);//.Net Framework :Ö§³ÖÍ¸Ã÷Îªtrue,·ñÔòfalse
+                    UnsafeNativeMethods.InvalidateRect(hWnd, IntPtr.Zero, false);//.Net Framework :æ”¯æŒé€æ˜ä¸ºtrue,å¦åˆ™false
                 }
             }
         }
         /// <summary>
-        /// Ê¹¿Ø¼şµÄÖ¸¶¨ÇøÓòÎŞĞ§£¨½«ÆäÌí¼Óµ½¿Ø¼şµÄ¸üĞÂÇøÓò£¬ÏÂ´Î»æÖÆ²Ù×÷Ê±½«ÖØĞÂ»æÖÆ¸üĞÂÇøÓò£©£¬²¢Ïò¿Ø¼ş·¢ËÍ»æÖÆÏûÏ¢¡£»¹¿ÉÒÔÊ¹·ÖÅä¸ø¸Ã¿Ø¼şµÄ×Ó¿Ø¼şÎŞĞ§¡£
+        /// ä½¿æ§ä»¶çš„æŒ‡å®šåŒºåŸŸæ— æ•ˆï¼ˆå°†å…¶æ·»åŠ åˆ°æ§ä»¶çš„æ›´æ–°åŒºåŸŸï¼Œä¸‹æ¬¡ç»˜åˆ¶æ“ä½œæ—¶å°†é‡æ–°ç»˜åˆ¶æ›´æ–°åŒºåŸŸï¼‰ï¼Œå¹¶å‘æ§ä»¶å‘é€ç»˜åˆ¶æ¶ˆæ¯ã€‚è¿˜å¯ä»¥ä½¿åˆ†é…ç»™è¯¥æ§ä»¶çš„å­æ§ä»¶æ— æ•ˆã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="rc">Ò»¸ö System.Drawing.Rectangle£¬±íÊ¾ÒªÊ¹Ö®ÎŞĞ§µÄÇøÓò¡£</param>
-        /// <param name="invalidateChildren">ÈôÒªÊ¹¿Ø¼şµÄ×Ó¿Ø¼şÎŞĞ§£¬ÔòÎª true£»·ñÔòÎª false¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="rc">ä¸€ä¸ª System.Drawing.Rectangleï¼Œè¡¨ç¤ºè¦ä½¿ä¹‹æ— æ•ˆçš„åŒºåŸŸã€‚</param>
+        /// <param name="invalidateChildren">è‹¥è¦ä½¿æ§ä»¶çš„å­æ§ä»¶æ— æ•ˆï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param>
         public static void Invalidate(IntPtr hWnd, Rectangle rc, bool invalidateChildren)
         {
             if (rc.IsEmpty)
@@ -1041,21 +1041,21 @@ namespace Microsoft.Win32
                 if (invalidateChildren)
                 {
                     NativeMethods.RECT rcUpdate = NativeMethods.RECT.FromXYWH(rc.X, rc.Y, rc.Width, rc.Height);
-                    UnsafeNativeMethods.RedrawWindow(hWnd, ref rcUpdate, IntPtr.Zero, NativeMethods.RDW_ALLCHILDREN | NativeMethods.RDW_INVALIDATE);//.Net Framework :¶àNativeMethods.RDW_ERASE
+                    UnsafeNativeMethods.RedrawWindow(hWnd, ref rcUpdate, IntPtr.Zero, NativeMethods.RDW_ALLCHILDREN | NativeMethods.RDW_INVALIDATE);//.Net Framework :å¤šNativeMethods.RDW_ERASE
                 }
                 else
                 {
                     NativeMethods.RECT rect = NativeMethods.RECT.FromXYWH(rc.X, rc.Y, rc.Width, rc.Height);
-                    UnsafeNativeMethods.InvalidateRect(hWnd, ref rect, false);//.Net Framework :Ö§³ÖÍ¸Ã÷Îªtrue,·ñÔòfalse
+                    UnsafeNativeMethods.InvalidateRect(hWnd, ref rect, false);//.Net Framework :æ”¯æŒé€æ˜ä¸ºtrue,å¦åˆ™false
                 }
             }
         }
         /// <summary>
-        /// Ê¹¿Ø¼şµÄÖ¸¶¨ÇøÓòÎŞĞ§£¨½«ÆäÌí¼Óµ½¿Ø¼şµÄ¸üĞÂÇøÓò£¬ÏÂ´Î»æÖÆ²Ù×÷Ê±½«ÖØĞÂ»æÖÆ¸üĞÂÇøÓò£©£¬²¢Ïò¿Ø¼ş·¢ËÍ»æÖÆÏûÏ¢¡£»¹¿ÉÒÔÊ¹·ÖÅä¸ø¸Ã¿Ø¼şµÄ×Ó¿Ø¼şÎŞĞ§¡£
+        /// ä½¿æ§ä»¶çš„æŒ‡å®šåŒºåŸŸæ— æ•ˆï¼ˆå°†å…¶æ·»åŠ åˆ°æ§ä»¶çš„æ›´æ–°åŒºåŸŸï¼Œä¸‹æ¬¡ç»˜åˆ¶æ“ä½œæ—¶å°†é‡æ–°ç»˜åˆ¶æ›´æ–°åŒºåŸŸï¼‰ï¼Œå¹¶å‘æ§ä»¶å‘é€ç»˜åˆ¶æ¶ˆæ¯ã€‚è¿˜å¯ä»¥ä½¿åˆ†é…ç»™è¯¥æ§ä»¶çš„å­æ§ä»¶æ— æ•ˆã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
-        /// <param name="region">ÒªÊ¹Ö®ÎŞĞ§µÄ System.Drawing.Region¡£</param>
-        /// <param name="invalidateChildren">ÈôÒªÊ¹¿Ø¼şµÄ×Ó¿Ø¼şÎŞĞ§£¬ÔòÎª true£»·ñÔòÎª false¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
+        /// <param name="region">è¦ä½¿ä¹‹æ— æ•ˆçš„ System.Drawing.Regionã€‚</param>
+        /// <param name="invalidateChildren">è‹¥è¦ä½¿æ§ä»¶çš„å­æ§ä»¶æ— æ•ˆï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param>
         public static void Invalidate(IntPtr hWnd, Region region, bool invalidateChildren)
         {
             if (region == null)
@@ -1069,11 +1069,11 @@ namespace Microsoft.Win32
                 {
                     if (invalidateChildren)
                     {
-                        UnsafeNativeMethods.RedrawWindow(hWnd, IntPtr.Zero, hRgn, NativeMethods.RDW_ALLCHILDREN | NativeMethods.RDW_INVALIDATE);//.Net Framework :¶àNativeMethods.RDW_ERASE
+                        UnsafeNativeMethods.RedrawWindow(hWnd, IntPtr.Zero, hRgn, NativeMethods.RDW_ALLCHILDREN | NativeMethods.RDW_INVALIDATE);//.Net Framework :å¤šNativeMethods.RDW_ERASE
                     }
                     else
                     {
-                        UnsafeNativeMethods.InvalidateRgn(hWnd, hRgn, false);//.Net Framework :Ö§³ÖÍ¸Ã÷Îªtrue,·ñÔòfalse
+                        UnsafeNativeMethods.InvalidateRgn(hWnd, hRgn, false);//.Net Framework :æ”¯æŒé€æ˜ä¸ºtrue,å¦åˆ™false
                     }
                 }
                 finally
@@ -1083,17 +1083,17 @@ namespace Microsoft.Win32
             }
         }
         /// <summary>
-        /// ÓÃµ±Ç°´óĞ¡ºÍÎ»ÖÃ¸üĞÂ¿Ø¼şµÄ±ß½ç¡£
+        /// ç”¨å½“å‰å¤§å°å’Œä½ç½®æ›´æ–°æ§ä»¶çš„è¾¹ç•Œã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
         public static void Update(IntPtr hWnd)
         {
             UnsafeNativeMethods.UpdateWindow(hWnd);
         }
         /// <summary>
-        /// Ç¿ÖÆ¿Ø¼şÊ¹Æä¹¤×÷ÇøÎŞĞ§²¢Á¢¼´ÖØ»æ×Ô¼ººÍÈÎºÎ×Ó¿Ø¼ş¡£
+        /// å¼ºåˆ¶æ§ä»¶ä½¿å…¶å·¥ä½œåŒºæ— æ•ˆå¹¶ç«‹å³é‡ç»˜è‡ªå·±å’Œä»»ä½•å­æ§ä»¶ã€‚
         /// </summary>
-        /// <param name="hWnd">¿Ø¼ş¾ä±ú¡£</param>
+        /// <param name="hWnd">æ§ä»¶å¥æŸ„ã€‚</param>
         public static void Refresh(IntPtr hWnd)
         {
             Invalidate(hWnd, true);

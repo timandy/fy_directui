@@ -1,14 +1,14 @@
-using System.Runtime.InteropServices;
+锘縰sing System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// HARDWAREINPUT定义
+    /// HARDWAREINPUT瀹氫箟
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// 硬件输入
+        /// 纭欢杈撳叆
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct HARDWAREINPUT
