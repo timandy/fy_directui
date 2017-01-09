@@ -7,11 +7,14 @@ using Microsoft.Windows.Forms.Animate;
 
 namespace Microsoft.Windows.Forms
 {
+    /// <summary>
+    /// 跑马灯控件
+    /// </summary>
     public class UIMarquee : UIControl
     {
         private const int DEFAULT_FRAME_INTERVAL = 10;                          //定时器间隔(毫秒)
         private Timer m_FrameTimer = new Timer();                               //动画定时器
-        private UILinearAnimation m_Animation = new UILinearAnimation();    //动画对象
+        private UILinearAnimation m_Animation = new UILinearAnimation();        //动画对象
 
 
         private Color m_ProgressColor = DefaultTheme.LightTransparent;
@@ -93,7 +96,7 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// 获取或设置动画间隔
+        /// 获取或设置动画间隔,默认为2000ms
         /// </summary>
         public int AnimationSpan
         {
