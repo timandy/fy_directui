@@ -17,6 +17,7 @@ namespace Microsoft.Demo
         UIProgress progress;
         UILine line;
         UIImage image;
+        UIMarquee marquee;
 
         public FrmDemo()
         {
@@ -79,8 +80,16 @@ namespace Microsoft.Demo
             btnInner.Text = btnInner.Name;
             btnInner.Click += (sender, e) => Console.WriteLine("单击in");
             this.btnOut.UIControls.Add(btnInner);
-
-
+            //
+            marquee = new UIMarquee();
+            marquee.Size = new Size(801, 4);
+            marquee.Location = new Point(100, 200);
+            marquee.BorderColor = Color.Transparent;
+            this.marquee.BackColor = Color.Transparent;
+            marquee.Dock = DockStyle.Bottom;
+            marquee.ProgressColor = Color.DodgerBlue;
+            this.UIControls.Add(this.marquee);
+            this.marquee.SendToBack();
         }
 
         public void TestCore(FormBorderStyle border, IUIWindow target)
@@ -180,6 +189,11 @@ namespace Microsoft.Demo
         private void btnClearFrame_Click(object sender, EventArgs e)
         {
             this.image.ClearFrame();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.marquee.Stopped = !this.marquee.Stopped;
         }
     }
 }
