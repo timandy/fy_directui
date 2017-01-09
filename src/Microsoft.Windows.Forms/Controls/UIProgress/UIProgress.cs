@@ -13,7 +13,7 @@ namespace Microsoft.Windows.Forms
     {
         private const int DEFAULT_FRAME_INTERVAL = 10;                          //定时器间隔(毫秒)
         private Timer m_FrameTimer = new Timer();                               //动画定时器
-        private UIProgressAnimation m_Animation = new UIProgressAnimation();    //动画对象
+        private UILinearAnimation m_Animation = new UILinearAnimation();    //动画对象
 
         private Color m_ProgressColor = DefaultTheme.LightTransparent;
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Windows.Forms
                 {
                     this.m_Percentage = value;
                     this.m_FrameTimer.Start();
-                    this.m_Animation.Next(this.m_Percentage);
+                    this.m_Animation.Continue(this.m_Percentage);
                 }
             }
         }
