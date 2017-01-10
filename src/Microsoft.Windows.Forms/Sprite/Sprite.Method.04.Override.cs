@@ -8,7 +8,7 @@
         /// <returns>字符串</returns>
         public override string ToString()
         {
-            return "[VisualObject]";
+            return "[Sprite]";
         }
     }
 }
