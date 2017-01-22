@@ -16,6 +16,31 @@ namespace Microsoft.Windows.Forms
         private Timer m_FrameTimer = new Timer();                               //动画定时器
         private UILinearAnimation m_Animation = new UILinearAnimation();        //动画对象
 
+        private static readonly object EVENT_TIMER_TICK = new object();
+        /// <summary>
+        /// 定时器滴答事件
+        /// </summary>
+        public event EventHandler TimerTick
+        {
+            add
+            {
+                base.Events.AddHandler(EVENT_TIMER_TICK, value);
+            }
+            remove
+            {
+                base.Events.RemoveHandler(EVENT_TIMER_TICK, value);
+            }
+        }
+        /// <summary>
+        /// 触发定时器滴答事件
+        /// </summary>
+        /// <param name="e">事件数据</param>
+        protected virtual void OnTimerTick(EventArgs e)
+        {
+            EventHandler handler = base.Events[EVENT_TIMER_TICK] as EventHandler;
+            if (handler != null)
+                handler(this.m_FrameTimer, e);
+        }
 
         private Color m_ProgressColor = DefaultTheme.LightTransparent;
         /// <summary>
@@ -113,6 +138,7 @@ namespace Microsoft.Windows.Forms
             this.m_FrameTimer.Interval = DEFAULT_FRAME_INTERVAL;
             this.m_FrameTimer.Tick += (sender, e) =>
             {
+                this.OnTimerTick(EventArgs.Empty);
                 this.Invalidate();
                 if (this.m_Animation.Stopped)
                     this.m_Animation.Next();
