@@ -90,8 +90,8 @@ namespace Microsoft.Windows.Forms
         void IUIControl.RenderCore(PaintEventArgs e)
         {
             this.RenderSelf(e);
-            this.OnRender(e);
             this.RenderChildren(e);
+            this.OnRender(e);
         }
 
         /// <summary>
