@@ -53,6 +53,7 @@
     <Compile Include="Controls\IUIControl.2.Behaviour.cs" />
     <Compile Include="Controls\IUIControl.3.Appearance.cs" />
     <Compile Include="Controls\IUIControl.4.Render.cs" />
+    <Compile Include="Controls\IUIControl.5.Events.cs" />
     <Compile Include="Controls\IUIWindow.cs" />
     <Compile Include="Controls\UIButton\UIButton.cs" />
     <Compile Include="Controls\UIControl\UIControl.0.cs" />
