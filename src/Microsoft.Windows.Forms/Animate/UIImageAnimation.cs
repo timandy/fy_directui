@@ -211,7 +211,7 @@ namespace Microsoft.Windows.Forms.Animate
             //重新创建当前图像
             if (this.m_Current != null)
                 this.m_Current.Dispose();
-            this.m_Current = new Bitmap(this.m_Size.Width, this.m_Size.Height, PixelFormat.Format32bppArgb);
+            this.m_Current = new Bitmap(this.m_Size.Width < 1 ? 1 : this.m_Size.Width, this.m_Size.Height < 1 ? 1 : this.m_Size.Height, PixelFormat.Format32bppArgb);
             this.m_CurrentValid = false;
         }
 
