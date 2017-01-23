@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -9,7 +9,7 @@ namespace Microsoft.Windows.Forms
 {
     partial class Sprite
     {
-        //äÖÈ¾Ê±´«µİ½øÀ´µÄÁÙÊ±±äÁ¿
+        //æ¸²æŸ“æ—¶ä¼ é€’è¿›æ¥çš„ä¸´æ—¶å˜é‡
         private Rectangle m_BackColorRect;
         private Rectangle m_BackgroundImageRect;
         private Rectangle m_BackgroundImage9Rect;
@@ -17,25 +17,25 @@ namespace Microsoft.Windows.Forms
         private Rectangle m_StringRect;
         private Rectangle m_BorderColorRect;
 
-        //äÖÈ¾ÎÄ±¾ºËĞÄ·½·¨
+        //æ¸²æŸ“æ–‡æœ¬æ ¸å¿ƒæ–¹æ³•
         private void RenderTextCore(LayoutData layout)
         {
-            layout.DoLayout();//Ö´ĞĞ²¼¾Ö
-            this.CurrentTextPreferredRect = layout.OutTextBounds;//±£´æÎÄ±¾ÇøÓò¾ØĞÎ
-            bool needRotate = !(Single.IsNaN(this.m_TextRotateAngle) || this.m_TextRotateAngle % 360f == 0f);//ÊÇ·ñĞèÒªĞı×ª
-            Rectangle textRect = needRotate ? RenderEngine.RotateRect(this.m_Graphics, this.CurrentTextPreferredRect, this.m_TextRotateAngle, false) : this.CurrentTextPreferredRect; //ĞÂ»æÍ¼ÇøÓò(Èç¹ûĞı×ªÔòÎªĞı×ªºóµÄÇøÓò)
+            layout.DoLayout();//æ‰§è¡Œå¸ƒå±€
+            this.CurrentTextPreferredRect = layout.OutTextBounds;//ä¿å­˜æ–‡æœ¬åŒºåŸŸçŸ©å½¢
+            bool needRotate = !(Single.IsNaN(this.m_TextRotateAngle) || this.m_TextRotateAngle % 360f == 0f);//æ˜¯å¦éœ€è¦æ—‹è½¬
+            Rectangle textRect = needRotate ? RenderEngine.RotateRect(this.m_Graphics, this.CurrentTextPreferredRect, this.m_TextRotateAngle, false) : this.CurrentTextPreferredRect; //æ–°ç»˜å›¾åŒºåŸŸ(å¦‚æœæ—‹è½¬åˆ™ä¸ºæ—‹è½¬åçš„åŒºåŸŸ)
 
-            //»æÖÆÒõÓ°»òÃè±ß
+            //ç»˜åˆ¶é˜´å½±æˆ–æè¾¹
             if (this.m_TextShadowShapeStyle != 0)
             {
                 using (new SmoothingModeGraphics(this.m_Graphics, SmoothingMode.AntiAlias))
                 {
                     using (GraphicsPath textPath = new GraphicsPath())
                     {
-                        //Ìí¼ÓÎÄ±¾
+                        //æ·»åŠ æ–‡æœ¬
                         textPath.AddString(this.m_Text, this.m_Font.FontFamily, (int)this.m_Font.Style, this.m_Graphics.DpiY * this.m_Font.SizeInPoints / 72f, textRect, layout.CurrentStringFormat);
 
-                        //»æÖÆÒõÓ°ºÍÒõÓ°Ãè±ß
+                        //ç»˜åˆ¶é˜´å½±å’Œé˜´å½±æè¾¹
                         if (((this.m_TextShadowShapeStyle & ShadowShapeStyle.Shadow) != 0) || ((this.m_TextShadowShapeStyle & ShadowShapeStyle.ShapeOfShadow) != 0 && this.m_TextShapeOfShadowWidth > 0f))
                         {
                             using (GraphicsPath shadowPath = textPath.Clone() as GraphicsPath)
@@ -45,7 +45,7 @@ namespace Microsoft.Windows.Forms
                                     shadowPath.Transform(shadowMatrix);
                                 }
 
-                                //»æÖÆÒõÓ°
+                                //ç»˜åˆ¶é˜´å½±
                                 if ((this.m_TextShadowShapeStyle & ShadowShapeStyle.Shadow) != 0)
                                 {
                                     using (Brush shadowBrush = new SolidBrush(this.m_TextShadowColor))
@@ -53,7 +53,7 @@ namespace Microsoft.Windows.Forms
                                         this.m_Graphics.FillPath(shadowBrush, shadowPath);
                                     }
                                 }
-                                //ÒõÓ°Ãè±ß
+                                //é˜´å½±æè¾¹
                                 if ((this.m_TextShadowShapeStyle & ShadowShapeStyle.ShapeOfShadow) != 0 && this.m_TextShapeOfShadowWidth > 0f)
                                 {
                                     using (Pen shapeOfShadowPen = new Pen(this.m_TextShapeOfShadowColor, this.m_TextShapeOfShadowWidth))
@@ -64,13 +64,13 @@ namespace Microsoft.Windows.Forms
                             }
                         }
 
-                        //»æÖÆÎÄ±¾
+                        //ç»˜åˆ¶æ–‡æœ¬
                         using (Brush textBrush = new SolidBrush(this.CurrentForeColor))
                         {
                             this.m_Graphics.FillPath(textBrush, textPath);
                         }
 
-                        //ÎÄ±¾Ãè±ß
+                        //æ–‡æœ¬æè¾¹
                         if ((this.m_TextShadowShapeStyle & ShadowShapeStyle.ShapeOfText) != 0 && this.m_TextShapeOfTextWidth > 0f)
                         {
                             using (Pen shapeOfTextPen = new Pen(this.m_TextShapeOfTextColor, this.m_TextShapeOfTextWidth))
@@ -92,19 +92,19 @@ namespace Microsoft.Windows.Forms
                 }
             }
 
-            //»Ö¸´Ğı×ª
+            //æ¢å¤æ—‹è½¬
             if (needRotate)
                 this.m_Graphics.ResetTransform();
         }
-        //äÖÈ¾Í¼Æ¬ºËĞÄ·½·¨
+        //æ¸²æŸ“å›¾ç‰‡æ ¸å¿ƒæ–¹æ³•
         private void RenderImageCore(LayoutData layout)
         {
-            layout.DoLayout();//Ö´ĞĞ²¼¾Ö
-            this.CurrentImagePreferredRect = layout.OutImageBounds;//±£´æÍ¼Æ¬ÇøÓò¾ØĞÎ
-            bool needRotate = !(float.IsNaN(this.m_ImageRotateAngle) || this.m_ImageRotateAngle % 360f == 0f);//ÊÇ·ñĞèÒªĞı×ª
-            Rectangle imageBounds = needRotate ? RenderEngine.RotateRect(this.m_Graphics, this.CurrentImagePreferredRect, this.m_ImageRotateAngle, false) : this.CurrentImagePreferredRect;//ĞÂ»æÍ¼ÇøÓò(Èç¹ûĞı×ªÔòÎªĞı×ªºóµÄÇøÓò)
+            layout.DoLayout();//æ‰§è¡Œå¸ƒå±€
+            this.CurrentImagePreferredRect = layout.OutImageBounds;//ä¿å­˜å›¾ç‰‡åŒºåŸŸçŸ©å½¢
+            bool needRotate = !(float.IsNaN(this.m_ImageRotateAngle) || this.m_ImageRotateAngle % 360f == 0f);//æ˜¯å¦éœ€è¦æ—‹è½¬
+            Rectangle imageBounds = needRotate ? RenderEngine.RotateRect(this.m_Graphics, this.CurrentImagePreferredRect, this.m_ImageRotateAngle, false) : this.CurrentImagePreferredRect;//æ–°ç»˜å›¾åŒºåŸŸ(å¦‚æœæ—‹è½¬åˆ™ä¸ºæ—‹è½¬åçš„åŒºåŸŸ)
 
-            //¿ªÊ¼»æÖÆ
+            //å¼€å§‹ç»˜åˆ¶
             if (this.m_State == State.Disabled && this.m_ImageGrayOnDisabled)
             {
                 using (Image grayImg = RenderEngine.GetGrayImage(this.CurrentImage))
@@ -117,19 +117,19 @@ namespace Microsoft.Windows.Forms
                 this.m_Graphics.DrawImage(this.CurrentImage, imageBounds);
             }
 
-            //»Ö¸´Ğı×ª
+            //æ¢å¤æ—‹è½¬
             if (needRotate)
                 this.m_Graphics.ResetTransform();
         }
 
         /// <summary>
-        /// ´´½¨ÇøÓò
+        /// åˆ›å»ºåŒºåŸŸ
         /// </summary>
-        /// <param name="rect">ÇøÓòÎ»ÖÃºÍ´óĞ¡</param>
-        /// <returns>ÇøÓò</returns>
+        /// <param name="rect">åŒºåŸŸä½ç½®å’Œå¤§å°</param>
+        /// <returns>åŒºåŸŸ</returns>
         public Region CreateRegion(Rectangle rect)
         {
-            if (this.m_RoundStyle == RoundStyle.None)//Ö±½Ç
+            if (this.m_RoundStyle == RoundStyle.None)//ç›´è§’
             {
                 if ((this.m_RoundCornerStyle & CornerStyle.Horizontal) != 0)
                     rect.Inflate(2, 0);
@@ -138,7 +138,7 @@ namespace Microsoft.Windows.Forms
                 else
                     return null;
             }
-            else//ÓĞÔ²½Ç
+            else//æœ‰åœ†è§’
             {
                 if ((this.m_RoundCornerStyle & CornerStyle.Horizontal) != 0)
                     rect.Inflate(5, 1);
@@ -155,9 +155,9 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// äÖÈ¾±³¾°É«
+        /// æ¸²æŸ“èƒŒæ™¯è‰²
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderBackColor(Rectangle rect)
         {
             this.m_BackColorRect = rect;
@@ -174,14 +174,14 @@ namespace Microsoft.Windows.Forms
             }
         }
         /// <summary>
-        /// äÖÈ¾±³¾°É«ÌØĞ§
+        /// æ¸²æŸ“èƒŒæ™¯è‰²ç‰¹æ•ˆ
         /// </summary>
         public void RenderBackColorAero()
         {
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(this.m_BackColorRect))
                 return;
 
-            //»æÖÆÄ£ºıĞ§¹û
+            //ç»˜åˆ¶æ¨¡ç³Šæ•ˆæœ
             if ((this.m_BackColorAeroStyle & AeroStyle.Blur) != 0)
             {
                 Rectangle blurRect = this.CurrentBackColorPathRect;
@@ -211,17 +211,17 @@ namespace Microsoft.Windows.Forms
                         blurRect.Width = blurWidth;
                         break;
 
-                    default://Í¬Top
+                    default://åŒTop
                         blurHeight = (int)(this.CurrentBackColorPathRect.Height * this.m_BackColorAeroPos);
                         blurRect.Height = blurHeight;
                         break;
                 }
 
-                //»æÖÆ
+                //ç»˜åˆ¶
                 RenderEngine.DrawAeroBlur(this.m_Graphics, blurRect, this.m_BackColorAeroBlurColor);
             }
 
-            //»æÖÆ²£Á§Ğ§¹û
+            //ç»˜åˆ¶ç»ç’ƒæ•ˆæœ
             if ((this.m_BackColorAeroStyle & AeroStyle.Glass) != 0)
             {
                 Rectangle glassRect = this.CurrentBackColorPathRect;
@@ -231,45 +231,45 @@ namespace Microsoft.Windows.Forms
                 {
                     case TabAlignment.Top:
                         blurHeight = (int)(glassRect.Height * this.BackColorAeroPos);
-                        glassRect.Y += blurHeight;//µ×²¿
-                        glassRect.Height = (glassRect.Height - blurHeight) * 2;//Ô²µÄÒ»°ë
+                        glassRect.Y += blurHeight;//åº•éƒ¨
+                        glassRect.Height = (glassRect.Height - blurHeight) * 2;//åœ†çš„ä¸€åŠ
                         break;
 
                     case TabAlignment.Bottom:
                         blurHeight = (int)(glassRect.Height * this.BackColorAeroPos);
-                        glassRect.Y -= (glassRect.Height - blurHeight);//¶¥²¿
-                        glassRect.Height = (this.CurrentBackColorPathRect.Height - blurHeight) * 2;//Ô²µÄÒ»°ë
+                        glassRect.Y -= (glassRect.Height - blurHeight);//é¡¶éƒ¨
+                        glassRect.Height = (this.CurrentBackColorPathRect.Height - blurHeight) * 2;//åœ†çš„ä¸€åŠ
                         break;
 
 
                     case TabAlignment.Left:
                         blurWidth = (int)(glassRect.Width * this.BackColorAeroPos);
-                        glassRect.X += blurWidth;//ÓÒ²à
-                        glassRect.Width = (glassRect.Width - blurWidth) * 2;//Ô²µÄÒ»°ë
+                        glassRect.X += blurWidth;//å³ä¾§
+                        glassRect.Width = (glassRect.Width - blurWidth) * 2;//åœ†çš„ä¸€åŠ
                         break;
 
 
                     case TabAlignment.Right:
                         blurWidth = (int)(glassRect.Width * this.BackColorAeroPos);
-                        glassRect.X -= (glassRect.Width - blurWidth);//×ó²à
-                        glassRect.Width = (glassRect.Width - blurWidth) * 2;//Ô²µÄÒ»°ã
+                        glassRect.X -= (glassRect.Width - blurWidth);//å·¦ä¾§
+                        glassRect.Width = (glassRect.Width - blurWidth) * 2;//åœ†çš„ä¸€èˆ¬
                         break;
 
-                    default://Í¬Top
+                    default://åŒTop
                         blurHeight = (int)(glassRect.Height * this.BackColorAeroPos);
-                        glassRect.Y += blurHeight;//µ×²¿
-                        glassRect.Height = (glassRect.Height - blurHeight) * 2;//Ô²µÄÒ»°ë
+                        glassRect.Y += blurHeight;//åº•éƒ¨
+                        glassRect.Height = (glassRect.Height - blurHeight) * 2;//åœ†çš„ä¸€åŠ
                         break;
                 }
 
-                //»æÖÆ
+                //ç»˜åˆ¶
                 RenderEngine.DrawAeroGlass(this.m_Graphics, glassRect, this.BackColorAeroGlassCenterColor, this.BackColorAeroGlassSurroundColor);
             }
         }
         /// <summary>
-        /// äÖÈ¾±³¾°Í¼
+        /// æ¸²æŸ“èƒŒæ™¯å›¾
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderBackgroundImage(Rectangle rect)
         {
             this.m_BackgroundImageRect = rect;
@@ -277,22 +277,22 @@ namespace Microsoft.Windows.Forms
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(this.m_BackgroundImageRect) || this.CurrentBackgroundImage == null)
                 return;
 
-            if (this.m_State == State.Disabled && this.m_BackgroundImageGrayOnDisabled)//»ÒÉ«Í¼Æ¬
+            if (this.m_State == State.Disabled && this.m_BackgroundImageGrayOnDisabled)//ç°è‰²å›¾ç‰‡
             {
                 using (Image img = RenderEngine.GetGrayImage(this.CurrentBackgroundImage))
                 {
                     RenderEngine.DrawBackgroundImage(this.m_Graphics, img, this.CurrentBackgroundImageRect, this.m_BackgroundImageLayout);
                 }
             }
-            else//Ô­Í¼
+            else//åŸå›¾
             {
                 RenderEngine.DrawBackgroundImage(this.m_Graphics, this.CurrentBackgroundImage, this.CurrentBackgroundImageRect, this.m_BackgroundImageLayout);
             }
         }
         /// <summary>
-        /// äÖÈ¾¾Å¹¬¸ñ±³¾°Í¼
+        /// æ¸²æŸ“ä¹å®«æ ¼èƒŒæ™¯å›¾
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderBackgroundImage9(Rectangle rect)
         {
             this.m_BackgroundImage9Rect = rect;
@@ -300,22 +300,22 @@ namespace Microsoft.Windows.Forms
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(this.m_BackgroundImage9Rect) || this.CurrentBackgroundImage9 == null)
                 return;
 
-            if (this.m_State == State.Disabled && this.m_BackgroundImage9GrayOnDisabled)//»ÒÉ«Í¼Æ¬
+            if (this.m_State == State.Disabled && this.m_BackgroundImage9GrayOnDisabled)//ç°è‰²å›¾ç‰‡
             {
                 using (Image img = RenderEngine.GetGrayImage(this.CurrentBackgroundImage9))
                 {
                     RenderEngine.DrawBackgroundImage9(this.m_Graphics, img, this.CurrentBackgroundImage9Rect, this.m_BackgroundImage9Padding.Left, this.m_BackgroundImage9Padding.Top, this.m_BackgroundImage9Padding.Right, this.m_BackgroundImage9Padding.Bottom, this.m_BackgroundImage9Layout);
                 }
             }
-            else//Ô­Í¼
+            else//åŸå›¾
             {
                 RenderEngine.DrawBackgroundImage9(this.m_Graphics, this.CurrentBackgroundImage9, this.CurrentBackgroundImage9Rect, this.m_BackgroundImage9Padding.Left, this.m_BackgroundImage9Padding.Top, this.m_BackgroundImage9Padding.Right, this.m_BackgroundImage9Padding.Bottom, this.m_BackgroundImage9Layout);
             }
         }
         /// <summary>
-        /// äÖÈ¾ÎÄ±¾ºÍÍ¼Æ¬
+        /// æ¸²æŸ“æ–‡æœ¬å’Œå›¾ç‰‡
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderTextAndImage(Rectangle rect)
         {
             this.m_TextImageRect = rect;
@@ -349,9 +349,9 @@ namespace Microsoft.Windows.Forms
             }
         }
         /// <summary>
-        /// äÖÈ¾ÎÄ±¾
+        /// æ¸²æŸ“æ–‡æœ¬
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderText(Rectangle rect)
         {
             this.m_TextImageRect = rect;
@@ -377,9 +377,9 @@ namespace Microsoft.Windows.Forms
             }
         }
         /// <summary>
-        /// äÖÈ¾Í¼Æ¬
+        /// æ¸²æŸ“å›¾ç‰‡
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderImage(Rectangle rect)
         {
             this.m_TextImageRect = rect;
@@ -404,9 +404,9 @@ namespace Microsoft.Windows.Forms
             }
         }
         /// <summary>
-        /// ×¼±¸äÖÈ¾×Ö·û´®Â·¾¶,·µ»Ø×Ö·û´®Â·¾¶µÄ´óĞ¡(²âÁ¿×Ö·û´®Â·¾¶´óĞ¡,»­²¼ÎŞÏŞÖÆ)
+        /// å‡†å¤‡æ¸²æŸ“å­—ç¬¦ä¸²è·¯å¾„,è¿”å›å­—ç¬¦ä¸²è·¯å¾„çš„å¤§å°(æµ‹é‡å­—ç¬¦ä¸²è·¯å¾„å¤§å°,ç”»å¸ƒæ— é™åˆ¶)
         /// </summary>
-        /// <returns>×Ö·û´®Â·¾¶´óĞ¡</returns>
+        /// <returns>å­—ç¬¦ä¸²è·¯å¾„å¤§å°</returns>
         public Size BeginRenderString()
         {
             if (this.m_State == State.Hidden || this.Text == null || this.Text.Length <= 0)
@@ -418,10 +418,10 @@ namespace Microsoft.Windows.Forms
             return this.CurrentStringPathRect.Size;
         }
         /// <summary>
-        /// ×¼±¸äÖÈ¾×Ö·û´®Â·¾¶,·µ»Ø×Ö·û´®Â·¾¶µÄ´óĞ¡(²âÁ¿×Ö·û´®Â·¾¶´óĞ¡,»­²¼ÓĞÏŞÖÆ)
+        /// å‡†å¤‡æ¸²æŸ“å­—ç¬¦ä¸²è·¯å¾„,è¿”å›å­—ç¬¦ä¸²è·¯å¾„çš„å¤§å°(æµ‹é‡å­—ç¬¦ä¸²è·¯å¾„å¤§å°,ç”»å¸ƒæœ‰é™åˆ¶)
         /// </summary>
-        /// <param name="rect">²âÁ¿Ê±,»­²¼ÏŞÖÆ.Óë»æÖÆÇøÓòÎŞ¹Ø</param>
-        /// <returns>×Ö·û´®Â·¾¶´óĞ¡</returns>
+        /// <param name="rect">æµ‹é‡æ—¶,ç”»å¸ƒé™åˆ¶.ä¸ç»˜åˆ¶åŒºåŸŸæ— å…³</param>
+        /// <returns>å­—ç¬¦ä¸²è·¯å¾„å¤§å°</returns>
         public Size BeginRenderString(Rectangle rect)
         {
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(rect) || this.Text == null || this.Text.Length <= 0)
@@ -433,9 +433,9 @@ namespace Microsoft.Windows.Forms
             return this.CurrentStringPathRect.Size;
         }
         /// <summary>
-        /// ÕıÊ½äÖÈ¾×Ö·û´®Â·¾¶
+        /// æ­£å¼æ¸²æŸ“å­—ç¬¦ä¸²è·¯å¾„
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void EndRenderString(Rectangle rect)
         {
             this.m_StringRect = rect;
@@ -449,18 +449,18 @@ namespace Microsoft.Windows.Forms
             }
         }
         /// <summary>
-        /// äÖÈ¾×Ö·û´®Â·¾¶
+        /// æ¸²æŸ“å­—ç¬¦ä¸²è·¯å¾„
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderString(Rectangle rect)
         {
             this.BeginRenderString(rect);
             this.EndRenderString(rect);
         }
         /// <summary>
-        /// äÖÈ¾±ß¿òÑÕÉ«(RoundStyleÔ²½ÇÑùÊ½,BorderStyleÈ·¶¨»æÖÆÄÄ¸ö±ß,BlendStyle»ìºÏ·½Ê½)
+        /// æ¸²æŸ“è¾¹æ¡†é¢œè‰²(RoundStyleåœ†è§’æ ·å¼,BorderStyleç¡®å®šç»˜åˆ¶å“ªä¸ªè¾¹,BlendStyleæ··åˆæ–¹å¼)
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderBorder(Rectangle rect)
         {
             this.m_BorderColorRect = rect;
@@ -468,10 +468,10 @@ namespace Microsoft.Windows.Forms
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(this.m_BorderColorRect))
                 return;
 
-            //ÖØÖÃ¼ôÇĞÇø
+            //é‡ç½®å‰ªåˆ‡åŒº
             this.m_Graphics.SetClip(this.m_GraphicsClip, CombineMode.Replace);
 
-            //»æÖÆÄÚ±ß¿ò
+            //ç»˜åˆ¶å†…è¾¹æ¡†
             if (this.m_InnerBorderVisibleStyle != BorderVisibleStyle.None)
             {
                 using (Brush brush = RenderEngine.CreateBrush(this.CurrentInnerBorderBrushRect, this.CurrentInnerBorderColor, this.m_InnerBorderColorPos1, this.m_InnerBorderColorPos2, this.CurrentBackColorReverse, this.CurrentBackColorMode, this.m_InnerBorderBlendStyle))
@@ -483,7 +483,7 @@ namespace Microsoft.Windows.Forms
                 }
             }
 
-            //»æÖÆ±ß¿ò
+            //ç»˜åˆ¶è¾¹æ¡†
             if (this.m_BorderVisibleStyle != BorderVisibleStyle.None)
             {
                 using (Brush brush = RenderEngine.CreateBrush(this.CurrentBorderBrushRect, this.CurrentBorderColor, this.m_BorderColorPos1, this.m_BorderColorPos2, this.CurrentBackColorReverse, this.CurrentBackColorMode, this.m_BorderBlendStyle))
@@ -496,16 +496,16 @@ namespace Microsoft.Windows.Forms
             }
         }
         /// <summary>
-        /// äÖÈ¾Ïß¶Î
+        /// æ¸²æŸ“çº¿æ®µ
         /// </summary>
-        /// <param name="pt1">Æğµã</param>
-        /// <param name="pt2">ÖÕµã</param>
+        /// <param name="pt1">èµ·ç‚¹</param>
+        /// <param name="pt2">ç»ˆç‚¹</param>
         public void RenderLine(Point pt1, Point pt2)
         {
             if (this.m_State == State.Hidden || pt1 == pt2)
                 return;
 
-            //Ê¹ÓÃ±ß¿òÑÕÉ«
+            //ä½¿ç”¨è¾¹æ¡†é¢œè‰²
             using (Brush brush = RenderEngine.CreateBrush(pt1, pt2, this.CurrentLineColor, this.m_LineBlendStyle))
             {
                 using (Pen pen = RenderEngine.CreatePen(brush, this.m_LineWidth, this.m_LineDashStyle, this.m_LineDashPattern, this.m_LineDashCap, this.m_LineDashOffset))
@@ -516,9 +516,9 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// äÖÈ¾¶ÔºÅ(°´±ÈÀıäÖÈ¾)
+        /// æ¸²æŸ“å¯¹å·(æŒ‰æ¯”ä¾‹æ¸²æŸ“)
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderCheck(Rectangle rect)
         {
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(rect))
@@ -528,9 +528,9 @@ namespace Microsoft.Windows.Forms
             RenderEngine.DrawCheck(this.m_Graphics, this.CurrentTextPreferredRect, this.CurrentForeColor);
         }
         /// <summary>
-        /// äÖÈ¾²æºÅ(°´±ÈÀıäÖÈ¾)
+        /// æ¸²æŸ“å‰å·(æŒ‰æ¯”ä¾‹æ¸²æŸ“)
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderCross(Rectangle rect)
         {
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(rect))
@@ -540,9 +540,9 @@ namespace Microsoft.Windows.Forms
             RenderEngine.DrawCross(this.m_Graphics, this.CurrentTextPreferredRect, this.CurrentForeColor);
         }
         /// <summary>
-        /// äÖÈ¾Ê¡ÂÔºÅ(°´±ÈÀıäÖÈ¾)
+        /// æ¸²æŸ“çœç•¥å·(æŒ‰æ¯”ä¾‹æ¸²æŸ“)
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderEllipsis(Rectangle rect)
         {
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(rect))
@@ -552,10 +552,10 @@ namespace Microsoft.Windows.Forms
             RenderEngine.DrawEllipsis(this.m_Graphics, this.CurrentTextPreferredRect, this.CurrentForeColor);
         }
         /// <summary>
-        /// äÖÈ¾¼ıÍ·(°´±ÈÀıäÖÈ¾)
+        /// æ¸²æŸ“ç®­å¤´(æŒ‰æ¯”ä¾‹æ¸²æŸ“)
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
-        /// <param name="direction">¼ıÍ··½Ïò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
+        /// <param name="direction">ç®­å¤´æ–¹å‘</param>
         public void RenderArrow(Rectangle rect, ArrowDirection direction)
         {
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(rect))
@@ -565,11 +565,11 @@ namespace Microsoft.Windows.Forms
             RenderEngine.DrawArrow(this.m_Graphics, this.CurrentTextPreferredRect, this.CurrentForeColor, direction);
         }
         /// <summary>
-        /// äÖÈ¾¼ıÍ·(¹Ì¶¨´óĞ¡)
+        /// æ¸²æŸ“ç®­å¤´(å›ºå®šå¤§å°)
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
-        /// <param name="direction">¼ıÍ··½Ïò</param>
-        /// <param name="style">´óĞ¡ÑùÊ½</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
+        /// <param name="direction">ç®­å¤´æ–¹å‘</param>
+        /// <param name="style">å¤§å°æ ·å¼</param>
         public void RenderArrow(Rectangle rect, ArrowDirection direction, SizeStyle style)
         {
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(rect))
@@ -579,15 +579,15 @@ namespace Microsoft.Windows.Forms
             RenderEngine.DrawArrow(this.m_Graphics, this.CurrentTextPreferredRect, this.CurrentForeColor, direction, style);
         }
         /// <summary>
-        /// äÖÈ¾Metrol°´ÏÂ±ß¿ò
+        /// æ¸²æŸ“MetrolæŒ‰ä¸‹è¾¹æ¡†
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderMetroPress(Rectangle rect)
         {
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(rect))
                 return;
 
-            //×ó²à
+            //å·¦ä¾§
             if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Left) != 0)
             {
                 rect.X += 2;
@@ -599,7 +599,7 @@ namespace Microsoft.Windows.Forms
                 rect.Width -= 1;
             }
 
-            //ÉÏ±ß
+            //ä¸Šè¾¹
             if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Top) != 0)
             {
                 rect.Y += 2;
@@ -611,7 +611,7 @@ namespace Microsoft.Windows.Forms
                 rect.Height -= 1;
             }
 
-            //ÓÒ±ß
+            //å³è¾¹
             if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Right) != 0)
             {
                 rect.Width -= 2;
@@ -621,7 +621,7 @@ namespace Microsoft.Windows.Forms
                 rect.Width -= 1;
             }
 
-            //ÏÂ±ß
+            //ä¸‹è¾¹
             if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Bottom) != 0)
             {
                 rect.Height -= 2;
@@ -631,17 +631,17 @@ namespace Microsoft.Windows.Forms
                 rect.Height -= 1;
             }
 
-            //ÉèÖÃ¼ôÇĞÇø
+            //è®¾ç½®å‰ªåˆ‡åŒº
             this.m_Graphics.SetClip(rect);
 
-            //»æÖÆ¿í±ß¿ò
+            //ç»˜åˆ¶å®½è¾¹æ¡†
             using (GraphicsPath pathBorder = RenderEngine.CreateGraphicsPath(rect),
                 pathBorderIn = RenderEngine.CreateGraphicsPath(Rectangle.Inflate(rect, -3, -3)))
             {
-                //±ß¿òÇøÓò
+                //è¾¹æ¡†åŒºåŸŸ
                 pathBorder.AddPath(pathBorderIn, true);
 
-                //»æÖÆ
+                //ç»˜åˆ¶
                 using (Brush brush = new SolidBrush(this.CurrentBorderColor))
                 {
                     this.m_Graphics.FillPath(brush, pathBorder);
@@ -649,15 +649,15 @@ namespace Microsoft.Windows.Forms
             }
         }
         /// <summary>
-        /// »æÖÆMetrolÑ¡ÖĞ±ß¿ò
+        /// ç»˜åˆ¶Metrolé€‰ä¸­è¾¹æ¡†
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
         public void RenderMetroCheck(Rectangle rect)
         {
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(rect))
                 return;
 
-            //×ó²à
+            //å·¦ä¾§
             if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Left) != 0)
             {
                 rect.X += 2;
@@ -669,7 +669,7 @@ namespace Microsoft.Windows.Forms
                 rect.Width -= 1;
             }
 
-            //ÉÏ±ß
+            //ä¸Šè¾¹
             if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Top) != 0)
             {
                 rect.Y += 2;
@@ -681,7 +681,7 @@ namespace Microsoft.Windows.Forms
                 rect.Height -= 1;
             }
 
-            //ÓÒ±ß
+            //å³è¾¹
             if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Right) != 0)
             {
                 rect.Width -= 2;
@@ -691,7 +691,7 @@ namespace Microsoft.Windows.Forms
                 rect.Width -= 1;
             }
 
-            //ÏÂ±ß
+            //ä¸‹è¾¹
             if ((this.m_InnerBorderVisibleStyle & BorderVisibleStyle.Bottom) != 0)
             {
                 rect.Height -= 2;
@@ -701,18 +701,18 @@ namespace Microsoft.Windows.Forms
                 rect.Height -= 1;
             }
 
-            //ÉèÖÃ¼ôÇĞÇø
+            //è®¾ç½®å‰ªåˆ‡åŒº
             this.m_Graphics.SetClip(rect);
 
-            //»æÖÆ¿í±ß¿ò
+            //ç»˜åˆ¶å®½è¾¹æ¡†
             using (GraphicsPath pathBorder = RenderEngine.CreateGraphicsPath(rect),
                 pathBorderIn = RenderEngine.CreateGraphicsPath(Rectangle.Inflate(rect, -3, -3)),
                 pathTriangle = new GraphicsPath())
             {
-                //±ß¿òÇøÓò
+                //è¾¹æ¡†åŒºåŸŸ
                 pathBorder.AddPath(pathBorderIn, true);
 
-                //ÓÒÉÏ½ÇÈı½ÇÇøÓò
+                //å³ä¸Šè§’ä¸‰è§’åŒºåŸŸ
                 Point[] points = new Point[] {
                     new Point(rect.X + rect.Width - 40, rect.Y),
                     new Point(rect.X + rect.Width, rect.Y),
@@ -720,7 +720,7 @@ namespace Microsoft.Windows.Forms
                 };
                 pathTriangle.AddPolygon(points);
 
-                //»æÖÆ
+                //ç»˜åˆ¶
                 using (Brush brush = new SolidBrush(this.CurrentBackColor))
                 {
                     this.m_Graphics.FillPath(brush, pathBorder);
@@ -728,16 +728,16 @@ namespace Microsoft.Windows.Forms
                 }
             }
 
-            //»æÖÆ¶ÔºÅ
+            //ç»˜åˆ¶å¯¹å·
             RenderEngine.DrawCheck(this.m_Graphics, new Rectangle(rect.Right - 22, rect.Y + 2, 20, 20), this.CurrentForeColor);
         }
         /// <summary>
-        /// äÖÈ¾±êÇ©ÑùÊ½·Ö×é¿Ø¼ş±³¾°É«
+        /// æ¸²æŸ“æ ‡ç­¾æ ·å¼åˆ†ç»„æ§ä»¶èƒŒæ™¯è‰²
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
-        /// <param name="tabSize">×óÉÏ½Ç±êÇ©´óĞ¡</param>
-        /// <param name="tabRound">±êÇ©ÓÒÉÏ½ÇÊÇ·ñ·¢Ô²½Ç</param>
-        /// <param name="tabRadius">±êÇ©ÓÒÉÏ½ÇÔ²½Ç°ë¾¶</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
+        /// <param name="tabSize">å·¦ä¸Šè§’æ ‡ç­¾å¤§å°</param>
+        /// <param name="tabRound">æ ‡ç­¾å³ä¸Šè§’æ˜¯å¦å‘åœ†è§’</param>
+        /// <param name="tabRadius">æ ‡ç­¾å³ä¸Šè§’åœ†è§’åŠå¾„</param>
         public void RenderBackColorGroupBoxTab(Rectangle rect, Size tabSize, bool tabRound, float tabRadius)
         {
             this.m_BackColorRect = rect;
@@ -747,7 +747,7 @@ namespace Microsoft.Windows.Forms
 
             using (Brush brush = RenderEngine.CreateBrush(this.CurrentBackColorBrushRect, this.CurrentBackColor, this.m_BackColorPos1, this.m_BackColorPos2, this.CurrentBackColorReverse, this.CurrentBackColorMode, this.m_BackColorBlendStyle))
             {
-                //Ğ£Õı±³¾°ÇøÓò
+                //æ ¡æ­£èƒŒæ™¯åŒºåŸŸ
                 if (this.m_InnerBorderVisibleStyle != BorderVisibleStyle.None)
                     tabSize.Width -= 4;
                 else if (this.m_BorderVisibleStyle != BorderVisibleStyle.None)
@@ -760,12 +760,12 @@ namespace Microsoft.Windows.Forms
             }
         }
         /// <summary>
-        /// äÖÈ¾±êÇ©ÑùÊ½·Ö×é¿Ø¼ş±ß¿òÉ«
+        /// æ¸²æŸ“æ ‡ç­¾æ ·å¼åˆ†ç»„æ§ä»¶è¾¹æ¡†è‰²
         /// </summary>
-        /// <param name="rect">äÖÈ¾ÇøÓò</param>
-        /// <param name="tabSize">×óÉÏ½Ç±êÇ©´óĞ¡</param>
-        /// <param name="tabRound">±êÇ©ÓÒÉÏ½ÇÊÇ·ñ·¢Ô²½Ç</param>
-        /// <param name="tabRadius">±êÇ©ÓÒÉÏ½ÇÔ²½Ç°ë¾¶</param>
+        /// <param name="rect">æ¸²æŸ“åŒºåŸŸ</param>
+        /// <param name="tabSize">å·¦ä¸Šè§’æ ‡ç­¾å¤§å°</param>
+        /// <param name="tabRound">æ ‡ç­¾å³ä¸Šè§’æ˜¯å¦å‘åœ†è§’</param>
+        /// <param name="tabRadius">æ ‡ç­¾å³ä¸Šè§’åœ†è§’åŠå¾„</param>
         public void RenderBorderColorGroupBoxTab(Rectangle rect, Size tabSize, bool tabRound, float tabRadius)
         {
             this.m_BorderColorRect = rect;
@@ -773,10 +773,10 @@ namespace Microsoft.Windows.Forms
             if (this.m_State == State.Hidden || !RectangleEx.IsVisible(this.m_BorderColorRect))
                 return;
 
-            //ÖØÖÃ¼ôÇĞÇø
+            //é‡ç½®å‰ªåˆ‡åŒº
             this.m_Graphics.SetClip(this.m_GraphicsClip, CombineMode.Replace);
 
-            //»æÖÆÄÚ±ß¿ò
+            //ç»˜åˆ¶å†…è¾¹æ¡†
             if (this.m_InnerBorderVisibleStyle != BorderVisibleStyle.None)
             {
                 using (Brush brush = RenderEngine.CreateBrush(this.CurrentInnerBorderBrushRect, this.CurrentInnerBorderColor, this.m_InnerBorderColorPos1, this.m_InnerBorderColorPos2, this.CurrentBackColorReverse, this.CurrentBackColorMode, this.m_InnerBorderBlendStyle))
@@ -792,7 +792,7 @@ namespace Microsoft.Windows.Forms
                 }
             }
 
-            //»æÖÆ±ß¿ò
+            //ç»˜åˆ¶è¾¹æ¡†
             if (this.m_BorderVisibleStyle != BorderVisibleStyle.None)
             {
                 using (Brush brush = RenderEngine.CreateBrush(this.CurrentBorderBrushRect, this.CurrentBorderColor, this.m_BorderColorPos1, this.m_BorderColorPos2, this.CurrentBackColorReverse, this.CurrentBackColorMode, this.m_BorderBlendStyle))

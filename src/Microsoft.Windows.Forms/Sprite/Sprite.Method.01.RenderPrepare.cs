@@ -1,4 +1,4 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace Microsoft.Windows.Forms
@@ -9,18 +9,18 @@ namespace Microsoft.Windows.Forms
         private Region m_GraphicsClip;
 
         /// <summary>
-        /// ¿ªÊ¼äÖÈ¾
+        /// å¼€å§‹æ¸²æŸ“
         /// </summary>
         public void BeginRender(Graphics g)
         {
             this.DisposeReferences();
             this.m_Graphics = g;
             this.m_GraphicsClip = g.Clip;
-            //ÓÉÓÚ´ËÊ±Î´¶Ô BackColorRect ¸³Öµ.ËùÒÔ²»ÄÜÉèÖÃ¼ôÇĞÇø,ÔÚÉú³É m_CurrentBackColorPathRect Ê±ÉèÖÃ¼ôÇĞÇø
+            //ç”±äºæ­¤æ—¶æœªå¯¹ BackColorRect èµ‹å€¼.æ‰€ä»¥ä¸èƒ½è®¾ç½®å‰ªåˆ‡åŒº,åœ¨ç”Ÿæˆ m_CurrentBackColorPathRect æ—¶è®¾ç½®å‰ªåˆ‡åŒº
         }
 
         /// <summary>
-        /// ½áÊøäÖÈ¾
+        /// ç»“æŸæ¸²æŸ“
         /// </summary>
         public void EndRender()
         {

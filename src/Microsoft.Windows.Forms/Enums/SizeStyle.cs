@@ -1,28 +1,28 @@
-namespace Microsoft.Windows.Forms
+Ôªønamespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// ¥Û–°—˘ Ω
+    /// Â§ßÂ∞èÊ†∑Âºè
     /// </summary>
     public enum SizeStyle : int
     {
         /// <summary>
-        /// ÷–
+        /// ‰∏≠
         /// </summary>
         Normal = 0,
         /// <summary>
-        /// Ãÿ–°
+        /// ÁâπÂ∞è
         /// </summary>
         Tiny = 1,
         /// <summary>
-        /// –°
+        /// Â∞è
         /// </summary>
         Small = 2,
         /// <summary>
-        /// ¥Û
+        /// Â§ß
         /// </summary>
         Large = 3,
         /// <summary>
-        /// Ãÿ¥Û
+        /// ÁâπÂ§ß
         /// </summary>
         Huge = 4,
     }

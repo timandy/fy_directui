@@ -1,9 +1,9 @@
-using System.Runtime.InteropServices;
+ï»¿using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// GRADIENT_TRIANGLE¶¨Òå
+    /// GRADIENT_TRIANGLEå®šä¹‰
     /// </summary>
     public static partial class NativeMethods
     {
@@ -27,11 +27,11 @@ namespace Microsoft.Win32
             uint Vertex3;
 
             /// <summary>
-            /// ¹¹Ôìº¯Êý
+            /// æž„é€ å‡½æ•°
             /// </summary>
-            /// <param name="vertex1">µÚÒ»¸öµã</param>
-            /// <param name="vertex2">µÚ¶þ¸öµã</param>
-            /// <param name="vertex3">µÚÈý¸öµã</param>
+            /// <param name="vertex1">ç¬¬ä¸€ä¸ªç‚¹</param>
+            /// <param name="vertex2">ç¬¬äºŒä¸ªç‚¹</param>
+            /// <param name="vertex3">ç¬¬ä¸‰ä¸ªç‚¹</param>
             public GRADIENT_TRIANGLE(uint vertex1, uint vertex2, uint vertex3)
             {
                 this.Vertex1 = vertex1;

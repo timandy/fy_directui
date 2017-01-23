@@ -1,24 +1,24 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// TRIVERTEX¶¨Òå
+    /// TRIVERTEXå®šä¹‰
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// <para>ÊµÏÖ¹¦ÄÜ:The TRIVERTEX structure contains color information and position information.</para>
-        /// <para>µ÷ÓÃ·½·¨:Win32½á¹¹Ìå</para>
+        /// <para>å®ç°åŠŸèƒ½:The TRIVERTEX structure contains color information and position information.</para>
+        /// <para>è°ƒç”¨æ–¹æ³•:Win32ç»“æ„ä½“</para>
         /// <para>.</para>
-        /// <para>´´½¨ÈËÔ±:Ğí³çÀ×</para>
-        /// <para>´´½¨ÈÕÆÚ:2013-11-25</para>
-        /// <para>´´½¨±¸×¢:</para>
+        /// <para>åˆ›å»ºäººå‘˜:è®¸å´‡é›·</para>
+        /// <para>åˆ›å»ºæ—¥æœŸ:2013-11-25</para>
+        /// <para>åˆ›å»ºå¤‡æ³¨:</para>
         /// <para>.</para>
-        /// <para>ĞŞ¸ÄÈËÔ±:</para>
-        /// <para>ĞŞ¸ÄÈÕÆÚ:</para>
-        /// <para>ĞŞ¸Ä±¸×¢:</para>
+        /// <para>ä¿®æ”¹äººå‘˜:</para>
+        /// <para>ä¿®æ”¹æ—¥æœŸ:</para>
+        /// <para>ä¿®æ”¹å¤‡æ³¨:</para>
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct TRIVERTEX
@@ -49,10 +49,10 @@ namespace Microsoft.Win32
             ushort Alpha;
 
             /// <summary>
-            /// ¹¹Ôìº¯Êı
+            /// æ„é€ å‡½æ•°
             /// </summary>
-            /// <param name="x">ºá×ø±ê</param>
-            /// <param name="y">×İ×ø±ê</param>
+            /// <param name="x">æ¨ªåæ ‡</param>
+            /// <param name="y">çºµåæ ‡</param>
             /// <param name="red">R</param>
             /// <param name="green">G</param>
             /// <param name="blue">B</param>
@@ -67,11 +67,11 @@ namespace Microsoft.Win32
                 this.Alpha = alpha;
             }
             /// <summary>
-            /// ¹¹Ôìº¯Êı
+            /// æ„é€ å‡½æ•°
             /// </summary>
-            /// <param name="x">ºá×ø±ê</param>
-            /// <param name="y">×İ×ø±ê</param>
-            /// <param name="color">ÑÕÉ«</param>
+            /// <param name="x">æ¨ªåæ ‡</param>
+            /// <param name="y">çºµåæ ‡</param>
+            /// <param name="color">é¢œè‰²</param>
             public TRIVERTEX(int x, int y, Color color)
             {
                 this.x = x;
@@ -82,10 +82,10 @@ namespace Microsoft.Win32
                 this.Alpha = color.A;
             }
             /// <summary>
-            /// ¹¹Ôìº¯Êı
+            /// æ„é€ å‡½æ•°
             /// </summary>
-            /// <param name="pt">×ø±ê</param>
-            /// <param name="color">ÑÕÉ«</param>
+            /// <param name="pt">åæ ‡</param>
+            /// <param name="color">é¢œè‰²</param>
             public TRIVERTEX(Point pt, Color color)
             {
                 this.x = pt.X;

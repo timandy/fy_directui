@@ -1,17 +1,17 @@
-using System;
+ï»¿using System;
 
 namespace Microsoft.Windows.Forms
 {
     public partial class Sprite
     {
         /// <summary>
-        /// ×´Ì¬¸Ä±äÊÂ¼şË÷Òı±ê¼Ç
+        /// çŠ¶æ€æ”¹å˜äº‹ä»¶ç´¢å¼•æ ‡è®°
         /// </summary>
         private static readonly object EVENT_STATE_CHANGED = new object();
 
         private State m_State = State.Normal;
         /// <summary>
-        /// °´Å¥×´Ì¬
+        /// æŒ‰é’®çŠ¶æ€
         /// </summary>
         public State State
         {
@@ -31,7 +31,7 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// °´Å¥×´Ì¬¸Ä±äºó·¢Éú
+        /// æŒ‰é’®çŠ¶æ€æ”¹å˜åå‘ç”Ÿ
         /// </summary>
         public event EventHandler StateChanged
         {
@@ -40,9 +40,9 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// °´Å¥×´Ì¬¸Ä±äÊÂ¼şº¯Êı
+        /// æŒ‰é’®çŠ¶æ€æ”¹å˜äº‹ä»¶å‡½æ•°
         /// </summary>
-        /// <param name="e">Êı¾İ</param>
+        /// <param name="e">æ•°æ®</param>
         protected virtual void OnStateChanged(EventArgs e)
         {
             EventHandler handler = this.Events[EVENT_STATE_CHANGED] as EventHandler;

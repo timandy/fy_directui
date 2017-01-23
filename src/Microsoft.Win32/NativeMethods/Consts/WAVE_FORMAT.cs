@@ -1,6 +1,6 @@
-namespace Microsoft.Win32
+ï»¿namespace Microsoft.Win32
 {
-    //WAVE_FORMAT¶¨Òå
+    //WAVE_FORMATå®šä¹‰
     public static partial class NativeMethods
     {
         /// <summary>

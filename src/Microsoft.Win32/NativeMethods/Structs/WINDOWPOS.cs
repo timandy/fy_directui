@@ -1,15 +1,15 @@
-using System;
+锘縰sing System;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// 窗口位置结构定义
+    /// 绐楀彛浣嶇疆缁撴瀯瀹氫箟
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// 窗口位置结构
+        /// 绐楀彛浣嶇疆缁撴瀯
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct WINDOWPOS
@@ -39,7 +39,7 @@ namespace Microsoft.Win32
             /// </summary>
             public int cy;
             /// <summary>
-            /// The window position. This member can be one or more of the following values. 参见 SWP
+            /// The window position. This member can be one or more of the following values. 鍙傝 SWP
             /// </summary>
             public uint flags;
         }

@@ -1,4 +1,4 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Microsoft.Windows.Forms
@@ -7,7 +7,7 @@ namespace Microsoft.Windows.Forms
     {
         private Image m_BackgroundImage = null;
         /// <summary>
-        /// ±³¾°Í¼
+        /// èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImage
         {
@@ -27,7 +27,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_BackgroundImageHovered = null;
         /// <summary>
-        /// Êó±êÒÆÉÏ±³¾°Í¼
+        /// é¼ æ ‡ç§»ä¸ŠèƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImageHovered
         {
@@ -47,7 +47,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_BackgroundImagePressed = null;
         /// <summary>
-        /// Êó±ê°´ÏÂ±³¾°Í¼
+        /// é¼ æ ‡æŒ‰ä¸‹èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImagePressed
         {
@@ -67,7 +67,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_BackgroundImageFocused = null;
         /// <summary>
-        /// »ñÈ¡½¹µã±³¾°Í¼
+        /// è·å–ç„¦ç‚¹èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImageFocused
         {
@@ -87,7 +87,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_BackgroundImageDisabled = null;
         /// <summary>
-        /// ×´Ì¬½ûÓÃ±³¾°Í¼
+        /// çŠ¶æ€ç¦ç”¨èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImageDisabled
         {
@@ -107,7 +107,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_BackgroundImageHighlight = null;
         /// <summary>
-        /// ¸ßÁÁ±³¾°Í¼
+        /// é«˜äº®èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImageHighlight
         {
@@ -127,7 +127,7 @@ namespace Microsoft.Windows.Forms
 
         private ImageLayout m_BackgroundImageLayout = ImageLayout.Tile;
         /// <summary>
-        /// ±³¾°Í¼²¼¾Ö·½Ê½
+        /// èƒŒæ™¯å›¾å¸ƒå±€æ–¹å¼
         /// </summary>
         public ImageLayout BackgroundImageLayout
         {
@@ -147,7 +147,7 @@ namespace Microsoft.Windows.Forms
 
         private bool m_BackgroundImageGrayOnDisabled = false;
         /// <summary>
-        /// ×´Ì¬½ûÓÃÊ±±³¾°Í¼ÊÇ·ñ±ä»Ò
+        /// çŠ¶æ€ç¦ç”¨æ—¶èƒŒæ™¯å›¾æ˜¯å¦å˜ç°
         /// </summary>
         public bool BackgroundImageGrayOnDisabled
         {

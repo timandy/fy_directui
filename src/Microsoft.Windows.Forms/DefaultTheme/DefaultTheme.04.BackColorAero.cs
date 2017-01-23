@@ -1,36 +1,36 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 
 namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// Ä¬ÈÏÖµ·½°¸
+    /// é»˜è®¤å€¼æ–¹æ¡ˆ
     /// </summary>
     public static partial class DefaultTheme
     {
         /// <summary>
-        /// Ä£ºýÌØÐ§ÑÕÉ«
+        /// æ¨¡ç³Šç‰¹æ•ˆé¢œè‰²
         /// </summary>
         public static Color BlurColor = Color.FromArgb(80, 255, 255, 255);
         /// <summary>
-        /// Ä£ºýÌØÐ§ÑÕÉ«
+        /// æ¨¡ç³Šç‰¹æ•ˆé¢œè‰²
         /// </summary>
         public const string _BlurColor = "80, 255, 255, 255";
 
         /// <summary>
-        /// ²£Á§ÌØÐ§ÖÐÐÄÑÕÉ«
+        /// çŽ»ç’ƒç‰¹æ•ˆä¸­å¿ƒé¢œè‰²
         /// </summary>
         public static Color GlassCenterColor = Color.FromArgb(200, 255, 255, 255);
         /// <summary>
-        /// ²£Á§ÌØÐ§ÖÐÐÄÑÕÉ«
+        /// çŽ»ç’ƒç‰¹æ•ˆä¸­å¿ƒé¢œè‰²
         /// </summary>
         public const string _GlassCenterColor = "200, 255, 255, 255";
 
         /// <summary>
-        /// ²£Á§ÌØÐ§»·ÈÆÑÕÉ«
+        /// çŽ»ç’ƒç‰¹æ•ˆçŽ¯ç»•é¢œè‰²
         /// </summary>
         public static Color GlassSurroundColor = Color.Transparent;
         /// <summary>
-        /// ²£Á§ÌØÐ§»·ÈÆÑÕÉ«
+        /// çŽ»ç’ƒç‰¹æ•ˆçŽ¯ç»•é¢œè‰²
         /// </summary>
         public const string _GlassSurroundColor = "Transparent";
     }

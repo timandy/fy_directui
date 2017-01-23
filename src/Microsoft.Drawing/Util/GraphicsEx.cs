@@ -1,22 +1,22 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using Microsoft.Win32;
 
 namespace Microsoft.Drawing
 {
     /// <summary>
-    /// Graphics¸¨ÖúÀà
+    /// Graphicsè¾…åŠ©ç±»
     /// </summary>
     public static class GraphicsEx
     {
         /// <summary>
-        /// ¸´ÖÆÉè±¸ÄÚÈİ(²»Ö§³ÖAlphaÍ¨µÀ)
+        /// å¤åˆ¶è®¾å¤‡å†…å®¹(ä¸æ”¯æŒAlphaé€šé“)
         /// </summary>
-        /// <param name="gSrc">Ô­Éè±¸</param>
-        /// <param name="gDest">Ä¿±êÉè±¸</param>
-        /// <param name="ptDest">Ô´ÆğÊ¼×ø±ê</param>
-        /// <param name="ptSrc">Ä¿±êÆğÊ¼×ø±ê</param>
-        /// <param name="szBlock">¸´ÖÆ´óĞ¡</param>
+        /// <param name="gSrc">åŸè®¾å¤‡</param>
+        /// <param name="gDest">ç›®æ ‡è®¾å¤‡</param>
+        /// <param name="ptDest">æºèµ·å§‹åæ ‡</param>
+        /// <param name="ptSrc">ç›®æ ‡èµ·å§‹åæ ‡</param>
+        /// <param name="szBlock">å¤åˆ¶å¤§å°</param>
         public static void Render(Graphics gSrc, Graphics gDest, Point ptDest, Point ptSrc, Size szBlock)
         {
             if (gSrc == null || gDest == null)
@@ -36,13 +36,13 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// »ìºÏÉè±¸ÄÚÈİ(Ö§³ÖAlphaÍ¨µÀ)
+        /// æ··åˆè®¾å¤‡å†…å®¹(æ”¯æŒAlphaé€šé“)
         /// </summary>
-        /// <param name="gSrc">Ô­Éè±¸</param>
-        /// <param name="gDest">Ä¿±êÉè±¸</param>
-        /// <param name="ptDest">Ô´ÆğÊ¼×ø±ê</param>
-        /// <param name="ptSrc">Ä¿±êÆğÊ¼×ø±ê</param>
-        /// <param name="szBlock">¸´ÖÆ´óĞ¡</param>
+        /// <param name="gSrc">åŸè®¾å¤‡</param>
+        /// <param name="gDest">ç›®æ ‡è®¾å¤‡</param>
+        /// <param name="ptDest">æºèµ·å§‹åæ ‡</param>
+        /// <param name="ptSrc">ç›®æ ‡èµ·å§‹åæ ‡</param>
+        /// <param name="szBlock">å¤åˆ¶å¤§å°</param>
         public static void BlendRender(Graphics gSrc, Graphics gDest, Point ptDest, Point ptSrc, Size szBlock)
         {
             if (gSrc == null || gDest == null)
@@ -62,14 +62,14 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// »ìºÏÉè±¸ÄÚÈİ(Ö§³ÖAlphaÍ¨µÀ)
+        /// æ··åˆè®¾å¤‡å†…å®¹(æ”¯æŒAlphaé€šé“)
         /// </summary>
-        /// <param name="gSrc">Ô­Éè±¸</param>
-        /// <param name="gDest">Ä¿±êÉè±¸</param>
-        /// <param name="ptDest">Ô´ÆğÊ¼×ø±ê</param>
-        /// <param name="ptSrc">Ä¿±êÆğÊ¼×ø±ê</param>
-        /// <param name="szBlock">¸´ÖÆ´óĞ¡</param>
-        /// <param name="alpha">Í¸Ã÷¶È[0-255]</param>
+        /// <param name="gSrc">åŸè®¾å¤‡</param>
+        /// <param name="gDest">ç›®æ ‡è®¾å¤‡</param>
+        /// <param name="ptDest">æºèµ·å§‹åæ ‡</param>
+        /// <param name="ptSrc">ç›®æ ‡èµ·å§‹åæ ‡</param>
+        /// <param name="szBlock">å¤åˆ¶å¤§å°</param>
+        /// <param name="alpha">é€æ˜åº¦[0-255]</param>
         public static void BlendRender(Graphics gSrc, Graphics gDest, Point ptDest, Point ptSrc, Size szBlock, byte alpha)
         {
             if (gSrc == null || gDest == null)

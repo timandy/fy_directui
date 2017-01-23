@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Reflection;
 
 namespace Microsoft.Drawing
 {
     /// <summary>
-    /// BufferedGraphicsEx¸¨ÖúÀà
+    /// BufferedGraphicsExè¾…åŠ©ç±»
     /// </summary>
     public static class BufferedGraphicsEx
     {
-        private static readonly FieldInfo FiTargetLoc;      //BufferedGraphics.targetLoc×Ö¶ÎĞÅÏ¢
-        private static readonly FieldInfo FiVirtulSize;     //BufferedGraphics.virtualSize×Ö¶ÎĞÅÏ¢
+        private static readonly FieldInfo FiTargetLoc;      //BufferedGraphics.targetLocå­—æ®µä¿¡æ¯
+        private static readonly FieldInfo FiVirtulSize;     //BufferedGraphics.virtualSizeå­—æ®µä¿¡æ¯
 
         /// <summary>
-        /// ¾²Ì¬¹¹Ôì
+        /// é™æ€æ„é€ 
         /// </summary>
         static BufferedGraphicsEx()
         {
@@ -24,10 +24,10 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// »ñÈ¡»º³åÇøµÄÄ¿±ê×ø±ê¡£
+        /// è·å–ç¼“å†²åŒºçš„ç›®æ ‡åæ ‡ã€‚
         /// </summary>
-        /// <param name="bg">»º³åÇø¡£</param>
-        /// <returns>»º³åÇøµÄÄ¿±ê×ø±ê</returns>
+        /// <param name="bg">ç¼“å†²åŒºã€‚</param>
+        /// <returns>ç¼“å†²åŒºçš„ç›®æ ‡åæ ‡</returns>
         public static Point GetTargetLoc(BufferedGraphics bg)
         {
             if (bg == null)
@@ -37,10 +37,10 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// »ñÈ¡»º³åÇøµÄĞéÄâ³ß´ç´óĞ¡¡£
+        /// è·å–ç¼“å†²åŒºçš„è™šæ‹Ÿå°ºå¯¸å¤§å°ã€‚
         /// </summary>
-        /// <param name="bg">»º³åÇø¡£</param>
-        /// <returns>»º³åÇøµÄĞéÄâ³ß´ç´óĞ¡¡£</returns>
+        /// <param name="bg">ç¼“å†²åŒºã€‚</param>
+        /// <returns>ç¼“å†²åŒºçš„è™šæ‹Ÿå°ºå¯¸å¤§å°ã€‚</returns>
         public static Size GetVirtualSize(BufferedGraphics bg)
         {
             if (bg == null)
@@ -50,65 +50,65 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ½«Í¼ĞÎ»º³åÇøµÄÄÚÈİĞ´ÈëÖ¸¶¨µÄ System.Drawing.Graphics ¶ÔÏó¡£
+        /// å°†å›¾å½¢ç¼“å†²åŒºçš„å†…å®¹å†™å…¥æŒ‡å®šçš„ System.Drawing.Graphics å¯¹è±¡ã€‚
         /// </summary>
-        /// <param name="bgSrc">Í¼ĞÎ»º³åÇø£¬Òª»ìºÏµÄÔ´¡£</param>
-        /// <param name="gDest">Ò»¸ö System.Drawing.Graphics ¶ÔÏó£¬ÒªÏòÆäÖĞĞ´ÈëÍ¼ĞÎ»º³åÇøµÄÄÚÈİ¡£</param>
-        /// <param name="rcDest">Ä¿±ê¾ØĞÎ¡£</param>
+        /// <param name="bgSrc">å›¾å½¢ç¼“å†²åŒºï¼Œè¦æ··åˆçš„æºã€‚</param>
+        /// <param name="gDest">ä¸€ä¸ª System.Drawing.Graphics å¯¹è±¡ï¼Œè¦å‘å…¶ä¸­å†™å…¥å›¾å½¢ç¼“å†²åŒºçš„å†…å®¹ã€‚</param>
+        /// <param name="rcDest">ç›®æ ‡çŸ©å½¢ã€‚</param>
         public static void Render(BufferedGraphics bgSrc, Graphics gDest, Rectangle rcDest)
         {
-            //ÑéÖ¤
+            //éªŒè¯
             if (bgSrc == null || gDest == null || !RectangleEx.IsVisible(rcDest))
                 return;
 
-            //·´Éä»ñÈ¡Ë½ÓĞ×Ö¶Î 
+            //åå°„è·å–ç§æœ‰å­—æ®µ 
             Point targetLoc = (Point)FiTargetLoc.GetValue(bgSrc);
             targetLoc.Offset(rcDest.X, rcDest.Y);
             Size virtualSize = rcDest.Size;
             Point sourceLoc = rcDest.Location;
 
-            //»ìºÏäÖÈ¾
+            //æ··åˆæ¸²æŸ“
             GraphicsEx.Render(bgSrc.Graphics, gDest, targetLoc, sourceLoc, virtualSize);
         }
 
         /// <summary>
-        /// ½«Í¼ĞÎ»º³åÇøµÄÄÚÈİÓëÖ¸¶¨µÄ System.Drawing.Graphics ¶ÔÏó»ìºÏ¡£(Ö§³Ö»º³åÇøAlphaÍ¨µÀ)
+        /// å°†å›¾å½¢ç¼“å†²åŒºçš„å†…å®¹ä¸æŒ‡å®šçš„ System.Drawing.Graphics å¯¹è±¡æ··åˆã€‚(æ”¯æŒç¼“å†²åŒºAlphaé€šé“)
         /// </summary>
         /// <param name="bgSrc"></param>
-        /// <param name="gDest">Ò»¸ö System.Drawing.Graphics ¶ÔÏó£¬Í¼ĞÎ»º³åÇøÒª»ìºÏµÄÄ¿±ê¡£</param>
+        /// <param name="gDest">ä¸€ä¸ª System.Drawing.Graphics å¯¹è±¡ï¼Œå›¾å½¢ç¼“å†²åŒºè¦æ··åˆçš„ç›®æ ‡ã€‚</param>
         public static void BlendRender(BufferedGraphics bgSrc, Graphics gDest)
         {
-            //ÑéÖ¤
+            //éªŒè¯
             if (bgSrc == null || gDest == null)
                 return;
 
-            //·´Éä»ñÈ¡Ë½ÓĞ×Ö¶Î
+            //åå°„è·å–ç§æœ‰å­—æ®µ
             Point targetLoc = (Point)FiTargetLoc.GetValue(bgSrc);
             Size virtualSize = (Size)FiVirtulSize.GetValue(bgSrc);
 
-            //»ìºÏäÖÈ¾
+            //æ··åˆæ¸²æŸ“
             GraphicsEx.BlendRender(bgSrc.Graphics, gDest, targetLoc, Point.Empty, virtualSize);
         }
 
         /// <summary>
-        /// ½«Í¼ĞÎ»º³åÇøµÄÄÚÈİÓëÖ¸¶¨µÄ System.Drawing.Graphics ¶ÔÏó»ìºÏ¡£(Ö§³Ö»º³åÇøAlphaÍ¨µÀ)
+        /// å°†å›¾å½¢ç¼“å†²åŒºçš„å†…å®¹ä¸æŒ‡å®šçš„ System.Drawing.Graphics å¯¹è±¡æ··åˆã€‚(æ”¯æŒç¼“å†²åŒºAlphaé€šé“)
         /// </summary>
-        /// <param name="bgSrc">Í¼ĞÎ»º³åÇø£¬Òª»ìºÏµÄÔ´¡£</param>
-        /// <param name="gDest">Ò»¸ö System.Drawing.Graphics ¶ÔÏó£¬Í¼ĞÎ»º³åÇøÒª»ìºÏµÄÄ¿±ê¡£</param>
-        /// <param name="rcDest">Ä¿±ê¾ØĞÎ¡£</param>
+        /// <param name="bgSrc">å›¾å½¢ç¼“å†²åŒºï¼Œè¦æ··åˆçš„æºã€‚</param>
+        /// <param name="gDest">ä¸€ä¸ª System.Drawing.Graphics å¯¹è±¡ï¼Œå›¾å½¢ç¼“å†²åŒºè¦æ··åˆçš„ç›®æ ‡ã€‚</param>
+        /// <param name="rcDest">ç›®æ ‡çŸ©å½¢ã€‚</param>
         public static void BlendRender(BufferedGraphics bgSrc, Graphics gDest, Rectangle rcDest)
         {
-            //ÑéÖ¤
+            //éªŒè¯
             if (bgSrc == null || gDest == null || !RectangleEx.IsVisible(rcDest))
                 return;
 
-            //·´Éä»ñÈ¡Ë½ÓĞ×Ö¶Î
+            //åå°„è·å–ç§æœ‰å­—æ®µ
             Point targetLoc = (Point)FiTargetLoc.GetValue(bgSrc);
             targetLoc.Offset(rcDest.X, rcDest.Y);
             Size virtualSize = rcDest.Size;
             Point sourceLoc = rcDest.Location;
 
-            //»ìºÏäÖÈ¾
+            //æ··åˆæ¸²æŸ“
             GraphicsEx.BlendRender(bgSrc.Graphics, gDest, targetLoc, sourceLoc, virtualSize);
         }
     }

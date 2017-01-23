@@ -1,4 +1,4 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
@@ -6,23 +6,23 @@ using System.Windows.Forms;
 namespace Microsoft.Drawing
 {
     /// <summary>
-    /// Ë«»º³åÇø
+    /// åŒç¼“å†²åŒº
     /// </summary>
     public class DoubleBufferedGraphics : Disposable
     {
-        private const int PRE_ALLOC = 10;               //Ô¤·ÖÅä´óĞ¡
-        private bool m_IsCreating;                      //ÊÇ·ñÕıÔÚ´´½¨»º³åÇø
-        private IWindow m_Owner;                        //ÓµÓĞ¸Ã»º³åÇøµÄ´°¿Ú
-        private Graphics m_OwnerGraphics;               //ÓµÓĞ¸Ã»º³åÇøµÄ´°¿ÚµÄ»æÍ¼»­Ãæ
-        private BufferedGraphics m_BufferedGraphics;    //»º³åÇø
+        private const int PRE_ALLOC = 10;               //é¢„åˆ†é…å¤§å°
+        private bool m_IsCreating;                      //æ˜¯å¦æ­£åœ¨åˆ›å»ºç¼“å†²åŒº
+        private IWindow m_Owner;                        //æ‹¥æœ‰è¯¥ç¼“å†²åŒºçš„çª—å£
+        private Graphics m_OwnerGraphics;               //æ‹¥æœ‰è¯¥ç¼“å†²åŒºçš„çª—å£çš„ç»˜å›¾ç”»é¢
+        private BufferedGraphics m_BufferedGraphics;    //ç¼“å†²åŒº
 
 
-        #region ¹¹Ôìº¯Êı
+        #region æ„é€ å‡½æ•°
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı
+        /// æ„é€ å‡½æ•°
         /// </summary>
-        /// <param name="owner">ÓµÓĞÕß</param>
+        /// <param name="owner">æ‹¥æœ‰è€…</param>
         public DoubleBufferedGraphics(IWindow owner)
         {
             this.m_Owner = owner;
@@ -31,11 +31,11 @@ namespace Microsoft.Drawing
         #endregion
 
 
-        #region ×Ö¶ÎÊôĞÔ
+        #region å­—æ®µå±æ€§
 
         private CompositingMode m_CompositingMode = CompositingMode.SourceOver;
         /// <summary>
-        /// »ñÈ¡Ò»¸öÖµ£¬¸ÃÖµÖ¸¶¨ÈçºÎ½«ºÏ³ÉÍ¼Ïñ»æÖÆµ½´Ë System.Drawing.Graphics¡£
+        /// è·å–ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡å®šå¦‚ä½•å°†åˆæˆå›¾åƒç»˜åˆ¶åˆ°æ­¤ System.Drawing.Graphicsã€‚
         /// </summary>
         public CompositingMode CompositingMode
         {
@@ -56,7 +56,7 @@ namespace Microsoft.Drawing
 
         private CompositingQuality m_CompositingQuality = CompositingQuality.Default;
         /// <summary>
-        /// »ñÈ¡»òÉèÖÃ»æÖÆµ½´Ë System.Drawing.Graphics µÄºÏ³ÉÍ¼ÏñµÄ³ÊÏÖÖÊÁ¿¡£
+        /// è·å–æˆ–è®¾ç½®ç»˜åˆ¶åˆ°æ­¤ System.Drawing.Graphics çš„åˆæˆå›¾åƒçš„å‘ˆç°è´¨é‡ã€‚
         /// </summary>
         public CompositingQuality CompositingQuality
         {
@@ -77,7 +77,7 @@ namespace Microsoft.Drawing
 
         private InterpolationMode m_InterpolationMode = InterpolationMode.Bilinear;
         /// <summary>
-        /// »ñÈ¡»òÉèÖÃÓë´Ë System.Drawing.Graphics ¹ØÁªµÄ²å²¹Ä£Ê½¡£
+        /// è·å–æˆ–è®¾ç½®ä¸æ­¤ System.Drawing.Graphics å…³è”çš„æ’è¡¥æ¨¡å¼ã€‚
         /// </summary>
         public InterpolationMode InterpolationMode
         {
@@ -98,7 +98,7 @@ namespace Microsoft.Drawing
 
         private PixelOffsetMode m_PixelOffsetMode = PixelOffsetMode.Default;
         /// <summary>
-        /// »ñÈ¡»òÉèÖÃÒ»¸öÖµ£¬¸ÃÖµÖ¸¶¨ÔÚ³ÊÏÖ´Ë System.Drawing.Graphics µÄ¹ı³ÌÖĞÏñËØÈçºÎÆ«ÒÆ¡£
+        /// è·å–æˆ–è®¾ç½®ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡å®šåœ¨å‘ˆç°æ­¤ System.Drawing.Graphics çš„è¿‡ç¨‹ä¸­åƒç´ å¦‚ä½•åç§»ã€‚
         /// </summary>
         public PixelOffsetMode PixelOffsetMode
         {
@@ -119,7 +119,7 @@ namespace Microsoft.Drawing
 
         private SmoothingMode m_SmoothingMode = SmoothingMode.None;
         /// <summary>
-        /// »ñÈ¡»òÉèÖÃ´Ë System.Drawing.Graphics µÄ³ÊÏÖÖÊÁ¿¡£
+        /// è·å–æˆ–è®¾ç½®æ­¤ System.Drawing.Graphics çš„å‘ˆç°è´¨é‡ã€‚
         /// </summary>
         public SmoothingMode SmoothingMode
         {
@@ -140,7 +140,7 @@ namespace Microsoft.Drawing
 
         private int m_TextContrast = 4;
         /// <summary>
-        /// »ñÈ¡»òÉèÖÃ³ÊÏÖÎÄ±¾µÄ»Ò¶ÈĞ£ÕıÖµ¡£
+        /// è·å–æˆ–è®¾ç½®å‘ˆç°æ–‡æœ¬çš„ç°åº¦æ ¡æ­£å€¼ã€‚
         /// </summary>
         public int TextContrast
         {
@@ -161,7 +161,7 @@ namespace Microsoft.Drawing
 
         private TextRenderingHint m_TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
         /// <summary>
-        /// »ñÈ¡»òÉèÖÃÓë´Ë System.Drawing.Graphics ¹ØÁªµÄÎÄ±¾µÄ³ÊÏÖÄ£Ê½¡£
+        /// è·å–æˆ–è®¾ç½®ä¸æ­¤ System.Drawing.Graphics å…³è”çš„æ–‡æœ¬çš„å‘ˆç°æ¨¡å¼ã€‚
         /// </summary>
         public TextRenderingHint TextRenderingHint
         {
@@ -181,7 +181,7 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// »º³åÇø»æÍ¼¶ÔÏó
+        /// ç¼“å†²åŒºç»˜å›¾å¯¹è±¡
         /// </summary>
         public Graphics Graphics
         {
@@ -193,7 +193,7 @@ namespace Microsoft.Drawing
 
         private Size m_Size = Size.Empty;
         /// <summary>
-        /// »ñÈ¡»º³åÇøµÄĞéÄâ»­²¼´óĞ¡¡£
+        /// è·å–ç¼“å†²åŒºçš„è™šæ‹Ÿç”»å¸ƒå¤§å°ã€‚
         /// </summary>
         public Size Size
         {
@@ -206,12 +206,12 @@ namespace Microsoft.Drawing
         #endregion
 
 
-        #region Ë½ÓĞ·½·¨
+        #region ç§æœ‰æ–¹æ³•
 
         /// <summary>
-        /// ³õÊ¼»¯»æÍ¼»­Ãæ
+        /// åˆå§‹åŒ–ç»˜å›¾ç”»é¢
         /// </summary>
-        /// <param name="g">»æÍ¼»­Ãæ</param>
+        /// <param name="g">ç»˜å›¾ç”»é¢</param>
         private void InitGraphics(Graphics g)
         {
             g.CompositingMode = this.m_CompositingMode;
@@ -226,102 +226,102 @@ namespace Microsoft.Drawing
         #endregion
 
 
-        #region ¹«¹²·½·¨
+        #region å…¬å…±æ–¹æ³•
 
         /// <summary>
-        /// ¿ªÊ¼äÖÈ¾
+        /// å¼€å§‹æ¸²æŸ“
         /// </summary>
-        /// <returns>³É¹¦·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+        /// <returns>æˆåŠŸè¿”å›true,å¦åˆ™è¿”å›false</returns>
         public bool Prepare()
         {
-            //¼ì²é×ÊÔ´
+            //æ£€æŸ¥èµ„æº
             this.CheckDisposed();
 
-            //¼ì²é×ÊÔ´
+            //æ£€æŸ¥èµ„æº
             this.m_Owner.CheckDisposed();
 
-            //ÅĞ¶Ï¾ä±ú
+            //åˆ¤æ–­å¥æŸ„
             if (!this.m_Owner.IsHandleCreated)
                 return false;
 
-            //ÅĞ¶Ï¿É¼û
+            //åˆ¤æ–­å¯è§
             if (!this.m_Owner.Visible)
                 return false;
 
-            //ÅĞ¶Ï´óĞ¡
+            //åˆ¤æ–­å¤§å°
             Size wndSize = this.m_Owner.Size;
             if (wndSize.Width <= 0 || (wndSize.Height <= 0))
                 return false;
 
-            //ÒÑ´´½¨
+            //å·²åˆ›å»º
             Size bufferSize = this.m_Size;
             if (this.m_BufferedGraphics != null
                 && bufferSize.Width >= wndSize.Width && bufferSize.Width <= wndSize.Width + PRE_ALLOC
                 && bufferSize.Height >= wndSize.Height && bufferSize.Height <= wndSize.Height + PRE_ALLOC)
                 return true;
 
-            //Ô¤·ÖÅä
+            //é¢„åˆ†é…
             if (bufferSize.Width < wndSize.Width)
                 wndSize.Width += PRE_ALLOC;
             if (bufferSize.Height < wndSize.Height)
                 wndSize.Height += PRE_ALLOC;
 
-            //ÉèÖÃ×´Ì¬
+            //è®¾ç½®çŠ¶æ€
             if (this.m_IsCreating)
                 return false;
             this.m_IsCreating = true;
 
-            //»º³åÉÏÏÂÎÄ
+            //ç¼“å†²ä¸Šä¸‹æ–‡
             BufferedGraphicsContext bufferedGraphicsContext = BufferedGraphicsManager.Current;
             bufferedGraphicsContext.MaximumBuffer = wndSize;
 
-            //Ö´ĞĞ´´½¨
+            //æ‰§è¡Œåˆ›å»º
             if (this.m_OwnerGraphics == null)
                 this.m_OwnerGraphics = this.m_Owner.CreateGraphics();
             if (this.m_BufferedGraphics != null)
                 this.m_BufferedGraphics.Dispose();
             this.m_BufferedGraphics = bufferedGraphicsContext.Allocate(this.m_OwnerGraphics, new Rectangle(0, 0, wndSize.Width, wndSize.Height));
 
-            //³õÊ¼»¯»æÍ¼¶ÔÏó
+            //åˆå§‹åŒ–ç»˜å›¾å¯¹è±¡
             this.InitGraphics(this.m_BufferedGraphics.Graphics);
             this.m_Size = wndSize;
 
-            //²»´´½¨
+            //ä¸åˆ›å»º
             this.m_IsCreating = false;
             return true;
         }
 
         /// <summary>
-        /// ÔÚÄ¿±êÉè±¸ÉÏ»ìºÏäÖÈ¾
+        /// åœ¨ç›®æ ‡è®¾å¤‡ä¸Šæ··åˆæ¸²æŸ“
         /// </summary>
-        /// <param name="g">Ä¿±êÉè±¸äÖÈ¾Êı¾İ</param>
+        /// <param name="g">ç›®æ ‡è®¾å¤‡æ¸²æŸ“æ•°æ®</param>
         public void BlendRender(Graphics g)
         {
             BufferedGraphicsEx.BlendRender(this.m_BufferedGraphics, g);
         }
 
         /// <summary>
-        /// ÔÚÄ¿±êÉè±¸ÉÏ»ìºÏäÖÈ¾
+        /// åœ¨ç›®æ ‡è®¾å¤‡ä¸Šæ··åˆæ¸²æŸ“
         /// </summary>
-        /// <param name="e">Ä¿±êÉè±¸äÖÈ¾Êı¾İ</param>
+        /// <param name="e">ç›®æ ‡è®¾å¤‡æ¸²æŸ“æ•°æ®</param>
         public void BlendRender(PaintEventArgs e)
         {
             BufferedGraphicsEx.BlendRender(this.m_BufferedGraphics, e.Graphics, e.ClipRectangle);
         }
 
         /// <summary>
-        /// ÔÚÄ¿±êÉè±¸ÉÏ¸´ÖÆäÖÈ¾
+        /// åœ¨ç›®æ ‡è®¾å¤‡ä¸Šå¤åˆ¶æ¸²æŸ“
         /// </summary>
-        /// <param name="g">Ä¿±êÉè±¸äÖÈ¾Êı¾İ</param>
+        /// <param name="g">ç›®æ ‡è®¾å¤‡æ¸²æŸ“æ•°æ®</param>
         public void Render(Graphics g)
         {
             this.m_BufferedGraphics.Render(g);
         }
 
         /// <summary>
-        /// ÔÚÄ¿±êÉè±¸ÉÏ¸´ÖÆäÖÈ¾
+        /// åœ¨ç›®æ ‡è®¾å¤‡ä¸Šå¤åˆ¶æ¸²æŸ“
         /// </summary>
-        /// <param name="e">Ä¿±êÉè±¸äÖÈ¾Êı¾İ</param>
+        /// <param name="e">ç›®æ ‡è®¾å¤‡æ¸²æŸ“æ•°æ®</param>
         public void Render(PaintEventArgs e)
         {
             BufferedGraphicsEx.Render(this.m_BufferedGraphics, e.Graphics, e.ClipRectangle);
@@ -330,12 +330,12 @@ namespace Microsoft.Drawing
         #endregion
 
 
-        #region ÊÍ·Å×ÊÔ´
+        #region é‡Šæ”¾èµ„æº
 
         /// <summary>
-        /// ÊÍ·Å×ÊÔ´
+        /// é‡Šæ”¾èµ„æº
         /// </summary>
-        /// <param name="disposing">ÊÍ·ÅÍĞ¹Ü×ÊÔ´Îªtrue,·ñÔòÎªfalse</param>
+        /// <param name="disposing">é‡Šæ”¾æ‰˜ç®¡èµ„æºä¸ºtrue,å¦åˆ™ä¸ºfalse</param>
         protected override void Dispose(bool disposing)
         {
             if (this.m_BufferedGraphics != null)
@@ -348,7 +348,7 @@ namespace Microsoft.Drawing
                 this.m_OwnerGraphics.Dispose();
                 this.m_OwnerGraphics = null;
             }
-            this.m_Owner = null;//È¡ÏûÒıÓÃ
+            this.m_Owner = null;//å–æ¶ˆå¼•ç”¨
         }
 
         #endregion

@@ -1,4 +1,4 @@
-using System.Drawing;
+锘縰sing System.Drawing;
 
 namespace Microsoft.Windows.Forms
 {
@@ -6,7 +6,7 @@ namespace Microsoft.Windows.Forms
     {
         private AeroStyle m_BackColorAeroStyle = AeroStyle.None;
         /// <summary>
-        /// 特效绘制方式
+        /// 鐗规晥缁樺埗鏂瑰紡
         /// </summary>
         public AeroStyle BackColorAeroStyle
         {
@@ -26,7 +26,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_BackColorAeroPos = 0.45f;
         /// <summary>
-        /// 特效分割位置
+        /// 鐗规晥鍒嗗壊浣嶇疆
         /// </summary>
         public float BackColorAeroPos
         {
@@ -46,7 +46,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BackColorAeroBlurColor = DefaultTheme.BlurColor;
         /// <summary>
-        /// 模糊特效颜色
+        /// 妯＄硦鐗规晥棰滆壊
         /// </summary>
         public Color BackColorAeroBlurColor
         {
@@ -66,7 +66,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BackColorAeroGlassCenterColor = DefaultTheme.GlassCenterColor;
         /// <summary>
-        /// 玻璃特效中心颜色
+        /// 鐜荤拑鐗规晥涓績棰滆壊
         /// </summary>
         public Color BackColorAeroGlassCenterColor
         {
@@ -86,7 +86,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BackColorAeroGlassSurroundColor = DefaultTheme.GlassSurroundColor;
         /// <summary>
-        /// 玻璃特效环绕颜色
+        /// 鐜荤拑鐗规晥鐜粫棰滆壊
         /// </summary>
         public Color BackColorAeroGlassSurroundColor
         {

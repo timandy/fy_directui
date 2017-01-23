@@ -9,7 +9,7 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 虚拟控件集合
         /// </summary>
-        public class UIControlCollection : Collection<UIControl>
+        public class UIControlCollection : Collection<UIControl>, IDisposable
         {
             //集合所属控件
             private IUIControl m_Owner;
@@ -55,7 +55,7 @@ namespace Microsoft.Windows.Forms
                     try
                     {
                         base.InsertItem(index, control);
-                        control.UIParentInternal = m_Owner;
+                        control.UIParentInternal = this.m_Owner;
                     }
                     finally
                     {
@@ -142,7 +142,6 @@ namespace Microsoft.Windows.Forms
                         this.m_Owner.SuspendLayout();
                         try
                         {
-
                             UIControl[] array = new UIControl[this.Count];
                             this.CopyTo(array, 0);
                             foreach (UIControl control in array)

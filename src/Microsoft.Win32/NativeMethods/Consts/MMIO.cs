@@ -1,6 +1,6 @@
-namespace Microsoft.Win32
+ï»¿namespace Microsoft.Win32
 {
-    //MMIO¶¨Òå
+    //MMIOå®šä¹‰
     public static partial class NativeMethods
     {
         /// <summary>

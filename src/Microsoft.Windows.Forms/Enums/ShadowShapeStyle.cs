@@ -1,31 +1,31 @@
-using System;
+ï»¿using System;
 
 namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// ÎÄ±¾ÒõÓ°Ãè±ßÑùÊ½
+    /// æ–‡æœ¬é˜´å½±æè¾¹æ ·å¼
     /// </summary>
     [Flags]
     public enum ShadowShapeStyle : int
     {
         /// <summary>
-        /// ÎŞ
+        /// æ— 
         /// </summary>
         None = 0x0000,
         /// <summary>
-        /// ÒõÓ°
+        /// é˜´å½±
         /// </summary>
         Shadow = 0x0001,
         /// <summary>
-        /// ÒõÓ°Ãè±ß
+        /// é˜´å½±æè¾¹
         /// </summary>
         ShapeOfShadow = 0x0002,
         /// <summary>
-        /// ÎÄ±¾Ãè±ß
+        /// æ–‡æœ¬æè¾¹
         /// </summary>
         ShapeOfText = 0x0004,
         /// <summary>
-        /// È«²¿
+        /// å…¨éƒ¨
         /// </summary>
         All = 0x0007,
     }

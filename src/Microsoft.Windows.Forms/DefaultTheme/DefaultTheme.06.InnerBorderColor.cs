@@ -1,104 +1,104 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using Microsoft.Drawing;
 
 namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// Ä¬ÈÏÖµ·½°¸
+    /// é»˜è®¤å€¼æ–¹æ¡ˆ
     /// </summary>
     public static partial class DefaultTheme
     {
         /// <summary>
-        /// ÉîÉîÄÚ±ß¿òÉ«
+        /// æ·±æ·±å†…è¾¹æ¡†è‰²
         /// </summary>
         public static Color DarkDarkInnerBorderColor = Color.FromArgb(83, 83, 90);
         /// <summary>
-        /// ÉîÉîÄÚ±ß¿òÉ«
+        /// æ·±æ·±å†…è¾¹æ¡†è‰²
         /// </summary>
         public const string _DarkDarkInnerBorderColor = "83, 83, 90";
 
         /// <summary>
-        /// ÉîÄÚ±ß¿òÉ«
+        /// æ·±å†…è¾¹æ¡†è‰²
         /// </summary>
         public static Color DarkInnerBorderColor = Color.FromArgb(73, 73, 80);
         /// <summary>
-        /// ÉîÄÚ±ß¿òÉ«
+        /// æ·±å†…è¾¹æ¡†è‰²
         /// </summary>
         public const string _DarkInnerBorderColor = "73, 73, 80";
 
         /// <summary>
-        /// ÄÚ±ß¿òÑÕÉ«
+        /// å†…è¾¹æ¡†é¢œè‰²
         /// </summary>
         public static Color InnerBorderColor = Color.FromArgb(63, 63, 70);
         /// <summary>
-        /// ÄÚ±ß¿òÑÕÉ«
+        /// å†…è¾¹æ¡†é¢œè‰²
         /// </summary>
         public const string _InnerBorderColor = "63, 63, 70";
 
         /// <summary>
-        /// Ç³ÄÚ±ß¿òÑÕÉ«
+        /// æµ…å†…è¾¹æ¡†é¢œè‰²
         /// </summary>
         public static Color LightInnerBorderColor = Color.FromArgb(53, 53, 60);
         /// <summary>
-        /// Ç³ÄÚ±ß¿òÑÕÉ«
+        /// æµ…å†…è¾¹æ¡†é¢œè‰²
         /// </summary>
         public const string _LightInnerBorderColor = "53, 53, 60";
 
         /// <summary>
-        /// Ç³Ç³ÄÚ±ß¿òÑÕÉ«
+        /// æµ…æµ…å†…è¾¹æ¡†é¢œè‰²
         /// </summary>
         public static Color LightLightInnerBorderColor = Color.FromArgb(43, 43, 50);
         /// <summary>
-        /// Ç³ÄÚ±ß¿òÑÕÉ«
+        /// æµ…å†…è¾¹æ¡†é¢œè‰²
         /// </summary>
         /// <summary>
-        /// Ç³Ç³ÄÚ±ß¿òÑÕÉ«
+        /// æµ…æµ…å†…è¾¹æ¡†é¢œè‰²
         /// </summary>
         public const string _LightLightInnerBorderColor = "43, 43, 50";
 
 
         /// <summary>
-        /// ÄÚ±ß¿òÊó±êÒÆÉÏÑÕÉ«ÏòÁ¿
+        /// å†…è¾¹æ¡†é¼ æ ‡ç§»ä¸Šé¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector InnerBorderColorHoveredVector = ColorVector.FromArgb(10, 10, 10);
         /// <summary>
-        /// ÄÚ±ß¿òÊó±êÒÆÉÏÑÕÉ«ÏòÁ¿
+        /// å†…è¾¹æ¡†é¼ æ ‡ç§»ä¸Šé¢œè‰²å‘é‡
         /// </summary>
         public const string _InnerBorderColorHoveredVector = "10, 10, 10";
 
         /// <summary>
-        /// ÄÚ±ß¿òÊó±ê°´ÏÂÑÕÉ«ÏòÁ¿
+        /// å†…è¾¹æ¡†é¼ æ ‡æŒ‰ä¸‹é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector InnerBorderColorPressedVector = ColorVector.FromArgb(20, 20, 20);
         /// <summary>
-        /// ÄÚ±ß¿òÊó±ê°´ÏÂÑÕÉ«ÏòÁ¿
+        /// å†…è¾¹æ¡†é¼ æ ‡æŒ‰ä¸‹é¢œè‰²å‘é‡
         /// </summary>
         public const string _InnerBorderColorPressedVector = "20, 20, 20";
 
         /// <summary>
-        /// ÄÚ±ß¿ò»ñÈ¡½¹µãÑÕÉ«ÏòÁ¿
+        /// å†…è¾¹æ¡†è·å–ç„¦ç‚¹é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector InnerBorderColorFocusedVector = ColorVector.FromArgb(5, 5, 5);
         /// <summary>
-        /// ÄÚ±ß¿ò»ñÈ¡½¹µãÑÕÉ«ÏòÁ¿
+        /// å†…è¾¹æ¡†è·å–ç„¦ç‚¹é¢œè‰²å‘é‡
         /// </summary>
         public const string _InnerBorderColorFocusedVector = "5, 5, 5";
 
         /// <summary>
-        /// ÄÚ±ß¿ò×´Ì¬½ûÓÃÑÕÉ«ÏòÁ¿
+        /// å†…è¾¹æ¡†çŠ¶æ€ç¦ç”¨é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector InnerBorderColorDisabledVector = ColorVector.FromArgb(0, 0, 0);
         /// <summary>
-        /// ÄÚ±ß¿ò×´Ì¬½ûÓÃÑÕÉ«ÏòÁ¿
+        /// å†…è¾¹æ¡†çŠ¶æ€ç¦ç”¨é¢œè‰²å‘é‡
         /// </summary>
         public const string _InnerBorderColorDisabledVector = "0, 0, 0";
 
         /// <summary>
-        /// ÄÚ±ß¿ò¸ßÁÁÑÕÉ«ÏòÁ¿
+        /// å†…è¾¹æ¡†é«˜äº®é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector InnerBorderColorHighlightVector = ColorVector.FromArgb(255, 255, 255);
         /// <summary>
-        /// ÄÚ±ß¿ò¸ßÁÁÑÕÉ«ÏòÁ¿
+        /// å†…è¾¹æ¡†é«˜äº®é¢œè‰²å‘é‡
         /// </summary>
         public const string _InnerBorderColorHighlightVector = "255, 255, 255";
     }

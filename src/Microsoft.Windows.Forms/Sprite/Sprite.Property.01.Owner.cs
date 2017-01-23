@@ -1,11 +1,11 @@
-
+ï»¿
 namespace Microsoft.Windows.Forms
 {
     public partial class Sprite
     {
         private bool m_AutoFeedback = false;
         /// <summary>
-        /// ÊÇ·ñ×Ô¶¯·´À¡µ½Owner
+        /// æ˜¯å¦è‡ªåŠ¨åé¦ˆåˆ°Owner
         /// </summary>
         public bool AutoFeedback
         {
@@ -24,7 +24,7 @@ namespace Microsoft.Windows.Forms
 
         private IUIControl m_Owner;
         /// <summary>
-        /// ¸¸¿Ø¼ş
+        /// çˆ¶æ§ä»¶
         /// </summary>
         public IUIControl Owner
         {
@@ -35,7 +35,7 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// ·´À¡·½·¨,·ÇÇ¿ÖÆ
+        /// åé¦ˆæ–¹æ³•,éå¼ºåˆ¶
         /// </summary>
         public void Feedback()
         {
@@ -43,9 +43,9 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// ·´À¡·½·¨
+        /// åé¦ˆæ–¹æ³•
         /// </summary>
-        /// <param name="force">ÊÇ·ñÇ¿ÖÆ·´À¡</param>
+        /// <param name="force">æ˜¯å¦å¼ºåˆ¶åé¦ˆ</param>
         public void Feedback(bool force)
         {
             if (this.m_Owner != null && (force || this.m_AutoFeedback))

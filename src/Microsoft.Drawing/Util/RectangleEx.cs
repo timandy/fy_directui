@@ -1,17 +1,17 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Microsoft.Drawing
 {
     /// <summary>
-    /// ¾ØĞÎ°ïÖúÀà
+    /// çŸ©å½¢å¸®åŠ©ç±»
     /// </summary>
     public static class RectangleEx
     {
         /// <summary>
-        /// µ÷Õû¾ØĞÎ·Ç¿Õ,Ó°ÏìÔ­À´¾ØĞÎ
+        /// è°ƒæ•´çŸ©å½¢éç©º,å½±å“åŸæ¥çŸ©å½¢
         /// </summary>
-        /// <param name="rect">Òªµ÷ÕûµÄ¾ØĞÎ</param>
+        /// <param name="rect">è¦è°ƒæ•´çš„çŸ©å½¢</param>
         public static void MakeNotEmpty(ref Rectangle rect)
         {
             if (rect.Width < 1)
@@ -21,22 +21,22 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// »ñÈ¡¾ØĞÎÊÇ·ñ¿É¼û
+        /// è·å–çŸ©å½¢æ˜¯å¦å¯è§
         /// </summary>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <returns>¿í¶È´óÓÚ0²¢ÇÒ¸ß¶È´óÓÚ0·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <returns>å®½åº¦å¤§äº0å¹¶ä¸”é«˜åº¦å¤§äº0è¿”å›true,å¦åˆ™è¿”å›false</returns>
         public static bool IsVisible(Rectangle rect)
         {
             return rect.Width > 0 && rect.Height > 0;
         }
 
         /// <summary>
-        /// ÔÚÖ¸¶¨µÄ·½Ïò·Å´ó¾ØĞÎ,²»Ó°ÏìÔ­À´µÄ¾ØĞÎ
+        /// åœ¨æŒ‡å®šçš„æ–¹å‘æ”¾å¤§çŸ©å½¢,ä¸å½±å“åŸæ¥çš„çŸ©å½¢
         /// </summary>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">·½Ïò</param>
-        /// <param name="value">·Å´óÁ¿</param>
-        /// <returns>·Å´óºóµÄ¾ØĞÎ</returns>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">æ–¹å‘</param>
+        /// <param name="value">æ”¾å¤§é‡</param>
+        /// <returns>æ”¾å¤§åçš„çŸ©å½¢</returns>
         public static Rectangle Inflate(Rectangle rect, TabAlignment align, int value)
         {
             switch (align)
@@ -67,13 +67,13 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ÔÚÖ¸¶¨µÄ·½ÏòºÍ·´Ïò·Å´ó¾ØĞÎ,²»Ó°ÏìÔ­À´µÄ¾ØĞÎ
+        /// åœ¨æŒ‡å®šçš„æ–¹å‘å’Œåå‘æ”¾å¤§çŸ©å½¢,ä¸å½±å“åŸæ¥çš„çŸ©å½¢
         /// </summary>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">·½Ïò</param>
-        /// <param name="value">·Å´óÁ¿</param>
-        /// <param name="revalue">·´Ïò·Å´óÁ¿</param>
-        /// <returns>·Å´óºó¾ØĞÎ</returns>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">æ–¹å‘</param>
+        /// <param name="value">æ”¾å¤§é‡</param>
+        /// <param name="revalue">åå‘æ”¾å¤§é‡</param>
+        /// <returns>æ”¾å¤§åçŸ©å½¢</returns>
         public static Rectangle Inflate(Rectangle rect, TabAlignment align, int value, int revalue)
         {
             switch (align)
@@ -106,12 +106,12 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ÔÚÖ¸¶¨µÄ·½ÏòµÄÁ½²à·Å´ó¾ØĞÎ,²»Ó°ÏìÔ­À´µÄ¾ØĞÎ
+        /// åœ¨æŒ‡å®šçš„æ–¹å‘çš„ä¸¤ä¾§æ”¾å¤§çŸ©å½¢,ä¸å½±å“åŸæ¥çš„çŸ©å½¢
         /// </summary>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">·½Ïò</param>
-        /// <param name="value">·Å´óÁ¿</param>
-        /// <returns>·Å´óºó¾ØĞÎ</returns>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">æ–¹å‘</param>
+        /// <param name="value">æ”¾å¤§é‡</param>
+        /// <returns>æ”¾å¤§åçŸ©å½¢</returns>
         public static Rectangle InflateSide(Rectangle rect, TabAlignment align, int value)
         {
             int half = value / 2;
@@ -137,12 +137,12 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// °´Ö¸¶¨±ßµ÷Õû¾ØĞÎ,Ê¹ÔÚ¸Ã·½ÏòÉÏµÄ´óĞ¡ÎªÖ¸¶¨Öµ
+        /// æŒ‰æŒ‡å®šè¾¹è°ƒæ•´çŸ©å½¢,ä½¿åœ¨è¯¥æ–¹å‘ä¸Šçš„å¤§å°ä¸ºæŒ‡å®šå€¼
         /// </summary>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">·½Ïò</param>
-        /// <param name="value">´óĞ¡</param>
-        /// <returns>µ÷Õûºó¾ØĞÎ</returns>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">æ–¹å‘</param>
+        /// <param name="value">å¤§å°</param>
+        /// <returns>è°ƒæ•´åçŸ©å½¢</returns>
         public static Rectangle Adjust(Rectangle rect, TabAlignment align, int value)
         {
             switch (align)
@@ -173,13 +173,13 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// µ÷Õû¾ØĞÎÊ¹ÆäÔÚÖ¸¶¨·½ÏòÉÏÓë±ê×¼¾ØĞÎ¶ÔÆë,²¢¼ÓÉÏÆ«ÒÆÁ¿,²»Ó°ÏìÔ­À´µÄ¾ØĞÎ
+        /// è°ƒæ•´çŸ©å½¢ä½¿å…¶åœ¨æŒ‡å®šæ–¹å‘ä¸Šä¸æ ‡å‡†çŸ©å½¢å¯¹é½,å¹¶åŠ ä¸Šåç§»é‡,ä¸å½±å“åŸæ¥çš„çŸ©å½¢
         /// </summary>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="rectStand">±ê×¼¾ØĞÎ</param>
-        /// <param name="align">·½Ïò</param>
-        /// <param name="offset">Æ«ÒÆÁ¿</param>
-        /// <returns>µ÷ÕûºóµÄ¾ØĞÎ</returns>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="rectStand">æ ‡å‡†çŸ©å½¢</param>
+        /// <param name="align">æ–¹å‘</param>
+        /// <param name="offset">åç§»é‡</param>
+        /// <returns>è°ƒæ•´åçš„çŸ©å½¢</returns>
         public static Rectangle Align(Rectangle rect, Rectangle rectStand, TabAlignment align, int offset)
         {
             int value;
@@ -215,33 +215,33 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ¾ØĞÎ¼ÓÉÏPaddingºóµÄĞÂ¾ØĞÎ
+        /// çŸ©å½¢åŠ ä¸ŠPaddingåçš„æ–°çŸ©å½¢
         /// </summary>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="padding">Íâ±ß¾à</param>
-        /// <returns>ĞÂ¾ØĞÎ</returns>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="padding">å¤–è¾¹è·</param>
+        /// <returns>æ–°çŸ©å½¢</returns>
         public static Rectangle Add(Rectangle rect, Padding padding)
         {
             return new Rectangle(rect.Left - padding.Left, rect.Top - padding.Top, rect.Width + padding.Horizontal, rect.Height + padding.Vertical);
         }
 
         /// <summary>
-        /// ¾ØĞÎ¼õÈ¥PaddingºóµÄĞÂ¾ØĞÎ
+        /// çŸ©å½¢å‡å»Paddingåçš„æ–°çŸ©å½¢
         /// </summary>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="padding">ÄÚ±ß¾à</param>
-        /// <returns>ĞÂ¾ØĞÎ</returns>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="padding">å†…è¾¹è·</param>
+        /// <returns>æ–°çŸ©å½¢</returns>
         public static Rectangle Subtract(Rectangle rect, Padding padding)
         {
             return new Rectangle(rect.Left + padding.Left, rect.Top + padding.Top, rect.Width - padding.Horizontal, rect.Height - padding.Vertical);
         }
 
         /// <summary>
-        /// ½«´Ë¾ØĞÎµÄÎ»ÖÃµ÷ÕûÖ¸¶¨µÄÁ¿¡£·µ»ØĞÂ¾ØĞÎ£¬²»Ó°ÏìÔ­À´Öµ¡£
+        /// å°†æ­¤çŸ©å½¢çš„ä½ç½®è°ƒæ•´æŒ‡å®šçš„é‡ã€‚è¿”å›æ–°çŸ©å½¢ï¼Œä¸å½±å“åŸæ¥å€¼ã€‚
         /// </summary>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="pos">¸ÃÎ»ÖÃµÄÆ«ÒÆÁ¿</param>
-        /// <returns>Æ«ÒÆºóµÄĞÂ¾ØĞÎ</returns>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="pos">è¯¥ä½ç½®çš„åç§»é‡</param>
+        /// <returns>åç§»åçš„æ–°çŸ©å½¢</returns>
         public static Rectangle Offset(Rectangle rect, Point pos)
         {
             rect.Offset(pos);
@@ -249,12 +249,12 @@ namespace Microsoft.Drawing
         }
 
         /// <summary>
-        /// ½«¾ØĞÎµÄÎ»ÖÃµ÷ÕûÖ¸¶¨µÄÁ¿¡£·µ»ØĞÂ¾ØĞÎ£¬²»Ó°ÏìÔ­À´Öµ¡£
+        /// å°†çŸ©å½¢çš„ä½ç½®è°ƒæ•´æŒ‡å®šçš„é‡ã€‚è¿”å›æ–°çŸ©å½¢ï¼Œä¸å½±å“åŸæ¥å€¼ã€‚
         /// </summary>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="x">Ë®Æ½Æ«ÒÆÁ¿</param>
-        /// <param name="y">´¹Ö±Æ«ÒÆÁ¿</param>
-        /// <returns>Æ«ÒÆºóµÄĞÂ¾ØĞÎ</returns>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="x">æ°´å¹³åç§»é‡</param>
+        /// <param name="y">å‚ç›´åç§»é‡</param>
+        /// <returns>åç§»åçš„æ–°çŸ©å½¢</returns>
         public static Rectangle Offset(Rectangle rect, int x, int y)
         {
             rect.Offset(x, y);

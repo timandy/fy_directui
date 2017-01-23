@@ -1,9 +1,9 @@
-using System.Runtime.InteropServices;
+ï»¿using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// POINT¶¨Òå
+    /// POINTå®šä¹‰
     /// </summary>
     public static partial class NativeMethods
     {

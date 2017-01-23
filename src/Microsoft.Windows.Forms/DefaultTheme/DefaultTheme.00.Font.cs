@@ -1,19 +1,19 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 
 namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// Ä¬ÈÏÖµ·½°¸
+    /// é»˜è®¤å€¼æ–¹æ¡ˆ
     /// </summary>
     public static partial class DefaultTheme
     {
         /// <summary>
-        /// Ä¬ÈÏ×ÖÌå
+        /// é»˜è®¤å­—ä½“
         /// </summary>
-        public static Font Font = new Font("Î¢ÈíÑÅºÚ", 9f, GraphicsUnit.Point);
+        public static Font Font = new Font("å¾®è½¯é›…é»‘", 9f, GraphicsUnit.Point);
         /// <summary>
-        /// Ä¬ÈÏ×ÖÌå
+        /// é»˜è®¤å­—ä½“
         /// </summary>
-        public const string _Font = "Î¢ÈíÑÅºÚ, 9pt";
+        public const string _Font = "å¾®è½¯é›…é»‘, 9pt";
     }
 }

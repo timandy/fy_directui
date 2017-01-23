@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Microsoft.Windows.Forms
 {
@@ -6,7 +6,7 @@ namespace Microsoft.Windows.Forms
     {
         private Padding m_Padding = new Padding(3);
         /// <summary>
-        /// �ı�ͼƬ�ڱ߾�
+        /// 文本图片内边距
         /// </summary>
         public Padding Padding
         {
@@ -26,7 +26,7 @@ namespace Microsoft.Windows.Forms
 
         private TextImageRelation m_TextImageRelation = TextImageRelation.ImageBeforeText;
         /// <summary>
-        /// �ı�ͼƬ��ϵ
+        /// 文本图片关系
         /// </summary>
         public TextImageRelation TextImageRelation
         {
@@ -46,7 +46,7 @@ namespace Microsoft.Windows.Forms
 
         private RightToLeft m_RightToLeft = RightToLeft.No;
         /// <summary>
-        /// �ı�ͼƬ���һ���
+        /// 文本图片左右互换
         /// </summary>
         public RightToLeft RightToLeft
         {

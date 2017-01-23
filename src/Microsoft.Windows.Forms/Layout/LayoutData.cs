@@ -1,72 +1,72 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Drawing;
 
 namespace Microsoft.Windows.Forms.Layout
 {
     /// <summary>
-    /// ²¼¾ÖÊı¾İ
+    /// å¸ƒå±€æ•°æ®
     /// </summary>
     public sealed class LayoutData : DisposableMini
     {
         /// <summary>
-        /// ²âÊÔÓÃ»æÍ¼¶ÔÏó
+        /// æµ‹è¯•ç”¨ç»˜å›¾å¯¹è±¡
         /// </summary>
         public Graphics Graphics;
 
         /// <summary>
-        /// ÇøÓò
+        /// åŒºåŸŸ
         /// </summary>
         public Rectangle ClientRectangle;
         /// <summary>
-        /// ±ß¾à
+        /// è¾¹è·
         /// </summary>
         public Padding Padding;
         /// <summary>
-        /// ÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ
+        /// æ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®
         /// </summary>
         public TextImageRelation TextImageRelation;
         /// <summary>
-        /// ×óÓÒ·´×ªÑùÊ½
+        /// å·¦å³åè½¬æ ·å¼
         /// </summary>
         public RightToLeft RightToLeft;
 
         /// <summary>
-        /// Í¼Æ¬´óĞ¡
+        /// å›¾ç‰‡å¤§å°
         /// </summary>
         public Size ImageSize;
         /// <summary>
-        /// Í¼Æ¬¶ÔÆë·½Ê½
+        /// å›¾ç‰‡å¯¹é½æ–¹å¼
         /// </summary>
         public ContentAlignment ImageAlign;
         /// <summary>
-        /// Í¼Æ¬Æ«ÒÆÁ¿
+        /// å›¾ç‰‡åç§»é‡
         /// </summary>
         public Point ImageOffset;
 
         /// <summary>
-        /// ÎÄ±¾
+        /// æ–‡æœ¬
         /// </summary>
         public string Text;
         /// <summary>
-        /// ×ÖÌå
+        /// å­—ä½“
         /// </summary>
         public Font Font;
         /// <summary>
-        /// ÎÄ±¾¶ÔÆë·½Ê½
+        /// æ–‡æœ¬å¯¹é½æ–¹å¼
         /// </summary>
         public ContentAlignment TextAlign;
         /// <summary>
-        /// ÎÄ±¾Æ«ÒÆÁ¿
+        /// æ–‡æœ¬åç§»é‡
         /// </summary>
         public Point TextOffset;
 
         /// <summary>
-        /// Êä³ö-Í¼Æ¬ÇøÓò(±ØĞëÏÈµ÷ÓÃLayout()·½·¨)
+        /// è¾“å‡º-å›¾ç‰‡åŒºåŸŸ(å¿…é¡»å…ˆè°ƒç”¨Layout()æ–¹æ³•)
         /// </summary>
         public Rectangle OutImageBounds;//[OUT]
         /// <summary>
-        /// Êä³ö-ÎÄ±¾ÇøÓò(±ØĞëÏÈµ÷ÓÃLayout()·½·¨)
+        /// è¾“å‡º-æ–‡æœ¬åŒºåŸŸ(å¿…é¡»å…ˆè°ƒç”¨Layout()æ–¹æ³•)
         /// </summary>
         public Rectangle OutTextBounds;//[OUT]
 
@@ -75,7 +75,7 @@ namespace Microsoft.Windows.Forms.Layout
 
         private bool m_IsLayouted;
         /// <summary>
-        /// ÊÇ·ñÖ´ĞĞ¹ı²¼¾Ö²Ù×÷
+        /// æ˜¯å¦æ‰§è¡Œè¿‡å¸ƒå±€æ“ä½œ
         /// </summary>
         public bool IsLayouted
         {
@@ -88,7 +88,7 @@ namespace Microsoft.Windows.Forms.Layout
 
         private Rectangle? m_CurrentClientRectangle;
         /// <summary>
-        /// µ±Ç°ÇøÓò,ÒÑ¼õÈ¥±ß¾à
+        /// å½“å‰åŒºåŸŸ,å·²å‡å»è¾¹è·
         /// </summary>
         public Rectangle CurrentClientRectangle
         {
@@ -102,7 +102,7 @@ namespace Microsoft.Windows.Forms.Layout
 
         private TextImageRelation? m_CurrentTextImageRelation;
         /// <summary>
-        /// µ±Ç°ÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ,ÒÑÍ¨¹ı×óÓÒ·´×ªÑùÊ½·­Òë
+        /// å½“å‰æ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®,å·²é€šè¿‡å·¦å³åè½¬æ ·å¼ç¿»è¯‘
         /// </summary>
         public TextImageRelation CurrentTextImageRelation
         {
@@ -116,7 +116,7 @@ namespace Microsoft.Windows.Forms.Layout
 
         private StringFormat m_CurrentStringFormat;
         /// <summary>
-        /// µ±Ç°ÎÄ±¾¸ñÊ½,äÖÈ¾ÎÄ±¾Ê±Ê¹ÓÃ
+        /// å½“å‰æ–‡æœ¬æ ¼å¼,æ¸²æŸ“æ–‡æœ¬æ—¶ä½¿ç”¨
         /// </summary>
         public StringFormat CurrentStringFormat
         {
@@ -130,7 +130,7 @@ namespace Microsoft.Windows.Forms.Layout
 
         private ContentAlignment? m_CurrentImageAlign;
         /// <summary>
-        /// µ±Ç°Í¼Æ¬¶ÔÆë·½Ê½,ÒÑÍ¨¹ı×óÓÒ·´×ªÑùÊ½·­Òë
+        /// å½“å‰å›¾ç‰‡å¯¹é½æ–¹å¼,å·²é€šè¿‡å·¦å³åè½¬æ ·å¼ç¿»è¯‘
         /// </summary>
         public ContentAlignment CurrentImageAlign
         {
@@ -144,7 +144,7 @@ namespace Microsoft.Windows.Forms.Layout
 
         private ContentAlignment? m_CurrentTextAlign;
         /// <summary>
-        /// µ±Ç°ÎÄ±¾¶ÔÆë·½Ê½,ÒÑÍ¨¹ı×óÓÒ·´×ªÑùÊ½·­Òë
+        /// å½“å‰æ–‡æœ¬å¯¹é½æ–¹å¼,å·²é€šè¿‡å·¦å³åè½¬æ ·å¼ç¿»è¯‘
         /// </summary>
         public ContentAlignment CurrentTextAlign
         {
@@ -158,14 +158,14 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı
+        /// æ„é€ å‡½æ•°
         /// </summary>
         public LayoutData()
         {
         }
 
         /// <summary>
-        /// ²¼¾ÖÎÄ±¾ºÍÍ¼Æ¬.¸Ã·½·¨¿É±»µ÷ÓÃ¶à´Î,µ«ÔÙÉúÃüÖÜÆÚÄÚ²¼¾Ö²Ù×÷Ö»»á±»Ö´ĞĞÒ»´Î.
+        /// å¸ƒå±€æ–‡æœ¬å’Œå›¾ç‰‡.è¯¥æ–¹æ³•å¯è¢«è°ƒç”¨å¤šæ¬¡,ä½†å†ç”Ÿå‘½å‘¨æœŸå†…å¸ƒå±€æ“ä½œåªä¼šè¢«æ‰§è¡Œä¸€æ¬¡.
         /// </summary>
         public void DoLayout()
         {
@@ -176,9 +176,9 @@ namespace Microsoft.Windows.Forms.Layout
         }
 
         /// <summary>
-        /// ÊÍ·Å×ÊÔ´
+        /// é‡Šæ”¾èµ„æº
         /// </summary>
-        /// <param name="disposing">ÊÍ·ÅÍĞ¹Ü×ÊÔ´Îªtrue,·ñÔòÎªfalse</param>
+        /// <param name="disposing">é‡Šæ”¾æ‰˜ç®¡èµ„æºä¸ºtrue,å¦åˆ™ä¸ºfalse</param>
         protected override void Dispose(bool disposing)
         {
             if (this.m_CurrentStringFormat != null)

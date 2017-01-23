@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
@@ -8,40 +8,40 @@ using System.Reflection;
 namespace Microsoft.Drawing
 {
     /// <summary>
-    /// ÑÕÉ«ÏòÁ¿×ª»»Àà
+    /// é¢œè‰²å‘é‡è½¬æ¢ç±»
     /// Copyright (c) JajaSoft
     /// </summary>
     public class ColorVectorConverter : TypeConverter
     {
         /// <summary>
-        /// ·µ»Ø¸Ã×ª»»Æ÷ÊÇ·ñ¿ÉÒÔÊ¹ÓÃÖ¸¶¨µÄÉÏÏÂÎÄ½«¸ø¶¨ÀàĞÍµÄ¶ÔÏó×ª»»Îª´Ë×ª»»Æ÷µÄÀàĞÍ¡£
+        /// è¿”å›è¯¥è½¬æ¢å™¨æ˜¯å¦å¯ä»¥ä½¿ç”¨æŒ‡å®šçš„ä¸Šä¸‹æ–‡å°†ç»™å®šç±»å‹çš„å¯¹è±¡è½¬æ¢ä¸ºæ­¤è½¬æ¢å™¨çš„ç±»å‹ã€‚
         /// </summary>
-        /// <param name="context">System.ComponentModel.ITypeDescriptorContext£¬Ìá¹©¸ñÊ½ÉÏÏÂÎÄ¡£</param>
-        /// <param name="sourceType">Ò»¸ö System.Type£¬±íÊ¾Òª×ª»»µÄÀàĞÍ¡£</param>
-        /// <returns>Èç¹û¸Ã×ª»»Æ÷ÄÜ¹»Ö´ĞĞ×ª»»£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+        /// <param name="context">System.ComponentModel.ITypeDescriptorContextï¼Œæä¾›æ ¼å¼ä¸Šä¸‹æ–‡ã€‚</param>
+        /// <param name="sourceType">ä¸€ä¸ª System.Typeï¼Œè¡¨ç¤ºè¦è½¬æ¢çš„ç±»å‹ã€‚</param>
+        /// <returns>å¦‚æœè¯¥è½¬æ¢å™¨èƒ½å¤Ÿæ‰§è¡Œè½¬æ¢ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
             return ((sourceType == typeof(string)) || base.CanConvertFrom(context, sourceType));
         }
 
         /// <summary>
-        /// ·µ»Ø´Ë×ª»»Æ÷ÊÇ·ñ¿ÉÒÔÊ¹ÓÃÖ¸¶¨µÄÉÏÏÂÎÄ½«¸Ã¶ÔÏó×ª»»ÎªÖ¸¶¨µÄÀàĞÍ¡£
+        /// è¿”å›æ­¤è½¬æ¢å™¨æ˜¯å¦å¯ä»¥ä½¿ç”¨æŒ‡å®šçš„ä¸Šä¸‹æ–‡å°†è¯¥å¯¹è±¡è½¬æ¢ä¸ºæŒ‡å®šçš„ç±»å‹ã€‚
         /// </summary>
-        /// <param name="context">System.ComponentModel.ITypeDescriptorContext£¬Ìá¹©¸ñÊ½ÉÏÏÂÎÄ¡£</param>
-        /// <param name="destinationType">Ò»¸ö System.Type£¬±íÊ¾Òª×ª»»µ½µÄÀàĞÍ¡£</param>
-        /// <returns>Èç¹û¸Ã×ª»»Æ÷ÄÜ¹»Ö´ĞĞ×ª»»£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+        /// <param name="context">System.ComponentModel.ITypeDescriptorContextï¼Œæä¾›æ ¼å¼ä¸Šä¸‹æ–‡ã€‚</param>
+        /// <param name="destinationType">ä¸€ä¸ª System.Typeï¼Œè¡¨ç¤ºè¦è½¬æ¢åˆ°çš„ç±»å‹ã€‚</param>
+        /// <returns>å¦‚æœè¯¥è½¬æ¢å™¨èƒ½å¤Ÿæ‰§è¡Œè½¬æ¢ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
             return ((destinationType == typeof(InstanceDescriptor)) || base.CanConvertTo(context, destinationType));
         }
 
         /// <summary>
-        /// Ê¹ÓÃÖ¸¶¨µÄÉÏÏÂÎÄºÍÇøÓòĞÔĞÅÏ¢½«¸ø¶¨µÄ¶ÔÏó×ª»»Îª´Ë×ª»»Æ÷µÄÀàĞÍ¡£
+        /// ä½¿ç”¨æŒ‡å®šçš„ä¸Šä¸‹æ–‡å’ŒåŒºåŸŸæ€§ä¿¡æ¯å°†ç»™å®šçš„å¯¹è±¡è½¬æ¢ä¸ºæ­¤è½¬æ¢å™¨çš„ç±»å‹ã€‚
         /// </summary>
-        /// <param name="context">System.ComponentModel.ITypeDescriptorContext£¬Ìá¹©¸ñÊ½ÉÏÏÂÎÄ¡£</param>
-        /// <param name="culture">ÓÃ×÷µ±Ç°ÇøÓòĞÔµÄ System.Globalization.CultureInfo¡£</param>
-        /// <param name="value">Òª×ª»»µÄ System.Object¡£</param>
-        /// <returns>±íÊ¾×ª»»µÄ value µÄ System.Object¡£</returns>
+        /// <param name="context">System.ComponentModel.ITypeDescriptorContextï¼Œæä¾›æ ¼å¼ä¸Šä¸‹æ–‡ã€‚</param>
+        /// <param name="culture">ç”¨ä½œå½“å‰åŒºåŸŸæ€§çš„ System.Globalization.CultureInfoã€‚</param>
+        /// <param name="value">è¦è½¬æ¢çš„ System.Objectã€‚</param>
+        /// <returns>è¡¨ç¤ºè½¬æ¢çš„ value çš„ System.Objectã€‚</returns>
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
             //NULL
@@ -49,21 +49,21 @@ namespace Microsoft.Drawing
             if (str == null)
                 return base.ConvertFrom(context, culture, value);
 
-            //¿Õ×Ö·û´®
+            //ç©ºå­—ç¬¦ä¸²
             string trimStr = str.Trim();
             if (trimStr.Length <= 0)
                 return ColorVector.Empty;
 
-            //ÇøÓò·Ö¸ô·û
+            //åŒºåŸŸåˆ†éš”ç¬¦
             if (culture == null)
                 culture = CultureInfo.CurrentCulture;
             char ch = culture.TextInfo.ListSeparator[0];
 
-            //ÀàĞÍ×ª»»Æ÷
+            //ç±»å‹è½¬æ¢å™¨
             TypeConverter longConverter = TypeDescriptor.GetConverter(typeof(long));
             TypeConverter intConverter = TypeDescriptor.GetConverter(typeof(int));
 
-            //²»º¬·Ö¸ô·û
+            //ä¸å«åˆ†éš”ç¬¦
             if (trimStr.IndexOf(ch) == -1)
             {
                 if (((trimStr[0] == '#') &&
@@ -72,7 +72,7 @@ namespace Microsoft.Drawing
                     (trimStr.Length == 14 || trimStr.Length == 18)))
                     return ColorVector.FromArgb((long)longConverter.ConvertFromString(trimStr));
             }
-            else//°üº¬·Ö¸ô·û
+            else//åŒ…å«åˆ†éš”ç¬¦
             {
                 string[] strArray = trimStr.Split(new char[] { ch });
                 int[] numArray = new int[strArray.Length];
@@ -89,17 +89,17 @@ namespace Microsoft.Drawing
                 }
             }
 
-            throw new ArgumentException("ÎŞĞ§µÄÑÕÉ«ÏòÁ¿");
+            throw new ArgumentException("æ— æ•ˆçš„é¢œè‰²å‘é‡");
         }
 
         /// <summary>
-        /// Ê¹ÓÃÖ¸¶¨µÄÉÏÏÂÎÄºÍÇøÓòĞÔĞÅÏ¢½«¸ø¶¨µÄÖµ¶ÔÏó×ª»»ÎªÖ¸¶¨µÄÀàĞÍ¡£
+        /// ä½¿ç”¨æŒ‡å®šçš„ä¸Šä¸‹æ–‡å’ŒåŒºåŸŸæ€§ä¿¡æ¯å°†ç»™å®šçš„å€¼å¯¹è±¡è½¬æ¢ä¸ºæŒ‡å®šçš„ç±»å‹ã€‚
         /// </summary>
-        /// <param name="context">System.ComponentModel.ITypeDescriptorContext£¬Ìá¹©¸ñÊ½ÉÏÏÂÎÄ¡£</param>
-        /// <param name="culture">System.Globalization.CultureInfo¡£Èç¹û´«µİ null£¬Ôò²ÉÓÃµ±Ç°ÇøÓòĞÔ¡£</param>
-        /// <param name="value">Òª×ª»»µÄ System.Object¡£</param>
-        /// <param name="destinationType">value ²ÎÊıÒª×ª»»³ÉµÄ System.Type¡£</param>
-        /// <returns>±íÊ¾×ª»»µÄ value µÄ System.Object¡£</returns>
+        /// <param name="context">System.ComponentModel.ITypeDescriptorContextï¼Œæä¾›æ ¼å¼ä¸Šä¸‹æ–‡ã€‚</param>
+        /// <param name="culture">System.Globalization.CultureInfoã€‚å¦‚æœä¼ é€’ nullï¼Œåˆ™é‡‡ç”¨å½“å‰åŒºåŸŸæ€§ã€‚</param>
+        /// <param name="value">è¦è½¬æ¢çš„ System.Objectã€‚</param>
+        /// <param name="destinationType">value å‚æ•°è¦è½¬æ¢æˆçš„ System.Typeã€‚</param>
+        /// <returns>è¡¨ç¤ºè½¬æ¢çš„ value çš„ System.Objectã€‚</returns>
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
             if (destinationType == null)
@@ -108,7 +108,7 @@ namespace Microsoft.Drawing
             }
             if (value is ColorVector)
             {
-                if (destinationType == typeof(string))//×ª»»Îªstring
+                if (destinationType == typeof(string))//è½¬æ¢ä¸ºstring
                 {
                     ColorVector colorVector = (ColorVector)value;
 
@@ -149,11 +149,11 @@ namespace Microsoft.Drawing
 
 
         /// <summary>
-        /// ÔÚÒÑÖª¶ÔÏóµÄÊôĞÔ (Property) Öµ¼¯µÄÇé¿öÏÂ£¬Ê¹ÓÃÖ¸¶¨µÄÉÏÏÂÎÄ´´½¨Óë´Ë System.ComponentModel.TypeConverter ¹ØÁªµÄÀàĞÍµÄÊµÀı¡£
+        /// åœ¨å·²çŸ¥å¯¹è±¡çš„å±æ€§ (Property) å€¼é›†çš„æƒ…å†µä¸‹ï¼Œä½¿ç”¨æŒ‡å®šçš„ä¸Šä¸‹æ–‡åˆ›å»ºä¸æ­¤ System.ComponentModel.TypeConverter å…³è”çš„ç±»å‹çš„å®ä¾‹ã€‚
         /// </summary>
-        /// <param name="context">System.ComponentModel.ITypeDescriptorContext£¬Ìá¹©¸ñÊ½ÉÏÏÂÎÄ¡£</param>
-        /// <param name="propertyValues">ĞÂÊôĞÔ (Property) ÖµµÄ System.Collections.IDictionary¡£</param>
-        /// <returns>Ò»¸ö System.Object£¬±íÊ¾¸ø¶¨µÄ System.Collections.IDictionary£¬»òÕßÈç¹ûÎŞ·¨´´½¨¸Ã¶ÔÏó£¬ÔòÎª null¡£´Ë·½·¨Ê¼ÖÕ·µ»Ø null¡£</returns>
+        /// <param name="context">System.ComponentModel.ITypeDescriptorContextï¼Œæä¾›æ ¼å¼ä¸Šä¸‹æ–‡ã€‚</param>
+        /// <param name="propertyValues">æ–°å±æ€§ (Property) å€¼çš„ System.Collections.IDictionaryã€‚</param>
+        /// <returns>ä¸€ä¸ª System.Objectï¼Œè¡¨ç¤ºç»™å®šçš„ System.Collections.IDictionaryï¼Œæˆ–è€…å¦‚æœæ— æ³•åˆ›å»ºè¯¥å¯¹è±¡ï¼Œåˆ™ä¸º nullã€‚æ­¤æ–¹æ³•å§‹ç»ˆè¿”å› nullã€‚</returns>
         public override object CreateInstance(ITypeDescriptorContext context, IDictionary propertyValues)
         {
             if (propertyValues == null)
@@ -167,38 +167,38 @@ namespace Microsoft.Drawing
             if (((alpha == null) || (red == null) || (green == null) || (blue == null))
                 || (!(alpha is short) || !(red is short) || !(green is short) || !(blue is short)))
             {
-                throw new ArgumentException("ÊôĞÔÖµÎªÎŞĞ§ÊäÈë");
+                throw new ArgumentException("å±æ€§å€¼ä¸ºæ— æ•ˆè¾“å…¥");
             }
             return ColorVector.FromArgb((int)(short)alpha, (int)(short)red, (int)(short)green, (int)(short)blue);
         }
 
         /// <summary>
-        /// ·µ»ØÓĞ¹Ø¸ü¸Ä¸Ã¶ÔÏóÉÏµÄÄ³¸öÖµÊÇ·ñĞèÒªÊ¹ÓÃÖ¸¶¨µÄÉÏÏÂÎÄµ÷ÓÃ System.ComponentModel.TypeConverter.CreateInstance(System.Collections.IDictionary) ÒÔ´´½¨ĞÂÖµµÄÇé¿ö¡£
+        /// è¿”å›æœ‰å…³æ›´æ”¹è¯¥å¯¹è±¡ä¸Šçš„æŸä¸ªå€¼æ˜¯å¦éœ€è¦ä½¿ç”¨æŒ‡å®šçš„ä¸Šä¸‹æ–‡è°ƒç”¨ System.ComponentModel.TypeConverter.CreateInstance(System.Collections.IDictionary) ä»¥åˆ›å»ºæ–°å€¼çš„æƒ…å†µã€‚
         /// </summary>
-        /// <param name="context">System.ComponentModel.ITypeDescriptorContext£¬Ìá¹©¸ñÊ½ÉÏÏÂÎÄ¡£</param>
-        /// <returns>Èç¹û¸ü¸Ä´Ë¶ÔÏóµÄÊôĞÔĞèÒªµ÷ÓÃ System.ComponentModel.TypeConverter.CreateInstance(System.Collections.IDictionary) À´´´½¨ĞÂÖµ£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+        /// <param name="context">System.ComponentModel.ITypeDescriptorContextï¼Œæä¾›æ ¼å¼ä¸Šä¸‹æ–‡ã€‚</param>
+        /// <returns>å¦‚æœæ›´æ”¹æ­¤å¯¹è±¡çš„å±æ€§éœ€è¦è°ƒç”¨ System.ComponentModel.TypeConverter.CreateInstance(System.Collections.IDictionary) æ¥åˆ›å»ºæ–°å€¼ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         public override bool GetCreateInstanceSupported(ITypeDescriptorContext context)
         {
             return true;
         }
 
         /// <summary>
-        /// Ê¹ÓÃÖ¸¶¨µÄÉÏÏÂÎÄ·µ»ØÖµ²ÎÊıÖ¸¶¨µÄÊı×éÀàĞÍµÄÊôĞÔ (Property) µÄ¼¯ºÏ¡£
+        /// ä½¿ç”¨æŒ‡å®šçš„ä¸Šä¸‹æ–‡è¿”å›å€¼å‚æ•°æŒ‡å®šçš„æ•°ç»„ç±»å‹çš„å±æ€§ (Property) çš„é›†åˆã€‚
         /// </summary>
-        /// <param name="context">System.ComponentModel.ITypeDescriptorContext£¬Ìá¹©¸ñÊ½ÉÏÏÂÎÄ¡£</param>
-        /// <param name="value">Ò»¸ö System.Object£¬Ö¸¶¨ÒªÎªÆä»ñÈ¡ÊôĞÔµÄÊı×éÀàĞÍ¡£</param>
-        /// <param name="attributes">ÓÃ×÷É¸Ñ¡Æ÷µÄ System.Attribute ÀàĞÍÊı×é¡£</param>
-        /// <returns>¾ßÓĞÎª´ËÊı¾İÀàĞÍ¹«¿ªµÄÊôĞÔµÄ System.ComponentModel.PropertyDescriptorCollection£»»òÕßÈç¹ûÃ»ÓĞÊôĞÔ£¬ÔòÎª null¡£</returns>
+        /// <param name="context">System.ComponentModel.ITypeDescriptorContextï¼Œæä¾›æ ¼å¼ä¸Šä¸‹æ–‡ã€‚</param>
+        /// <param name="value">ä¸€ä¸ª System.Objectï¼ŒæŒ‡å®šè¦ä¸ºå…¶è·å–å±æ€§çš„æ•°ç»„ç±»å‹ã€‚</param>
+        /// <param name="attributes">ç”¨ä½œç­›é€‰å™¨çš„ System.Attribute ç±»å‹æ•°ç»„ã€‚</param>
+        /// <returns>å…·æœ‰ä¸ºæ­¤æ•°æ®ç±»å‹å…¬å¼€çš„å±æ€§çš„ System.ComponentModel.PropertyDescriptorCollectionï¼›æˆ–è€…å¦‚æœæ²¡æœ‰å±æ€§ï¼Œåˆ™ä¸º nullã€‚</returns>
         public override PropertyDescriptorCollection GetProperties(ITypeDescriptorContext context, object value, Attribute[] attributes)
         {
             return TypeDescriptor.GetProperties(typeof(ColorVector), attributes).Sort(new string[] { "A", "R", "G", "B" });
         }
 
         /// <summary>
-        /// ·µ»Ø´Ë¶ÔÏóÊÇ·ñÖ§³ÖÊôĞÔ¡£
+        /// è¿”å›æ­¤å¯¹è±¡æ˜¯å¦æ”¯æŒå±æ€§ã€‚
         /// </summary>
-        /// <param name="context">System.ComponentModel.ITypeDescriptorContext£¬Ìá¹©¸ñÊ½ÉÏÏÂÎÄ¡£</param>
-        /// <returns>Èç¹ûÓ¦µ÷ÓÃ System.ComponentModel.TypeConverter.GetProperties(System.Object) À´²éÕÒ´Ë¶ÔÏóµÄÊôĞÔ£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+        /// <param name="context">System.ComponentModel.ITypeDescriptorContextï¼Œæä¾›æ ¼å¼ä¸Šä¸‹æ–‡ã€‚</param>
+        /// <returns>å¦‚æœåº”è°ƒç”¨ System.ComponentModel.TypeConverter.GetProperties(System.Object) æ¥æŸ¥æ‰¾æ­¤å¯¹è±¡çš„å±æ€§ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         public override bool GetPropertiesSupported(ITypeDescriptorContext context)
         {
             return true;

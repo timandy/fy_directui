@@ -1,28 +1,28 @@
-namespace Microsoft.Windows.Forms
+ï»¿namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// »ìºÏÑùÊ½
+    /// æ··åˆæ ·å¼
     /// </summary>
     public enum BlendStyle : int
     {
         /// <summary>
-        /// µ¥É«
+        /// å•è‰²
         /// </summary>
         Solid = 0,
         /// <summary>
-        /// ½¥±ä
+        /// æ¸å˜
         /// </summary>
         Gradient = 1,
         /// <summary>
-        /// AlphaÍ¨µÀ´Ó0½¥±äÖ¸¶¨Öµ-½¥ÏÔ
+        /// Alphaé€šé“ä»0æ¸å˜æŒ‡å®šå€¼-æ¸æ˜¾
         /// </summary>
         FadeIn = 2,
         /// <summary>
-        /// AlphaÍ¨µÀ´ÓÖ¸¶¨Öµ½¥±ä0-½¥Òş
+        /// Alphaé€šé“ä»æŒ‡å®šå€¼æ¸å˜0-æ¸éš
         /// </summary>
         FadeOut = 3,
         /// <summary>
-        /// AlphaÍ¨µÀ´Ó0½¥±äÖ¸¶¨ÖµÔÙ½¥±äµ½0-½¥ÏÔ½¥Òş
+        /// Alphaé€šé“ä»0æ¸å˜æŒ‡å®šå€¼å†æ¸å˜åˆ°0-æ¸æ˜¾æ¸éš
         /// </summary>
         FadeInFadeOut = 4,
     }

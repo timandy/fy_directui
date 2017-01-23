@@ -1,24 +1,24 @@
-using System.ComponentModel;
+ï»¿using System.ComponentModel;
 
 namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// Í¼Ôª¶ÔÏó
+    /// å›¾å…ƒå¯¹è±¡
     /// </summary>
     [Browsable(false)]
     public partial class Sprite : Disposable
     {
         /// <summary>
-        /// ¹¹Ôìº¯Êý
+        /// æž„é€ å‡½æ•°
         /// </summary>
         public Sprite()
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êý
+        /// æž„é€ å‡½æ•°
         /// </summary>
-        /// <param name="owner">ËùÓÐÕß</param>
+        /// <param name="owner">æ‰€æœ‰è€…</param>
         public Sprite(IUIControl owner)
         {
             this.m_Owner = owner;

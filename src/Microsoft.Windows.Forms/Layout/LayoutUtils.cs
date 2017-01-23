@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Microsoft.Windows.Forms.Layout
 {
     /// <summary>
-    /// ²¼¾Ö¹¤¾ßÀà
+    /// å¸ƒå±€å·¥å…·ç±»
     /// </summary>
     public static class LayoutUtils
     {
@@ -17,24 +17,24 @@ namespace Microsoft.Windows.Forms.Layout
         /// <para>*           *</para>
         /// <para>*           *</para>
         /// <para>8*****9*****10</para>
-        /// <para>»ñÈ¡¶ÔÆë·½Ê½µÄË÷Òı,ÈçÉÏÍ¼</para>
+        /// <para>è·å–å¯¹é½æ–¹å¼çš„ç´¢å¼•,å¦‚ä¸Šå›¾</para>
         /// </summary>
-        /// <param name="alignment">¶ÔÆë·½Ê½</param>
-        /// <returns>Ë÷Òı</returns>
+        /// <param name="alignment">å¯¹é½æ–¹å¼</param>
+        /// <returns>ç´¢å¼•</returns>
         public static int ContentAlignmentToIndex(ContentAlignment alignment)
         {
-            int num = xContentAlignmentToIndex(((int)alignment) & 15);//È¡0-3Î»,Èç¹ûµÈÓÚ4·µ»Ø3,ÆäÓà²»±ä
-            int num2 = xContentAlignmentToIndex((((int)alignment) >> 4) & 15);//4-7,Èç¹ûµÈÓÚ4·µ»Ø3,ÆäÓà²»±ä
-            int num3 = xContentAlignmentToIndex((((int)alignment) >> 8) & 15);//8-11,Èç¹ûµÈÓÚ4·µ»Ø3,ÆäÓà²»±ä
+            int num = xContentAlignmentToIndex(((int)alignment) & 15);//å–0-3ä½,å¦‚æœç­‰äº4è¿”å›3,å…¶ä½™ä¸å˜
+            int num2 = xContentAlignmentToIndex((((int)alignment) >> 4) & 15);//4-7,å¦‚æœç­‰äº4è¿”å›3,å…¶ä½™ä¸å˜
+            int num3 = xContentAlignmentToIndex((((int)alignment) >> 8) & 15);//8-11,å¦‚æœç­‰äº4è¿”å›3,å…¶ä½™ä¸å˜
             int num4 = (((((num2 != 0) ? 4 : 0) | ((num3 != 0) ? 8 : 0)) | num) | num2) | num3;
             num4--;
             return num4;
         }
         /// <summary>
-        /// ÉÏÃæ·½·¨µÄ¸¨Öú
+        /// ä¸Šé¢æ–¹æ³•çš„è¾…åŠ©
         /// </summary>
-        /// <param name="threeBitFlag">4bitÊı×Ö</param>
-        /// <returns>Èç¹ûµÈÓÚ4·µ»Ø3,ÆäÓà²»±ä</returns>
+        /// <param name="threeBitFlag">4bitæ•°å­—</param>
+        /// <returns>å¦‚æœç­‰äº4è¿”å›3,å…¶ä½™ä¸å˜</returns>
         private static byte xContentAlignmentToIndex(int threeBitFlag)
         {
             return ((threeBitFlag == 4) ? ((byte)3) : ((byte)threeBitFlag));
@@ -42,19 +42,19 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// »ñÈ¡·´ÏòµÄÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ
+        /// è·å–åå‘çš„æ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®
         /// </summary>
-        /// <param name="relation">ÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ</param>
-        /// <returns>·´ÏòµÄÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ</returns>
+        /// <param name="relation">æ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®</param>
+        /// <returns>åå‘çš„æ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®</returns>
         public static TextImageRelation GetOppositeTextImageRelation(TextImageRelation relation)
         {
             return (TextImageRelation)GetOppositeAnchor((AnchorStyles)relation);
         }
         /// <summary>
-        /// »ñÈ¡·´ÏòµÄÃª¶¨·½Ê½
+        /// è·å–åå‘çš„é”šå®šæ–¹å¼
         /// </summary>
-        /// <param name="anchor">Ãª¶¨·½Ê½</param>
-        /// <returns>·´ÏòµÄÃª¶¨·½Ê½</returns>
+        /// <param name="anchor">é”šå®šæ–¹å¼</param>
+        /// <returns>åå‘çš„é”šå®šæ–¹å¼</returns>
         private static AnchorStyles GetOppositeAnchor(AnchorStyles anchor)
         {
             AnchorStyles none = AnchorStyles.None;
@@ -87,23 +87,23 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// ÔÚ¾ØĞÎÖ¸¶¨Î»ÖÃ»®³öÖ¸¶¨´óĞ¡µÄÇøÓò
+        /// åœ¨çŸ©å½¢æŒ‡å®šä½ç½®åˆ’å‡ºæŒ‡å®šå¤§å°çš„åŒºåŸŸ
         /// </summary>
-        /// <param name="size">´óĞ¡</param>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">¶ÔÆë·½Ê½</param>
-        /// <returns>»®¶¨ÇøÓò</returns>
+        /// <param name="size">å¤§å°</param>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">å¯¹é½æ–¹å¼</param>
+        /// <returns>åˆ’å®šåŒºåŸŸ</returns>
         public static Rectangle Align(Size size, Rectangle rect, ContentAlignment align)
         {
             return VAlign(size, HAlign(size, rect, align), align);
         }
         /// <summary>
-        /// µ÷ÕûX×ø±êºÍ¿í¶È,Ê¹¿í¶ÈÎªsizeµÄ¿í¶È,ÔÚË®Æ½·½ÏòÉÏÒÆ¶¯¶ÔÆëµ½¾ØĞÎ
+        /// è°ƒæ•´Xåæ ‡å’Œå®½åº¦,ä½¿å®½åº¦ä¸ºsizeçš„å®½åº¦,åœ¨æ°´å¹³æ–¹å‘ä¸Šç§»åŠ¨å¯¹é½åˆ°çŸ©å½¢
         /// </summary>
-        /// <param name="size">´óĞ¡</param>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">Ë®Æ½¶ÔÆë·½Ê½</param>
-        /// <returns>ĞÂ¾ØĞÎ</returns>
+        /// <param name="size">å¤§å°</param>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">æ°´å¹³å¯¹é½æ–¹å¼</param>
+        /// <returns>æ–°çŸ©å½¢</returns>
         public static Rectangle HAlign(Size size, Rectangle rect, ContentAlignment align)
         {
             if ((align & (ContentAlignment.BottomRight | ContentAlignment.MiddleRight | ContentAlignment.TopRight)) != ((ContentAlignment)0))
@@ -118,12 +118,12 @@ namespace Microsoft.Windows.Forms.Layout
             return rect;
         }
         /// <summary>
-        /// µ÷ÕûY×ø±êºÍ¸ß¶È,Ê¹¸ß¶ÈÎªsizeµÄ¸ß¶È,ÔÚ´¹Ö±·½ÏòÉÏÒÆ¶¯¶ÔÆëµ½¾ØĞÎ
+        /// è°ƒæ•´Yåæ ‡å’Œé«˜åº¦,ä½¿é«˜åº¦ä¸ºsizeçš„é«˜åº¦,åœ¨å‚ç›´æ–¹å‘ä¸Šç§»åŠ¨å¯¹é½åˆ°çŸ©å½¢
         /// </summary>
-        /// <param name="size">´óĞ¡</param>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">´¹Ö±¶ÔÆë·½Ê½</param>
-        /// <returns>ĞÂ¾ØĞÎ</returns>
+        /// <param name="size">å¤§å°</param>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">å‚ç›´å¯¹é½æ–¹å¼</param>
+        /// <returns>æ–°çŸ©å½¢</returns>
         public static Rectangle VAlign(Size size, Rectangle rect, ContentAlignment align)
         {
             if ((align & (ContentAlignment.BottomRight | ContentAlignment.BottomCenter | ContentAlignment.BottomLeft)) != ((ContentAlignment)0))
@@ -138,23 +138,23 @@ namespace Microsoft.Windows.Forms.Layout
             return rect;
         }
         /// <summary>
-        /// ÔÚ¾ØĞÎÖ¸¶¨Î»ÖÃ»®³öÖ¸¶¨´óĞ¡µÄÇøÓò
+        /// åœ¨çŸ©å½¢æŒ‡å®šä½ç½®åˆ’å‡ºæŒ‡å®šå¤§å°çš„åŒºåŸŸ
         /// </summary>
-        /// <param name="size">´óĞ¡</param>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">¶ÔÆë·½Ê½</param>
-        /// <returns>»®¶¨ÇøÓò</returns>
+        /// <param name="size">å¤§å°</param>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">å¯¹é½æ–¹å¼</param>
+        /// <returns>åˆ’å®šåŒºåŸŸ</returns>
         public static RectangleF Align(SizeF size, RectangleF rect, ContentAlignment align)
         {
             return VAlign(size, HAlign(size, rect, align), align);
         }
         /// <summary>
-        /// µ÷ÕûX×ø±êºÍ¿í¶È,Ê¹¿í¶ÈÎªsizeµÄ¿í¶È,ÔÚË®Æ½·½ÏòÉÏÒÆ¶¯¶ÔÆëµ½¾ØĞÎ
+        /// è°ƒæ•´Xåæ ‡å’Œå®½åº¦,ä½¿å®½åº¦ä¸ºsizeçš„å®½åº¦,åœ¨æ°´å¹³æ–¹å‘ä¸Šç§»åŠ¨å¯¹é½åˆ°çŸ©å½¢
         /// </summary>
-        /// <param name="size">´óĞ¡</param>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">Ë®Æ½¶ÔÆë·½Ê½</param>
-        /// <returns>ĞÂ¾ØĞÎ</returns>
+        /// <param name="size">å¤§å°</param>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">æ°´å¹³å¯¹é½æ–¹å¼</param>
+        /// <returns>æ–°çŸ©å½¢</returns>
         public static RectangleF HAlign(SizeF size, RectangleF rect, ContentAlignment align)
         {
             if ((align & (ContentAlignment.BottomRight | ContentAlignment.MiddleRight | ContentAlignment.TopRight)) != ((ContentAlignment)0))
@@ -169,12 +169,12 @@ namespace Microsoft.Windows.Forms.Layout
             return rect;
         }
         /// <summary>
-        /// µ÷ÕûY×ø±êºÍ¸ß¶È,Ê¹¸ß¶ÈÎªsizeµÄ¸ß¶È,ÔÚ´¹Ö±·½ÏòÉÏÒÆ¶¯¶ÔÆëµ½¾ØĞÎ
+        /// è°ƒæ•´Yåæ ‡å’Œé«˜åº¦,ä½¿é«˜åº¦ä¸ºsizeçš„é«˜åº¦,åœ¨å‚ç›´æ–¹å‘ä¸Šç§»åŠ¨å¯¹é½åˆ°çŸ©å½¢
         /// </summary>
-        /// <param name="size">´óĞ¡</param>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">´¹Ö±¶ÔÆë·½Ê½</param>
-        /// <returns>ĞÂ¾ØĞÎ</returns>
+        /// <param name="size">å¤§å°</param>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">å‚ç›´å¯¹é½æ–¹å¼</param>
+        /// <returns>æ–°çŸ©å½¢</returns>
         public static RectangleF VAlign(SizeF size, RectangleF rect, ContentAlignment align)
         {
             if ((align & (ContentAlignment.BottomRight | ContentAlignment.BottomCenter | ContentAlignment.BottomLeft)) != ((ContentAlignment)0))
@@ -190,12 +190,12 @@ namespace Microsoft.Windows.Forms.Layout
         }
 
         /// <summary>
-        /// µ÷ÕûX×ø±êºÍ¿í¶È,Ê¹¿í¶ÈÎªsizeµÄ¿í¶È,ÔÚË®Æ½·½ÏòÉÏÒÆ¶¯¶ÔÆëµ½¾ØĞÎ
+        /// è°ƒæ•´Xåæ ‡å’Œå®½åº¦,ä½¿å®½åº¦ä¸ºsizeçš„å®½åº¦,åœ¨æ°´å¹³æ–¹å‘ä¸Šç§»åŠ¨å¯¹é½åˆ°çŸ©å½¢
         /// </summary>
-        /// <param name="size">´óĞ¡</param>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">Ë®Æ½¶ÔÆë·½Ê½</param>
-        /// <returns>ĞÂ¾ØĞÎ</returns>
+        /// <param name="size">å¤§å°</param>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">æ°´å¹³å¯¹é½æ–¹å¼</param>
+        /// <returns>æ–°çŸ©å½¢</returns>
         public static Rectangle HAlign(Size size, Rectangle rect, HorizontalAlignment align)
         {
             if ((align & HorizontalAlignment.Right) != 0)
@@ -210,12 +210,12 @@ namespace Microsoft.Windows.Forms.Layout
             return rect;
         }
         /// <summary>
-        /// µ÷ÕûX×ø±êºÍ¿í¶È,Ê¹¿í¶ÈÎªsizeµÄ¿í¶È,ÔÚË®Æ½·½ÏòÉÏÒÆ¶¯¶ÔÆëµ½¾ØĞÎ
+        /// è°ƒæ•´Xåæ ‡å’Œå®½åº¦,ä½¿å®½åº¦ä¸ºsizeçš„å®½åº¦,åœ¨æ°´å¹³æ–¹å‘ä¸Šç§»åŠ¨å¯¹é½åˆ°çŸ©å½¢
         /// </summary>
-        /// <param name="size">´óĞ¡</param>
-        /// <param name="rect">¾ØĞÎ</param>
-        /// <param name="align">Ë®Æ½¶ÔÆë·½Ê½</param>
-        /// <returns>ĞÂ¾ØĞÎ</returns>
+        /// <param name="size">å¤§å°</param>
+        /// <param name="rect">çŸ©å½¢</param>
+        /// <param name="align">æ°´å¹³å¯¹é½æ–¹å¼</param>
+        /// <returns>æ–°çŸ©å½¢</returns>
         public static RectangleF HAlign(SizeF size, RectangleF rect, HorizontalAlignment align)
         {
             if ((align & HorizontalAlignment.Right) != 0)
@@ -232,23 +232,23 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// ´ÓÈİÆ÷´óĞ¡ÖĞ¼õÈ¥Ö¸¶¨´óĞ¡by¹ØÏµ.ÖØµş¹ØÏµ(ĞèÒªÔ¤ÏÈÊÖ¶¯ÅÅ³ı)
+        /// ä»å®¹å™¨å¤§å°ä¸­å‡å»æŒ‡å®šå¤§å°byå…³ç³».é‡å å…³ç³»(éœ€è¦é¢„å…ˆæ‰‹åŠ¨æ’é™¤)
         /// </summary>
-        /// <param name="containerSize">ÈİÆ÷´óĞ¡</param>
-        /// <param name="contentSize">ÄÚÈİ´óĞ¡</param>
-        /// <param name="relation">ÈİÆ÷ÄÚÈİ¹ØÏµ</param>
-        /// <returns>ĞÂ´óĞ¡</returns>
+        /// <param name="containerSize">å®¹å™¨å¤§å°</param>
+        /// <param name="contentSize">å†…å®¹å¤§å°</param>
+        /// <param name="relation">å®¹å™¨å†…å®¹å…³ç³»</param>
+        /// <returns>æ–°å¤§å°</returns>
         public static Size SubAlignedRegion(Size containerSize, Size contentSize, TextImageRelation relation)
         {
             return SubAlignedRegionCore(containerSize, contentSize, IsVerticalRelation(relation));
         }
         /// <summary>
-        /// ´ÓÈİÆ÷´óĞ¡ÖĞ¼õÈ¥Ö¸¶¨´óĞ¡byÊÇ·ñÉÏÏÂ¹ØÏµ.ÖØµş¹ØÏµ(ĞèÒªÔ¤ÏÈÊÖ¶¯ÅÅ³ı)
+        /// ä»å®¹å™¨å¤§å°ä¸­å‡å»æŒ‡å®šå¤§å°byæ˜¯å¦ä¸Šä¸‹å…³ç³».é‡å å…³ç³»(éœ€è¦é¢„å…ˆæ‰‹åŠ¨æ’é™¤)
         /// </summary>
-        /// <param name="containerSize">ÈİÆ÷´óĞ¡</param>
-        /// <param name="contentSize">ÄÚÈİ´óĞ¡</param>
-        /// <param name="vertical">ÊÇ·ñ´¹Ö±¹ØÏµ</param>
-        /// <returns>ĞÂ´óĞ¡</returns>
+        /// <param name="containerSize">å®¹å™¨å¤§å°</param>
+        /// <param name="contentSize">å†…å®¹å¤§å°</param>
+        /// <param name="vertical">æ˜¯å¦å‚ç›´å…³ç³»</param>
+        /// <returns>æ–°å¤§å°</returns>
         public static Size SubAlignedRegionCore(Size containerSize, Size contentSize, bool vertical)
         {
             if (vertical)
@@ -262,10 +262,10 @@ namespace Microsoft.Windows.Forms.Layout
             return containerSize;
         }
         /// <summary>
-        /// ÊÇ·ñ´¹Ö±¹ØÏµ
+        /// æ˜¯å¦å‚ç›´å…³ç³»
         /// </summary>
-        /// <param name="relation">ÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ</param>
-        /// <returns>ÊÇ´¹Ö±¹ØÏµ·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+        /// <param name="relation">æ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®</param>
+        /// <returns>æ˜¯å‚ç›´å…³ç³»è¿”å›true,å¦åˆ™è¿”å›false</returns>
         public static bool IsVerticalRelation(TextImageRelation relation)
         {
             return ((relation & (TextImageRelation.TextAboveImage | TextImageRelation.ImageAboveText)) != TextImageRelation.Overlay);
@@ -273,23 +273,23 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// Á½¸ö´óĞ¡Ïà¼Ó,by¹ØÏµ.ÖØµş¹ØÏµ(ĞèÒªÔ¤ÏÈÊÖ¶¯ÅÅ³ı)
+        /// ä¸¤ä¸ªå¤§å°ç›¸åŠ ,byå…³ç³».é‡å å…³ç³»(éœ€è¦é¢„å…ˆæ‰‹åŠ¨æ’é™¤)
         /// </summary>
-        /// <param name="contentSize1">ÄÚÈİ´óĞ¡1</param>
-        /// <param name="contentSize2">ÄÚÈİ´óĞ¡2</param>
-        /// <param name="relation">Á½¸öÄÚÈİ¹ØÏµ</param>
-        /// <returns>ĞÂ´óĞ¡</returns>
+        /// <param name="contentSize1">å†…å®¹å¤§å°1</param>
+        /// <param name="contentSize2">å†…å®¹å¤§å°2</param>
+        /// <param name="relation">ä¸¤ä¸ªå†…å®¹å…³ç³»</param>
+        /// <returns>æ–°å¤§å°</returns>
         public static Size AddAlignedRegion(Size contentSize1, Size contentSize2, TextImageRelation relation)
         {
             return AddAlignedRegionCore(contentSize1, contentSize2, IsVerticalRelation(relation));
         }
         /// <summary>
-        /// Á½¸ö´óĞ¡Ïà¼Ó,byÊÇ·ñÉÏÏÂ¹ØÏµ.ÖØµş¹ØÏµ(ĞèÒªÔ¤ÏÈÊÖ¶¯ÅÅ³ı)
+        /// ä¸¤ä¸ªå¤§å°ç›¸åŠ ,byæ˜¯å¦ä¸Šä¸‹å…³ç³».é‡å å…³ç³»(éœ€è¦é¢„å…ˆæ‰‹åŠ¨æ’é™¤)
         /// </summary>
-        /// <param name="contentSize1">ÄÚÈİ´óĞ¡1</param>
-        /// <param name="contentSize2">ÄÚÈİ´óĞ¡2</param>
-        /// <param name="vertical">ÊÇ·ñ´µ¹ØÏµ</param>
-        /// <returns>ĞÂ´óĞ¡</returns>
+        /// <param name="contentSize1">å†…å®¹å¤§å°1</param>
+        /// <param name="contentSize2">å†…å®¹å¤§å°2</param>
+        /// <param name="vertical">æ˜¯å¦å¹å…³ç³»</param>
+        /// <returns>æ–°å¤§å°</returns>
         public static Size AddAlignedRegionCore(Size contentSize1, Size contentSize2, bool vertical)
         {
             if (vertical)
@@ -307,23 +307,23 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// »ñÈ¡Á½¸öÖØµşµÄSizeµÄ×îĞ¡ÈİÆ÷µÄ´óĞ¡
+        /// è·å–ä¸¤ä¸ªé‡å çš„Sizeçš„æœ€å°å®¹å™¨çš„å¤§å°
         /// </summary>
-        /// <param name="a">´óĞ¡1</param>
-        /// <param name="b">´óĞ¡2</param>
-        /// <returns>ÈİÆ÷´óĞ¡</returns>
+        /// <param name="a">å¤§å°1</param>
+        /// <param name="b">å¤§å°2</param>
+        /// <returns>å®¹å™¨å¤§å°</returns>
         public static Size UnionSizes(Size a, Size b)
         {
             return new Size(Math.Max(a.Width, b.Width), Math.Max(a.Height, b.Height));
         }
         /// <summary>
-        /// °´Ãª¶¨·½Ê½·Ö¸î¾ØĞÎ
+        /// æŒ‰é”šå®šæ–¹å¼åˆ†å‰²çŸ©å½¢
         /// </summary>
-        /// <param name="bounds">Òª±»·Ö¸îµÄ¾ØĞÎ</param>
-        /// <param name="contentSize">ÄÚÈİ´óĞ¡</param>
-        /// <param name="anchor">Ãª¶¨·½Ê½</param>
-        /// <param name="region1">µÚÒ»¸ö¾ØĞÎ</param>
-        /// <param name="region2">µÚ¶ş¸ö¾ØĞÎ</param>
+        /// <param name="bounds">è¦è¢«åˆ†å‰²çš„çŸ©å½¢</param>
+        /// <param name="contentSize">å†…å®¹å¤§å°</param>
+        /// <param name="anchor">é”šå®šæ–¹å¼</param>
+        /// <param name="region1">ç¬¬ä¸€ä¸ªçŸ©å½¢</param>
+        /// <param name="region2">ç¬¬äºŒä¸ªçŸ©å½¢</param>
         public static void SplitRegion(Rectangle bounds, Size contentSize, AnchorStyles anchor, out Rectangle region1, out Rectangle region2)
         {
             region1 = region2 = bounds;
@@ -363,12 +363,12 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// ½«region2°´anchorÃª¶¨µ½bounds,½«region1°´·´×ªµÄanchorÃª¶¨µ½bounds
+        /// å°†region2æŒ‰anchoré”šå®šåˆ°bounds,å°†region1æŒ‰åè½¬çš„anchoré”šå®šåˆ°bounds
         /// </summary>
-        /// <param name="bounds">ÈİÆ÷¾ØĞÎ</param>
-        /// <param name="anchor">Ãª¶¨·½Ê½</param>
-        /// <param name="region1">¾ØĞÎ1</param>
-        /// <param name="region2">¾ØĞÎ2</param>
+        /// <param name="bounds">å®¹å™¨çŸ©å½¢</param>
+        /// <param name="anchor">é”šå®šæ–¹å¼</param>
+        /// <param name="region1">çŸ©å½¢1</param>
+        /// <param name="region2">çŸ©å½¢2</param>
         public static void ExpandRegionsToFillBounds(Rectangle bounds, AnchorStyles anchor, ref Rectangle region1, ref Rectangle region2)
         {
             switch (anchor)
@@ -401,12 +401,12 @@ namespace Microsoft.Windows.Forms.Layout
             }
         }
         /// <summary>
-        /// Ãª¶¨ÄÚÈİ¾ØĞÎµ½ÈİÆ÷¾ØĞÎ
+        /// é”šå®šå†…å®¹çŸ©å½¢åˆ°å®¹å™¨çŸ©å½¢
         /// </summary>
-        /// <param name="containerBounds">ÈİÆ÷¾ØĞÎ</param>
-        /// <param name="contentBounds">ÄÚÈİ¾ØĞÎ</param>
-        /// <param name="anchor">Ãª¶¨·½Ê½</param>
-        /// <returns>ĞÂ¾ØĞÎ</returns>
+        /// <param name="containerBounds">å®¹å™¨çŸ©å½¢</param>
+        /// <param name="contentBounds">å†…å®¹çŸ©å½¢</param>
+        /// <param name="anchor">é”šå®šæ–¹å¼</param>
+        /// <returns>æ–°çŸ©å½¢</returns>
         private static Rectangle SubstituteSpecifiedBounds(Rectangle containerBounds, Rectangle contentBounds, AnchorStyles anchor)
         {
             int left = ((anchor & AnchorStyles.Left) != AnchorStyles.None) ? contentBounds.Left : containerBounds.Left;

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -9,13 +9,13 @@ namespace Microsoft.Win32
     /// </summary>
     public static partial class UnsafeNativeMethods
     {
-        #region Time Functions                                      Ê±¼äº¯Êı
+        #region Time Functions                                      æ—¶é—´å‡½æ•°
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
+        /// <para>åŠŸèƒ½:</para>
         /// <para>Retrieves the number of milliseconds that have elapsed since the system was started, up to 49.7 days.</para>
         /// <para>.</para>
-        /// <para>±¸×¢:</para>
+        /// <para>å¤‡æ³¨:</para>
         /// <para>The resolution of the GetTickCount function is limited to the resolution of the system timer, which is typically in the range of 10 milliseconds to 16 milliseconds. The resolution of the GetTickCount function is not affected by adjustments made by the GetSystemTimeAdjustment function.</para>
         /// <para>The elapsed time is stored as a DWORD value. Therefore, the time will wrap around to zero if the system is run continuously for 49.7 days. To avoid this problem, use the GetTickCount64 function. Otherwise, check for an overflow condition when comparing times.</para>
         /// <para>If you need a higher resolution timer, use a multimedia timer or a high-resolution timer.</para>
@@ -28,10 +28,10 @@ namespace Microsoft.Win32
         public static extern int GetTickCount();
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
+        /// <para>åŠŸèƒ½:</para>
         /// <para>Retrieves the frequency of the performance counter. The frequency of the performance counter is fixed at system boot and is consistent across all processors. Therefore, the frequency need only be queried upon application initialization, and the result can be cached.</para>
         /// <para>.</para>
-        /// <para>±¸×¢:</para>
+        /// <para>å¤‡æ³¨:</para>
         /// <para>For more info about this function and its usage, see Acquiring high-resolution time stamps.</para>
         /// </summary>
         /// <param name="lpFrequency">A pointer to a variable that receives the current performance-counter frequency, in counts per second. If the installed hardware doesn't support a high-resolution performance counter, this parameter can be zero (this will not occur on systems that run Windows XP or later).</param>
@@ -43,10 +43,10 @@ namespace Microsoft.Win32
         public static extern bool QueryPerformanceFrequency(out long lpFrequency);
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
+        /// <para>åŠŸèƒ½:</para>
         /// <para>Retrieves the current value of the performance counter, which is a high resolution (&lt;1us) time stamp that can be used for time-interval measurements.</para>
         /// <para>.</para>
-        /// <para>±¸×¢:</para>
+        /// <para>å¤‡æ³¨:</para>
         /// <para>For more info about this function and its usage, see Acquiring high-resolution time stamps.</para>
         /// </summary>
         /// <param name="lpPerformanceCount">A pointer to a variable that receives the current performance-counter value, in counts.</param>
@@ -60,7 +60,7 @@ namespace Microsoft.Win32
         #endregion
 
 
-        #region Registry Functions                                  ×¢²á±íº¯Êı
+        #region Registry Functions                                  æ³¨å†Œè¡¨å‡½æ•°
 
         /// <summary>
         /// Retrieves a string from the specified section in an initialization file.Note  This function is provided only for compatibility with 16-bit Windows-based applications. Applications should store initialization information in the registry.
@@ -104,7 +104,7 @@ namespace Microsoft.Win32
         /// <param name="lpAppName">[Section]The name of the section to which the string will be copied. If the section does not exist, it is created. The name of the section is case-independent; the string can be any combination of uppercase and lowercase letters.</param>
         /// <param name="lpKeyName">[Key]The name of the key to be associated with a string. If the key does not exist in the specified section, it is created. If this parameter is NULL, the entire section, including all entries within the section, is deleted.</param>
         /// <param name="lpString">[Value]A null-terminated string to be written to the file. If this parameter is NULL, the key pointed to by the lpKeyName parameter is deleted.</param>
-        /// <param name="lpFileName">[ÎÄ¼ş¾ø¶ÔÂ·¾¶]The name of the initialization file.If the file was created using Unicode characters, the function writes Unicode characters to the file. Otherwise, the function writes ANSI characters.</param>
+        /// <param name="lpFileName">[æ–‡ä»¶ç»å¯¹è·¯å¾„]The name of the initialization file.If the file was created using Unicode characters, the function writes Unicode characters to the file. Otherwise, the function writes ANSI characters.</param>
         /// <returns>If the function successfully copies the string to the initialization file, the return value is nonzero.If the function fails, or if it flushes the cached version of the most recently accessed initialization file, the return value is zero. To get extended error information, call GetLastError.</returns>
         [DllImport("kernel32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -113,26 +113,26 @@ namespace Microsoft.Win32
         #endregion
 
 
-        #region Error Handling Functions                            ´íÎó´¦Àíº¯Êı
+        #region Error Handling Functions                            é”™è¯¯å¤„ç†å‡½æ•°
 
         /// <summary>
-        /// <para>.NetÆ½Ì¨²»Òªµ÷ÓÃ´ËAPI£¬Ó¦¸Ãµ÷ÓÃMarshal.GetLastWin32Error()µ«ÒªÔÚDllImportÊ±ÉèÖÃ SetLastError = true¡£</para>
-        /// <para>Ô­Òò:</para>
-        /// <para>ÔÚ.Net Æ½Ì¨ÏÂÍ¨¹ıPInvokeµ÷ÓÃAPIºó,×îºó´íÎó´úÂëÔÚµ÷ÓÃGetLastError()Ç°¿ÉÄÜ±»ÖØĞ´¡£ËùÒÔGetLastError()»ñÈ¡µ½µÄ½á¹û¿ÉÄÜÎª´íÎóµÄ¡£</para>
-        /// <para>Èç¹ûÔÚPinvokeµÄDllImportÊ±ÉèÖÃSetLastError = true(Ä¬ÈÏÎªfalse)ÔÚµ÷ÓÃÍêAPIºó»áÁ¢¼´ÎªGetLastWin32Error()±£´æ´íÎó´úÂë¡£´Ëºó¼´±ã×îºó´íÎó´úÂë±»ÖØĞ´Í¨¹ıµ÷ÓÃMarshal.GetLastWin32Error()ÈÔÄÜ»ñÈ¡µ½ÕıÈ·µÄ½á¹û¡£</para>
-        /// <para>²½Öè:</para>
-        /// <para>1,DllImportÊ±ĞèÒªÉèÖÃSetLastError = true</para>
-        /// <para>2,µ÷ÓÃÍêAPIºóµ÷ÓÃMarshal.GetLastWin32Error()¶ø²»ÊÇGetLastError()</para>
+        /// <para>.Netå¹³å°ä¸è¦è°ƒç”¨æ­¤APIï¼Œåº”è¯¥è°ƒç”¨Marshal.GetLastWin32Error()ä½†è¦åœ¨DllImportæ—¶è®¾ç½® SetLastError = trueã€‚</para>
+        /// <para>åŸå› :</para>
+        /// <para>åœ¨.Net å¹³å°ä¸‹é€šè¿‡PInvokeè°ƒç”¨APIå,æœ€åé”™è¯¯ä»£ç åœ¨è°ƒç”¨GetLastError()å‰å¯èƒ½è¢«é‡å†™ã€‚æ‰€ä»¥GetLastError()è·å–åˆ°çš„ç»“æœå¯èƒ½ä¸ºé”™è¯¯çš„ã€‚</para>
+        /// <para>å¦‚æœåœ¨Pinvokeçš„DllImportæ—¶è®¾ç½®SetLastError = true(é»˜è®¤ä¸ºfalse)åœ¨è°ƒç”¨å®ŒAPIåä¼šç«‹å³ä¸ºGetLastWin32Error()ä¿å­˜é”™è¯¯ä»£ç ã€‚æ­¤åå³ä¾¿æœ€åé”™è¯¯ä»£ç è¢«é‡å†™é€šè¿‡è°ƒç”¨Marshal.GetLastWin32Error()ä»èƒ½è·å–åˆ°æ­£ç¡®çš„ç»“æœã€‚</para>
+        /// <para>æ­¥éª¤:</para>
+        /// <para>1,DllImportæ—¶éœ€è¦è®¾ç½®SetLastError = true</para>
+        /// <para>2,è°ƒç”¨å®ŒAPIåè°ƒç”¨Marshal.GetLastWin32Error()è€Œä¸æ˜¯GetLastError()</para>
         /// <para>.</para>
-        /// <para>¹¦ÄÜ:</para>
-        /// <para>¸Ãº¯Êı·µ»Øµ÷ÓÃÏß³Ì×î½üµÄ´íÎó´úÂëÖµ£¬´íÎó´úÂëÒÔµ¥Ïß³ÌÎª»ù´¡À´Î¬»¤µÄ£¬¶àÏß³Ì²»ÖØĞ´¸÷×ÔµÄ´íÎó´úÂëÖµ¡£</para>
+        /// <para>åŠŸèƒ½:</para>
+        /// <para>è¯¥å‡½æ•°è¿”å›è°ƒç”¨çº¿ç¨‹æœ€è¿‘çš„é”™è¯¯ä»£ç å€¼ï¼Œé”™è¯¯ä»£ç ä»¥å•çº¿ç¨‹ä¸ºåŸºç¡€æ¥ç»´æŠ¤çš„ï¼Œå¤šçº¿ç¨‹ä¸é‡å†™å„è‡ªçš„é”™è¯¯ä»£ç å€¼ã€‚</para>
         /// <para>.</para>
-        /// <para>±¸×¢:</para>
-        /// <para>Í¨¹ıµ÷ÓÃÏß³ÌÖ´ĞĞµÄº¯Êıµ÷ÓÃÉèÖÃ´ËÖµ SetLastErrorº¯Êı¡£ÄãÓ¦¸Ãµ÷ÓÃ GetLastErrorº¯ÊıÂíÉÏ¹¦ÄÜÊ±£¬º¯ÊıµÄ·µ»ØÖµ±íÊ¾£¬ÕâÑùµÄµ÷ÓÃ½«·µ»ØÓĞÓÃµÄÊı¾İ¡£ÕâÊÇÒòÎªÒ»Ğ©º¯Êıµ÷ÓÃ SetLastErrorÒ»¸öÁã£¬µ±ËûÃÇÈ¡µÃ³É¹¦£¬¼ßÃğÓÉ×î½üÊ§°ÜµÄ¹¦ÄÜÉèÖÃ´íÎó´úÂë¡£</para>
-        /// <para>Òª»ñµÃÏµÍ³´íÎó´úÂëµÄ´íÎó×Ö·û´®£¬¿ÉÒÔÊ¹ÓÃ FORMATMESSAGE¹¦ÄÜ¡£ÓĞ¹Ø´íÎó´úÂëÓÉ²Ù×÷ÏµÍ³Ìá¹©µÄÍêÕûÁĞ±í£¬Çë²Î¼û ÏµÍ³´íÎó´úÂë¡£</para>
-        /// <para>ÓÉº¯Êı·µ»ØµÄ´íÎó´úÂëÊÇ²»ÊÇWindows API¹æ·¶µÄÒ»²¿·Ö£¬¿ÉÒÔÍ¨¹ı²Ù×÷ÏµÍ³»òÉè±¸Çı¶¯³ÌĞò¶øÒì¡£³öÓÚÕâ¸öÔ­Òò£¬ÎÒÃÇÎŞ·¨Ìá¹©µÄ£¬¿ÉÒÔÓÉÃ¿¸öº¯Êı·µ»Ø´íÎó´úÂëµÄÍêÕûÁĞ±í¡£Ò²ÓĞĞí¶à¹¦ÄÜ£¬ÆäÎÄµµ²»°üÀ¨ÉõÖÁ¾Ö²¿µÄ£¬¿ÉÒÔ·µ»ØµÄ´íÎó´úÂëÁĞ±í¡£</para>
-        /// <para>´íÎó´úÂëÊÇ32Î»Öµ£¨Î»31ÊÇ×îÏÔÖøÎ»£©¡£Î»29ÊÇ±£Áô¸øÓ¦ÓÃ³ÌĞò¶¨ÒåµÄ´íÎó´úÂë£¬Ã»ÓĞÏµÍ³´íÎó´úÂëÓĞ´ËÎ»ÉèÖÃ¡£Èç¹ûÄãÊÇÎªÄãµÄÓ¦ÓÃ³ÌĞò¶¨ÒåµÄ´íÎó´úÂë£¬ÉèÖÃ¸ÃÎ»Îª1¡£Õâ±íÃ÷£¬´íÎó´úÂëÒÑ±»Ó¦ÓÃ³ÌĞò¶¨Òå£¬²¢È·±£ÄúµÄ´íÎó´úÂë²»ÄÜÓÃÏµÍ³¶¨ÒåµÄÈÎºÎ´íÎó´úÂë·¢Éú³åÍ»¡£</para>
-        /// <para>ÈôÒª½«ÏµÍ³´íÎó³ÉÒ»¸öHRESULTÖµ£¬Ê¹ÓÃ HRESULT_FROM_WIN32ºê¡£</para>
+        /// <para>å¤‡æ³¨:</para>
+        /// <para>é€šè¿‡è°ƒç”¨çº¿ç¨‹æ‰§è¡Œçš„å‡½æ•°è°ƒç”¨è®¾ç½®æ­¤å€¼ SetLastErrorå‡½æ•°ã€‚ä½ åº”è¯¥è°ƒç”¨ GetLastErrorå‡½æ•°é©¬ä¸ŠåŠŸèƒ½æ—¶ï¼Œå‡½æ•°çš„è¿”å›å€¼è¡¨ç¤ºï¼Œè¿™æ ·çš„è°ƒç”¨å°†è¿”å›æœ‰ç”¨çš„æ•°æ®ã€‚è¿™æ˜¯å› ä¸ºä¸€äº›å‡½æ•°è°ƒç”¨ SetLastErrorä¸€ä¸ªé›¶ï¼Œå½“ä»–ä»¬å–å¾—æˆåŠŸï¼Œæ­¼ç­ç”±æœ€è¿‘å¤±è´¥çš„åŠŸèƒ½è®¾ç½®é”™è¯¯ä»£ç ã€‚</para>
+        /// <para>è¦è·å¾—ç³»ç»Ÿé”™è¯¯ä»£ç çš„é”™è¯¯å­—ç¬¦ä¸²ï¼Œå¯ä»¥ä½¿ç”¨ FORMATMESSAGEåŠŸèƒ½ã€‚æœ‰å…³é”™è¯¯ä»£ç ç”±æ“ä½œç³»ç»Ÿæä¾›çš„å®Œæ•´åˆ—è¡¨ï¼Œè¯·å‚è§ ç³»ç»Ÿé”™è¯¯ä»£ç ã€‚</para>
+        /// <para>ç”±å‡½æ•°è¿”å›çš„é”™è¯¯ä»£ç æ˜¯ä¸æ˜¯Windows APIè§„èŒƒçš„ä¸€éƒ¨åˆ†ï¼Œå¯ä»¥é€šè¿‡æ“ä½œç³»ç»Ÿæˆ–è®¾å¤‡é©±åŠ¨ç¨‹åºè€Œå¼‚ã€‚å‡ºäºè¿™ä¸ªåŸå› ï¼Œæˆ‘ä»¬æ— æ³•æä¾›çš„ï¼Œå¯ä»¥ç”±æ¯ä¸ªå‡½æ•°è¿”å›é”™è¯¯ä»£ç çš„å®Œæ•´åˆ—è¡¨ã€‚ä¹Ÿæœ‰è®¸å¤šåŠŸèƒ½ï¼Œå…¶æ–‡æ¡£ä¸åŒ…æ‹¬ç”šè‡³å±€éƒ¨çš„ï¼Œå¯ä»¥è¿”å›çš„é”™è¯¯ä»£ç åˆ—è¡¨ã€‚</para>
+        /// <para>é”™è¯¯ä»£ç æ˜¯32ä½å€¼ï¼ˆä½31æ˜¯æœ€æ˜¾è‘—ä½ï¼‰ã€‚ä½29æ˜¯ä¿ç•™ç»™åº”ç”¨ç¨‹åºå®šä¹‰çš„é”™è¯¯ä»£ç ï¼Œæ²¡æœ‰ç³»ç»Ÿé”™è¯¯ä»£ç æœ‰æ­¤ä½è®¾ç½®ã€‚å¦‚æœä½ æ˜¯ä¸ºä½ çš„åº”ç”¨ç¨‹åºå®šä¹‰çš„é”™è¯¯ä»£ç ï¼Œè®¾ç½®è¯¥ä½ä¸º1ã€‚è¿™è¡¨æ˜ï¼Œé”™è¯¯ä»£ç å·²è¢«åº”ç”¨ç¨‹åºå®šä¹‰ï¼Œå¹¶ç¡®ä¿æ‚¨çš„é”™è¯¯ä»£ç ä¸èƒ½ç”¨ç³»ç»Ÿå®šä¹‰çš„ä»»ä½•é”™è¯¯ä»£ç å‘ç”Ÿå†²çªã€‚</para>
+        /// <para>è‹¥è¦å°†ç³»ç»Ÿé”™è¯¯æˆä¸€ä¸ªHRESULTå€¼ï¼Œä½¿ç”¨ HRESULT_FROM_WIN32å®ã€‚</para>
         /// </summary>
         /// <returns>
         /// <para>The return value is the calling thread&apos;s last-error code.</para>
@@ -146,7 +146,7 @@ namespace Microsoft.Win32
         public static extern int GetLastError();
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
+        /// <para>åŠŸèƒ½:</para>
         /// <para>Formats a message string.</para>
         /// <para>The function requires a message definition as input.</para>
         /// <para>The message definition can come from a buffer passed into the function.</para>
@@ -155,7 +155,7 @@ namespace Microsoft.Win32
         /// <para>The function finds the message definition in a message table resource based on a message identifier and a language identifier.</para>
         /// <para>The function copies the formatted message text to an output buffer, processing any embedded insert sequences if requested.</para>
         /// <para>.</para>
-        /// <para>±¸×¢:</para>
+        /// <para>å¤‡æ³¨:</para>
         /// <para>Within the message text, several escape sequences are supported for dynamically formatting the message. These escape sequences and their meanings are shown in the following tables. All escape sequences start with the percent character (%).</para>
         /// <para>Escape sequence	Meaning</para>
         /// <para>%0	Terminates a message text line without a trailing new line character. This escape sequence can be used to build up long lines or to terminate the message itself without a trailing new line character. It is useful for prompt messages.</para>
@@ -167,7 +167,7 @@ namespace Microsoft.Win32
         /// <para>The insert numbers depend on whether you use an arguments array (FORMAT_MESSAGE_ARGUMENT_ARRAY) or a va_list. For an arguments array, the next insert number is n+2 if the previous format string contained one asterisk and is n+3 if two asterisks were specified. For a va_list, the next insert number is n+1 if the previous format string contained one asterisk and is n+2 if two asterisks were specified.</para>
         /// <para>If you want to repeat &quot;Bill&quot;, as in the previous example, the arguments must include &quot;Bill&quot; twice. For example, if the source string is &quot;%1!*.*s! %4 %5!*s!&quot;, the arguments could be, 4, 2, Bill, Bob, 6, Bill (if using the FORMAT_MESSAGE_ARGUMENT_ARRAY flag). The formatted string would then be &quot;  Bi Bob   Bill&quot;.</para>
         /// <para>Repeating insert numbers when the source string contains width and precision specifiers may not yield the intended results. If you replaced %5 with %1, the function would try to print a string at address 6 (likely resulting in an access violation).</para>
-        /// <para>Floating-point format specifiers¡ªe, E, f, and g¡ªare not supported. The workaround is to use the StringCchPrintf function to format the floating-point number into a temporary buffer, then use that buffer as the insert string.</para>
+        /// <para>Floating-point format specifiersâ€”e, E, f, and gâ€”are not supported. The workaround is to use the StringCchPrintf function to format the floating-point number into a temporary buffer, then use that buffer as the insert string.</para>
         /// <para>Inserts that use the I64 prefix are treated as two 32-bit arguments. They must be used before subsequent arguments are used. Note that it may be easier for you to use StringCchPrintf instead of this prefix.</para>
         /// <para>.</para>
         /// <para>Any other nondigit character following a percent character is formatted in the output message without the percent character. Following are some examples.</para>
@@ -198,15 +198,15 @@ namespace Microsoft.Win32
         #endregion
 
 
-        #region File Management Functions                           ÎÄ¼ş¹ÜÀíº¯Êı
+        #region File Management Functions                           æ–‡ä»¶ç®¡ç†å‡½æ•°
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
+        /// <para>åŠŸèƒ½:</para>
         /// <para>Creates an input/output (I/O) completion port and associates it with a specified file handle, or creates an I/O completion port that is not yet associated with a file handle, allowing association at a later time.</para>
         /// <para>Associating an instance of an opened file handle with an I/O completion port allows a process to receive notification of the completion of asynchronous I/O operations involving that file handle.</para>
         /// <para>Note</para>
-        /// <para>The term file handle as used here refers to a system abstraction that represents an overlapped I/O endpoint, not only a file on disk. Any system objects that support overlapped I/O¡ªsuch as network endpoints, TCP sockets, named pipes, and mail slots¡ªcan be used as file handles. For additional information, see the Remarks section.</para>
-        /// <para>±¸×¢:</para>
+        /// <para>The term file handle as used here refers to a system abstraction that represents an overlapped I/O endpoint, not only a file on disk. Any system objects that support overlapped I/Oâ€”such as network endpoints, TCP sockets, named pipes, and mail slotsâ€”can be used as file handles. For additional information, see the Remarks section.</para>
+        /// <para>å¤‡æ³¨:</para>
         /// <para>The I/O system can be instructed to send I/O completion notification packets to I/O completion ports, where they are queued. The CreateIoCompletionPort function provides this functionality.</para>
         /// <para>An I/O completion port and its handle are associated with the process that created it and is not sharable between processes. However, a single handle is sharable between threads in the same process.</para>
         /// <para>CreateIoCompletionPort can be used in three distinct modes:</para>
@@ -232,10 +232,10 @@ namespace Microsoft.Win32
         public static extern IntPtr CreateIoCompletionPort(IntPtr FileHandle, IntPtr ExistingCompletionPort, IntPtr CompletionKey, int NumberOfConcurrentThreads);
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
+        /// <para>åŠŸèƒ½:</para>
         /// <para>Attempts to dequeue an I/O completion packet from the specified I/O completion port. If there is no completion packet queued, the function waits for a pending I/O operation associated with the completion port to complete.</para>
         /// <para>To dequeue multiple I/O completion packets at once, use the GetQueuedCompletionStatusEx function.</para>
-        /// <para>±¸×¢:</para>
+        /// <para>å¤‡æ³¨:</para>
         /// <para>This function associates a thread with the specified completion port. A thread can be associated with at most one completion port.</para>
         /// <para>If a call to GetQueuedCompletionStatus fails because the completion port handle associated with it is closed while the call is outstanding, the function returns FALSE, *lpOverlapped will be NULL, and GetLastError will return ERROR_ABANDONED_WAIT_0.</para>
         /// <para>Windows Server 2003 and Windows XP:  Closing the completion port handle while a call is outstanding will not result in the previously stated behavior. The function will continue to wait until an entry is removed from the port or until a time-out occurs, if specified as a value other than INFINITE.</para>
@@ -256,10 +256,10 @@ namespace Microsoft.Win32
         public static extern bool GetQueuedCompletionStatus(IntPtr CompletionPort, out int lpNumberOfBytes, out IntPtr lpCompletionKey, out IntPtr lpOverlapped, int dwMilliseconds);
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
+        /// <para>åŠŸèƒ½:</para>
         /// <para>Retrieves multiple completion port entries simultaneously. It waits for pending I/O operations that are associated with the specified completion port to complete.</para>
         /// <para>To dequeue I/O completion packets one at a time, use the GetQueuedCompletionStatus function.</para>
-        /// <para>±¸×¢:</para>
+        /// <para>å¤‡æ³¨:</para>
         /// <para>This function associates a thread with the specified completion port. A thread can be associated with at most one completion port.</para>
         /// <para>This function returns TRUE when at least one pending I/O is completed, but it is possible that one or more I/O operations failed. Note that it is up to the user of this function to check the list of returned entries in the lpCompletionPortEntries parameter to determine which of them correspond to any possible failed I/O operations by looking at the status contained in the lpOverlapped member in each OVERLAPPED_ENTRY.</para>
         /// <para>This function returns FALSE when no I/O operation was dequeued. This typically means that an error occurred while processing the parameters to this call, or that the CompletionPort handle was closed or is otherwise invalid. The GetLastError function provides extended error information.</para>
@@ -280,9 +280,9 @@ namespace Microsoft.Win32
         public static extern bool GetQueuedCompletionStatusEx(IntPtr CompletionPort, out IntPtr lpCompletionPortEntries, int ulCount, out int ulNumEntriesRemoved, int dwMilliseconds, bool fAlertable);
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
+        /// <para>åŠŸèƒ½:</para>
         /// <para>Posts an I/O completion packet to an I/O completion port.</para>
-        /// <para>±¸×¢:</para>
+        /// <para>å¤‡æ³¨:</para>
         /// <para>The I/O completion packet will satisfy an outstanding call to the GetQueuedCompletionStatus function. This function returns with the three values passed as the second, third, and fourth parameters of the call to PostQueuedCompletionStatus. The system does not use or validate these values. In particular, the lpOverlapped parameter need not point to an OVERLAPPED structure.</para>
         /// <para>In Windows 8 and Windows Server 2012, this function is supported by the following technologies.</para>
         /// </summary>
@@ -296,9 +296,9 @@ namespace Microsoft.Win32
         public static extern bool PostQueuedCompletionStatus(IntPtr CompletionPort, int dwNumberOfBytesTransferred, IntPtr dwCompletionKey, IntPtr lpOverlapped);
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
+        /// <para>åŠŸèƒ½:</para>
         /// <para>Marks any outstanding I/O operations for the specified file handle. The function only cancels I/O operations in the current process, regardless of which thread created the I/O operation.</para>
-        /// <para>±¸×¢:</para>
+        /// <para>å¤‡æ³¨:</para>
         /// <para>The CancelIoEx function allows you to cancel requests in threads other than the calling thread. The CancelIo function only cancels requests in the same thread that called the CancelIo function. CancelIoEx cancels only outstanding I/O on the handle, it does not change the state of the handle; this means that you cannot rely on the state of the handle because you cannot know whether the operation was completed successfully or canceled.</para>
         /// <para>If there are any pending I/O operations in progress for the specified file handle, the CancelIoEx function marks them for cancellation. Most types of operations can be canceled immediately; other operations can continue toward completion before they are actually canceled and the caller is notified. The CancelIoEx function does not wait for all canceled operations to complete.</para>
         /// <para>If the file handle is associated with a completion port, an I/O completion packet is not queued to the port if a synchronous operation is successfully canceled. For asynchronous operations still pending, the cancel operation will queue an I/O completion packet.</para>
@@ -318,12 +318,12 @@ namespace Microsoft.Win32
         #endregion
 
 
-        #region Handle and Object Functions                         ¾ä±úºÍ¶ÔÏóº¯Êı
+        #region Handle and Object Functions                         å¥æŸ„å’Œå¯¹è±¡å‡½æ•°
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
+        /// <para>åŠŸèƒ½:</para>
         /// <para>Closes an open object handle.</para>
-        /// <para>±¸×¢:</para>
+        /// <para>å¤‡æ³¨:</para>
         /// <para>The CloseHandle function closes handles to the following objects:</para>
         /// <para>Access token</para>
         /// <para>Communications device</para>

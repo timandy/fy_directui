@@ -1,4 +1,4 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 
 namespace Microsoft.Windows.Forms
 {
@@ -6,7 +6,7 @@ namespace Microsoft.Windows.Forms
     {
         private Image m_Image = null;
         /// <summary>
-        /// Õı³£×´Ì¬ÏÂÍ¼Æ¬
+        /// æ­£å¸¸çŠ¶æ€ä¸‹å›¾ç‰‡
         /// </summary>
         public Image Image
         {
@@ -26,7 +26,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_ImageHovered = null;
         /// <summary>
-        /// Êó±êÒÆÉÏÍ¼Æ¬
+        /// é¼ æ ‡ç§»ä¸Šå›¾ç‰‡
         /// </summary>
         public Image ImageHovered
         {
@@ -46,7 +46,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_ImagePressed = null;
         /// <summary>
-        /// Êó±ê°´ÏÂÍ¼Æ¬
+        /// é¼ æ ‡æŒ‰ä¸‹å›¾ç‰‡
         /// </summary>
         public Image ImagePressed
         {
@@ -66,7 +66,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_ImageFocused = null;
         /// <summary>
-        /// ÓµÓĞ½¹µãÍ¼Æ¬
+        /// æ‹¥æœ‰ç„¦ç‚¹å›¾ç‰‡
         /// </summary>
         public Image ImageFocused
         {
@@ -86,7 +86,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_ImageDisabled = null;
         /// <summary>
-        /// ×´Ì¬½ûÓÃÍ¼Æ¬
+        /// çŠ¶æ€ç¦ç”¨å›¾ç‰‡
         /// </summary>
         public Image ImageDisabled
         {
@@ -106,7 +106,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_ImageHighlight = null;
         /// <summary>
-        /// ¸ßÁÁÍ¼Æ¬
+        /// é«˜äº®å›¾ç‰‡
         /// </summary>
         public Image ImageHighlight
         {
@@ -126,7 +126,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_ImageOffset = Point.Empty;
         /// <summary>
-        /// Í¼Æ¬Æ«ÒÆ
+        /// å›¾ç‰‡åç§»
         /// </summary>
         public Point ImageOffset
         {
@@ -146,7 +146,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_ImageOffsetHovered = Point.Empty;
         /// <summary>
-        /// Êó±êÒÆÉÏÊ±ÔÚImageOffsetÉÏÔÙ´ÎÆ«ÒÆ
+        /// é¼ æ ‡ç§»ä¸Šæ—¶åœ¨ImageOffsetä¸Šå†æ¬¡åç§»
         /// </summary>
         public Point ImageOffsetHovered
         {
@@ -166,7 +166,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_ImageOffsetPressed = Point.Empty;
         /// <summary>
-        /// Êó±ê°´ÏÂÊ±ÔÚImageOffsetÉÏÔÙ´ÎÆ«ÒÆ
+        /// é¼ æ ‡æŒ‰ä¸‹æ—¶åœ¨ImageOffsetä¸Šå†æ¬¡åç§»
         /// </summary>
         public Point ImageOffsetPressed
         {
@@ -186,7 +186,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_ImageOffsetFocused = Point.Empty;
         /// <summary>
-        /// »ñÈ¡½¹µãÊ±ÔÚImageOffsetÉÏÔÙ´ÎÆ«ÒÆ
+        /// è·å–ç„¦ç‚¹æ—¶åœ¨ImageOffsetä¸Šå†æ¬¡åç§»
         /// </summary>
         public Point ImageOffsetFocused
         {
@@ -206,7 +206,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_ImageOffsetDisabled = Point.Empty;
         /// <summary>
-        /// ½ûÓÃÊ±ÔÚImageOffsetÉÏÔÙ´ÎÆ«ÒÆ
+        /// ç¦ç”¨æ—¶åœ¨ImageOffsetä¸Šå†æ¬¡åç§»
         /// </summary>
         public Point ImageOffsetDisabled
         {
@@ -226,7 +226,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_ImageOffsetHighlight = Point.Empty;
         /// <summary>
-        /// ¸ßÁÁÊ±ÔÚImageOffsetÉÏÔÙ´ÎÆ«ÒÆ
+        /// é«˜äº®æ—¶åœ¨ImageOffsetä¸Šå†æ¬¡åç§»
         /// </summary>
         public Point ImageOffsetHighlight
         {
@@ -246,7 +246,7 @@ namespace Microsoft.Windows.Forms
 
         private Size m_ImageSize = new Size(32, 32);
         /// <summary>
-        /// Í¼Æ¬´óĞ¡
+        /// å›¾ç‰‡å¤§å°
         /// </summary>
         public Size ImageSize
         {
@@ -266,7 +266,7 @@ namespace Microsoft.Windows.Forms
 
         private ContentAlignment m_ImageAlign = ContentAlignment.MiddleCenter;
         /// <summary>
-        /// Í¼Æ¬¶ÔÆë·½Ê½
+        /// å›¾ç‰‡å¯¹é½æ–¹å¼
         /// </summary>
         public ContentAlignment ImageAlign
         {
@@ -286,7 +286,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_ImageRotateAngle = 0f;
         /// <summary>
-        /// Í¼Æ¬Ğı×ª½Ç¶È
+        /// å›¾ç‰‡æ—‹è½¬è§’åº¦
         /// </summary>
         public float ImageRotateAngle
         {
@@ -306,7 +306,7 @@ namespace Microsoft.Windows.Forms
 
         private bool m_ImageGrayOnDisabled = true;
         /// <summary>
-        /// Í¼Æ¬×´Ì¬½ûÓÃÊÇ·ñ±ä»Ò
+        /// å›¾ç‰‡çŠ¶æ€ç¦ç”¨æ˜¯å¦å˜ç°
         /// </summary>
         public bool ImageGrayOnDisabled
         {

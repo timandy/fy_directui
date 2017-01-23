@@ -1,44 +1,44 @@
-namespace Microsoft.Windows.Forms
+ï»¿namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// ¿Ø¼şµÄ×´Ì¬¡£(Disabled)(FocusedÓëNoraml,Hovered,Pressed×éºÏ)
+    /// æ§ä»¶çš„çŠ¶æ€ã€‚(Disabled)(Focusedä¸Noraml,Hovered,Pressedç»„åˆ)
     /// </summary>
     public enum State : int
     {
         /// <summary>
-        /// Õı³£
+        /// æ­£å¸¸
         /// </summary>
         Normal = 0,
         /// <summary>
-        /// Õı³£½¹µã
+        /// æ­£å¸¸ç„¦ç‚¹
         /// </summary>
         NormalFocused = 1,
         /// <summary>
-        /// Êó±êÒÆÉÏ
+        /// é¼ æ ‡ç§»ä¸Š
         /// </summary>
         Hovered = 2,
         /// <summary>
-        /// Êó±êÒÆÉÏ½¹µã
+        /// é¼ æ ‡ç§»ä¸Šç„¦ç‚¹
         /// </summary>
         HoveredFocused = 3,
         /// <summary>
-        /// Êó±ê°´ÏÂ
+        /// é¼ æ ‡æŒ‰ä¸‹
         /// </summary>
         Pressed = 4,
         /// <summary>
-        /// Êó±ê°´ÏÂ½¹µã
+        /// é¼ æ ‡æŒ‰ä¸‹ç„¦ç‚¹
         /// </summary>
         PressedFocused = 5,
         /// <summary>
-        /// ½ûÓÃ
+        /// ç¦ç”¨
         /// </summary>
         Disabled = 6,
         /// <summary>
-        /// Òş²Ø
+        /// éšè—
         /// </summary>
         Hidden = 7,
         /// <summary>
-        /// ¸ßÁÁÍ»³ö
+        /// é«˜äº®çªå‡º
         /// </summary>
         Highlight = 8,
     }
