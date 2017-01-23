@@ -72,7 +72,7 @@ namespace Microsoft.Windows.Forms
         {
             this.RenderSelf(e);
             this.RenderChildren(e);
-            this.OnRender(e);
+            this.RaisePaintEvent(this, e);
         }
 
         /// <summary>

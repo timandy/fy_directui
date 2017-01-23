@@ -265,28 +265,29 @@ namespace Microsoft.Windows.Forms
                 handler(this, e);
         }
 
-        private static readonly object EVENT_RENDER = new object();
+        private static readonly object EVENT_PAINT = new object();
         /// <summary>
         /// 渲染事件
         /// </summary>
-        public event PaintEventHandler Render
+        public event PaintEventHandler Paint
         {
             add
             {
-                base.Events.AddHandler(EVENT_RENDER, value);
+                base.Events.AddHandler(EVENT_PAINT, value);
             }
             remove
             {
-                base.Events.RemoveHandler(EVENT_RENDER, value);
+                base.Events.RemoveHandler(EVENT_PAINT, value);
             }
         }
         /// <summary>
         /// 触发渲染事件
         /// </summary>
+        /// <param name="key">要引发的事件</param>
         /// <param name="e">数据</param>
-        protected virtual void OnRender(PaintEventArgs e)
+        protected void RaisePaintEvent(object key, PaintEventArgs e)
         {
-            PaintEventHandler handler = base.Events[EVENT_RENDER] as PaintEventHandler;
+            PaintEventHandler handler = base.Events[EVENT_PAINT] as PaintEventHandler;
             if (handler != null)
                 handler(this, e);
         }

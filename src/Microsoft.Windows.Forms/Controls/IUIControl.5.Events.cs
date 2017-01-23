@@ -58,6 +58,6 @@ namespace Microsoft.Windows.Forms
         /// <summary>
         /// 渲染事件
         /// </summary>
-        event PaintEventHandler Render;
+        event PaintEventHandler Paint;
     }
 }
