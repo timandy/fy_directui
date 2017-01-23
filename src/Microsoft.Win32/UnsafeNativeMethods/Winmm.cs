@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
@@ -9,30 +9,30 @@ namespace Microsoft.Win32
     public static partial class UnsafeNativeMethods
     {
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
-        /// <para>¸Ãº¯Êý·µ»ØµÄ´íÎóÂë¿ÉÒÔÓÃmciGetErrorStringº¯Êý½øÐÐ·ÖÎö¡£</para>
+        /// <para>åŠŸèƒ½:</para>
+        /// <para>è¯¥å‡½æ•°è¿”å›žçš„é”™è¯¯ç å¯ä»¥ç”¨mciGetErrorStringå‡½æ•°è¿›è¡Œåˆ†æžã€‚</para>
         /// <para>.</para>
-        /// <para>±¸×¢:</para>
-        /// <para>ÎÞ</para>
+        /// <para>å¤‡æ³¨:</para>
+        /// <para>æ— </para>
         /// </summary>
-        /// <param name="fdwError">º¯ÊýmciSendString·µ»ØµÄ´íÎóÂë</param>
-        /// <param name="lpszErrorText">½ÓÊÕÃèÊö´íÎóµÄ×Ö·û´®µÄ»º³åÇø</param>
-        /// <param name="cchErrorText">»º³åÇøµÄ³¤¶È</param>
-        /// <returns>Èç¹ûº¯ÊýÔËÐÐ³É¹¦£¬·µ»ØÖµÎªTRUE£»Èç¹ûº¯ÊýÔËÐÐÊ§°Ü£¬·µ»ØÖµÎªFALSE¡£</returns>
+        /// <param name="fdwError">å‡½æ•°mciSendStringè¿”å›žçš„é”™è¯¯ç </param>
+        /// <param name="lpszErrorText">æŽ¥æ”¶æè¿°é”™è¯¯çš„å­—ç¬¦ä¸²çš„ç¼“å†²åŒº</param>
+        /// <param name="cchErrorText">ç¼“å†²åŒºçš„é•¿åº¦</param>
+        /// <returns>å¦‚æžœå‡½æ•°è¿è¡ŒæˆåŠŸï¼Œè¿”å›žå€¼ä¸ºTRUEï¼›å¦‚æžœå‡½æ•°è¿è¡Œå¤±è´¥ï¼Œè¿”å›žå€¼ä¸ºFALSEã€‚</returns>
         [DllImport("winmm.dll", CharSet = CharSet.Auto)]
         public static extern bool mciGetErrorString(int fdwError, ref string lpszErrorText, uint cchErrorText);
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
-        /// <para>Ó¦ÓÃ³ÌÐòÍ¨¹ýÏòMCI·¢ËÍÃüÁîÀ´¿ØÖÆÃ½ÌåÉè±¸¡£</para>
+        /// <para>åŠŸèƒ½:</para>
+        /// <para>åº”ç”¨ç¨‹åºé€šè¿‡å‘MCIå‘é€å‘½ä»¤æ¥æŽ§åˆ¶åª’ä½“è®¾å¤‡ã€‚</para>
         /// <para>.</para>
-        /// <para>±¸×¢:</para>
-        /// <para>ÎÞ</para>
+        /// <para>å¤‡æ³¨:</para>
+        /// <para>æ— </para>
         /// </summary>
-        /// <param name="lpszCommand">MCIÃüÁî×Ö·û´®</param>
-        /// <param name="lpszReturnString">´æ·Å·´À¡ÐÅÏ¢µÄ»º³åÇø</param>
-        /// <param name="cchReturn">»º³åÇøµÄ³¤¶È</param>
-        /// <param name="hwndCallback">»Øµ÷´°¿ÚµÄ¾ä±ú£¬Ò»°ãÎªNULL</param>
-        /// <returns>Èç¹ûº¯ÊýÔËÐÐ³É¹¦£¬·µ»ØÖµÎªÁã£»Èç¹ûº¯ÊýÔËÐÐÊ§°Ü£¬·µ»ØÖµÎª·ÇÁã¡£</returns>
+        /// <param name="lpszCommand">MCIå‘½ä»¤å­—ç¬¦ä¸²</param>
+        /// <param name="lpszReturnString">å­˜æ”¾åé¦ˆä¿¡æ¯çš„ç¼“å†²åŒº</param>
+        /// <param name="cchReturn">ç¼“å†²åŒºçš„é•¿åº¦</param>
+        /// <param name="hwndCallback">å›žè°ƒçª—å£çš„å¥æŸ„ï¼Œä¸€èˆ¬ä¸ºNULL</param>
+        /// <returns>å¦‚æžœå‡½æ•°è¿è¡ŒæˆåŠŸï¼Œè¿”å›žå€¼ä¸ºé›¶ï¼›å¦‚æžœå‡½æ•°è¿è¡Œå¤±è´¥ï¼Œè¿”å›žå€¼ä¸ºéžé›¶ã€‚</returns>
         [DllImport("winmm.dll", CharSet = CharSet.Auto)]
         public static extern int mciSendString(string lpszCommand, ref string lpszReturnString, uint cchReturn, IntPtr hwndCallback);
 
@@ -91,7 +91,7 @@ namespace Microsoft.Win32
         /// </summary>
         /// <param name="fileName">Pointer to a string containing the file name of the file to open. If no I/O procedure is specified to open the file, the file name determines how the file is opened, as follows:</param>
         /// <param name="not_used">Pointer to an MMIOINFO structure containing extra parameters used by mmioOpen. Unless you are opening a memory file, specifying the size of a buffer for buffered I/O, or specifying an uninstalled I/O procedure to open a file, this parameter should be NULL. If this parameter is not NULL, all unused members of the MMIOINFO structure it references must be set to zero, including the reserved members.</param>
-        /// <param name="flags">Flags for the open operation. The MMIO_READ, MMIO_WRITE, and MMIO_READWRITE flags are mutually exclusive ¡ª only one should be specified. The MMIO_COMPAT, MMIO_EXCLUSIVE, MMIO_DENYWRITE, MMIO_DENYREAD, and MMIO_DENYNONE flags are file-sharing flags. The following values are defined.</param>
+        /// <param name="flags">Flags for the open operation. The MMIO_READ, MMIO_WRITE, and MMIO_READWRITE flags are mutually exclusive â€” only one should be specified. The MMIO_COMPAT, MMIO_EXCLUSIVE, MMIO_DENYWRITE, MMIO_DENYREAD, and MMIO_DENYNONE flags are file-sharing flags. The following values are defined.</param>
         /// <summary>
         /// <para>Value	Meaning</para>
         /// <para>MMIO_ALLOCBUF	Opens a file for buffered I/O. To allocate a buffer larger or smaller than the default buffer size (8K, defined as MMIO_DEFAULTBUFFER), set the cchBuffer member of the MMIOINFO structure to the desired buffer size. If cchBuffer is zero, the default buffer size is used. If you are providing your own I/O buffer, this flag should not be used.</para>
@@ -133,84 +133,84 @@ namespace Microsoft.Win32
 
 
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
-        /// <para>²¥·ÅÒôÆµ(ÎÄ¼þÃû,×ÊÔ´Ãû,ÏµÍ³ÊÂ¼þÉùÒô)</para>
+        /// <para>åŠŸèƒ½:</para>
+        /// <para>æ’­æ”¾éŸ³é¢‘(æ–‡ä»¶å,èµ„æºå,ç³»ç»Ÿäº‹ä»¶å£°éŸ³)</para>
         /// <para>.</para>
-        /// <para>±¸×¢:</para>
-        /// <para>ÎÞ</para>
+        /// <para>å¤‡æ³¨:</para>
+        /// <para>æ— </para>
         /// <para>.</para>
-        /// <para>ÏÂÁÐ±êÖ¾¿É±»ÉèÖÃÔÚ²ÎÊýfdwSoundÀï:</para>
-        /// <para>SND_SYNC£ºÍ¬²½²¥·ÅÉùÒô£¬ÔÚ²¥·ÅÍêºóPlaySoundº¯Êý²Å·µ»Ø¡£</para>
-        /// <para>SND_ASYNC£ºÓÃÒì²½·½Ê½²¥·ÅÉùÒô£¬PlaySoundº¯ÊýÔÚ¿ªÊ¼²¥·ÅºóÁ¢¼´·µ»Ø¡£</para>
-        /// <para>SND_NODEFAULT£º²»²¥·ÅÈ±Ê¡ÉùÒô£¬ÈôÎÞ´Ë±êÖ¾£¬ÔòPlaySoundÔÚÃ»ÕÒµ½ÉùÒôÊ±»á²¥·ÅÈ±Ê¡ÉùÒô¡£</para>
-        /// <para>SND_MEMORY£º²¥·ÅÔØÈëµ½ÄÚ´æÖÐµÄÉùÒô£¬´ËÊ±pszSoundÊÇÖ¸ÏòÉùÒôÊý¾ÝµÄÖ¸Õë¡£</para>
-        /// <para>SND_LOOP£ºÖØ¸´²¥·ÅÉùÒô£¬±ØÐëÓëSND_ASYNC±êÖ¾Ò»¿éÊ¹ÓÃ¡£</para>
-        /// <para>SND_NOSTOP£ºPlaySound²»´ò¶ÏÔ­À´µÄÉùÒô²¥³ö²¢Á¢¼´·µ»ØFALSE¡£</para>
-        /// <para>SND_PURGE£ºÍ£Ö¹ËùÓÐÓëµ÷ÓÃÈÎÎñÓÐ¹ØµÄÉùÒô¡£Èô²ÎÊýpszSoundÎªNULL£¬¾ÍÍ£Ö¹ËùÓÐµÄÉùÒô£¬·ñÔò£¬Í£Ö¹pszSoundÖ¸¶¨µÄÉùÒô¡£</para>
-        /// <para>SND_NOWAIT£ºÈç¹ûÇý¶¯³ÌÐòÕýÃ¦Ôòº¯Êý¾Í²»²¥·ÅÉùÒô²¢Á¢¼´·µ»Ø¡£</para>
-        /// <para>SND_ALIAS£ºpszSound²ÎÊýÖ¸¶¨ÁË×¢²á±í»òWIN.INIÖÐµÄÏµÍ³ÊÂ¼þµÄ±ðÃû¡£</para>
-        /// <para>SND_ALIAS_ID£ºpszSound²ÎÊýÖ¸¶¨ÁËÔ¤¶¨ÒåµÄÉùÒô±êÊ¶·û¡£</para>
-        /// <para>SND_FILENAME£ºpszSound²ÎÊýÖ¸¶¨ÁËWAVEÎÄ¼þÃû¡£</para>
-        /// <para>SND_RESOURCE£ºpszSound²ÎÊýÊÇWAVE×ÊÔ´µÄ±êÊ¶·û£¬ÕâÊ±ÒªÓÃµ½hmod²ÎÊý¡£</para>
+        /// <para>ä¸‹åˆ—æ ‡å¿—å¯è¢«è®¾ç½®åœ¨å‚æ•°fdwSoundé‡Œ:</para>
+        /// <para>SND_SYNCï¼šåŒæ­¥æ’­æ”¾å£°éŸ³ï¼Œåœ¨æ’­æ”¾å®ŒåŽPlaySoundå‡½æ•°æ‰è¿”å›žã€‚</para>
+        /// <para>SND_ASYNCï¼šç”¨å¼‚æ­¥æ–¹å¼æ’­æ”¾å£°éŸ³ï¼ŒPlaySoundå‡½æ•°åœ¨å¼€å§‹æ’­æ”¾åŽç«‹å³è¿”å›žã€‚</para>
+        /// <para>SND_NODEFAULTï¼šä¸æ’­æ”¾ç¼ºçœå£°éŸ³ï¼Œè‹¥æ— æ­¤æ ‡å¿—ï¼Œåˆ™PlaySoundåœ¨æ²¡æ‰¾åˆ°å£°éŸ³æ—¶ä¼šæ’­æ”¾ç¼ºçœå£°éŸ³ã€‚</para>
+        /// <para>SND_MEMORYï¼šæ’­æ”¾è½½å…¥åˆ°å†…å­˜ä¸­çš„å£°éŸ³ï¼Œæ­¤æ—¶pszSoundæ˜¯æŒ‡å‘å£°éŸ³æ•°æ®çš„æŒ‡é’ˆã€‚</para>
+        /// <para>SND_LOOPï¼šé‡å¤æ’­æ”¾å£°éŸ³ï¼Œå¿…é¡»ä¸ŽSND_ASYNCæ ‡å¿—ä¸€å—ä½¿ç”¨ã€‚</para>
+        /// <para>SND_NOSTOPï¼šPlaySoundä¸æ‰“æ–­åŽŸæ¥çš„å£°éŸ³æ’­å‡ºå¹¶ç«‹å³è¿”å›žFALSEã€‚</para>
+        /// <para>SND_PURGEï¼šåœæ­¢æ‰€æœ‰ä¸Žè°ƒç”¨ä»»åŠ¡æœ‰å…³çš„å£°éŸ³ã€‚è‹¥å‚æ•°pszSoundä¸ºNULLï¼Œå°±åœæ­¢æ‰€æœ‰çš„å£°éŸ³ï¼Œå¦åˆ™ï¼Œåœæ­¢pszSoundæŒ‡å®šçš„å£°éŸ³ã€‚</para>
+        /// <para>SND_NOWAITï¼šå¦‚æžœé©±åŠ¨ç¨‹åºæ­£å¿™åˆ™å‡½æ•°å°±ä¸æ’­æ”¾å£°éŸ³å¹¶ç«‹å³è¿”å›žã€‚</para>
+        /// <para>SND_ALIASï¼špszSoundå‚æ•°æŒ‡å®šäº†æ³¨å†Œè¡¨æˆ–WIN.INIä¸­çš„ç³»ç»Ÿäº‹ä»¶çš„åˆ«åã€‚</para>
+        /// <para>SND_ALIAS_IDï¼špszSoundå‚æ•°æŒ‡å®šäº†é¢„å®šä¹‰çš„å£°éŸ³æ ‡è¯†ç¬¦ã€‚</para>
+        /// <para>SND_FILENAMEï¼špszSoundå‚æ•°æŒ‡å®šäº†WAVEæ–‡ä»¶åã€‚</para>
+        /// <para>SND_RESOURCEï¼špszSoundå‚æ•°æ˜¯WAVEèµ„æºçš„æ ‡è¯†ç¬¦ï¼Œè¿™æ—¶è¦ç”¨åˆ°hmodå‚æ•°ã€‚</para>
         /// </summary>
-        /// <param name="soundName">Ö¸¶¨ÁËÒª²¥·ÅÉùÒôµÄ×Ö·û´®£¬¸Ã²ÎÊý¿ÉÒÔÊÇWAVEÎÄ¼þµÄÃû×Ö£¬»òÊÇWAV×ÊÔ´µÄÃû×Ö£¬»òÊÇÄÚ´æÖÐÉùÒôÊý¾ÝµÄÖ¸Õë£¬»òÊÇÔÚÏµÍ³×¢²á±íWIN.INIÖÐ¶¨ÒåµÄÏµÍ³ÊÂ¼þÉùÒô¡£Èç¹û¸Ã²ÎÊýÎªNULLÔòÍ£Ö¹ÕýÔÚ²¥·ÅµÄÉùÒô¡£</param>
-        /// <param name="hmod">Ó¦ÓÃ³ÌÐòµÄÊµÀý¾ä±ú£¬³ý·ÇpszSoundµÄÖ¸ÏòÒ»¸ö×ÊÔ´±êÊ¶·û£¨¼´fdwSound±»¶¨ÒåÎªSND_RESOURCE£©£¬·ñÔò±ØÐëÉèÖÃÎªNULL¡£</param>
-        /// <param name="soundFlags">±êÖ¾µÄ×éºÏ¡£</param>
-        /// <returns>Èô³É¹¦Ôòº¯Êý·µ»ØTRUE£¬·ñÔò·µ»ØFALSE¡£</returns>
+        /// <param name="soundName">æŒ‡å®šäº†è¦æ’­æ”¾å£°éŸ³çš„å­—ç¬¦ä¸²ï¼Œè¯¥å‚æ•°å¯ä»¥æ˜¯WAVEæ–‡ä»¶çš„åå­—ï¼Œæˆ–æ˜¯WAVèµ„æºçš„åå­—ï¼Œæˆ–æ˜¯å†…å­˜ä¸­å£°éŸ³æ•°æ®çš„æŒ‡é’ˆï¼Œæˆ–æ˜¯åœ¨ç³»ç»Ÿæ³¨å†Œè¡¨WIN.INIä¸­å®šä¹‰çš„ç³»ç»Ÿäº‹ä»¶å£°éŸ³ã€‚å¦‚æžœè¯¥å‚æ•°ä¸ºNULLåˆ™åœæ­¢æ­£åœ¨æ’­æ”¾çš„å£°éŸ³ã€‚</param>
+        /// <param name="hmod">åº”ç”¨ç¨‹åºçš„å®žä¾‹å¥æŸ„ï¼Œé™¤éžpszSoundçš„æŒ‡å‘ä¸€ä¸ªèµ„æºæ ‡è¯†ç¬¦ï¼ˆå³fdwSoundè¢«å®šä¹‰ä¸ºSND_RESOURCEï¼‰ï¼Œå¦åˆ™å¿…é¡»è®¾ç½®ä¸ºNULLã€‚</param>
+        /// <param name="soundFlags">æ ‡å¿—çš„ç»„åˆã€‚</param>
+        /// <returns>è‹¥æˆåŠŸåˆ™å‡½æ•°è¿”å›žTRUEï¼Œå¦åˆ™è¿”å›žFALSEã€‚</returns>
         [DllImport("winmm.dll", CharSet = CharSet.Auto)]
         public static extern bool PlaySound([MarshalAs(UnmanagedType.LPWStr)] string soundName, IntPtr hmod, int soundFlags);
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
-        /// <para>²¥·ÅÒôÆµ(ÎÄ¼þÃû,×ÊÔ´Ãû,ÏµÍ³ÊÂ¼þÉùÒô)</para>
+        /// <para>åŠŸèƒ½:</para>
+        /// <para>æ’­æ”¾éŸ³é¢‘(æ–‡ä»¶å,èµ„æºå,ç³»ç»Ÿäº‹ä»¶å£°éŸ³)</para>
         /// <para>.</para>
-        /// <para>±¸×¢:</para>
-        /// <para>ÎÞ</para>
+        /// <para>å¤‡æ³¨:</para>
+        /// <para>æ— </para>
         /// <para>.</para>
-        /// <para>ÏÂÁÐ±êÖ¾¿É±»ÉèÖÃÔÚ²ÎÊýfdwSoundÀï:</para>
-        /// <para>SND_SYNC£ºÍ¬²½²¥·ÅÉùÒô£¬ÔÚ²¥·ÅÍêºóPlaySoundº¯Êý²Å·µ»Ø¡£</para>
-        /// <para>SND_ASYNC£ºÓÃÒì²½·½Ê½²¥·ÅÉùÒô£¬PlaySoundº¯ÊýÔÚ¿ªÊ¼²¥·ÅºóÁ¢¼´·µ»Ø¡£</para>
-        /// <para>SND_NODEFAULT£º²»²¥·ÅÈ±Ê¡ÉùÒô£¬ÈôÎÞ´Ë±êÖ¾£¬ÔòPlaySoundÔÚÃ»ÕÒµ½ÉùÒôÊ±»á²¥·ÅÈ±Ê¡ÉùÒô¡£</para>
-        /// <para>SND_MEMORY£º²¥·ÅÔØÈëµ½ÄÚ´æÖÐµÄÉùÒô£¬´ËÊ±pszSoundÊÇÖ¸ÏòÉùÒôÊý¾ÝµÄÖ¸Õë¡£</para>
-        /// <para>SND_LOOP£ºÖØ¸´²¥·ÅÉùÒô£¬±ØÐëÓëSND_ASYNC±êÖ¾Ò»¿éÊ¹ÓÃ¡£</para>
-        /// <para>SND_NOSTOP£ºPlaySound²»´ò¶ÏÔ­À´µÄÉùÒô²¥³ö²¢Á¢¼´·µ»ØFALSE¡£</para>
-        /// <para>SND_PURGE£ºÍ£Ö¹ËùÓÐÓëµ÷ÓÃÈÎÎñÓÐ¹ØµÄÉùÒô¡£Èô²ÎÊýpszSoundÎªNULL£¬¾ÍÍ£Ö¹ËùÓÐµÄÉùÒô£¬·ñÔò£¬Í£Ö¹pszSoundÖ¸¶¨µÄÉùÒô¡£</para>
-        /// <para>SND_NOWAIT£ºÈç¹ûÇý¶¯³ÌÐòÕýÃ¦Ôòº¯Êý¾Í²»²¥·ÅÉùÒô²¢Á¢¼´·µ»Ø¡£</para>
-        /// <para>SND_ALIAS£ºpszSound²ÎÊýÖ¸¶¨ÁË×¢²á±í»òWIN.INIÖÐµÄÏµÍ³ÊÂ¼þµÄ±ðÃû¡£</para>
-        /// <para>SND_ALIAS_ID£ºpszSound²ÎÊýÖ¸¶¨ÁËÔ¤¶¨ÒåµÄÉùÒô±êÊ¶·û¡£</para>
-        /// <para>SND_FILENAME£ºpszSound²ÎÊýÖ¸¶¨ÁËWAVEÎÄ¼þÃû¡£</para>
-        /// <para>SND_RESOURCE£ºpszSound²ÎÊýÊÇWAVE×ÊÔ´µÄ±êÊ¶·û£¬ÕâÊ±ÒªÓÃµ½hmod²ÎÊý¡£</para>
+        /// <para>ä¸‹åˆ—æ ‡å¿—å¯è¢«è®¾ç½®åœ¨å‚æ•°fdwSoundé‡Œ:</para>
+        /// <para>SND_SYNCï¼šåŒæ­¥æ’­æ”¾å£°éŸ³ï¼Œåœ¨æ’­æ”¾å®ŒåŽPlaySoundå‡½æ•°æ‰è¿”å›žã€‚</para>
+        /// <para>SND_ASYNCï¼šç”¨å¼‚æ­¥æ–¹å¼æ’­æ”¾å£°éŸ³ï¼ŒPlaySoundå‡½æ•°åœ¨å¼€å§‹æ’­æ”¾åŽç«‹å³è¿”å›žã€‚</para>
+        /// <para>SND_NODEFAULTï¼šä¸æ’­æ”¾ç¼ºçœå£°éŸ³ï¼Œè‹¥æ— æ­¤æ ‡å¿—ï¼Œåˆ™PlaySoundåœ¨æ²¡æ‰¾åˆ°å£°éŸ³æ—¶ä¼šæ’­æ”¾ç¼ºçœå£°éŸ³ã€‚</para>
+        /// <para>SND_MEMORYï¼šæ’­æ”¾è½½å…¥åˆ°å†…å­˜ä¸­çš„å£°éŸ³ï¼Œæ­¤æ—¶pszSoundæ˜¯æŒ‡å‘å£°éŸ³æ•°æ®çš„æŒ‡é’ˆã€‚</para>
+        /// <para>SND_LOOPï¼šé‡å¤æ’­æ”¾å£°éŸ³ï¼Œå¿…é¡»ä¸ŽSND_ASYNCæ ‡å¿—ä¸€å—ä½¿ç”¨ã€‚</para>
+        /// <para>SND_NOSTOPï¼šPlaySoundä¸æ‰“æ–­åŽŸæ¥çš„å£°éŸ³æ’­å‡ºå¹¶ç«‹å³è¿”å›žFALSEã€‚</para>
+        /// <para>SND_PURGEï¼šåœæ­¢æ‰€æœ‰ä¸Žè°ƒç”¨ä»»åŠ¡æœ‰å…³çš„å£°éŸ³ã€‚è‹¥å‚æ•°pszSoundä¸ºNULLï¼Œå°±åœæ­¢æ‰€æœ‰çš„å£°éŸ³ï¼Œå¦åˆ™ï¼Œåœæ­¢pszSoundæŒ‡å®šçš„å£°éŸ³ã€‚</para>
+        /// <para>SND_NOWAITï¼šå¦‚æžœé©±åŠ¨ç¨‹åºæ­£å¿™åˆ™å‡½æ•°å°±ä¸æ’­æ”¾å£°éŸ³å¹¶ç«‹å³è¿”å›žã€‚</para>
+        /// <para>SND_ALIASï¼špszSoundå‚æ•°æŒ‡å®šäº†æ³¨å†Œè¡¨æˆ–WIN.INIä¸­çš„ç³»ç»Ÿäº‹ä»¶çš„åˆ«åã€‚</para>
+        /// <para>SND_ALIAS_IDï¼špszSoundå‚æ•°æŒ‡å®šäº†é¢„å®šä¹‰çš„å£°éŸ³æ ‡è¯†ç¬¦ã€‚</para>
+        /// <para>SND_FILENAMEï¼špszSoundå‚æ•°æŒ‡å®šäº†WAVEæ–‡ä»¶åã€‚</para>
+        /// <para>SND_RESOURCEï¼špszSoundå‚æ•°æ˜¯WAVEèµ„æºçš„æ ‡è¯†ç¬¦ï¼Œè¿™æ—¶è¦ç”¨åˆ°hmodå‚æ•°ã€‚</para>
         /// </summary>
-        /// <param name="soundName">Ö¸¶¨ÁËÒª²¥·ÅÉùÒôµÄ×Ö·û´®£¬¸Ã²ÎÊý¿ÉÒÔÊÇWAVEÎÄ¼þµÄÃû×Ö£¬»òÊÇWAV×ÊÔ´µÄÃû×Ö£¬»òÊÇÄÚ´æÖÐÉùÒôÊý¾ÝµÄÖ¸Õë£¬»òÊÇÔÚÏµÍ³×¢²á±íWIN.INIÖÐ¶¨ÒåµÄÏµÍ³ÊÂ¼þÉùÒô¡£Èç¹û¸Ã²ÎÊýÎªNULLÔòÍ£Ö¹ÕýÔÚ²¥·ÅµÄÉùÒô¡£</param>
-        /// <param name="hmod">Ó¦ÓÃ³ÌÐòµÄÊµÀý¾ä±ú£¬³ý·ÇpszSoundµÄÖ¸ÏòÒ»¸ö×ÊÔ´±êÊ¶·û£¨¼´fdwSound±»¶¨ÒåÎªSND_RESOURCE£©£¬·ñÔò±ØÐëÉèÖÃÎªNULL¡£</param>
-        /// <param name="soundFlags">±êÖ¾µÄ×éºÏ¡£</param>
-        /// <returns>Èô³É¹¦Ôòº¯Êý·µ»ØTRUE£¬·ñÔò·µ»ØFALSE¡£</returns>
+        /// <param name="soundName">æŒ‡å®šäº†è¦æ’­æ”¾å£°éŸ³çš„å­—ç¬¦ä¸²ï¼Œè¯¥å‚æ•°å¯ä»¥æ˜¯WAVEæ–‡ä»¶çš„åå­—ï¼Œæˆ–æ˜¯WAVèµ„æºçš„åå­—ï¼Œæˆ–æ˜¯å†…å­˜ä¸­å£°éŸ³æ•°æ®çš„æŒ‡é’ˆï¼Œæˆ–æ˜¯åœ¨ç³»ç»Ÿæ³¨å†Œè¡¨WIN.INIä¸­å®šä¹‰çš„ç³»ç»Ÿäº‹ä»¶å£°éŸ³ã€‚å¦‚æžœè¯¥å‚æ•°ä¸ºNULLåˆ™åœæ­¢æ­£åœ¨æ’­æ”¾çš„å£°éŸ³ã€‚</param>
+        /// <param name="hmod">åº”ç”¨ç¨‹åºçš„å®žä¾‹å¥æŸ„ï¼Œé™¤éžpszSoundçš„æŒ‡å‘ä¸€ä¸ªèµ„æºæ ‡è¯†ç¬¦ï¼ˆå³fdwSoundè¢«å®šä¹‰ä¸ºSND_RESOURCEï¼‰ï¼Œå¦åˆ™å¿…é¡»è®¾ç½®ä¸ºNULLã€‚</param>
+        /// <param name="soundFlags">æ ‡å¿—çš„ç»„åˆã€‚</param>
+        /// <returns>è‹¥æˆåŠŸåˆ™å‡½æ•°è¿”å›žTRUEï¼Œå¦åˆ™è¿”å›žFALSEã€‚</returns>
         [DllImport("winmm.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern bool PlaySound(byte[] soundName, IntPtr hmod, int soundFlags);
         /// <summary>
-        /// <para>¹¦ÄÜ:</para>
-        /// <para>²¥·ÅÒôÆµ(ÄÚ´æÖÐÉùÒôÊý¾ÝµÄÖ¸Õë)</para>
+        /// <para>åŠŸèƒ½:</para>
+        /// <para>æ’­æ”¾éŸ³é¢‘(å†…å­˜ä¸­å£°éŸ³æ•°æ®çš„æŒ‡é’ˆ)</para>
         /// <para>.</para>
-        /// <para>±¸×¢:</para>
-        /// <para>ÎÞ</para>
+        /// <para>å¤‡æ³¨:</para>
+        /// <para>æ— </para>
         /// <para>.</para>
-        /// <para>ÏÂÁÐ±êÖ¾¿É±»ÉèÖÃÔÚ²ÎÊýfdwSoundÀï:</para>
-        /// <para>SND_SYNC£ºÍ¬²½²¥·ÅÉùÒô£¬ÔÚ²¥·ÅÍêºóPlaySoundº¯Êý²Å·µ»Ø¡£</para>
-        /// <para>SND_ASYNC£ºÓÃÒì²½·½Ê½²¥·ÅÉùÒô£¬PlaySoundº¯ÊýÔÚ¿ªÊ¼²¥·ÅºóÁ¢¼´·µ»Ø¡£</para>
-        /// <para>SND_NODEFAULT£º²»²¥·ÅÈ±Ê¡ÉùÒô£¬ÈôÎÞ´Ë±êÖ¾£¬ÔòPlaySoundÔÚÃ»ÕÒµ½ÉùÒôÊ±»á²¥·ÅÈ±Ê¡ÉùÒô¡£</para>
-        /// <para>SND_MEMORY£º²¥·ÅÔØÈëµ½ÄÚ´æÖÐµÄÉùÒô£¬´ËÊ±pszSoundÊÇÖ¸ÏòÉùÒôÊý¾ÝµÄÖ¸Õë¡£</para>
-        /// <para>SND_LOOP£ºÖØ¸´²¥·ÅÉùÒô£¬±ØÐëÓëSND_ASYNC±êÖ¾Ò»¿éÊ¹ÓÃ¡£</para>
-        /// <para>SND_NOSTOP£ºPlaySound²»´ò¶ÏÔ­À´µÄÉùÒô²¥³ö²¢Á¢¼´·µ»ØFALSE¡£</para>
-        /// <para>SND_PURGE£ºÍ£Ö¹ËùÓÐÓëµ÷ÓÃÈÎÎñÓÐ¹ØµÄÉùÒô¡£Èô²ÎÊýpszSoundÎªNULL£¬¾ÍÍ£Ö¹ËùÓÐµÄÉùÒô£¬·ñÔò£¬Í£Ö¹pszSoundÖ¸¶¨µÄÉùÒô¡£</para>
-        /// <para>SND_NOWAIT£ºÈç¹ûÇý¶¯³ÌÐòÕýÃ¦Ôòº¯Êý¾Í²»²¥·ÅÉùÒô²¢Á¢¼´·µ»Ø¡£</para>
-        /// <para>SND_ALIAS£ºpszSound²ÎÊýÖ¸¶¨ÁË×¢²á±í»òWIN.INIÖÐµÄÏµÍ³ÊÂ¼þµÄ±ðÃû¡£</para>
-        /// <para>SND_ALIAS_ID£ºpszSound²ÎÊýÖ¸¶¨ÁËÔ¤¶¨ÒåµÄÉùÒô±êÊ¶·û¡£</para>
-        /// <para>SND_FILENAME£ºpszSound²ÎÊýÖ¸¶¨ÁËWAVEÎÄ¼þÃû¡£</para>
-        /// <para>SND_RESOURCE£ºpszSound²ÎÊýÊÇWAVE×ÊÔ´µÄ±êÊ¶·û£¬ÕâÊ±ÒªÓÃµ½hmod²ÎÊý¡£</para>
+        /// <para>ä¸‹åˆ—æ ‡å¿—å¯è¢«è®¾ç½®åœ¨å‚æ•°fdwSoundé‡Œ:</para>
+        /// <para>SND_SYNCï¼šåŒæ­¥æ’­æ”¾å£°éŸ³ï¼Œåœ¨æ’­æ”¾å®ŒåŽPlaySoundå‡½æ•°æ‰è¿”å›žã€‚</para>
+        /// <para>SND_ASYNCï¼šç”¨å¼‚æ­¥æ–¹å¼æ’­æ”¾å£°éŸ³ï¼ŒPlaySoundå‡½æ•°åœ¨å¼€å§‹æ’­æ”¾åŽç«‹å³è¿”å›žã€‚</para>
+        /// <para>SND_NODEFAULTï¼šä¸æ’­æ”¾ç¼ºçœå£°éŸ³ï¼Œè‹¥æ— æ­¤æ ‡å¿—ï¼Œåˆ™PlaySoundåœ¨æ²¡æ‰¾åˆ°å£°éŸ³æ—¶ä¼šæ’­æ”¾ç¼ºçœå£°éŸ³ã€‚</para>
+        /// <para>SND_MEMORYï¼šæ’­æ”¾è½½å…¥åˆ°å†…å­˜ä¸­çš„å£°éŸ³ï¼Œæ­¤æ—¶pszSoundæ˜¯æŒ‡å‘å£°éŸ³æ•°æ®çš„æŒ‡é’ˆã€‚</para>
+        /// <para>SND_LOOPï¼šé‡å¤æ’­æ”¾å£°éŸ³ï¼Œå¿…é¡»ä¸ŽSND_ASYNCæ ‡å¿—ä¸€å—ä½¿ç”¨ã€‚</para>
+        /// <para>SND_NOSTOPï¼šPlaySoundä¸æ‰“æ–­åŽŸæ¥çš„å£°éŸ³æ’­å‡ºå¹¶ç«‹å³è¿”å›žFALSEã€‚</para>
+        /// <para>SND_PURGEï¼šåœæ­¢æ‰€æœ‰ä¸Žè°ƒç”¨ä»»åŠ¡æœ‰å…³çš„å£°éŸ³ã€‚è‹¥å‚æ•°pszSoundä¸ºNULLï¼Œå°±åœæ­¢æ‰€æœ‰çš„å£°éŸ³ï¼Œå¦åˆ™ï¼Œåœæ­¢pszSoundæŒ‡å®šçš„å£°éŸ³ã€‚</para>
+        /// <para>SND_NOWAITï¼šå¦‚æžœé©±åŠ¨ç¨‹åºæ­£å¿™åˆ™å‡½æ•°å°±ä¸æ’­æ”¾å£°éŸ³å¹¶ç«‹å³è¿”å›žã€‚</para>
+        /// <para>SND_ALIASï¼špszSoundå‚æ•°æŒ‡å®šäº†æ³¨å†Œè¡¨æˆ–WIN.INIä¸­çš„ç³»ç»Ÿäº‹ä»¶çš„åˆ«åã€‚</para>
+        /// <para>SND_ALIAS_IDï¼špszSoundå‚æ•°æŒ‡å®šäº†é¢„å®šä¹‰çš„å£°éŸ³æ ‡è¯†ç¬¦ã€‚</para>
+        /// <para>SND_FILENAMEï¼špszSoundå‚æ•°æŒ‡å®šäº†WAVEæ–‡ä»¶åã€‚</para>
+        /// <para>SND_RESOURCEï¼špszSoundå‚æ•°æ˜¯WAVEèµ„æºçš„æ ‡è¯†ç¬¦ï¼Œè¿™æ—¶è¦ç”¨åˆ°hmodå‚æ•°ã€‚</para>
         /// </summary>
-        /// <param name="pszSound">Ö¸¶¨ÁËÒª²¥·ÅÉùÒôµÄ×Ö·û´®£¬¸Ã²ÎÊý¿ÉÒÔÊÇWAVEÎÄ¼þµÄÃû×Ö£¬»òÊÇWAV×ÊÔ´µÄÃû×Ö£¬»òÊÇÄÚ´æÖÐÉùÒôÊý¾ÝµÄÖ¸Õë£¬»òÊÇÔÚÏµÍ³×¢²á±íWIN.INIÖÐ¶¨ÒåµÄÏµÍ³ÊÂ¼þÉùÒô¡£Èç¹û¸Ã²ÎÊýÎªNULLÔòÍ£Ö¹ÕýÔÚ²¥·ÅµÄÉùÒô¡£</param>
-        /// <param name="hMod">Ó¦ÓÃ³ÌÐòµÄÊµÀý¾ä±ú£¬³ý·ÇpszSoundµÄÖ¸ÏòÒ»¸ö×ÊÔ´±êÊ¶·û£¨¼´fdwSound±»¶¨ÒåÎªSND_RESOURCE£©£¬·ñÔò±ØÐëÉèÖÃÎªNULL¡£</param>
-        /// <param name="fdwSound">±êÖ¾µÄ×éºÏ¡£</param>
-        /// <returns>Èô³É¹¦Ôòº¯Êý·µ»ØTRUE£¬·ñÔò·µ»ØFALSE¡£</returns>
+        /// <param name="pszSound">æŒ‡å®šäº†è¦æ’­æ”¾å£°éŸ³çš„å­—ç¬¦ä¸²ï¼Œè¯¥å‚æ•°å¯ä»¥æ˜¯WAVEæ–‡ä»¶çš„åå­—ï¼Œæˆ–æ˜¯WAVèµ„æºçš„åå­—ï¼Œæˆ–æ˜¯å†…å­˜ä¸­å£°éŸ³æ•°æ®çš„æŒ‡é’ˆï¼Œæˆ–æ˜¯åœ¨ç³»ç»Ÿæ³¨å†Œè¡¨WIN.INIä¸­å®šä¹‰çš„ç³»ç»Ÿäº‹ä»¶å£°éŸ³ã€‚å¦‚æžœè¯¥å‚æ•°ä¸ºNULLåˆ™åœæ­¢æ­£åœ¨æ’­æ”¾çš„å£°éŸ³ã€‚</param>
+        /// <param name="hMod">åº”ç”¨ç¨‹åºçš„å®žä¾‹å¥æŸ„ï¼Œé™¤éžpszSoundçš„æŒ‡å‘ä¸€ä¸ªèµ„æºæ ‡è¯†ç¬¦ï¼ˆå³fdwSoundè¢«å®šä¹‰ä¸ºSND_RESOURCEï¼‰ï¼Œå¦åˆ™å¿…é¡»è®¾ç½®ä¸ºNULLã€‚</param>
+        /// <param name="fdwSound">æ ‡å¿—çš„ç»„åˆã€‚</param>
+        /// <returns>è‹¥æˆåŠŸåˆ™å‡½æ•°è¿”å›žTRUEï¼Œå¦åˆ™è¿”å›žFALSEã€‚</returns>
         [DllImport("winmm.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern bool PlaySound(IntPtr pszSound, IntPtr hMod, uint fdwSound);
     }

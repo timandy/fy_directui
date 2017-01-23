@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
@@ -6,15 +6,15 @@ using System.Windows.Forms;
 namespace Microsoft.Windows.Forms.Layout
 {
     /// <summary>
-    /// ²¼¾Ö²Ù×÷Àà
+    /// å¸ƒå±€æ“ä½œç±»
     /// </summary>
     public static class LayoutOptions
     {
-        private static TextImageRelation[] m_ImageAlignToRelation;//Í¼Æ¬¶ÔÆë·½Ê½×ª»»ÎªÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃËùĞèÊı×é
-        private static ContentAlignment[][] m_RtlTranslateAlignment;//×óÓÒ·´×ªÑùÊ½·­Òë¶ÔÆë·½Ê½ËùĞèÊı×é
+        private static TextImageRelation[] m_ImageAlignToRelation;//å›¾ç‰‡å¯¹é½æ–¹å¼è½¬æ¢ä¸ºæ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®æ‰€éœ€æ•°ç»„
+        private static ContentAlignment[][] m_RtlTranslateAlignment;//å·¦å³åè½¬æ ·å¼ç¿»è¯‘å¯¹é½æ–¹å¼æ‰€éœ€æ•°ç»„
 
         /// <summary>
-        /// ¾²Ì¬¹¹Ôì,³õÊ¼»¯×Ö¶Î
+        /// é™æ€æ„é€ ,åˆå§‹åŒ–å­—æ®µ
         /// </summary>
         static LayoutOptions()
         {
@@ -39,11 +39,11 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// Rtl·­ÒëAlign
+        /// Rtlç¿»è¯‘Align
         /// </summary>
-        /// <param name="align">Òª±»·­ÒëµÄ¶ÔÆë·½Ê½</param>
-        /// <param name="rtl">×óÓÒ·´×ªÑùÊ½</param>
-        /// <returns>·­ÒëºóµÄ¶ÔÆë·½Ê½</returns>
+        /// <param name="align">è¦è¢«ç¿»è¯‘çš„å¯¹é½æ–¹å¼</param>
+        /// <param name="rtl">å·¦å³åè½¬æ ·å¼</param>
+        /// <returns>ç¿»è¯‘åçš„å¯¹é½æ–¹å¼</returns>
         public static ContentAlignment RtlTranslateAlignment(ContentAlignment align, RightToLeft rtl)
         {
             if (rtl == RightToLeft.Yes)
@@ -60,11 +60,11 @@ namespace Microsoft.Windows.Forms.Layout
             return align;
         }
         /// <summary>
-        /// Rtl·­ÒëRelation
+        /// Rtlç¿»è¯‘Relation
         /// </summary>
-        /// <param name="relation">ÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ</param>
-        /// <param name="rtl">×óÓÒ·´×ªÑùÊ½</param>
-        /// <returns>·­ÒëºóµÄÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ</returns>
+        /// <param name="relation">æ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®</param>
+        /// <param name="rtl">å·¦å³åè½¬æ ·å¼</param>
+        /// <returns>ç¿»è¯‘åçš„æ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®</returns>
         public static TextImageRelation RtlTranslateRelation(TextImageRelation relation, RightToLeft rtl)
         {
             if (rtl == RightToLeft.Yes)
@@ -80,19 +80,19 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// Í¼Æ¬¶ÔÆë·½Ê½×ª»»ÎªÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ
+        /// å›¾ç‰‡å¯¹é½æ–¹å¼è½¬æ¢ä¸ºæ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®
         /// </summary>
-        /// <param name="align">Í¼Æ¬¶ÔÆë·½Ê½</param>
-        /// <returns>ÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ</returns>
+        /// <param name="align">å›¾ç‰‡å¯¹é½æ–¹å¼</param>
+        /// <returns>æ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®</returns>
         public static TextImageRelation ImageAlignToRelation(ContentAlignment align)
         {
             return m_ImageAlignToRelation[LayoutUtils.ContentAlignmentToIndex(align)];
         }
         /// <summary>
-        /// ÎÄ±¾¶ÔÆë·½Ê½×ª»»ÎªÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ
+        /// æ–‡æœ¬å¯¹é½æ–¹å¼è½¬æ¢ä¸ºæ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®
         /// </summary>
-        /// <param name="align">ÎÄ±¾¶ÔÆë·½Ê½</param>
-        /// <returns>ÎÄ±¾Í¼Æ¬Ïà¶ÔÎ»ÖÃ</returns>
+        /// <param name="align">æ–‡æœ¬å¯¹é½æ–¹å¼</param>
+        /// <returns>æ–‡æœ¬å›¾ç‰‡ç›¸å¯¹ä½ç½®</returns>
         public static TextImageRelation TextAlignToRelation(ContentAlignment align)
         {
             return LayoutUtils.GetOppositeTextImageRelation(ImageAlignToRelation(align));
@@ -100,11 +100,11 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// »ñÈ¡»æÖÆ¸ñÊ½
+        /// è·å–ç»˜åˆ¶æ ¼å¼
         /// </summary>
-        /// <param name="align">¶ÔÆë·½Ê½</param>
-        /// <param name="rtl">×óÓÒ·´×ª</param>
-        /// <returns>»æÖÆ¸ñÊ½</returns>
+        /// <param name="align">å¯¹é½æ–¹å¼</param>
+        /// <param name="rtl">å·¦å³åè½¬</param>
+        /// <returns>ç»˜åˆ¶æ ¼å¼</returns>
         public static StringFormat GetStringFormat(ContentAlignment align, RightToLeft rtl)
         {
             StringFormat format = DefaultTheme.StringFormat;
@@ -155,11 +155,11 @@ namespace Microsoft.Windows.Forms.Layout
             return format;
         }
         /// <summary>
-        /// »ñÈ¡»æÖÆ¸ñÊ½
+        /// è·å–ç»˜åˆ¶æ ¼å¼
         /// </summary>
-        /// <param name="align">¶ÔÆë·½Ê½</param>
-        /// <param name="rtl">×óÓÒ·´×ª</param>
-        /// <returns>»æÖÆ¸ñÊ½</returns>
+        /// <param name="align">å¯¹é½æ–¹å¼</param>
+        /// <param name="rtl">å·¦å³åè½¬</param>
+        /// <returns>ç»˜åˆ¶æ ¼å¼</returns>
         public static TextFormatFlags GetTextFormatFlags(ContentAlignment align, RightToLeft rtl)
         {
             TextFormatFlags flags = TextFormatFlags.WordBreak;
@@ -200,11 +200,11 @@ namespace Microsoft.Windows.Forms.Layout
             return flags;
         }
         /// <summary>
-        /// ²âÊÔÎÄ±¾´óĞ¡
+        /// æµ‹è¯•æ–‡æœ¬å¤§å°
         /// </summary>
-        /// <param name="layout">²¼¾Ö¶ÔÏó</param>
-        /// <param name="proposedSize">¿ÉÌá¹©µÄ´óĞ¡</param>
-        /// <returns>ÎÄ±¾´óĞ¡</returns>
+        /// <param name="layout">å¸ƒå±€å¯¹è±¡</param>
+        /// <param name="proposedSize">å¯æä¾›çš„å¤§å°</param>
+        /// <returns>æ–‡æœ¬å¤§å°</returns>
         public static Size GetTextSize(LayoutData layout, Size proposedSize)
         {
             return Size.Ceiling(layout.Graphics.MeasureString(layout.Text, layout.Font, new SizeF((float)proposedSize.Width, (float)proposedSize.Height), layout.CurrentStringFormat));
@@ -212,9 +212,9 @@ namespace Microsoft.Windows.Forms.Layout
 
 
         /// <summary>
-        /// ²¼¾ÖÎÄ±¾ºÍÍ¼Æ¬,Ã¿µ÷ÓÃÒ»´Î,Ö´ĞĞÒ»´Î²¼¾Ö²Ù×÷
+        /// å¸ƒå±€æ–‡æœ¬å’Œå›¾ç‰‡,æ¯è°ƒç”¨ä¸€æ¬¡,æ‰§è¡Œä¸€æ¬¡å¸ƒå±€æ“ä½œ
         /// </summary>
-        /// <param name="layout">²¼¾Ö¶ÔÏó</param>
+        /// <param name="layout">å¸ƒå±€å¯¹è±¡</param>
         public static void LayoutTextAndImage(LayoutData layout)
         {
             if (((layout.ImageSize == Size.Empty) || (layout.Text == null)) || ((layout.Text.Length == 0) || (layout.CurrentTextImageRelation == TextImageRelation.Overlay)))
@@ -227,12 +227,12 @@ namespace Microsoft.Windows.Forms.Layout
             }
             else
             {
-                Size proposedSize = LayoutUtils.SubAlignedRegion(layout.CurrentClientRectangle.Size, layout.ImageSize, layout.CurrentTextImageRelation);//¼õÈ¥Í¼Æ¬¿Õ¼äºóµÄ´óĞ¡
-                Size textSize = GetTextSize(layout, proposedSize);//ÎÄ±¾´óĞ¡
-                Size textImageSize = LayoutUtils.AddAlignedRegion(textSize, layout.ImageSize, layout.CurrentTextImageRelation);//Á½¸ö´óĞ¡Ïà¼Ó
-                Rectangle containerRect = layout.CurrentClientRectangle;//ÄÜ°üº¬layout.CurrentClientRectangle,textImageSizeµÄ×îĞ¡ÈİÆ÷
-                containerRect.Size = LayoutUtils.UnionSizes(layout.CurrentClientRectangle.Size, textImageSize);//»ñÈ¡Á½¸öSizeÖĞµÄ×î´óÖµ(·Ö±ğ¼ÆËã¿íºÍ¸ß)
-                Rectangle textImageRect = LayoutUtils.Align(textImageSize, containerRect, ContentAlignment.MiddleCenter);//¾ÓÖĞ
+                Size proposedSize = LayoutUtils.SubAlignedRegion(layout.CurrentClientRectangle.Size, layout.ImageSize, layout.CurrentTextImageRelation);//å‡å»å›¾ç‰‡ç©ºé—´åçš„å¤§å°
+                Size textSize = GetTextSize(layout, proposedSize);//æ–‡æœ¬å¤§å°
+                Size textImageSize = LayoutUtils.AddAlignedRegion(textSize, layout.ImageSize, layout.CurrentTextImageRelation);//ä¸¤ä¸ªå¤§å°ç›¸åŠ 
+                Rectangle containerRect = layout.CurrentClientRectangle;//èƒ½åŒ…å«layout.CurrentClientRectangle,textImageSizeçš„æœ€å°å®¹å™¨
+                containerRect.Size = LayoutUtils.UnionSizes(layout.CurrentClientRectangle.Size, textImageSize);//è·å–ä¸¤ä¸ªSizeä¸­çš„æœ€å¤§å€¼(åˆ†åˆ«è®¡ç®—å®½å’Œé«˜)
+                Rectangle textImageRect = LayoutUtils.Align(textImageSize, containerRect, ContentAlignment.MiddleCenter);//å±…ä¸­
                 bool imageNoOverlay = (ImageAlignToRelation(layout.CurrentImageAlign) & layout.CurrentTextImageRelation) != TextImageRelation.Overlay;
                 bool textNoOverlay = (TextAlignToRelation(layout.CurrentTextAlign) & layout.CurrentTextImageRelation) != TextImageRelation.Overlay;
                 Rectangle imageBounds;
@@ -248,13 +248,13 @@ namespace Microsoft.Windows.Forms.Layout
                 else
                 {
                     LayoutUtils.SplitRegion(textImageRect, layout.ImageSize, (AnchorStyles)layout.CurrentTextImageRelation, out imageBounds, out textBounds);
-                    LayoutUtils.ExpandRegionsToFillBounds(containerRect, (AnchorStyles)layout.CurrentTextImageRelation, ref imageBounds, ref textBounds);//À©Õ¹
+                    LayoutUtils.ExpandRegionsToFillBounds(containerRect, (AnchorStyles)layout.CurrentTextImageRelation, ref imageBounds, ref textBounds);//æ‰©å±•
                 }
                 layout.OutImageBounds = LayoutUtils.Align(layout.ImageSize, imageBounds, layout.CurrentImageAlign);
                 layout.OutTextBounds = LayoutUtils.Align(textSize, textBounds, layout.CurrentTextAlign);
             }
 
-            //µ÷Õû
+            //è°ƒæ•´
             switch (layout.CurrentTextImageRelation)
             {
                 case TextImageRelation.TextBeforeImage:
@@ -294,7 +294,7 @@ namespace Microsoft.Windows.Forms.Layout
             layout.OutTextBounds.Y = Math.Max(layout.OutTextBounds.Y, layout.CurrentClientRectangle.Y);
             layout.OutTextBounds.Height = num3 - layout.OutTextBounds.Y;
 
-            //Æ«ÒÆ
+            //åç§»
             layout.OutImageBounds.Offset(layout.ImageOffset);
             layout.OutTextBounds.Offset(layout.TextOffset);
         }

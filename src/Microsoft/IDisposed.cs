@@ -1,14 +1,14 @@
-using System;
+ï»¿using System;
 
 namespace Microsoft
 {
     /// <summary>
-    /// ·ÖÅäµÄ×ÊÔ´ÊÍ·ÅÊÂ¼ş½Ó¿Ú
+    /// åˆ†é…çš„èµ„æºé‡Šæ”¾äº‹ä»¶æ¥å£
     /// </summary>
     public interface IDisposed
     {
         /// <summary>
-        /// ×ÊÔ´ÊÍ·ÅÊÂ¼ş
+        /// èµ„æºé‡Šæ”¾äº‹ä»¶
         /// </summary>
         event EventHandler Disposed;
     }

@@ -1,9 +1,9 @@
-using System.Runtime.InteropServices;
+Ôªøusing System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// GRADIENT_RECT∂®“Â
+    /// GRADIENT_RECTÂÆö‰πâ
     /// </summary>
     public static partial class NativeMethods
     {
@@ -23,10 +23,10 @@ namespace Microsoft.Win32
             public uint LowerRight;
 
             /// <summary>
-            /// ππ‘Ï∫Ø ˝
+            /// ÊûÑÈÄ†ÂáΩÊï∞
             /// </summary>
-            /// <param name="upperLeft">◊Û…œΩ«</param>
-            /// <param name="lowerRight">”“…œΩ«</param>
+            /// <param name="upperLeft">Â∑¶‰∏äËßí</param>
+            /// <param name="lowerRight">Âè≥‰∏äËßí</param>
             public GRADIENT_RECT(uint upperLeft, uint lowerRight)
             {
                 this.UpperLeft = upperLeft;

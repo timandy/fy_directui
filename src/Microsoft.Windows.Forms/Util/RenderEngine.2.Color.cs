@@ -1,5 +1,4 @@
-using System;
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Drawing;
 
@@ -8,11 +7,11 @@ namespace Microsoft.Windows.Forms
     public static partial class RenderEngine
     {
         /// <summary>
-        /// ÑÕÉ«c1,Ïà¶Ôc2ÊÇ·ñÎª°µÉ«
+        /// é¢œè‰²c1,ç›¸å¯¹c2æ˜¯å¦ä¸ºæš—è‰²
         /// </summary>
-        /// <param name="c1">ÑÕÉ«c1</param>
-        /// <param name="c2">ÑÕÉ«c2</param>
-        /// <returns>ÊÇ·ñÎª°µ</returns>
+        /// <param name="c1">é¢œè‰²c1</param>
+        /// <param name="c2">é¢œè‰²c2</param>
+        /// <returns>æ˜¯å¦ä¸ºæš—</returns>
         private static bool IsDarker(Color c1, Color c2)
         {
             HLSColor color = new HLSColor(c1);
@@ -21,10 +20,10 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »ñÈ¡ÎŞĞ§Ê±ÎÄ±¾ÑÕÉ«
+        /// è·å–æ— æ•ˆæ—¶æ–‡æœ¬é¢œè‰²
         /// </summary>
-        /// <param name="backColor">¿Ø¼ş±³¾°É«</param>
-        /// <returns>ÎŞĞ§ÑÕÉ«</returns>
+        /// <param name="backColor">æ§ä»¶èƒŒæ™¯è‰²</param>
+        /// <returns>æ— æ•ˆé¢œè‰²</returns>
         public static Color GetGrayColor(Color backColor)
         {
             Color controlDark = SystemColors.ControlDark;
@@ -36,12 +35,12 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// HSV/HSBÑÕÉ« ×ª RGBÑÕÉ«
+        /// HSV/HSBé¢œè‰² è½¬ RGBé¢œè‰²
         /// </summary>
-        /// <param name="hue">É«µ÷[0-1]</param>
-        /// <param name="saturation">±¥ºÍ¶È[0-1]</param>
-        /// <param name="brightness">ÁÁ¶È[0-1]</param>
-        /// <returns>RGBÑÕÉ«</returns>
+        /// <param name="hue">è‰²è°ƒ[0-1]</param>
+        /// <param name="saturation">é¥±å’Œåº¦[0-1]</param>
+        /// <param name="brightness">äº®åº¦[0-1]</param>
+        /// <returns>RGBé¢œè‰²</returns>
         public static Color FromHsv(float hue, float saturation, float brightness)
         {
             if (saturation == 0)
@@ -78,46 +77,17 @@ namespace Microsoft.Windows.Forms
             }
         }
 
-        /// <summary>
-        /// »ñÈ¡Ëæ»úÑÕÉ«
-        /// </summary>
-        /// <param name="saturation">±¥ºÍ¶È[0-1]</param>
-        /// <param name="brightness">ÁÁ¶È[0-1]</param>
-        /// <returns>ÑÕÉ«</returns>
-        public static Color RandomColor(float saturation, float brightness)
-        {
-            if (RANDOM_COLOR_HUE == null)
-            {
-                Random random = new Random(unchecked((int)DateTime.Now.Ticks));
-                RANDOM_COLOR_HUE = (float)random.NextDouble();
-            }
-            float hue = RANDOM_COLOR_HUE.Value;
-            hue += GOLDEN_RATIO;
-            hue %= 1;
-            RANDOM_COLOR_HUE = hue;
-            return FromHsv(hue, saturation, brightness);
-        }
 
         /// <summary>
-        /// »ñÈ¡Ëæ»úÑÕÉ«
+        /// è·å–æ¸å˜é¢œè‰²ä½ç½®æ•°ç»„
         /// </summary>
-        /// <returns>ÑÕÉ«</returns>
-        public static Color RandomColor()
-        {
-            return RandomColor(0.5f, 0.99f);
-        }
-
-
-        /// <summary>
-        /// »ñÈ¡½¥±äÑÕÉ«Î»ÖÃÊı×é
-        /// </summary>
-        /// <param name="baseColor">»ùÉ«</param>
-        /// <param name="pos1">Î»ÖÃ1</param>
-        /// <param name="pos2">Î»ÖÃ2</param>
-        /// <param name="reverse">ÊÇ·ñ·´×ª</param>
-        /// <param name="avg">ÊÇ·ñ¾ù·ÖÎ»ÖÃ</param>
-        /// <param name="colors">ÑÕÉ«Êı×é</param>
-        /// <param name="positions">Î»ÖÃÊı×é</param>
+        /// <param name="baseColor">åŸºè‰²</param>
+        /// <param name="pos1">ä½ç½®1</param>
+        /// <param name="pos2">ä½ç½®2</param>
+        /// <param name="reverse">æ˜¯å¦åè½¬</param>
+        /// <param name="avg">æ˜¯å¦å‡åˆ†ä½ç½®</param>
+        /// <param name="colors">é¢œè‰²æ•°ç»„</param>
+        /// <param name="positions">ä½ç½®æ•°ç»„</param>
         public static void GetColorPosGradient(Color baseColor, float pos1, float pos2, bool reverse, bool avg, out Color[] colors, out float[] positions)
         {
             ColorVector vector = ColorVector.FromArgb(8, 8, 8);
@@ -127,9 +97,9 @@ namespace Microsoft.Windows.Forms
             {
                 colors = new Color[] { outerColor, innerColor, innerColor, outerColor };
                 if (avg)
-                    positions = new float[] { 0.0f, 0.333333f, 0.666667f, 1.0f };//¾ù·ÖÊ±.·´×ªÓë²»·´×ªÏàÍ¬
+                    positions = new float[] { 0.0f, 0.333333f, 0.666667f, 1.0f };//å‡åˆ†æ—¶.åè½¬ä¸ä¸åè½¬ç›¸åŒ
                 else
-                    positions = new float[] { 0.0f, 1.0f - pos2, 1.0f - pos1, 1.0f };//·Ç¾ù·ÖÊ±.1-¸÷¸öÔªËØ,ÔÙ·´×ªË³Ğò
+                    positions = new float[] { 0.0f, 1.0f - pos2, 1.0f - pos1, 1.0f };//éå‡åˆ†æ—¶.1-å„ä¸ªå…ƒç´ ,å†åè½¬é¡ºåº
             }
             else
             {
@@ -142,15 +112,15 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »ñÈ¡½¥ÏÔÑÕÉ«Î»ÖÃÊı×é
+        /// è·å–æ¸æ˜¾é¢œè‰²ä½ç½®æ•°ç»„
         /// </summary>
-        /// <param name="baseColor">»ùÉ«</param>
-        /// <param name="pos1">Î»ÖÃ1</param>
-        /// <param name="pos2">Î»ÖÃ2</param>
-        /// <param name="reverse">ÊÇ·ñ·´×ª</param>
-        /// <param name="avg">ÊÇ·ñ¾ù·ÖÎ»ÖÃ</param>
-        /// <param name="colors">ÑÕÉ«Êı×é</param>
-        /// <param name="positions">Î»ÖÃÊı×é</param>
+        /// <param name="baseColor">åŸºè‰²</param>
+        /// <param name="pos1">ä½ç½®1</param>
+        /// <param name="pos2">ä½ç½®2</param>
+        /// <param name="reverse">æ˜¯å¦åè½¬</param>
+        /// <param name="avg">æ˜¯å¦å‡åˆ†ä½ç½®</param>
+        /// <param name="colors">é¢œè‰²æ•°ç»„</param>
+        /// <param name="positions">ä½ç½®æ•°ç»„</param>
         public static void GetColorPosFadeIn(Color baseColor, float pos1, float pos2, bool reverse, bool avg, out Color[] colors, out float[] positions)
         {
             if (reverse)
@@ -172,15 +142,15 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »ñÈ¡½¥ÒşÑÕÉ«Î»ÖÃÊı×é
+        /// è·å–æ¸éšé¢œè‰²ä½ç½®æ•°ç»„
         /// </summary>
-        /// <param name="baseColor">»ùÉ«</param>
-        /// <param name="pos1">Î»ÖÃ1</param>
-        /// <param name="pos2">Î»ÖÃ2</param>
-        /// <param name="reverse">ÊÇ·ñ·´×ª</param>
-        /// <param name="avg">ÊÇ·ñ¾ù·ÖÎ»ÖÃ</param>
-        /// <param name="colors">ÑÕÉ«Êı×é</param>
-        /// <param name="positions">Î»ÖÃÊı×é</param>
+        /// <param name="baseColor">åŸºè‰²</param>
+        /// <param name="pos1">ä½ç½®1</param>
+        /// <param name="pos2">ä½ç½®2</param>
+        /// <param name="reverse">æ˜¯å¦åè½¬</param>
+        /// <param name="avg">æ˜¯å¦å‡åˆ†ä½ç½®</param>
+        /// <param name="colors">é¢œè‰²æ•°ç»„</param>
+        /// <param name="positions">ä½ç½®æ•°ç»„</param>
         public static void GetColorPosFadeOut(Color baseColor, float pos1, float pos2, bool reverse, bool avg, out Color[] colors, out float[] positions)
         {
             if (reverse)
@@ -202,15 +172,15 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »ñÈ¡½¥Òş½¥ÏÔÑÕÉ«Î»ÖÃÊı×é
+        /// è·å–æ¸éšæ¸æ˜¾é¢œè‰²ä½ç½®æ•°ç»„
         /// </summary>
-        /// <param name="baseColor">»ùÉ«</param>
-        /// <param name="pos1">Î»ÖÃ1</param>
-        /// <param name="pos2">Î»ÖÃ2</param>
-        /// <param name="reverse">ÊÇ·ñ·´×ª</param>
-        /// <param name="avg">ÊÇ·ñ¾ù·ÖÎ»ÖÃ</param>
-        /// <param name="colors">ÑÕÉ«Êı×é</param>
-        /// <param name="positions">Î»ÖÃÊı×é</param>
+        /// <param name="baseColor">åŸºè‰²</param>
+        /// <param name="pos1">ä½ç½®1</param>
+        /// <param name="pos2">ä½ç½®2</param>
+        /// <param name="reverse">æ˜¯å¦åè½¬</param>
+        /// <param name="avg">æ˜¯å¦å‡åˆ†ä½ç½®</param>
+        /// <param name="colors">é¢œè‰²æ•°ç»„</param>
+        /// <param name="positions">ä½ç½®æ•°ç»„</param>
         public static void GetColorPosFadeInFadeOut(Color baseColor, float pos1, float pos2, bool reverse, bool avg, out Color[] colors, out float[] positions)
         {
             if (reverse)

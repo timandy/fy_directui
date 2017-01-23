@@ -1,4 +1,4 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Microsoft.Windows.Forms
@@ -7,7 +7,7 @@ namespace Microsoft.Windows.Forms
     {
         private Image m_BackgroundImage9 = null;
         /// <summary>
-        /// ¾Å¹¬¸ñ±³¾°Í¼
+        /// ä¹å®«æ ¼èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImage9
         {
@@ -27,7 +27,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_BackgroundImage9Hovered = null;
         /// <summary>
-        /// Êó±êÒÆÉÏ¾Å¹¬¸ñ±³¾°Í¼
+        /// é¼ æ ‡ç§»ä¸Šä¹å®«æ ¼èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImage9Hovered
         {
@@ -47,7 +47,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_BackgroundImage9Pressed = null;
         /// <summary>
-        /// Êó±ê°´ÏÂ¾Å¹¬¸ñ±³¾°Í¼
+        /// é¼ æ ‡æŒ‰ä¸‹ä¹å®«æ ¼èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImage9Pressed
         {
@@ -67,7 +67,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_BackgroundImage9Focused = null;
         /// <summary>
-        /// »ñÈ¡½¹µã¾Å¹¬¸ñ±³¾°Í¼
+        /// è·å–ç„¦ç‚¹ä¹å®«æ ¼èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImage9Focused
         {
@@ -87,7 +87,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_BackgroundImage9Disabled = null;
         /// <summary>
-        /// ×´Ì¬½ûÓÃ¾Å¹¬¸ñ±³¾°Í¼
+        /// çŠ¶æ€ç¦ç”¨ä¹å®«æ ¼èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImage9Disabled
         {
@@ -107,7 +107,7 @@ namespace Microsoft.Windows.Forms
 
         private Image m_BackgroundImage9Highlight = null;
         /// <summary>
-        /// ¸ßÁÁ¾Å¹¬¸ñ±³¾°Í¼
+        /// é«˜äº®ä¹å®«æ ¼èƒŒæ™¯å›¾
         /// </summary>
         public Image BackgroundImage9Highlight
         {
@@ -127,7 +127,7 @@ namespace Microsoft.Windows.Forms
 
         private Padding m_BackgroundImage9Padding = Padding.Empty;
         /// <summary>
-        /// ¾Å¹¬¸ñ±³¾°Í¼ÄÚ±ß¾à
+        /// ä¹å®«æ ¼èƒŒæ™¯å›¾å†…è¾¹è·
         /// </summary>
         public Padding BackgroundImage9Padding
         {
@@ -147,7 +147,7 @@ namespace Microsoft.Windows.Forms
 
         private ImageLayout9 m_BackgroundImage9Layout = ImageLayout9.None;
         /// <summary>
-        /// ¾Å¹¬¸ñ±³¾°Í¼²¼¾Ö·½Ê½
+        /// ä¹å®«æ ¼èƒŒæ™¯å›¾å¸ƒå±€æ–¹å¼
         /// </summary>
         public ImageLayout9 BackgroundImage9Layout
         {
@@ -167,7 +167,7 @@ namespace Microsoft.Windows.Forms
 
         private bool m_BackgroundImage9GrayOnDisabled = false;
         /// <summary>
-        /// ×´Ì¬½ûÓÃÊ±¾Å¹¬¸ñ±³¾°Í¼ÊÇ·ñ±ä»Ò
+        /// çŠ¶æ€ç¦ç”¨æ—¶ä¹å®«æ ¼èƒŒæ™¯å›¾æ˜¯å¦å˜ç°
         /// </summary>
         public bool BackgroundImage9GrayOnDisabled
         {

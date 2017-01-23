@@ -8,6 +8,18 @@ namespace Microsoft.Drawing
     public static class SizeEx
     {
         /// <summary>
+        /// 调整大小非空,影响原来大小
+        /// </summary>
+        /// <param name="size">要调整的大小</param>
+        public static void MakeNotEmpty(ref Size size)
+        {
+            if (size.Width < 1)
+                size.Width = 1;
+            if (size.Height < 1)
+                size.Height = 1;
+        }
+
+        /// <summary>
         /// 宽度放大倍数
         /// </summary>
         /// <param name="size">Size</param>

@@ -1,14 +1,14 @@
-using System.Runtime.InteropServices;
+ï»¿using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// COPYDATASTRUCT¶¨Òå
+    /// COPYDATASTRUCTå®šä¹‰
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// ½ø³Ì¼ä´«µİÊı¾İ½á¹¹
+        /// è¿›ç¨‹é—´ä¼ é€’æ•°æ®ç»“æ„
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct COPYDATASTRUCT
@@ -18,11 +18,11 @@ namespace Microsoft.Win32
             /// </summary>
             public int dwData;//flag
             /// <summary>
-            /// ´óĞ¡
+            /// å¤§å°
             /// </summary>
             public int cbData;//size
             /// <summary>
-            /// Êı¾İ
+            /// æ•°æ®
             /// </summary>
             [MarshalAs(UnmanagedType.LPStr)]
             public string lpData;

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -10,23 +10,23 @@ namespace Microsoft.Windows.Forms
     public static partial class RenderEngine
     {
         /// <summary>
-        /// Î§ÈÆrectµÄÖĞĞÄ½«×ø±êÏµË³Ê±ÕëĞı×ªdegrees½Ç¶È,·µ»ØĞÂ×ø±êÏµ¾ØĞÎ
+        /// å›´ç»•rectçš„ä¸­å¿ƒå°†åæ ‡ç³»é¡ºæ—¶é’ˆæ—‹è½¬degreesè§’åº¦,è¿”å›æ–°åæ ‡ç³»çŸ©å½¢
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="rect">ÒªĞı×ªµÄ¾ØĞÎ</param>
-        /// <param name="degrees">½Ç¶È</param>
-        /// <param name="fit">ÄÚÈİĞı×ª,»æÍ¼ÇøÓò²»Ğı×ª</param>
-        /// <returns>ĞÂ×ø±êÏµ¾ØĞÎ</returns>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="rect">è¦æ—‹è½¬çš„çŸ©å½¢</param>
+        /// <param name="degrees">è§’åº¦</param>
+        /// <param name="fit">å†…å®¹æ—‹è½¬,ç»˜å›¾åŒºåŸŸä¸æ—‹è½¬</param>
+        /// <returns>æ–°åæ ‡ç³»çŸ©å½¢</returns>
         public static Rectangle RotateRect(Graphics g, Rectangle rect, float degrees, bool fit)
         {
-            g.RotateTransform(degrees, MatrixOrder.Append);//Î§ÈÆÖĞĞÄÔ­µãĞı×ª
-            g.TranslateTransform(rect.X + rect.Width / 2, rect.Y + rect.Height / 2, MatrixOrder.Append);//Æ½ÒÆÔ­µã
+            g.RotateTransform(degrees, MatrixOrder.Append);//å›´ç»•ä¸­å¿ƒåŸç‚¹æ—‹è½¬
+            g.TranslateTransform(rect.X + rect.Width / 2, rect.Y + rect.Height / 2, MatrixOrder.Append);//å¹³ç§»åŸç‚¹
             if (fit)
             {
-                decimal decLessStraigntAngle = Math.Abs((decimal)degrees) % 180m;//È¡¾ø¶ÔÖµºó³ıÒÔ180µÄÓàÊı,Ğ¡ÓÚÆ½½ÇµÄ½Ç¶È
+                decimal decLessStraigntAngle = Math.Abs((decimal)degrees) % 180m;//å–ç»å¯¹å€¼åé™¤ä»¥180çš„ä½™æ•°,å°äºå¹³è§’çš„è§’åº¦
                 return ((decLessStraigntAngle >= 0 && decLessStraigntAngle <= 45) || (decLessStraigntAngle >= 135 && decLessStraigntAngle <= 180))
                     ? new Rectangle(-rect.Width / 2, -rect.Height / 2, rect.Width, rect.Height)
-                    : new Rectangle(-rect.Height / 2, -rect.Width / 2, rect.Height, rect.Width);//ĞÂ×ø±êÏµ¾ØĞÎ
+                    : new Rectangle(-rect.Height / 2, -rect.Width / 2, rect.Height, rect.Width);//æ–°åæ ‡ç³»çŸ©å½¢
             }
             else
             {
@@ -36,13 +36,13 @@ namespace Microsoft.Windows.Forms
 
 
         /// <summary>
-        /// ¿ªÊ¼»æÖÆ×Ö·û´®(»­²¼ÎŞÏŞÖÆ),²¢·µ»ØÂ·¾¶ÇøÓòºÍ×Ö·û´®´óĞ¡.×¢Òâ²»ÒªĞŞ¸Ä·µ»ØµÄ¾ØĞÎºÍ×Ö·û´®´óĞ¡,ÔÚEndDrawStringÖĞĞèÒª´«»Ø.±ØĞëÓëEndDrawString³É¶Ô³öÏÖ.
+        /// å¼€å§‹ç»˜åˆ¶å­—ç¬¦ä¸²(ç”»å¸ƒæ— é™åˆ¶),å¹¶è¿”å›è·¯å¾„åŒºåŸŸå’Œå­—ç¬¦ä¸²å¤§å°.æ³¨æ„ä¸è¦ä¿®æ”¹è¿”å›çš„çŸ©å½¢å’Œå­—ç¬¦ä¸²å¤§å°,åœ¨EndDrawStringä¸­éœ€è¦ä¼ å›.å¿…é¡»ä¸EndDrawStringæˆå¯¹å‡ºç°.
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="s">×Ö·û´®</param>
-        /// <param name="font">×ÖÌå</param>
-        /// <param name="strSize">×Ö·û´®´óĞ¡</param>
-        /// <returns>×Ö·û´®Â·¾¶ÇøÓò</returns>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="s">å­—ç¬¦ä¸²</param>
+        /// <param name="font">å­—ä½“</param>
+        /// <param name="strSize">å­—ç¬¦ä¸²å¤§å°</param>
+        /// <returns>å­—ç¬¦ä¸²è·¯å¾„åŒºåŸŸ</returns>
         public static Rectangle BeginDrawString(Graphics g, string s, Font font, out Size strSize)
         {
             using (StringFormat sf = DefaultTheme.StringFormat)
@@ -57,14 +57,14 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// ¿ªÊ¼»æÖÆ×Ö·û´®(»­²¼ÓĞÏŞÖÆ),²¢·µ»ØÂ·¾¶ÇøÓòºÍ×Ö·û´®´óĞ¡.×¢Òâ²»ÒªĞŞ¸Ä·µ»ØµÄ¾ØĞÎºÍ×Ö·û´®´óĞ¡,ÔÚEndDrawStringÖĞĞèÒª´«»Ø.±ØĞëÓëEndDrawString³É¶Ô³öÏÖ.
+        /// å¼€å§‹ç»˜åˆ¶å­—ç¬¦ä¸²(ç”»å¸ƒæœ‰é™åˆ¶),å¹¶è¿”å›è·¯å¾„åŒºåŸŸå’Œå­—ç¬¦ä¸²å¤§å°.æ³¨æ„ä¸è¦ä¿®æ”¹è¿”å›çš„çŸ©å½¢å’Œå­—ç¬¦ä¸²å¤§å°,åœ¨EndDrawStringä¸­éœ€è¦ä¼ å›.å¿…é¡»ä¸EndDrawStringæˆå¯¹å‡ºç°.
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="s">×Ö·û´®</param>
-        /// <param name="font">×ÖÌå</param>
-        /// <param name="layoutRectangle">ÏŞÖÆ¾ØĞÎ</param>
-        /// <param name="strSize">×Ö·û´®´óĞ¡</param>
-        /// <returns>×Ö·û´®Â·¾¶ÇøÓò</returns>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="s">å­—ç¬¦ä¸²</param>
+        /// <param name="font">å­—ä½“</param>
+        /// <param name="layoutRectangle">é™åˆ¶çŸ©å½¢</param>
+        /// <param name="strSize">å­—ç¬¦ä¸²å¤§å°</param>
+        /// <returns>å­—ç¬¦ä¸²è·¯å¾„åŒºåŸŸ</returns>
         public static Rectangle BeginDrawString(Graphics g, string s, Font font, Rectangle layoutRectangle, out Size strSize)
         {
             using (StringFormat sf = DefaultTheme.StringFormat)
@@ -79,16 +79,16 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// ÕıÊ½»æÖÆ×Ö·û´®.ÓëBeginDrawString³É¶Ô³öÏÖ
+        /// æ­£å¼ç»˜åˆ¶å­—ç¬¦ä¸².ä¸BeginDrawStringæˆå¯¹å‡ºç°
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="s">×Ö·û´®</param>
-        /// <param name="font">×ÖÌå</param>
-        /// <param name="brush">»­Ë¢</param>
-        /// <param name="layoutRectangle">»­²¼ÇøÓò</param>
-        /// <param name="align">¶ÔÆë·½Ê½</param>
-        /// <param name="pathBounds">×Ö·û´®Â·¾¶ÇøÓò,BeginDrawString(...)·µ»ØÖµ</param>
-        /// <param name="strSize">×Ö·û´®´óĞ¡,BeginDrawString(...)·µ»ØÖµ</param>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="s">å­—ç¬¦ä¸²</param>
+        /// <param name="font">å­—ä½“</param>
+        /// <param name="brush">ç”»åˆ·</param>
+        /// <param name="layoutRectangle">ç”»å¸ƒåŒºåŸŸ</param>
+        /// <param name="align">å¯¹é½æ–¹å¼</param>
+        /// <param name="pathBounds">å­—ç¬¦ä¸²è·¯å¾„åŒºåŸŸ,BeginDrawString(...)è¿”å›å€¼</param>
+        /// <param name="strSize">å­—ç¬¦ä¸²å¤§å°,BeginDrawString(...)è¿”å›å€¼</param>
         public static void EndDrawString(Graphics g, string s, Font font, Brush brush, Rectangle layoutRectangle, ContentAlignment align, Rectangle pathBounds, Size strSize)
         {
             layoutRectangle = LayoutUtils.Align(pathBounds.Size, layoutRectangle, align);
@@ -104,14 +104,14 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// ¾«È·»æÖÆ×Ö·û´®
+        /// ç²¾ç¡®ç»˜åˆ¶å­—ç¬¦ä¸²
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="s">×Ö·û´®</param>
-        /// <param name="font">×ÖÌå</param>
-        /// <param name="brush">»­Ë¢</param>
-        /// <param name="layoutRectangle">»æÖÆÇøÓò</param>
-        /// <param name="align">¶ÔÆë·½Ê½</param>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="s">å­—ç¬¦ä¸²</param>
+        /// <param name="font">å­—ä½“</param>
+        /// <param name="brush">ç”»åˆ·</param>
+        /// <param name="layoutRectangle">ç»˜åˆ¶åŒºåŸŸ</param>
+        /// <param name="align">å¯¹é½æ–¹å¼</param>
         public static void DrawString(Graphics g, string s, Font font, Brush brush, Rectangle layoutRectangle, ContentAlignment align)
         {
             Size strSize;
@@ -120,12 +120,12 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »æÖÆ±³¾°Í¼
+        /// ç»˜åˆ¶èƒŒæ™¯å›¾
         /// </summary>
-        /// <param name="g">»æÍ¼ÉÏÏÂÎÄ</param>
-        /// <param name="image">±³¾°Í¼</param>
-        /// <param name="rect">»æÖÆÇøÓò</param>
-        /// <param name="layout">±³¾°Í¼²¼¾Ö·½Ê½</param>
+        /// <param name="g">ç»˜å›¾ä¸Šä¸‹æ–‡</param>
+        /// <param name="image">èƒŒæ™¯å›¾</param>
+        /// <param name="rect">ç»˜åˆ¶åŒºåŸŸ</param>
+        /// <param name="layout">èƒŒæ™¯å›¾å¸ƒå±€æ–¹å¼</param>
         public static void DrawBackgroundImage(Graphics g, Image image, Rectangle rect, ImageLayout layout)
         {
             if (image == null)
@@ -171,67 +171,67 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »æÖÆ¾Å¹¬¸ñ±³¾°Í¼
+        /// ç»˜åˆ¶ä¹å®«æ ¼èƒŒæ™¯å›¾
         /// </summary>
-        /// <param name="g">»æÍ¼ÉÏÏÂÎÄ</param>
-        /// <param name="image">±³¾°Í¼</param>
-        /// <param name="rect">Ä¿±êÇøÓò</param>
-        /// <param name="left">¾Å¹¬¸ñ»®·Ö,×ó</param>
-        /// <param name="top">¾Å¹¬¸ñ»®·Ö,ÉÏ</param>
-        /// <param name="right">¾Å¹¬¸ñ»®·Ö,ÓÒ</param>
-        /// <param name="bottom">¾Å¹¬¸ñ»®·Ö,ÏÂ</param>
-        /// <param name="layout">¾Å¹¬¸ñ±³¾°Í¼²¼¾Ö·½Ê½</param>
+        /// <param name="g">ç»˜å›¾ä¸Šä¸‹æ–‡</param>
+        /// <param name="image">èƒŒæ™¯å›¾</param>
+        /// <param name="rect">ç›®æ ‡åŒºåŸŸ</param>
+        /// <param name="left">ä¹å®«æ ¼åˆ’åˆ†,å·¦</param>
+        /// <param name="top">ä¹å®«æ ¼åˆ’åˆ†,ä¸Š</param>
+        /// <param name="right">ä¹å®«æ ¼åˆ’åˆ†,å³</param>
+        /// <param name="bottom">ä¹å®«æ ¼åˆ’åˆ†,ä¸‹</param>
+        /// <param name="layout">ä¹å®«æ ¼èƒŒæ™¯å›¾å¸ƒå±€æ–¹å¼</param>
         public static void DrawBackgroundImage9(Graphics g, Image image, Rectangle rect, int left, int top, int right, int bottom, ImageLayout9 layout)
         {
             if (image == null || !RectangleEx.IsVisible(rect))
                 return;
 
-            //»ù±¾
+            //åŸºæœ¬
             int nSrcWidth = image.Width;
             int nSrcHeight = image.Height;
             int nDestWidth = rect.Width;
             int nDestHeight = rect.Height;
-            //×óÉÏ
+            //å·¦ä¸Š
             Rectangle rcSrcTopLeft = new Rectangle(0, 0, left, top);
             Rectangle rcDestTopLeft = new Rectangle(rect.X, rect.Y, left, top);
-            //ÉÏ
+            //ä¸Š
             Rectangle rcSrcTop = new Rectangle(rcSrcTopLeft.Right, rcSrcTopLeft.Y, nSrcWidth - left - right, top);
             Rectangle rcDestTop = new Rectangle(rcDestTopLeft.Right, rcDestTopLeft.Y, nDestWidth - left - right, top);
-            //ÓÒÉÏ
+            //å³ä¸Š
             Rectangle rcSrcTopRight = new Rectangle(rcSrcTop.Right, rcSrcTop.Y, right, top);
             Rectangle rcDestTopRight = new Rectangle(rcDestTop.Right, rcDestTop.Y, right, top);
-            //ÓÒ
+            //å³
             Rectangle rcSrcRight = new Rectangle(rcSrcTopRight.X, rcSrcTopRight.Bottom, right, nSrcHeight - top - bottom);
             Rectangle rcDestRight = new Rectangle(rcDestTopRight.X, rcDestTopRight.Bottom, right, nDestHeight - top - bottom);
-            //ÓÒÏÂ
+            //å³ä¸‹
             Rectangle rcSrcBottomRight = new Rectangle(rcSrcRight.X, rcSrcRight.Bottom, right, bottom);
             Rectangle rcDestBottomRight = new Rectangle(rcDestRight.X, rcDestRight.Bottom, right, bottom);
-            //ÏÂ
+            //ä¸‹
             Rectangle rcSrcBottom = new Rectangle(rcSrcTop.X, rcSrcBottomRight.Y, rcSrcTop.Width, bottom);
             Rectangle rcDestBottom = new Rectangle(rcDestTop.X, rcDestBottomRight.Y, rcDestTop.Width, bottom);
-            //×óÏÂ
+            //å·¦ä¸‹
             Rectangle rcSrcBottomLeft = new Rectangle(rcSrcTopLeft.X, rcSrcBottom.Y, left, bottom);
             Rectangle rcDestBottomLeft = new Rectangle(rcDestTopLeft.X, rcDestBottom.Y, left, bottom);
-            //×ó
+            //å·¦
             Rectangle rcSrcLeft = new Rectangle(rcSrcBottomLeft.X, rcSrcRight.Y, left, rcSrcRight.Height);
             Rectangle rcDestLeft = new Rectangle(rcDestBottomLeft.X, rcDestRight.Y, left, rcDestRight.Height);
-            //ÖĞ
+            //ä¸­
             Rectangle rcSrcMiddle = new Rectangle(rcSrcTop.X, rcSrcLeft.Y, rcSrcTop.Width, rcSrcLeft.Height);
             Rectangle rcDestMiddle = new Rectangle(rcDestTop.X, rcDestLeft.Y, rcDestTop.Width, rcDestLeft.Height);
 
-            //×óÉÏ
+            //å·¦ä¸Š
             if (RectangleEx.IsVisible(rcSrcTopLeft))
             {
                 g.DrawImage(image, rcDestTopLeft, rcSrcTopLeft, GraphicsUnit.Pixel);
             }
-            //ÉÏ
+            //ä¸Š
             if (RectangleEx.IsVisible(rcSrcTop) && RectangleEx.IsVisible(rcDestTop))
             {
-                if ((layout & ImageLayout9.TopTile) == 0)//À­Éì
+                if ((layout & ImageLayout9.TopTile) == 0)//æ‹‰ä¼¸
                 {
                     g.DrawImage(image, rcDestTop, rcSrcTop, GraphicsUnit.Pixel);
                 }
-                else//Æ½ÆÌ
+                else//å¹³é“º
                 {
                     using (TextureBrush brush = new TextureBrush(image, WrapMode.Tile, rcSrcTop))
                     {
@@ -240,19 +240,19 @@ namespace Microsoft.Windows.Forms
                     }
                 }
             }
-            //ÓÒÉÏ
+            //å³ä¸Š
             if (RectangleEx.IsVisible(rcSrcTopRight))
             {
                 g.DrawImage(image, rcDestTopRight, rcSrcTopRight, GraphicsUnit.Pixel);
             }
-            //ÓÒ
+            //å³
             if (RectangleEx.IsVisible(rcSrcRight) && RectangleEx.IsVisible(rcDestRight))
             {
-                if ((layout & ImageLayout9.RightTile) == 0)//À­Éì
+                if ((layout & ImageLayout9.RightTile) == 0)//æ‹‰ä¼¸
                 {
                     g.DrawImage(image, rcDestRight, rcSrcRight, GraphicsUnit.Pixel);
                 }
-                else//Æ½ÆÌ
+                else//å¹³é“º
                 {
                     using (TextureBrush brush = new TextureBrush(image, WrapMode.Tile, rcSrcRight))
                     {
@@ -261,19 +261,19 @@ namespace Microsoft.Windows.Forms
                     }
                 }
             }
-            //ÓÒÏÂ
+            //å³ä¸‹
             if (RectangleEx.IsVisible(rcSrcBottomRight))
             {
                 g.DrawImage(image, rcDestBottomRight, rcSrcBottomRight, GraphicsUnit.Pixel);
             }
-            //ÏÂ
+            //ä¸‹
             if (RectangleEx.IsVisible(rcSrcBottom) && RectangleEx.IsVisible(rcDestBottom))
             {
-                if ((layout & ImageLayout9.BottomTile) == 0)//À­Éì
+                if ((layout & ImageLayout9.BottomTile) == 0)//æ‹‰ä¼¸
                 {
                     g.DrawImage(image, rcDestBottom, rcSrcBottom, GraphicsUnit.Pixel);
                 }
-                else//Æ½ÆÌ
+                else//å¹³é“º
                 {
                     using (TextureBrush brush = new TextureBrush(image, WrapMode.Tile, rcSrcBottom))
                     {
@@ -282,19 +282,19 @@ namespace Microsoft.Windows.Forms
                     }
                 }
             }
-            //×óÏÂ
+            //å·¦ä¸‹
             if (RectangleEx.IsVisible(rcSrcBottomLeft))
             {
                 g.DrawImage(image, rcDestBottomLeft, rcSrcBottomLeft, GraphicsUnit.Pixel);
             }
-            //×ó
+            //å·¦
             if (RectangleEx.IsVisible(rcSrcLeft) && RectangleEx.IsVisible(rcDestLeft))
             {
-                if ((layout & ImageLayout9.LeftTile) == 0)//À­Éì
+                if ((layout & ImageLayout9.LeftTile) == 0)//æ‹‰ä¼¸
                 {
                     g.DrawImage(image, rcDestLeft, rcSrcLeft, GraphicsUnit.Pixel);
                 }
-                else//Æ½ÆÌ
+                else//å¹³é“º
                 {
                     using (TextureBrush brush = new TextureBrush(image, WrapMode.Tile, rcSrcLeft))
                     {
@@ -303,14 +303,14 @@ namespace Microsoft.Windows.Forms
                     }
                 }
             }
-            //ÖĞ¼ä
+            //ä¸­é—´
             if (RectangleEx.IsVisible(rcSrcMiddle) && RectangleEx.IsVisible(rcDestMiddle))
             {
-                if ((layout & ImageLayout9.MiddleTile) == 0)//À­Éì
+                if ((layout & ImageLayout9.MiddleTile) == 0)//æ‹‰ä¼¸
                 {
                     g.DrawImage(image, rcDestMiddle, rcSrcMiddle, GraphicsUnit.Pixel);
                 }
-                else//Æ½ÆÌ
+                else//å¹³é“º
                 {
                     using (TextureBrush brush = new TextureBrush(image, WrapMode.Tile, rcSrcMiddle))
                     {
@@ -322,32 +322,32 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »æÖÆ±ß¿ò
+        /// ç»˜åˆ¶è¾¹æ¡†
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="pen">»­±Ê</param>
-        /// <param name="rect">¾ØĞÎÇøÓò</param>
-        /// <param name="borderStyle">±ß¿òÑùÊ½</param>
-        /// <param name="cornerStyle">Ô²½ÇÍäÇúÑùÊ½</param>
-        /// <param name="roundStyle">Ô²½ÇÑùÊ½</param>
-        /// <param name="radius">Ô²½Ç°ë¾¶</param>
-        /// <param name="correct">ÊÇ·ñ¼õĞ¡Ò»¸öÏñËØ</param>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="pen">ç”»ç¬”</param>
+        /// <param name="rect">çŸ©å½¢åŒºåŸŸ</param>
+        /// <param name="borderStyle">è¾¹æ¡†æ ·å¼</param>
+        /// <param name="cornerStyle">åœ†è§’å¼¯æ›²æ ·å¼</param>
+        /// <param name="roundStyle">åœ†è§’æ ·å¼</param>
+        /// <param name="radius">åœ†è§’åŠå¾„</param>
+        /// <param name="correct">æ˜¯å¦å‡å°ä¸€ä¸ªåƒç´ </param>
         public static void DrawBorder(Graphics g, Pen pen, Rectangle rect, BorderVisibleStyle borderStyle, CornerStyle cornerStyle, RoundStyle roundStyle, float radius, bool correct)
         {
-            //-----------------²»»æÖÆ-----------------
+            //-----------------ä¸ç»˜åˆ¶-----------------
             if (borderStyle == BorderVisibleStyle.None)
                 return;
-            //-----------------Ğ£×¼-----------------
+            //-----------------æ ¡å‡†-----------------
             if (correct)
             {
                 rect.Width--;
                 rect.Height--;
             }
 
-            //-----------------ÌØÊâÇé¿ö´¦Àí-----------------
+            //-----------------ç‰¹æ®Šæƒ…å†µå¤„ç†-----------------
             if (float.IsNaN(radius) || radius <= 0f)
             {
-                //-----------------È«±ß-----------------
+                //-----------------å…¨è¾¹-----------------
                 if (borderStyle == BorderVisibleStyle.All)
                 {
                     g.DrawRectangle(pen, rect);
@@ -356,28 +356,28 @@ namespace Microsoft.Windows.Forms
                 cornerStyle = CornerStyle.None;
                 roundStyle = RoundStyle.None;
             }
-            //-----------------ÁÙÊ±±äÁ¿¶¨Òå-----------------
-            float diameter = radius * 2;//Ö±¾¶
-            float halfWidth = rect.Width / 2f;//¿í¶ÈÒ»°ë
-            float halfHeight = rect.Height / 2f;//¸ß¶ÈÒ»°ë
-            PointF ptMiddleCenter = new PointF(rect.X + halfWidth, rect.Y + halfHeight);//ÖĞĞÄµã            
-            float lrDegrees = 0f;//°ë¾¶´óÓÚ°ë¸ß,Ô²ĞÄ½Ç
-            float lrOffset = 0f;//°ë¾¶´óÓÚ°ë¸ß,Ô²»¡µ½±ß¾àÀë
+            //-----------------ä¸´æ—¶å˜é‡å®šä¹‰-----------------
+            float diameter = radius * 2;//ç›´å¾„
+            float halfWidth = rect.Width / 2f;//å®½åº¦ä¸€åŠ
+            float halfHeight = rect.Height / 2f;//é«˜åº¦ä¸€åŠ
+            PointF ptMiddleCenter = new PointF(rect.X + halfWidth, rect.Y + halfHeight);//ä¸­å¿ƒç‚¹            
+            float lrDegrees = 0f;//åŠå¾„å¤§äºåŠé«˜,åœ†å¿ƒè§’
+            float lrOffset = 0f;//åŠå¾„å¤§äºåŠé«˜,åœ†å¼§åˆ°è¾¹è·ç¦»
             if ((roundStyle & RoundStyle.All) != 0 && radius > halfHeight)
             {
-                double lrRadian = Math.Acos((radius - halfHeight) / radius);//»¡¶È
-                lrDegrees = (float)MathEx.ToDegrees(lrRadian);//½Ç¶È
+                double lrRadian = Math.Acos((radius - halfHeight) / radius);//å¼§åº¦
+                lrDegrees = (float)MathEx.ToDegrees(lrRadian);//è§’åº¦
                 lrOffset = (float)(radius * Math.Sin(lrRadian));
             }
-            float tbDegrees = 0f;//°ë¾¶´óÓÚ°ë¿í,Ô²ĞÄ½Ç
-            float tbOffset = 0f;//°ë¾¶´óÓÚ°ì¿í,Ô²»¡µ½±ß¾àÀë
+            float tbDegrees = 0f;//åŠå¾„å¤§äºåŠå®½,åœ†å¿ƒè§’
+            float tbOffset = 0f;//åŠå¾„å¤§äºåŠå®½,åœ†å¼§åˆ°è¾¹è·ç¦»
             if ((roundStyle & RoundStyle.All) != 0 && radius > halfWidth)
             {
-                double tbRadian = Math.Acos((radius - halfWidth) / radius);//»¡¶È
-                tbDegrees = (float)MathEx.ToDegrees(tbRadian);//½Ç¶È
+                double tbRadian = Math.Acos((radius - halfWidth) / radius);//å¼§åº¦
+                tbDegrees = (float)MathEx.ToDegrees(tbRadian);//è§’åº¦
                 tbOffset = (float)(radius * Math.Sin(tbRadian));
             }
-            //ÁÙÊ±±äÁ¿
+            //ä¸´æ—¶å˜é‡
             PointF ptBeginTopLeft;
             PointF ptEndTopLeft;
             PointF ptBeginTopRight;
@@ -388,8 +388,8 @@ namespace Microsoft.Windows.Forms
             PointF ptEndBottomLeft;
 
 
-            #region ¼ÆËã×óÉÏ¶Ëµã
-            if ((roundStyle & RoundStyle.TopLeft) == 0)//Ö±½Ç
+            #region è®¡ç®—å·¦ä¸Šç«¯ç‚¹
+            if ((roundStyle & RoundStyle.TopLeft) == 0)//ç›´è§’
             {
                 if ((cornerStyle & CornerStyle.LeftIn) != 0)
                 {
@@ -416,7 +416,7 @@ namespace Microsoft.Windows.Forms
                     ptBeginTopLeft = ptEndTopLeft = new PointF(rect.X, rect.Y);
                 }
             }
-            else//Ô²½Ç
+            else//åœ†è§’
             {
                 if ((cornerStyle & CornerStyle.LeftIn) != 0)
                 {
@@ -478,7 +478,7 @@ namespace Microsoft.Windows.Forms
             }
             #endregion
 
-            #region ¼ÆËãÓÒÉÏ¶Ëµã
+            #region è®¡ç®—å³ä¸Šç«¯ç‚¹
             if ((roundStyle & RoundStyle.TopRight) == 0)
             {
                 if ((cornerStyle & CornerStyle.RightIn) != 0)
@@ -568,7 +568,7 @@ namespace Microsoft.Windows.Forms
             }
             #endregion
 
-            #region ¼ÆËãÓÒÏÂ¶Ëµã
+            #region è®¡ç®—å³ä¸‹ç«¯ç‚¹
             if ((roundStyle & RoundStyle.BottomRight) == 0)
             {
                 if ((cornerStyle & CornerStyle.RightIn) != 0)
@@ -658,7 +658,7 @@ namespace Microsoft.Windows.Forms
             }
             #endregion
 
-            #region ¼ÆËã×óÏÂ¶Ëµã
+            #region è®¡ç®—å·¦ä¸‹ç«¯ç‚¹
             if ((roundStyle & RoundStyle.BottomLeft) == 0)
             {
                 if ((cornerStyle & CornerStyle.LeftIn) != 0)
@@ -749,14 +749,14 @@ namespace Microsoft.Windows.Forms
             #endregion
 
 
-            #region »æÖÆ×ó±ß
+            #region ç»˜åˆ¶å·¦è¾¹
             if ((borderStyle & BorderVisibleStyle.Left) != 0)
             {
                 g.DrawLine(pen, ptEndBottomLeft, ptBeginTopLeft);
             }
             #endregion
 
-            #region »æÖÆ×óÉÏ½Ç
+            #region ç»˜åˆ¶å·¦ä¸Šè§’
             if ((borderStyle & BorderVisibleStyle.Left) != 0 || (borderStyle & BorderVisibleStyle.Top) != 0)
             {
                 if ((roundStyle & RoundStyle.TopLeft) == 0)
@@ -801,14 +801,14 @@ namespace Microsoft.Windows.Forms
             }
             #endregion
 
-            #region »æÖÆÉÏ±ß
+            #region ç»˜åˆ¶ä¸Šè¾¹
             if ((borderStyle & BorderVisibleStyle.Top) != 0)
             {
                 g.DrawLine(pen, ptEndTopLeft, ptBeginTopRight);
             }
             #endregion
 
-            #region »æÖÆÓÒÉÏ½Ç
+            #region ç»˜åˆ¶å³ä¸Šè§’
             if ((borderStyle & BorderVisibleStyle.Top) != 0 || (borderStyle & BorderVisibleStyle.Right) != 0)
             {
                 if ((roundStyle & RoundStyle.TopRight) == 0)
@@ -853,14 +853,14 @@ namespace Microsoft.Windows.Forms
             }
             #endregion
 
-            #region »æÖÆÓÒ±ß
+            #region ç»˜åˆ¶å³è¾¹
             if ((borderStyle & BorderVisibleStyle.Right) != 0)
             {
                 g.DrawLine(pen, ptEndTopRight, ptBeginBottomRight);
             }
             #endregion
 
-            #region »æÖÆÓÒÏÂ½Ç
+            #region ç»˜åˆ¶å³ä¸‹è§’
             if ((borderStyle & BorderVisibleStyle.Right) != 0 || (borderStyle & BorderVisibleStyle.Bottom) != 0)
             {
                 if ((roundStyle & RoundStyle.BottomRight) == 0)
@@ -905,14 +905,14 @@ namespace Microsoft.Windows.Forms
             }
             #endregion
 
-            #region »æÖÆÏÂ±ß
+            #region ç»˜åˆ¶ä¸‹è¾¹
             if ((borderStyle & BorderVisibleStyle.Bottom) != 0)
             {
                 g.DrawLine(pen, ptEndBottomRight, ptBeginBottomLeft);
             }
             #endregion
 
-            #region »æÖÆ×óÏÂ½Ç
+            #region ç»˜åˆ¶å·¦ä¸‹è§’
             if ((borderStyle & BorderVisibleStyle.Bottom) != 0 || (borderStyle & BorderVisibleStyle.Left) != 0)
             {
                 if ((roundStyle & RoundStyle.BottomLeft) == 0)
@@ -959,11 +959,11 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »æÖÆÄ£ºıÌØĞ§,ÑÕÉ«ĞèÒª´øalphaÍ¨µÀ
+        /// ç»˜åˆ¶æ¨¡ç³Šç‰¹æ•ˆ,é¢œè‰²éœ€è¦å¸¦alphaé€šé“
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="rect">ÇøÓò</param>
-        /// <param name="color">ÑÕÉ«(´øalphaÍ¨µÀ)</param>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="rect">åŒºåŸŸ</param>
+        /// <param name="color">é¢œè‰²(å¸¦alphaé€šé“)</param>
         public static void DrawAeroBlur(Graphics g, Rectangle rect, Color color)
         {
             using (Brush brush = new SolidBrush(color))
@@ -973,12 +973,12 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »æÖÆ²£Á§Ğ§¹û,ÑÕÉ«ĞèÒª´øalphaÍ¨µÀ
+        /// ç»˜åˆ¶ç»ç’ƒæ•ˆæœ,é¢œè‰²éœ€è¦å¸¦alphaé€šé“
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="rect">ÇøÓò</param>
-        /// <param name="centerColor">ÖĞĞÄÑÕÉ«(´øalphaÍ¨µÀ)</param>
-        /// <param name="surroundColor">ÖÜÎ§ÑÕÉ«(´øalphaÍ¨µÀ)</param>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="rect">åŒºåŸŸ</param>
+        /// <param name="centerColor">ä¸­å¿ƒé¢œè‰²(å¸¦alphaé€šé“)</param>
+        /// <param name="surroundColor">å‘¨å›´é¢œè‰²(å¸¦alphaé€šé“)</param>
         public static void DrawAeroGlass(Graphics g, Rectangle rect, Color centerColor, Color surroundColor)
         {
             using (GraphicsPath path = new GraphicsPath())
@@ -995,11 +995,11 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »æÖÆ¶ÔºÅ(°´±ÈÀı)
+        /// ç»˜åˆ¶å¯¹å·(æŒ‰æ¯”ä¾‹)
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="rect">»æÍ¼ÇøÓò</param>
-        /// <param name="color">ÑÕÉ«</param>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="rect">ç»˜å›¾åŒºåŸŸ</param>
+        /// <param name="color">é¢œè‰²</param>
         public static void DrawCheck(Graphics g, Rectangle rect, Color color)
         {
             rect.Width--;
@@ -1013,9 +1013,9 @@ namespace Microsoft.Windows.Forms
             int b = rect.Bottom;
 
             PointF[] points = new PointF[3];
-            points[0] = new PointF(l + width * 0.2f, t + height * 0.522f);//×ó
-            points[1] = new PointF(l + width * 0.422f, b - height * 0.251f);//ÖĞ
-            points[2] = new PointF(r - width * 0.204f, t + height * 0.208f);//ÓÒ
+            points[0] = new PointF(l + width * 0.2f, t + height * 0.522f);//å·¦
+            points[1] = new PointF(l + width * 0.422f, b - height * 0.251f);//ä¸­
+            points[2] = new PointF(r - width * 0.204f, t + height * 0.208f);//å³
             using (Pen pen = new Pen(color, Math.Max(2f, Math.Min(rect.Width, rect.Height) * 0.15f)))
             {
                 using (new SmoothingModeGraphics(g))
@@ -1026,11 +1026,11 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »æÖÆ²æºÅ(°´±ÈÀı)
+        /// ç»˜åˆ¶å‰å·(æŒ‰æ¯”ä¾‹)
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="rect">»æÍ¼ÇøÓò</param>
-        /// <param name="color">ÑÕÉ«</param>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="rect">ç»˜å›¾åŒºåŸŸ</param>
+        /// <param name="color">é¢œè‰²</param>
         public static void DrawCross(Graphics g, Rectangle rect, Color color)
         {
             rect.Width--;
@@ -1063,11 +1063,11 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »æÖÆÊ¡ÂÔºÅ(°´±ÈÀı)
+        /// ç»˜åˆ¶çœç•¥å·(æŒ‰æ¯”ä¾‹)
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="rect">»æÍ¼ÇøÓò</param>
-        /// <param name="color">ÑÕÉ«</param>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="rect">ç»˜å›¾åŒºåŸŸ</param>
+        /// <param name="color">é¢œè‰²</param>
         public static void DrawEllipsis(Graphics g, Rectangle rect, Color color)
         {
             rect.Width--;
@@ -1091,12 +1091,12 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »æÖÆ¼ıÍ·(°´±ÈÀı)
+        /// ç»˜åˆ¶ç®­å¤´(æŒ‰æ¯”ä¾‹)
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="rect">»æÍ¼ÇøÓò</param>
-        /// <param name="color">ÑÕÉ«</param>
-        /// <param name="direction">·½Ïò</param>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="rect">ç»˜å›¾åŒºåŸŸ</param>
+        /// <param name="color">é¢œè‰²</param>
+        /// <param name="direction">æ–¹å‘</param>
         public static void DrawArrow(Graphics g, Rectangle rect, Color color, ArrowDirection direction)
         {
             rect.Width--;
@@ -1108,7 +1108,7 @@ namespace Microsoft.Windows.Forms
             int t = rect.Y;
             int r = rect.Right;
             int b = rect.Bottom;
-            //ÒÔ³¯ÏÂµÄÎª×¼¶¨ÒåÒÔÏÂ±äÁ¿
+            //ä»¥æœä¸‹çš„ä¸ºå‡†å®šä¹‰ä»¥ä¸‹å˜é‡
             float offsetL = 0.24f;
             float offsetT = 0.33f;
             float offsetB = 0.27f;
@@ -1154,13 +1154,13 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// »æÖÆ¼ıÍ·(¿ÉÑ¡´óĞ¡)
+        /// ç»˜åˆ¶ç®­å¤´(å¯é€‰å¤§å°)
         /// </summary>
-        /// <param name="g">»æÍ¼¶ÔÏó</param>
-        /// <param name="rect">ÇøÓò</param>
-        /// <param name="color">ÑÕÉ«</param>
-        /// <param name="direction">¼ıÍ··½Ïò</param>
-        /// <param name="style">´óĞ¡ÑùÊ½</param>
+        /// <param name="g">ç»˜å›¾å¯¹è±¡</param>
+        /// <param name="rect">åŒºåŸŸ</param>
+        /// <param name="color">é¢œè‰²</param>
+        /// <param name="direction">ç®­å¤´æ–¹å‘</param>
+        /// <param name="style">å¤§å°æ ·å¼</param>
         public static void DrawArrow(Graphics g, Rectangle rect, Color color, ArrowDirection direction, SizeStyle style)
         {
             Point point = new Point(rect.Left + (rect.Width / 2), rect.Top + (rect.Height / 2));

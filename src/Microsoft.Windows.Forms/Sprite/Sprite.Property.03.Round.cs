@@ -1,10 +1,10 @@
-namespace Microsoft.Windows.Forms
+ï»¿namespace Microsoft.Windows.Forms
 {
     public partial class Sprite
     {
         private CornerStyle m_RoundCornerStyle = CornerStyle.None;
         /// <summary>
-        /// Ô²½ÇÍäÇúÑùÊ½
+        /// åœ†è§’å¼¯æ›²æ ·å¼
         /// </summary>
         public CornerStyle RoundCornerStyle
         {
@@ -24,7 +24,7 @@ namespace Microsoft.Windows.Forms
 
         private RoundStyle m_RoundStyle = RoundStyle.None;
         /// <summary>
-        /// Ô²½ÇÑùÊ½
+        /// åœ†è§’æ ·å¼
         /// </summary>
         public RoundStyle RoundStyle
         {
@@ -44,7 +44,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_RoundRadius = 0f;
         /// <summary>
-        /// Ô²½Ç°ë¾¶
+        /// åœ†è§’åŠå¾„
         /// </summary>
         public float RoundRadius
         {

@@ -1,4 +1,4 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Microsoft.Windows.Forms
@@ -7,7 +7,7 @@ namespace Microsoft.Windows.Forms
     {
         private BlendStyle m_BackColorBlendStyle = BlendStyle.Solid;
         /// <summary>
-        /// ±³¾°É«»ìºÏÑùÊ½
+        /// èƒŒæ™¯è‰²æ··åˆæ ·å¼
         /// </summary>
         public BlendStyle BackColorBlendStyle
         {
@@ -27,7 +27,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BackColor = DefaultTheme.BackColor;
         /// <summary>
-        /// ±³¾°É«
+        /// èƒŒæ™¯è‰²
         /// </summary>
         public Color BackColor
         {
@@ -47,7 +47,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BackColorHovered = DefaultTheme.BackColor + DefaultTheme.BackColorHoveredVector;
         /// <summary>
-        /// ±³¾°Êó±êÒÆÉÏÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯é¼ æ ‡ç§»ä¸Šé¢œè‰²å‘é‡
         /// </summary>
         public Color BackColorHovered
         {
@@ -67,7 +67,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BackColorPressed = DefaultTheme.BackColor + DefaultTheme.BackColorPressedVector;
         /// <summary>
-        /// ±³¾°Êó±ê°´ÏÂÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯é¼ æ ‡æŒ‰ä¸‹é¢œè‰²å‘é‡
         /// </summary>
         public Color BackColorPressed
         {
@@ -87,7 +87,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BackColorFocused = DefaultTheme.BackColor + DefaultTheme.BackColorFocusedVector;
         /// <summary>
-        /// ±³¾°ÓµÓĞ½¹µãÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯æ‹¥æœ‰ç„¦ç‚¹é¢œè‰²å‘é‡
         /// </summary>
         public Color BackColorFocused
         {
@@ -107,7 +107,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BackColorDisabled = DefaultTheme.BackColor + DefaultTheme.BackColorDisabledVector;
         /// <summary>
-        /// ±³¾°×´Ì¬½ûÓÃÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯çŠ¶æ€ç¦ç”¨é¢œè‰²å‘é‡
         /// </summary>
         public Color BackColorDisabled
         {
@@ -127,7 +127,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BackColorHighlight = DefaultTheme.BackColor + DefaultTheme.BackColorHighlightVector;
         /// <summary>
-        /// ±³¾°¸ßÁÁÑÕÉ«ÏòÁ¿
+        /// èƒŒæ™¯é«˜äº®é¢œè‰²å‘é‡
         /// </summary>
         public Color BackColorHighlight
         {
@@ -147,7 +147,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_BackColorPos1 = 0.45f;
         /// <summary>
-        /// ±³¾°É«Î»ÖÃ1
+        /// èƒŒæ™¯è‰²ä½ç½®1
         /// </summary>
         public float BackColorPos1
         {
@@ -167,7 +167,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_BackColorPos2 = 0.5f;
         /// <summary>
-        /// ±³¾°É«Î»ÖÃ2
+        /// èƒŒæ™¯è‰²ä½ç½®2
         /// </summary>
         public float BackColorPos2
         {
@@ -187,7 +187,7 @@ namespace Microsoft.Windows.Forms
 
         private TabAlignment m_BackColorAlign = TabAlignment.Top;
         /// <summary>
-        /// ±³¾°É«,¾ö¶¨½¥±ä·½Ïò,·´×ª
+        /// èƒŒæ™¯è‰²,å†³å®šæ¸å˜æ–¹å‘,åè½¬
         /// </summary>
         public TabAlignment BackColorAlign
         {

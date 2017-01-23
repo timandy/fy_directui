@@ -1,43 +1,43 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// ¾ØĞÎ½á¹¹¶¨Òå
+    /// çŸ©å½¢ç»“æ„å®šä¹‰
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// ¾ØĞÎ½á¹¹
+        /// çŸ©å½¢ç»“æ„
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct RECT
         {
             /// <summary>
-            /// ×óÉÏ½ÇË®Æ½×ø±ê
+            /// å·¦ä¸Šè§’æ°´å¹³åæ ‡
             /// </summary>
             public int left;
             /// <summary>
-            /// ×óÉÏ½Ç´¹Ö±×ø±ê
+            /// å·¦ä¸Šè§’å‚ç›´åæ ‡
             /// </summary>
             public int top;
             /// <summary>
-            /// ÓÒÏÂ½ÇË®Æ½×ø±ê
+            /// å³ä¸‹è§’æ°´å¹³åæ ‡
             /// </summary>
             public int right;
             /// <summary>
-            /// ÓÒÏÂ½Ç´¹Ö±×ø±ê
+            /// å³ä¸‹è§’å‚ç›´åæ ‡
             /// </summary>
             public int bottom;
 
             /// <summary>
-            /// ¹¹Ôìº¯Êı
+            /// æ„é€ å‡½æ•°
             /// </summary>
-            /// <param name="left">×óÉÏ½ÇË®Æ½×ø±ê</param>
-            /// <param name="top">×óÉÏ½Ç´¹Ö±×ø±ê</param>
-            /// <param name="right">ÓÒÏÂ½ÇË®Æ½×ø±ê</param>
-            /// <param name="bottom">ÓÒÏÂ½Ç´¹Ö±×ø±ê</param>
+            /// <param name="left">å·¦ä¸Šè§’æ°´å¹³åæ ‡</param>
+            /// <param name="top">å·¦ä¸Šè§’å‚ç›´åæ ‡</param>
+            /// <param name="right">å³ä¸‹è§’æ°´å¹³åæ ‡</param>
+            /// <param name="bottom">å³ä¸‹è§’å‚ç›´åæ ‡</param>
             public RECT(int left, int top, int right, int bottom)
             {
                 this.left = left;
@@ -47,9 +47,9 @@ namespace Microsoft.Win32
             }
 
             /// <summary>
-            /// ¹¹Ôìº¯Êı
+            /// æ„é€ å‡½æ•°
             /// </summary>
-            /// <param name="r">Rectangle½á¹¹</param>
+            /// <param name="r">Rectangleç»“æ„</param>
             public RECT(Rectangle r)
             {
                 this.left = r.Left;
@@ -59,20 +59,20 @@ namespace Microsoft.Win32
             }
 
             /// <summary>
-            /// ¹¹Ôìº¯Êı
+            /// æ„é€ å‡½æ•°
             /// </summary>
-            /// <param name="x">×óÉÏ½ÇË®Æ½×ø±ê</param>
-            /// <param name="y">×óÉÏ½Ç´¹Ö±×ø±ê</param>
-            /// <param name="width">¿í¶È</param>
-            /// <param name="height">¸ß¶È</param>
-            /// <returns>¾ØĞÎ½á¹¹</returns>
+            /// <param name="x">å·¦ä¸Šè§’æ°´å¹³åæ ‡</param>
+            /// <param name="y">å·¦ä¸Šè§’å‚ç›´åæ ‡</param>
+            /// <param name="width">å®½åº¦</param>
+            /// <param name="height">é«˜åº¦</param>
+            /// <returns>çŸ©å½¢ç»“æ„</returns>
             public static NativeMethods.RECT FromXYWH(int x, int y, int width, int height)
             {
                 return new NativeMethods.RECT(x, y, x + width, y + height);
             }
 
             /// <summary>
-            /// ¿í¶È
+            /// å®½åº¦
             /// </summary>
             public int Width
             {
@@ -83,7 +83,7 @@ namespace Microsoft.Win32
             }
 
             /// <summary>
-            /// ¸ß¶È
+            /// é«˜åº¦
             /// </summary>
             public int Height
             {
@@ -94,7 +94,7 @@ namespace Microsoft.Win32
             }
 
             /// <summary>
-            /// ×óÉÏ½Ç
+            /// å·¦ä¸Šè§’
             /// </summary>
             public Point Location
             {
@@ -105,7 +105,7 @@ namespace Microsoft.Win32
             }
 
             /// <summary>
-            /// ÓÒÏÂ½Ç
+            /// å³ä¸‹è§’
             /// </summary>
             public Point BottomRight
             {
@@ -116,7 +116,7 @@ namespace Microsoft.Win32
             }
 
             /// <summary>
-            /// ´óĞ¡
+            /// å¤§å°
             /// </summary>
             public Size Size
             {
@@ -127,7 +127,7 @@ namespace Microsoft.Win32
             }
 
             /// <summary>
-            /// ×ª»»Îª System.Drawing.Rectangle.
+            /// è½¬æ¢ä¸º System.Drawing.Rectangle.
             /// </summary>
             /// <returns>System.Drawing.Rectangle</returns>
             public Rectangle ToRectangle()
@@ -136,31 +136,31 @@ namespace Microsoft.Win32
             }
 
             /// <summary>
-            /// ÊÇ·ñ°üº¬Ö¸¶¨µã
+            /// æ˜¯å¦åŒ…å«æŒ‡å®šç‚¹
             /// </summary>
-            /// <param name="pt">µã</param>
-            /// <returns>°üº¬·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+            /// <param name="pt">ç‚¹</param>
+            /// <returns>åŒ…å«è¿”å›true,å¦åˆ™è¿”å›false</returns>
             public bool Contains(NativeMethods.POINT pt)
             {
                 return this.Contains(pt.x, pt.y);
             }
 
             /// <summary>
-            /// ÊÇ·ñ°üº¬Ö¸¶¨µã
+            /// æ˜¯å¦åŒ…å«æŒ‡å®šç‚¹
             /// </summary>
-            /// <param name="pt">µã</param>
-            /// <returns>°üº¬·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+            /// <param name="pt">ç‚¹</param>
+            /// <returns>åŒ…å«è¿”å›true,å¦åˆ™è¿”å›false</returns>
             public bool Contains(Point pt)
             {
                 return this.Contains(pt.X, pt.Y);
             }
 
             /// <summary>
-            /// ÊÇ·ñ°üº¬Ö¸¶¨×ø±ê
+            /// æ˜¯å¦åŒ…å«æŒ‡å®šåæ ‡
             /// </summary>
-            /// <param name="x">Ë®Æ½×ø±ê</param>
-            /// <param name="y">´¹Ö±×ø±ê</param>
-            /// <returns>°üº¬·µ»Øtrue,·ñÔò·µ»Øfalse</returns>
+            /// <param name="x">æ°´å¹³åæ ‡</param>
+            /// <param name="y">å‚ç›´åæ ‡</param>
+            /// <returns>åŒ…å«è¿”å›true,å¦åˆ™è¿”å›false</returns>
             public bool Contains(int x, int y)
             {
                 return ((this.left <= x) && (x < this.right) && (this.top <= y) && (y < this.bottom));

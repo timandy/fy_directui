@@ -1,4 +1,4 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Drawing.Text;
 
 namespace Microsoft.Windows.Forms
@@ -7,7 +7,7 @@ namespace Microsoft.Windows.Forms
     {
         private string m_Text = null;
         /// <summary>
-        /// ÎÄ±¾
+        /// æ–‡æœ¬
         /// </summary>
         public string Text
         {
@@ -27,7 +27,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_TextOffset = Point.Empty;
         /// <summary>
-        /// ÎÄ±¾Æ«ÒÆ
+        /// æ–‡æœ¬åç§»
         /// </summary>
         public Point TextOffset
         {
@@ -47,7 +47,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_TextOffsetHovered = Point.Empty;
         /// <summary>
-        /// Êó±êÒÆÉÏÊ±ÔÚTextOffsetÉÏÔÙ´ÎÆ«ÒÆ
+        /// é¼ æ ‡ç§»ä¸Šæ—¶åœ¨TextOffsetä¸Šå†æ¬¡åç§»
         /// </summary>
         public Point TextOffsetHovered
         {
@@ -67,7 +67,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_TextOffsetPressed = Point.Empty;
         /// <summary>
-        /// Êó±ê°´ÏÂÊ±ÔÚTextOffsetÉÏÔÙ´ÎÆ«ÒÆ
+        /// é¼ æ ‡æŒ‰ä¸‹æ—¶åœ¨TextOffsetä¸Šå†æ¬¡åç§»
         /// </summary>
         public Point TextOffsetPressed
         {
@@ -87,7 +87,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_TextOffsetFocused = Point.Empty;
         /// <summary>
-        /// »ñÈ¡½¹µãÊ±ÔÚTextOffsetÉÏÔÙ´ÎÆ«ÒÆ
+        /// è·å–ç„¦ç‚¹æ—¶åœ¨TextOffsetä¸Šå†æ¬¡åç§»
         /// </summary>
         public Point TextOffsetFocused
         {
@@ -107,7 +107,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_TextOffsetDisabled = Point.Empty;
         /// <summary>
-        /// ½ûÓÃÊ±ÔÚTextOffsetÉÏÔÙ´ÎÆ«ÒÆ
+        /// ç¦ç”¨æ—¶åœ¨TextOffsetä¸Šå†æ¬¡åç§»
         /// </summary>
         public Point TextOffsetDisabled
         {
@@ -127,7 +127,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_TextOffsetHighlight = Point.Empty;
         /// <summary>
-        /// ¸ßÁÁÊ±ÔÚTextOffsetÉÏÔÙ´ÎÆ«ÒÆ
+        /// é«˜äº®æ—¶åœ¨TextOffsetä¸Šå†æ¬¡åç§»
         /// </summary>
         public Point TextOffsetHighlight
         {
@@ -147,7 +147,7 @@ namespace Microsoft.Windows.Forms
 
         private Font m_Font = DefaultTheme.Font;
         /// <summary>
-        /// ×ÖÌå.¸Ã×ÖÌåÎªÈ«¾Ö¾²Ì¬±äÁ¿,²»ÒªÊÍ·Å
+        /// å­—ä½“.è¯¥å­—ä½“ä¸ºå…¨å±€é™æ€å˜é‡,ä¸è¦é‡Šæ”¾
         /// </summary>
         public Font Font
         {
@@ -167,7 +167,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_ForeColor = DefaultTheme.ForeColor;
         /// <summary>
-        /// Ç°¾°É«
+        /// å‰æ™¯è‰²
         /// </summary>
         public Color ForeColor
         {
@@ -187,7 +187,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_ForeColorHovered = DefaultTheme.ForeColor + DefaultTheme.ForeColorHoveredVector;
         /// <summary>
-        /// Ç°¾°Êó±êÒÆÉÏÑÕÉ«ÏòÁ¿
+        /// å‰æ™¯é¼ æ ‡ç§»ä¸Šé¢œè‰²å‘é‡
         /// </summary>
         public Color ForeColorHovered
         {
@@ -207,7 +207,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_ForeColorPressed = DefaultTheme.ForeColor + DefaultTheme.ForeColorPressedVector;
         /// <summary>
-        /// Ç°¾°Êó±ê°´ÏÂÑÕÉ«ÏòÁ¿
+        /// å‰æ™¯é¼ æ ‡æŒ‰ä¸‹é¢œè‰²å‘é‡
         /// </summary>
         public Color ForeColorPressed
         {
@@ -227,7 +227,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_ForeColorFocused = DefaultTheme.ForeColor + DefaultTheme.ForeColorFocusedVector;
         /// <summary>
-        /// Ç°¾°»ñÈ¡½¹µãÑÕÉ«ÏòÁ¿
+        /// å‰æ™¯è·å–ç„¦ç‚¹é¢œè‰²å‘é‡
         /// </summary>
         public Color ForeColorFocused
         {
@@ -247,7 +247,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_ForeColorDisabled = DefaultTheme.ForeColor + DefaultTheme.ForeColorDisabledVector;
         /// <summary>
-        /// Ç°¾°×´Ì¬½ûÓÃÑÕÉ«ÏòÁ¿
+        /// å‰æ™¯çŠ¶æ€ç¦ç”¨é¢œè‰²å‘é‡
         /// </summary>
         public Color ForeColorDisabled
         {
@@ -267,7 +267,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_ForeColorHighlight = DefaultTheme.ForeColor + DefaultTheme.ForeColorHighlightVector;
         /// <summary>
-        /// Ç°¾°¸ßÁÁÑÕÉ«ÏòÁ¿
+        /// å‰æ™¯é«˜äº®é¢œè‰²å‘é‡
         /// </summary>
         public Color ForeColorHighlight
         {
@@ -287,7 +287,7 @@ namespace Microsoft.Windows.Forms
 
         private TextRenderingHint m_TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
         /// <summary>
-        /// ÎÄ±¾³ÊÏÖÖÊÁ¿
+        /// æ–‡æœ¬å‘ˆç°è´¨é‡
         /// </summary>
         public TextRenderingHint TextRenderingHint
         {
@@ -307,7 +307,7 @@ namespace Microsoft.Windows.Forms
 
         private ContentAlignment m_TextAlign = ContentAlignment.MiddleCenter;
         /// <summary>
-        /// ÎÄ±¾¶ÔÆë·½Ê½
+        /// æ–‡æœ¬å¯¹é½æ–¹å¼
         /// </summary>
         public ContentAlignment TextAlign
         {
@@ -327,7 +327,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_TextRotateAngle = 0f;
         /// <summary>
-        /// ÎÄ±¾Ğı×ª½Ç¶È
+        /// æ–‡æœ¬æ—‹è½¬è§’åº¦
         /// </summary>
         public float TextRotateAngle
         {
@@ -347,7 +347,7 @@ namespace Microsoft.Windows.Forms
 
         private bool m_TextGrayOnDisabled = true;
         /// <summary>
-        /// ×´Ì¬½ûÓÃÊ±ÎÄ±¾ÊÇ·ñ±ä»Ò
+        /// çŠ¶æ€ç¦ç”¨æ—¶æ–‡æœ¬æ˜¯å¦å˜ç°
         /// </summary>
         public bool TextGrayOnDisabled
         {
@@ -368,7 +368,7 @@ namespace Microsoft.Windows.Forms
 
         private ShadowShapeStyle m_TextShadowShapeStyle = ShadowShapeStyle.None;
         /// <summary>
-        /// ÎÄ±¾ÒõÓ°Ãè±ßÑùÊ½
+        /// æ–‡æœ¬é˜´å½±æè¾¹æ ·å¼
         /// </summary>
         public ShadowShapeStyle TextShadowShapeStyle
         {
@@ -388,7 +388,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_TextShadowColor = DefaultTheme.LightLightForeColor;
         /// <summary>
-        /// ÒõÓ°ÑÕÉ«
+        /// é˜´å½±é¢œè‰²
         /// </summary>
         public Color TextShadowColor
         {
@@ -408,7 +408,7 @@ namespace Microsoft.Windows.Forms
 
         private Point m_TextShadowMatrixOffset = Point.Empty;
         /// <summary>
-        /// ÒõÓ°Æ«ÒÆÁ¿
+        /// é˜´å½±åç§»é‡
         /// </summary>
         public Point TextShadowMatrixOffset
         {
@@ -428,7 +428,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_TextShapeOfShadowColor = DefaultTheme.LightLightForeColor;
         /// <summary>
-        /// ÒõÓ°Ãè±ßÑÕÉ«
+        /// é˜´å½±æè¾¹é¢œè‰²
         /// </summary>
         public Color TextShapeOfShadowColor
         {
@@ -448,7 +448,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_TextShapeOfShadowWidth = 0f;
         /// <summary>
-        /// ÒõÓ°Ãè±ß¿í¶È
+        /// é˜´å½±æè¾¹å®½åº¦
         /// </summary>
         public float TextShapeOfShadowWidth
         {
@@ -468,7 +468,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_TextShapeOfTextColor = DefaultTheme.LightLightForeColor;
         /// <summary>
-        /// ÎÄ±¾Ãè±ßÑÕÉ«
+        /// æ–‡æœ¬æè¾¹é¢œè‰²
         /// </summary>
         public Color TextShapeOfTextColor
         {
@@ -488,7 +488,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_TextShapeOfTextWidth = 0f;
         /// <summary>
-        /// ÎÄ±¾Ãè±ß¿í¶È
+        /// æ–‡æœ¬æè¾¹å®½åº¦
         /// </summary>
         public float TextShapeOfTextWidth
         {

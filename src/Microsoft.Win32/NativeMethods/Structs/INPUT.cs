@@ -1,14 +1,14 @@
-using System.Runtime.InteropServices;
+ï»¿using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// INPUT¶¨Òå
+    /// INPUTå®šä¹‰
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// ÊäÈëÊı¾İ,Èç¹ûÊÇ64Î»ÏµÍ³Ó¦¸Ã¸ÄÎª[FieldOffset(8)]
+        /// è¾“å…¥æ•°æ®,å¦‚æœæ˜¯64ä½ç³»ç»Ÿåº”è¯¥æ”¹ä¸º[FieldOffset(8)]
         /// </summary>
         [StructLayout(LayoutKind.Explicit)]
         public struct INPUT

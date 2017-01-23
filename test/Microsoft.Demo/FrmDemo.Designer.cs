@@ -36,6 +36,7 @@
             this.btnNoBorder2 = new System.Windows.Forms.Button();
             this.btnAddFrame = new System.Windows.Forms.Button();
             this.btnClearFrame = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -120,9 +121,20 @@
             this.btnClearFrame.UseVisualStyleBackColor = false;
             this.btnClearFrame.Click += new System.EventHandler(this.btnClearFrame_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(47, 323);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // FrmDemo
             // 
             this.ClientSize = new System.Drawing.Size(701, 439);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnClearFrame);
             this.Controls.Add(this.btnAddFrame);
             this.Controls.Add(this.btnNoBorder2);
@@ -146,6 +158,7 @@
         public Windows.Forms.UIWinControl uiWinControl1;
         private System.Windows.Forms.Button btnAddFrame;
         private System.Windows.Forms.Button btnClearFrame;
+        private System.Windows.Forms.Button button2;
     }
 }
 

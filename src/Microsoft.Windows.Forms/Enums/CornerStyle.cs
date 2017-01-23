@@ -1,57 +1,57 @@
-using System;
+ï»¿using System;
 
 namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// ±ß½ÇÍäÇúÑùÊ½¡£
+    /// è¾¹è§’å¼¯æ›²æ ·å¼ã€‚
     /// </summary>
     [Flags]
     public enum CornerStyle : int
     {
         /// <summary>
-        /// Ä¬ÈÏÑùÊ½
+        /// é»˜è®¤æ ·å¼
         /// </summary>
         None = 0x0000,
         /// <summary>
-        /// ×óÉÏ½Ç,×óÏÂ½ÇÍùÄÚ²¿ÍäÇú
+        /// å·¦ä¸Šè§’,å·¦ä¸‹è§’å¾€å†…éƒ¨å¼¯æ›²
         /// </summary>
         LeftIn = 0x0001,
         /// <summary>
-        /// ×óÉÏ½Ç,ÓÒÉÏ½ÇÍùÄÚ²¿ÍäÇú
+        /// å·¦ä¸Šè§’,å³ä¸Šè§’å¾€å†…éƒ¨å¼¯æ›²
         /// </summary>
         TopIn = 0x0002,
         /// <summary>
-        /// ÓÒÉÏ½Ç,ÓÒÏÂ½ÇÍùÄÚ²¿ÍäÇú
+        /// å³ä¸Šè§’,å³ä¸‹è§’å¾€å†…éƒ¨å¼¯æ›²
         /// </summary>
         RightIn = 0x0004,
         /// <summary>
-        /// ×óÏÂ½Ç,ÓÒÏÂ½ÇÍùÄÚ²¿ÍäÇú
+        /// å·¦ä¸‹è§’,å³ä¸‹è§’å¾€å†…éƒ¨å¼¯æ›²
         /// </summary>
         BottomIn = 0x0008,
 
         /// <summary>
-        /// ×óÉÏ½Ç,×óÏÂ½ÇÍùÍâ²¿ÍäÇú
+        /// å·¦ä¸Šè§’,å·¦ä¸‹è§’å¾€å¤–éƒ¨å¼¯æ›²
         /// </summary>
         LeftOut = 0x0010,
         /// <summary>
-        /// ×óÉÏ½Ç,ÓÒÉÏ½ÇÍùÍâ²¿ÍäÇú
+        /// å·¦ä¸Šè§’,å³ä¸Šè§’å¾€å¤–éƒ¨å¼¯æ›²
         /// </summary>
         TopOut = 0x0020,
         /// <summary>
-        /// ÓÒÉÏ½Ç,ÓÒÏÂ½ÇÍùÍâ²¿ÍäÇú
+        /// å³ä¸Šè§’,å³ä¸‹è§’å¾€å¤–éƒ¨å¼¯æ›²
         /// </summary>
         RightOut = 0x0040,
         /// <summary>
-        /// ×óÏÂ½Ç,ÓÒÏÂ½ÇÍùÍâ²¿ÍäÇú
+        /// å·¦ä¸‹è§’,å³ä¸‹è§’å¾€å¤–éƒ¨å¼¯æ›²
         /// </summary>
         BottomOut = 0x0080,
 
         /// <summary>
-        /// Ë®Æ½(LeftIn|RightIn|LeftOut|RightOut)
+        /// æ°´å¹³(LeftIn|RightIn|LeftOut|RightOut)
         /// </summary>
         Horizontal = 0x0055,
         /// <summary>
-        /// ´¹Ö±(TopIn|BottomIn|TopOut|BottomOut)
+        /// åž‚ç›´(TopIn|BottomIn|TopOut|BottomOut)
         /// </summary>
         Vertical = 0x00AA,
     }

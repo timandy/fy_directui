@@ -1,29 +1,29 @@
-using System;
+锘縰sing System;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// 绘图结构定义
+    /// 缁樺浘缁撴瀯瀹氫箟
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// 绘图结构
+        /// 缁樺浘缁撴瀯
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct PAINTSTRUCT
         {
             /// <summary>
-            /// 是用于绘制的句柄
+            /// 鏄敤浜庣粯鍒剁殑鍙ユ焺
             /// </summary>
             public IntPtr hdc;
             /// <summary>
-            /// 如果为非零值则擦除背景，否则不擦除背景
+            /// 濡傛灉涓洪潪闆跺�煎垯鎿﹂櫎鑳屾櫙锛屽惁鍒欎笉鎿﹂櫎鑳屾櫙
             /// </summary>
             public bool fErase;
             /// <summary>
-            /// 通过制定左上角和右下角的坐标确定一个要绘制的矩形范围，该矩形单位相对于客户区左上角
+            /// 閫氳繃鍒跺畾宸︿笂瑙掑拰鍙充笅瑙掔殑鍧愭爣纭畾涓�涓缁樺埗鐨勭煩褰㈣寖鍥达紝璇ョ煩褰㈠崟浣嶇浉瀵逛簬瀹㈡埛鍖哄乏涓婅
             /// </summary>
             public RECT rcPaint;
             /// <summary>

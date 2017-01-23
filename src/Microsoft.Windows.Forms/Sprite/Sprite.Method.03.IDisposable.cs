@@ -1,16 +1,16 @@
-namespace Microsoft.Windows.Forms
+ï»¿namespace Microsoft.Windows.Forms
 {
     partial class Sprite
     {
         /// <summary>
-        /// ÊÍ·ÅÍĞ¹Ü×ÊÔ´
+        /// é‡Šæ”¾æ‰˜ç®¡èµ„æº
         /// </summary>
         protected virtual void DisposeResources()
         {
-            //=================È¡ÏûÒıÓÃ
+            //=================å–æ¶ˆå¼•ç”¨
             this.m_Owner = null;
 
-            //=================È¡ÏûÒıÓÃ
+            //=================å–æ¶ˆå¼•ç”¨
             this.m_BackgroundImage = null;
             this.m_BackgroundImageHovered = null;
             this.m_BackgroundImagePressed = null;
@@ -36,19 +36,19 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// ÊÍ·ÅÖĞ¼äÒıÓÃÖµ
+        /// é‡Šæ”¾ä¸­é—´å¼•ç”¨å€¼
         /// </summary>
         protected virtual void DisposeReferences()
         {
-            //=================¼ôÇĞÇøÏà¹Ø
-            this.m_Graphics = null;//È¡ÏûÒıÓÃ
-            if (this.m_GraphicsClip != null)//ÔÚBeginRender
+            //=================å‰ªåˆ‡åŒºç›¸å…³
+            this.m_Graphics = null;//å–æ¶ˆå¼•ç”¨
+            if (this.m_GraphicsClip != null)//åœ¨BeginRender
             {
                 this.m_GraphicsClip.Dispose();
                 this.m_GraphicsClip = null;
             }
 
-            //=================»æÖÆ²ÎÊı
+            //=================ç»˜åˆ¶å‚æ•°
             if (this.m_CurrentBackColorPath != null)
             {
                 this.m_CurrentBackColorPath.Dispose();
@@ -90,9 +90,9 @@ namespace Microsoft.Windows.Forms
         }
 
         /// <summary>
-        /// ÊÍ·Å×ÊÔ´
+        /// é‡Šæ”¾èµ„æº
         /// </summary>
-        /// <param name="disposing">ÊÍ·ÅÍĞ¹Ü×ÊÔ´Îªtrue,·ñÔòÎªfalse</param>
+        /// <param name="disposing">é‡Šæ”¾æ‰˜ç®¡èµ„æºä¸ºtrue,å¦åˆ™ä¸ºfalse</param>
         protected override void Dispose(bool disposing)
         {
             this.DisposeReferences();

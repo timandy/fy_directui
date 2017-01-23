@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// TOOLINFO¶¨Òå
+    /// TOOLINFOå®šä¹‰
     /// </summary>
     public static partial class NativeMethods
     {

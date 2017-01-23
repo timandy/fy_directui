@@ -1,4 +1,4 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace Microsoft.Windows.Forms
@@ -7,7 +7,7 @@ namespace Microsoft.Windows.Forms
     {
         private BorderVisibleStyle m_BorderVisibleStyle = BorderVisibleStyle.All;
         /// <summary>
-        /// ±ß¿òÑùÊ½
+        /// è¾¹æ¡†æ ·å¼
         /// </summary>
         public BorderVisibleStyle BorderVisibleStyle
         {
@@ -27,7 +27,7 @@ namespace Microsoft.Windows.Forms
 
         private BlendStyle m_BorderBlendStyle = BlendStyle.Solid;
         /// <summary>
-        /// ±ß¿ò»ìºÏÑùÊ½
+        /// è¾¹æ¡†æ··åˆæ ·å¼
         /// </summary>
         public BlendStyle BorderBlendStyle
         {
@@ -47,7 +47,7 @@ namespace Microsoft.Windows.Forms
 
         private DashStyle m_BorderDashStyle = DashStyle.Solid;
         /// <summary>
-        /// ±ß¿ò»æÖÆĞéÏßÑùÊ½
+        /// è¾¹æ¡†ç»˜åˆ¶è™šçº¿æ ·å¼
         /// </summary>
         public DashStyle BorderDashStyle
         {
@@ -67,7 +67,7 @@ namespace Microsoft.Windows.Forms
 
         private float[] m_BorderDashPattern = null;
         /// <summary>
-        /// ±ß¿ò×Ô¶¨ÒåµÄ¶Ì»®ÏßºÍ¿Õ°×ÇøÓòµÄÊı×é
+        /// è¾¹æ¡†è‡ªå®šä¹‰çš„çŸ­åˆ’çº¿å’Œç©ºç™½åŒºåŸŸçš„æ•°ç»„
         /// </summary>
         public float[] BorderDashPattern
         {
@@ -87,7 +87,7 @@ namespace Microsoft.Windows.Forms
 
         private DashCap m_BorderDashCap = DashCap.Flat;
         /// <summary>
-        /// ±ß¿òĞéÏß¶ÏÏÒ¶ÏÖÕµãµÄÏßÃ±ÑùÊ½
+        /// è¾¹æ¡†è™šçº¿æ–­å¼¦æ–­ç»ˆç‚¹çš„çº¿å¸½æ ·å¼
         /// </summary>
         public DashCap BorderDashCap
         {
@@ -107,7 +107,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_BorderDashOffset = 0f;
         /// <summary>
-        /// ±ß¿òÖ±ÏßµÄÆğµãµ½¶Ì»®ÏßÍ¼°¸ÆğÊ¼´¦µÄ¾àÀë
+        /// è¾¹æ¡†ç›´çº¿çš„èµ·ç‚¹åˆ°çŸ­åˆ’çº¿å›¾æ¡ˆèµ·å§‹å¤„çš„è·ç¦»
         /// </summary>
         public float BorderDashOffset
         {
@@ -127,7 +127,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BorderColor = DefaultTheme.BorderColor;
         /// <summary>
-        /// ±ß¿òÑÕÉ«
+        /// è¾¹æ¡†é¢œè‰²
         /// </summary>
         public Color BorderColor
         {
@@ -147,7 +147,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BorderColorHovered = DefaultTheme.BorderColor + DefaultTheme.BorderColorHoveredVector;
         /// <summary>
-        /// ±ß¿òÉ«Êó±êÒÆÉÏÏòÁ¿
+        /// è¾¹æ¡†è‰²é¼ æ ‡ç§»ä¸Šå‘é‡
         /// </summary>
         public Color BorderColorHovered
         {
@@ -167,7 +167,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BorderColorPressed = DefaultTheme.BorderColor + DefaultTheme.BorderColorPressedVector;
         /// <summary>
-        /// ±ß¿òÉ«Êó±ê°´ÏÂÏòÁ¿
+        /// è¾¹æ¡†è‰²é¼ æ ‡æŒ‰ä¸‹å‘é‡
         /// </summary>
         public Color BorderColorPressed
         {
@@ -187,7 +187,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BorderColorFocused = DefaultTheme.BorderColor + DefaultTheme.BorderColorFocusedVector;
         /// <summary>
-        /// ±ß¿òÉ«»ñÈ¡½¹µãÏòÁ¿
+        /// è¾¹æ¡†è‰²è·å–ç„¦ç‚¹å‘é‡
         /// </summary>
         public Color BorderColorFocused
         {
@@ -207,7 +207,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BorderColorDisabled = DefaultTheme.BorderColor + DefaultTheme.BorderColorDisabledVector;
         /// <summary>
-        /// ±ß¿òÉ«×´Ì¬½ûÓÃÏòÁ¿
+        /// è¾¹æ¡†è‰²çŠ¶æ€ç¦ç”¨å‘é‡
         /// </summary>
         public Color BorderColorDisabled
         {
@@ -227,7 +227,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_BorderColorHighlight = DefaultTheme.BorderColor + DefaultTheme.BorderColorHighlightVector;
         /// <summary>
-        /// ±ß¿òÉ«¸ßÁÁÏòÁ¿
+        /// è¾¹æ¡†è‰²é«˜äº®å‘é‡
         /// </summary>
         public Color BorderColorHighlight
         {
@@ -247,7 +247,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_BorderColorPos1 = 0.45f;
         /// <summary>
-        /// ±ß¿òÑÕÉ«Î»ÖÃ1
+        /// è¾¹æ¡†é¢œè‰²ä½ç½®1
         /// </summary>
         public float BorderColorPos1
         {
@@ -267,7 +267,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_BorderColorPos2 = 0.5f;
         /// <summary>
-        /// ±ß¿òÑÕÉ«Î»ÖÃ2
+        /// è¾¹æ¡†é¢œè‰²ä½ç½®2
         /// </summary>
         public float BorderColorPos2
         {
@@ -288,7 +288,7 @@ namespace Microsoft.Windows.Forms
 
         private BorderVisibleStyle m_InnerBorderVisibleStyle = BorderVisibleStyle.None;
         /// <summary>
-        /// ÄÚ±ß¿òÑùÊ½
+        /// å†…è¾¹æ¡†æ ·å¼
         /// </summary>
         public BorderVisibleStyle InnerBorderVisibleStyle
         {
@@ -308,7 +308,7 @@ namespace Microsoft.Windows.Forms
 
         private BlendStyle m_InnerBorderBlendStyle = BlendStyle.Solid;
         /// <summary>
-        /// ÄÚ±ß¿ò»ìºÏÑùÊ½
+        /// å†…è¾¹æ¡†æ··åˆæ ·å¼
         /// </summary>
         public BlendStyle InnerBorderBlendStyle
         {
@@ -328,7 +328,7 @@ namespace Microsoft.Windows.Forms
 
         private DashStyle m_InnerBorderDashStyle = DashStyle.Solid;
         /// <summary>
-        /// ÄÚ±ß¿ò»æÖÆĞéÏßÑùÊ½
+        /// å†…è¾¹æ¡†ç»˜åˆ¶è™šçº¿æ ·å¼
         /// </summary>
         public DashStyle InnerBorderDashStyle
         {
@@ -348,7 +348,7 @@ namespace Microsoft.Windows.Forms
 
         private float[] m_InnerBorderDashPattern = null;
         /// <summary>
-        /// ÄÚ±ß¿ò×Ô¶¨ÒåµÄ¶Ì»®ÏßºÍ¿Õ°×ÇøÓòµÄÊı×é
+        /// å†…è¾¹æ¡†è‡ªå®šä¹‰çš„çŸ­åˆ’çº¿å’Œç©ºç™½åŒºåŸŸçš„æ•°ç»„
         /// </summary>
         public float[] InnerBorderDashPattern
         {
@@ -368,7 +368,7 @@ namespace Microsoft.Windows.Forms
 
         private DashCap m_InnerBorderDashCap = DashCap.Flat;
         /// <summary>
-        /// ÄÚ±ß¿òĞéÏß¶ÏÏÒ¶ÏÖÕµãµÄÏßÃ±ÑùÊ½
+        /// å†…è¾¹æ¡†è™šçº¿æ–­å¼¦æ–­ç»ˆç‚¹çš„çº¿å¸½æ ·å¼
         /// </summary>
         public DashCap InnerBorderDashCap
         {
@@ -388,7 +388,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_InnerBorderDashOffset = 0f;
         /// <summary>
-        /// ÄÚ±ß¿òÖ±ÏßµÄÆğµãµ½¶Ì»®ÏßÍ¼°¸ÆğÊ¼´¦µÄ¾àÀë
+        /// å†…è¾¹æ¡†ç›´çº¿çš„èµ·ç‚¹åˆ°çŸ­åˆ’çº¿å›¾æ¡ˆèµ·å§‹å¤„çš„è·ç¦»
         /// </summary>
         public float InnerBorderDashOffset
         {
@@ -408,7 +408,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_InnerBorderColor = DefaultTheme.InnerBorderColor;
         /// <summary>
-        /// ÄÚ±ß¿òÑÕÉ«
+        /// å†…è¾¹æ¡†é¢œè‰²
         /// </summary>
         public Color InnerBorderColor
         {
@@ -428,7 +428,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_InnerBorderColorHovered = DefaultTheme.InnerBorderColor + DefaultTheme.InnerBorderColorHoveredVector;
         /// <summary>
-        /// ÄÚ±ß¿òÉ«Êó±êÒÆÉÏÏòÁ¿
+        /// å†…è¾¹æ¡†è‰²é¼ æ ‡ç§»ä¸Šå‘é‡
         /// </summary>
         public Color InnerBorderColorHovered
         {
@@ -448,7 +448,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_InnerBorderColorPressed = DefaultTheme.InnerBorderColor + DefaultTheme.InnerBorderColorPressedVector;
         /// <summary>
-        /// ÄÚ±ß¿òÉ«Êó±ê°´ÏÂÏòÁ¿
+        /// å†…è¾¹æ¡†è‰²é¼ æ ‡æŒ‰ä¸‹å‘é‡
         /// </summary>
         public Color InnerBorderColorPressed
         {
@@ -468,7 +468,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_InnerBorderColorFocused = DefaultTheme.InnerBorderColor + DefaultTheme.InnerBorderColorFocusedVector;
         /// <summary>
-        /// ÄÚ±ß¿òÉ«»ñÈ¡½¹µãÏòÁ¿
+        /// å†…è¾¹æ¡†è‰²è·å–ç„¦ç‚¹å‘é‡
         /// </summary>
         public Color InnerBorderColorFocused
         {
@@ -488,7 +488,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_InnerBorderColorDisabled = DefaultTheme.InnerBorderColor + DefaultTheme.InnerBorderColorDisabledVector;
         /// <summary>
-        /// ÄÚ±ß¿òÉ«×´Ì¬½ûÓÃÏòÁ¿
+        /// å†…è¾¹æ¡†è‰²çŠ¶æ€ç¦ç”¨å‘é‡
         /// </summary>
         public Color InnerBorderColorDisabled
         {
@@ -508,7 +508,7 @@ namespace Microsoft.Windows.Forms
 
         private Color m_InnerBorderColorHighlight = DefaultTheme.InnerBorderColor + DefaultTheme.InnerBorderColorHighlightVector;
         /// <summary>
-        /// ÄÚ±ß¿òÉ«¸ßÁÁÏòÁ¿
+        /// å†…è¾¹æ¡†è‰²é«˜äº®å‘é‡
         /// </summary>
         public Color InnerBorderColorHighlight
         {
@@ -528,7 +528,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_InnerBorderColorPos1 = 0.45f;
         /// <summary>
-        /// ÄÚ±ß¿òÑÕÉ«Î»ÖÃ1
+        /// å†…è¾¹æ¡†é¢œè‰²ä½ç½®1
         /// </summary>
         public float InnerBorderColorPos1
         {
@@ -548,7 +548,7 @@ namespace Microsoft.Windows.Forms
 
         private float m_InnerBorderColorPos2 = 0.5f;
         /// <summary>
-        /// ÄÚ±ß¿òÑÕÉ«Î»ÖÃ2
+        /// å†…è¾¹æ¡†é¢œè‰²ä½ç½®2
         /// </summary>
         public float InnerBorderColorPos2
         {

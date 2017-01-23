@@ -1,101 +1,101 @@
-using System.Drawing;
+ï»¿using System.Drawing;
 using Microsoft.Drawing;
 
 namespace Microsoft.Windows.Forms
 {
     /// <summary>
-    /// Ä¬ÈÏÖµ·½°¸
+    /// é»˜è®¤å€¼æ–¹æ¡ˆ
     /// </summary>
     public static partial class DefaultTheme
     {
         /// <summary>
-        /// ÉîÉî±ß¿òÉ«
+        /// æ·±æ·±è¾¹æ¡†è‰²
         /// </summary>
         public static Color DarkDarkBorderColor = Color.FromArgb(83, 83, 90);
         /// <summary>
-        /// ÉîÉî±ß¿òÉ«
+        /// æ·±æ·±è¾¹æ¡†è‰²
         /// </summary>
         public const string _DarkDarkBorderColor = "83, 83, 90";
 
         /// <summary>
-        /// Éî±ß¿òÉ«
+        /// æ·±è¾¹æ¡†è‰²
         /// </summary>
         public static Color DarkBorderColor = Color.FromArgb(73, 73, 80);
         /// <summary>
-        /// Éî±ß¿òÉ«
+        /// æ·±è¾¹æ¡†è‰²
         /// </summary>
         public const string _DarkBorderColor = "73, 73, 80";
 
         /// <summary>
-        /// ±ß¿òÑÕÉ«
+        /// è¾¹æ¡†é¢œè‰²
         /// </summary>
         public static Color BorderColor = Color.FromArgb(63, 63, 70);
         /// <summary>
-        /// ±ß¿òÑÕÉ«
+        /// è¾¹æ¡†é¢œè‰²
         /// </summary>
         public const string _BorderColor = "63, 63, 70";
 
         /// <summary>
-        /// Ç³±ß¿òÉ«
+        /// æµ…è¾¹æ¡†è‰²
         /// </summary>
         public static Color LightBorderColor = Color.FromArgb(53, 53, 60);
         /// <summary>
-        /// Ç³±ß¿òÉ«
+        /// æµ…è¾¹æ¡†è‰²
         /// </summary>
         public const string _LightBorderColor = "53, 53, 60";
 
         /// <summary>
-        /// Ç³Ç³±ß¿òÉ«
+        /// æµ…æµ…è¾¹æ¡†è‰²
         /// </summary>
         public static Color LightLightBorderColor = Color.FromArgb(43, 43, 50);
         /// <summary>
-        /// Ç³Ç³±ß¿òÉ«
+        /// æµ…æµ…è¾¹æ¡†è‰²
         /// </summary>
         public const string _LightLightBorderColor = "43, 43, 50";
 
 
         /// <summary>
-        /// ±ß¿òÊó±êÒÆÉÏÑÕÉ«ÏòÁ¿
+        /// è¾¹æ¡†é¼ æ ‡ç§»ä¸Šé¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector BorderColorHoveredVector = ColorVector.FromArgb(10, 10, 10);
         /// <summary>
-        /// ±ß¿òÊó±êÒÆÉÏÑÕÉ«ÏòÁ¿
+        /// è¾¹æ¡†é¼ æ ‡ç§»ä¸Šé¢œè‰²å‘é‡
         /// </summary>
         public const string _BorderColorHoveredVector = "10, 10, 10";
 
         /// <summary>
-        /// ±ß¿òÊó±ê°´ÏÂÑÕÉ«ÏòÁ¿
+        /// è¾¹æ¡†é¼ æ ‡æŒ‰ä¸‹é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector BorderColorPressedVector = ColorVector.FromArgb(20, 20, 20);
         /// <summary>
-        /// ±ß¿òÊó±ê°´ÏÂÑÕÉ«ÏòÁ¿
+        /// è¾¹æ¡†é¼ æ ‡æŒ‰ä¸‹é¢œè‰²å‘é‡
         /// </summary>
         public const string _BorderColorPressedVector = "20, 20, 20";
 
         /// <summary>
-        /// ±ß¿ò»ñÈ¡½¹µãÑÕÉ«ÏòÁ¿
+        /// è¾¹æ¡†è·å–ç„¦ç‚¹é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector BorderColorFocusedVector = ColorVector.FromArgb(5, 5, 5);
         /// <summary>
-        /// ±ß¿ò»ñÈ¡½¹µãÑÕÉ«ÏòÁ¿
+        /// è¾¹æ¡†è·å–ç„¦ç‚¹é¢œè‰²å‘é‡
         /// </summary>
         public const string _BorderColorFocusedVector = "5, 5, 5";
 
         /// <summary>
-        /// ±ß¿ò×´Ì¬½ûÓÃÑÕÉ«ÏòÁ¿
+        /// è¾¹æ¡†çŠ¶æ€ç¦ç”¨é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector BorderColorDisabledVector = ColorVector.FromArgb(0, 0, 0);
         /// <summary>
-        /// ±ß¿ò×´Ì¬½ûÓÃÑÕÉ«ÏòÁ¿
+        /// è¾¹æ¡†çŠ¶æ€ç¦ç”¨é¢œè‰²å‘é‡
         /// </summary>
         public const string _BorderColorDisabledVector = "0, 0, 0";
 
         /// <summary>
-        /// ±ß¿ò¸ßÁÁÑÕÉ«ÏòÁ¿
+        /// è¾¹æ¡†é«˜äº®é¢œè‰²å‘é‡
         /// </summary>
         public static ColorVector BorderColorHighlightVector = ColorVector.FromArgb(255, 255, 255);
         /// <summary>
-        /// ±ß¿ò¸ßÁÁÑÕÉ«ÏòÁ¿
+        /// è¾¹æ¡†é«˜äº®é¢œè‰²å‘é‡
         /// </summary>
         public const string _BorderColorHighlightVector = "255, 255, 255";
     }

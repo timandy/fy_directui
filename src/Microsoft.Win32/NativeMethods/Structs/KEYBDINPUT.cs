@@ -1,15 +1,15 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32
 {
     /// <summary>
-    /// KEYBDINPUT¶¨Òå
+    /// KEYBDINPUTå®šä¹‰
     /// </summary>
     public static partial class NativeMethods
     {
         /// <summary>
-        /// ¼üÅÌÊäÈë
+        /// é”®ç›˜è¾“å…¥
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct KEYBDINPUT

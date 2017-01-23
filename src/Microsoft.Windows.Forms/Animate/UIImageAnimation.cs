@@ -8,7 +8,7 @@ using Microsoft.Drawing;
 namespace Microsoft.Windows.Forms.Animate
 {
     /// <summary>
-    /// 图片动画
+    /// 图片颜色切换动画
     /// </summary>
     public sealed class UIImageAnimation : Animation<Bitmap>
     {
@@ -28,6 +28,7 @@ namespace Microsoft.Windows.Forms.Animate
         private List<AnimationFrame> m_Origins = new List<AnimationFrame>();            //原始图片集合
         private List<byte[]> m_Frames = new List<byte[]>();                             //截至帧集合
         private AnimationOperations m_SuspendedOps = new AnimationOperations();         //挂起的操作
+        private RandomColor m_RandomColor = new RandomColor();                          //随机颜色生成器
         private Random m_Random = new Random(unchecked((int)DateTime.Now.Ticks));       //随机数生成器
         private byte[] m_From;                                                          //起始帧数据
         private int m_ToIndex = NONE_INDEX;                                             //截至帧索引
@@ -210,7 +211,7 @@ namespace Microsoft.Windows.Forms.Animate
             //重新创建当前图像
             if (this.m_Current != null)
                 this.m_Current.Dispose();
-            this.m_Current = new Bitmap(this.m_Size.Width, this.m_Size.Height, PixelFormat.Format32bppArgb);
+            this.m_Current = new Bitmap(this.m_Size.Width < 1 ? 1 : this.m_Size.Width, this.m_Size.Height < 1 ? 1 : this.m_Size.Height, PixelFormat.Format32bppArgb);
             this.m_CurrentValid = false;
         }
 
@@ -329,7 +330,7 @@ namespace Microsoft.Windows.Forms.Animate
         /// </summary>
         public void AddFrame()
         {
-            AnimationFrame frame = new AnimationFrame();
+            AnimationFrame frame = new AnimationFrame(this.m_RandomColor.Next());
             if (this.m_SuspendedOps.Cleared)
                 this.m_SuspendedOps.AddFrame(frame);
             else
@@ -506,6 +507,7 @@ namespace Microsoft.Windows.Forms.Animate
                 this.m_Current.Dispose();
                 this.m_Current = null;
             }
+            this.m_RandomColor = null;
             this.m_Random = null;
             this.m_From = null;
         }
