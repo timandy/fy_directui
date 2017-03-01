@@ -18,6 +18,8 @@ namespace Microsoft.Demo
         UILine line;
         UIImage image;
         UIMarquee marquee;
+        UILink link;
+        UILink link2;
 
         public FrmDemo()
         {
@@ -90,6 +92,19 @@ namespace Microsoft.Demo
             marquee.ProgressColor = Color.DodgerBlue;
             this.UIControls.Add(this.marquee);
             this.marquee.SendToBack();
+            //
+            link = new UILink();
+            link.Size = new Size(40, 15);
+            link.Location = new Point(500, 10);
+            this.link.Font = new Font("微软雅黑", 10f, GraphicsUnit.Point);
+            link.Text = "换一张";
+            this.UIControls.Add(this.link);
+            //
+            link2 = new UILink();
+            link2.Size = new Size(40, 15);
+            link2.Location = new Point(540, 10);
+            link2.Text = "换一张";
+            this.UIControls.Add(this.link2);
         }
 
         public void TestCore(FormBorderStyle border, IUIWindow target)
