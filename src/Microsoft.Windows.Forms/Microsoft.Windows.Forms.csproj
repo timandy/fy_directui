@@ -93,6 +93,7 @@
     <Compile Include="Controls\UIImage\UIImage.cs" />
     <Compile Include="Controls\UILabel\UILabel.cs" />
     <Compile Include="Controls\UILine\UILine.cs" />
+    <Compile Include="Controls\UILink\UILink.cs" />
     <Compile Include="Controls\UIMarquee\UIMarquee.cs" />
     <Compile Include="Controls\UIPanel\UIPanel.cs" />
     <Compile Include="Controls\UIProgress\UIProgress.cs" />
