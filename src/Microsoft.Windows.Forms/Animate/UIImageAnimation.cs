@@ -65,9 +65,9 @@ namespace Microsoft.Windows.Forms.Animate
             set
             {
                 if (value.Width <= 0)
-                    value.Width = 1;
+                    value.Width = this.m_Size.Width;
                 if (value.Height <= 0)
-                    value.Height = 1;
+                    value.Height = this.m_Size.Height;
                 this.Resize(value);
             }
         }
