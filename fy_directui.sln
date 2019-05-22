@@ -1,12 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{BB92E407-C6AA-410D-83C2-00B4D90D42A0}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG = CHANGELOG
+		directui.nuspec = directui.nuspec
 		LICENSE = LICENSE
+		publish.bat = publish.bat
 		README.md = README.md
 		VERSION = VERSION
 	EndProjectSection
@@ -62,5 +64,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E4E2C35B-11F4-4059-BF72-3A7FDC5DF674} = {C02D40E1-57B8-4818-9DC8-4A23D74D124F}
 		{D80F5555-161E-42FE-BFAD-88795C94F236} = {C02D40E1-57B8-4818-9DC8-4A23D74D124F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9291D83-EF9B-4679-8E4C-4DA186B54BD2}
 	EndGlobalSection
 EndGlobal
