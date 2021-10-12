@@ -362,6 +362,40 @@ namespace Microsoft.Win32
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool UpdateLayeredWindow(IntPtr hWnd, IntPtr hdcDst, ref Point pptDst, ref Size psize, IntPtr hdcSrc, ref Point pptSrc, uint crKey, [In] ref NativeMethods.BLENDFUNCTION pblend, uint dwFlags);
 
+        /// <summary>
+        /// <para>功能:</para>
+        /// <para>该函数枚举所有屏幕上的顶层窗口，并将窗口句柄传送给应用程序定义的回调函数。</para>
+        /// <para>回调函数返回 FALSE 将停止枚举，否则 EnumWindows 函数继续到所有顶层窗口枚举完为止。</para>
+        /// <para>.</para>
+        /// <para>备注:</para>
+        /// <para>EnumWindows 函数不列举子窗口。</para>
+        /// <para>在循环体中调用这个函数比调用 GetWindow 函数更可靠。</para>
+        /// <para>调用 GetWindow 函数中执行这个任务的应用程序可能会陷入死循环或指向一个已被销毁的窗口的句柄。</para>
+        /// </summary>
+        /// <param name="lpEnumFunc">指向一个应用程序定义的回调函数指针，请参看 EnumWindowsProc。</param>
+        /// <param name="lParam">指定一个传递给回调函数的应用程序定义值。对象类型需要添加特性 ComVisible(true)。</param>
+        /// <returns>如果函数成功，返回值为非零；如果函数失败，返回值为零。若想获得更多错误信息，请调用 GetLastError 函数。</returns>
+        [DllImport("User32", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool EnumWindows(NativeMethods.EnumWindowsProc lpEnumFunc, object lParam);
+        /// <summary>
+        /// <para>功能:</para>
+        /// <para>EnumChildWindows，通过将句柄传递给每个子窗口并依次传递给应用程序定义的回调函数。</para>
+        /// <para>可以枚举属于指定父窗口的子窗口。EnumChildWindows 继续，直到枚举最后一个子窗口或回调函数返回 FALSE 为止。</para>
+        /// <para>.</para>
+        /// <para>备注:</para>
+        /// <para>如果子窗口创建了自己的子窗口，EnumChildWindows 也会枚举这些窗口。</para>
+        /// <para>将正确枚举在枚举过程中按Z顺序移动或重新定位的子窗口。</para>
+        /// <para>该函数不会枚举在枚举前已销毁或在枚举过程中创建的子窗口。</para>
+        /// </summary>
+        /// <param name="hWndParent">父窗口的句柄，其子窗口将被枚举。如果此参数为 NULL，则此函数等效于 EnumWindows。</param>
+        /// <param name="lpEnumFunc">指向应用程序定义的回调函数的指针。有关更多信息，请参见 EnumChildProc。</param>
+        /// <param name="lParam">应用程序定义的值，将传递给回调函数。对象类型需要添加特性 ComVisible(true)。</param>
+        /// <returns>不使用返回值。</returns>
+        [DllImport("User32", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool EnumChildWindows(IntPtr hWndParent, NativeMethods.EnumChildProc lpEnumFunc, object lParam);
+
         #endregion
 
 

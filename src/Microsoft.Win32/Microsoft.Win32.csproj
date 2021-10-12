@@ -83,6 +83,8 @@
     <Compile Include="NativeMethods\Consts\WSAID.cs" />
     <Compile Include="NativeMethods\Consts\WSA_FLAG.cs" />
     <Compile Include="NativeMethods\Consts\WS_EX.cs" />
+    <Compile Include="NativeMethods\Delegates\EnumChildProc.cs" />
+    <Compile Include="NativeMethods\Delegates\EnumWindowsProc.cs" />
     <Compile Include="NativeMethods\Delegates\LPFN_ACCEPTEX.cs" />
     <Compile Include="NativeMethods\Delegates\LPFN_CONNECTEX.cs" />
     <Compile Include="NativeMethods\Delegates\LPFN_DISCONNECTEX.cs" />
