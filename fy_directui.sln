@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{BB92E407-C6A
 		publish.bat = publish.bat
 		README.md = README.md
 		VERSION = VERSION
+		microsoft.win32.nuspec = microsoft.win32.nuspec
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C02D40E1-57B8-4818-9DC8-4A23D74D124F}"

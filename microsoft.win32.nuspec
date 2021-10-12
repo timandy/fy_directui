@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Win32</id>
+    <version>2.0.0</version>
+    <title>Microsoft.Win32</title>
+    <authors>TimAndy</authors>
+    <owners>TimAndy</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/timandy/fy_directui/tree/master/src/Microsoft.Win32</projectUrl>
+    <description>Win32 Api for C#.</description>
+    <copyright>Copyright © TimAndy 2021</copyright>
+    <tags>Win32 Api</tags>
+  </metadata>
+  <files>
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Win32.dll" target="lib\net40\Microsoft.Win32.dll"/>
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Win32.xml" target="lib\net40\Microsoft.Win32.xml"/>
+
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Win32.dll" target="lib\net5.0\Microsoft.Win32.dll"/>
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Win32.xml" target="lib\net5.0\Microsoft.Win32.xml"/>
+  </files>
+</package>
