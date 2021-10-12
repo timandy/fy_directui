@@ -376,6 +376,15 @@ namespace Microsoft.Win32
         }
 
         /// <summary>
+        /// 获取控件是否TopMost(判断控件是否为“TopMost”类型的窗口，这种类型的窗口总是在其它窗口的前面)
+        /// </summary>
+        /// <param name="hWnd">要判断的窗口</param>
+        public static bool IsTopMost(IntPtr hWnd)
+        {
+            return (UnsafeNativeMethods.GetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE) & NativeMethods.WS_EX_TOPMOST) != 0;
+        }
+
+        /// <summary>
         /// 设置控件TopMost(使窗口成为“TopMost”类型的窗口，这种类型的窗口总是在其它窗口的前面)
         /// </summary>
         /// <param name="hWnd">要设置的窗口</param>
