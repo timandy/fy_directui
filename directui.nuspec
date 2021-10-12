@@ -9,17 +9,26 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/timandy/fy_directui</projectUrl>
     <description>DirectUI is a no handle ui lib for winform.</description>
-    <copyright>Copyright © TimAndy 2019</copyright>
+    <copyright>Copyright © TimAndy 2021</copyright>
     <tags>c#,winform,directui</tags>
   </metadata>
   <files>
-    <file src=".\src\_Output\Release\Microsoft.dll" target="lib\net40\Microsoft.dll" />
-    <file src=".\src\_Output\Release\Microsoft.XML" target="lib\net40\Microsoft.XML" />
-    <file src=".\src\_Output\Release\Microsoft.Win32.dll" target="lib\net40\Microsoft.Win32.dll" />
-    <file src=".\src\_Output\Release\Microsoft.Win32.XML" target="lib\net40\Microsoft.Win32.XML" />
-    <file src=".\src\_Output\Release\Microsoft.Drawing.dll" target="lib\net40\Microsoft.Drawing.dll" />
-    <file src=".\src\_Output\Release\Microsoft.Drawing.XML" target="lib\net40\Microsoft.Drawing.XML" />
-    <file src=".\src\_Output\Release\Microsoft.Windows.Forms.dll" target="lib\net40\Microsoft.Windows.Forms.dll" />
-    <file src=".\src\_Output\Release\Microsoft.Windows.Forms.XML" target="lib\net40\Microsoft.Windows.Forms.XML" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.dll" target="lib\net40\Microsoft.dll" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.xml" target="lib\net40\Microsoft.xml" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Drawing.dll" target="lib\net40\Microsoft.Drawing.dll" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Drawing.xml" target="lib\net40\Microsoft.Drawing.xml" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Win32.dll" target="lib\net40\Microsoft.Win32.dll" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Win32.xml" target="lib\net40\Microsoft.Win32.xml" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Windows.Forms.dll" target="lib\net40\Microsoft.Windows.Forms.dll" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Windows.Forms.xml" target="lib\net40\Microsoft.Windows.Forms.xml" />
+
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.dll" target="lib\net5.0\Microsoft.dll" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.xml" target="lib\net5.0\Microsoft.xml" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Drawing.dll" target="lib\net5.0\Microsoft.Drawing.dll" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Drawing.xml" target="lib\net5.0\Microsoft.Drawing.xml" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Win32.dll" target="lib\net5.0\Microsoft.Win32.dll" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Win32.xml" target="lib\net5.0\Microsoft.Win32.xml" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Windows.Forms.dll" target="lib\net5.0\Microsoft.Windows.Forms.dll" />
+    <file src=".\src\_Output\Release\net5.0-windows\Microsoft.Windows.Forms.xml" target="lib\net5.0\Microsoft.Windows.Forms.xml" />
   </files>
 </package>
