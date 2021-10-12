@@ -1,35 +1,33 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Microsoft.Demo;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Microsoft.Test
 {
-    [TestClass]
     public class UITest
     {
-        [TestMethod]
+        [Test]
         public void TestSizeableForm()
         {
             FrmDemo frm = new FrmDemo();
             frm.TestCore(FormBorderStyle.Sizable, frm);
         }
 
-        [TestMethod]
+        [Test]
         public void TestNoneForm()
         {
             FrmDemo frm = new FrmDemo();
             frm.TestCore(FormBorderStyle.None, frm);
         }
 
-        [TestMethod]
+        [Test]
         public void TestSizeableControl()
         {
             FrmDemo frm = new FrmDemo();
             frm.TestCore(FormBorderStyle.Sizable, frm.uiWinControl1);
         }
 
-        [TestMethod]
+        [Test]
         public void TestNoneControl()
         {
             FrmDemo frm = new FrmDemo();

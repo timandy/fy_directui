@@ -1,71 +1,50 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C753557-ECBB-4963-904C-E42E79E0D344}</ProjectGuid>
     <OutputType>Library</OutputType>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Windows.Forms</RootNamespace>
     <AssemblyName>Microsoft.Windows.Forms</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\_Output\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\_Output\Debug\Microsoft.Windows.Forms.XML</DocumentationFile>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\_Output\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\_Output\Release\Microsoft.Windows.Forms.XML</DocumentationFile>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System"/>
+    <Reference Include="System.Core"/>
+    <Reference Include="System.Drawing"/>
+    <Reference Include="System.Windows.Forms"/>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animate\Animation.cs" />
-    <Compile Include="Animate\AnimationFrame.cs" />
-    <Compile Include="Animate\AnimationFrameType.cs" />
-    <Compile Include="Animate\AnimationOperations.cs" />
-    <Compile Include="Animate\IAnimation.cs" />
-    <Compile Include="Animate\UIGradientAnimation.cs" />
-    <Compile Include="Animate\UIImageAnimation.cs" />
-    <Compile Include="Animate\UILinearAnimation.cs" />
-    <Compile Include="Controls\IUIControl.0.cs" />
-    <Compile Include="Controls\IUIControl.1.Layout.cs" />
-    <Compile Include="Controls\IUIControl.2.Behaviour.cs" />
-    <Compile Include="Controls\IUIControl.3.Appearance.cs" />
-    <Compile Include="Controls\IUIControl.4.Render.cs" />
-    <Compile Include="Controls\IUIControl.5.Events.cs" />
-    <Compile Include="Controls\IUIWindow.cs" />
-    <Compile Include="Controls\UIButton\UIButton.cs" />
-    <Compile Include="Controls\UIControl\UIControl.0.cs" />
-    <Compile Include="Controls\UIControl\UIControl.1.Layout.cs" />
-    <Compile Include="Controls\UIControl\UIControl.2Behaviour.cs" />
-    <Compile Include="Controls\UIControl\UIControl.3.Appearance.cs" />
-    <Compile Include="Controls\UIControl\UIControl.4.Render.cs" />
-    <Compile Include="Controls\UIControl\UIControl.5.WndProc.cs" />
-    <Compile Include="Controls\UIControl\UIControl.6.Events.cs" />
-    <Compile Include="Controls\UIControl\UIControl.7.Dispose.cs" />
-    <Compile Include="Controls\UIControl\UIControl.8.Util.cs" />
-    <Compile Include="Controls\UIControl\UIControl.UIControlCollection.cs" />
+    <Compile Include="Animate\Animation.cs"/>
+    <Compile Include="Animate\AnimationFrame.cs"/>
+    <Compile Include="Animate\AnimationFrameType.cs"/>
+    <Compile Include="Animate\AnimationOperations.cs"/>
+    <Compile Include="Animate\IAnimation.cs"/>
+    <Compile Include="Animate\UIGradientAnimation.cs"/>
+    <Compile Include="Animate\UIImageAnimation.cs"/>
+    <Compile Include="Animate\UILinearAnimation.cs"/>
+    <Compile Include="Controls\IUIControl.0.cs"/>
+    <Compile Include="Controls\IUIControl.1.Layout.cs"/>
+    <Compile Include="Controls\IUIControl.2.Behaviour.cs"/>
+    <Compile Include="Controls\IUIControl.3.Appearance.cs"/>
+    <Compile Include="Controls\IUIControl.4.Render.cs"/>
+    <Compile Include="Controls\IUIControl.5.Events.cs"/>
+    <Compile Include="Controls\IUIWindow.cs"/>
+    <Compile Include="Controls\UIButton\UIButton.cs"/>
+    <Compile Include="Controls\UIControl\UIControl.0.cs"/>
+    <Compile Include="Controls\UIControl\UIControl.1.Layout.cs"/>
+    <Compile Include="Controls\UIControl\UIControl.2Behaviour.cs"/>
+    <Compile Include="Controls\UIControl\UIControl.3.Appearance.cs"/>
+    <Compile Include="Controls\UIControl\UIControl.4.Render.cs"/>
+    <Compile Include="Controls\UIControl\UIControl.5.WndProc.cs"/>
+    <Compile Include="Controls\UIControl\UIControl.6.Events.cs"/>
+    <Compile Include="Controls\UIControl\UIControl.7.Dispose.cs"/>
+    <Compile Include="Controls\UIControl\UIControl.8.Util.cs"/>
+    <Compile Include="Controls\UIControl\UIControl.UIControlCollection.cs"/>
     <Compile Include="Controls\UIForm\UIForm.0.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,13 +69,13 @@
     <Compile Include="Controls\UIForm\UIForm.7.Dispose.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\UIImage\UIImage.cs" />
-    <Compile Include="Controls\UILabel\UILabel.cs" />
-    <Compile Include="Controls\UILine\UILine.cs" />
-    <Compile Include="Controls\UILink\UILink.cs" />
-    <Compile Include="Controls\UIMarquee\UIMarquee.cs" />
-    <Compile Include="Controls\UIPanel\UIPanel.cs" />
-    <Compile Include="Controls\UIProgress\UIProgress.cs" />
+    <Compile Include="Controls\UIImage\UIImage.cs"/>
+    <Compile Include="Controls\UILabel\UILabel.cs"/>
+    <Compile Include="Controls\UILine\UILine.cs"/>
+    <Compile Include="Controls\UILink\UILink.cs"/>
+    <Compile Include="Controls\UIMarquee\UIMarquee.cs"/>
+    <Compile Include="Controls\UIPanel\UIPanel.cs"/>
+    <Compile Include="Controls\UIProgress\UIProgress.cs"/>
     <Compile Include="Controls\UIWinControl\UIWinControl.0.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -121,54 +100,54 @@
     <Compile Include="Controls\UIWinControl\UIWinControl.7.Dispose.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DefaultTheme\DefaultTheme.00.Font.cs" />
-    <Compile Include="DefaultTheme\DefaultTheme.01.CommonColor.cs" />
-    <Compile Include="DefaultTheme\DefaultTheme.02.ForeColor.cs" />
-    <Compile Include="DefaultTheme\DefaultTheme.03.BackColor.cs" />
-    <Compile Include="DefaultTheme\DefaultTheme.04.BackColorAero.cs" />
-    <Compile Include="DefaultTheme\DefaultTheme.05.BorderColor.cs" />
-    <Compile Include="DefaultTheme\DefaultTheme.06.InnerBorderColor.cs" />
-    <Compile Include="DefaultTheme\DefaultTheme.07.String.cs" />
-    <Compile Include="Enums\AeroStyle.cs" />
-    <Compile Include="Enums\BlendStyle.cs" />
-    <Compile Include="Enums\BorderVisibleStyle.cs" />
-    <Compile Include="Enums\CornerStyle.cs" />
-    <Compile Include="Enums\ImageLayout9.cs" />
-    <Compile Include="Enums\RoundStyle.cs" />
-    <Compile Include="Enums\ShadowShapeStyle.cs" />
-    <Compile Include="Enums\SizeStyle.cs" />
-    <Compile Include="Enums\State.cs" />
-    <Compile Include="Layout\LayoutData.cs" />
-    <Compile Include="Layout\LayoutOptions.cs" />
-    <Compile Include="Layout\LayoutUtils.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sprite\Sprite.00.cs" />
-    <Compile Include="Sprite\Sprite.Method.01.RenderPrepare.cs" />
-    <Compile Include="Sprite\Sprite.Method.02.Render.cs" />
-    <Compile Include="Sprite\Sprite.Method.03.IDisposable.cs" />
-    <Compile Include="Sprite\Sprite.Method.04.Override.cs" />
-    <Compile Include="Sprite\Sprite.Property.01.Owner.cs" />
-    <Compile Include="Sprite\Sprite.Property.02.State.cs" />
-    <Compile Include="Sprite\Sprite.Property.03.Round.cs" />
-    <Compile Include="Sprite\Sprite.Property.04.BackColor.cs" />
-    <Compile Include="Sprite\Sprite.Property.05.BackColorAero.cs" />
-    <Compile Include="Sprite\Sprite.Property.06.BackgroundImage.cs" />
-    <Compile Include="Sprite\Sprite.Property.07.BackgroundImage9.cs" />
-    <Compile Include="Sprite\Sprite.Property.08.BorderColor.cs" />
-    <Compile Include="Sprite\Sprite.Property.09.TextAndImage.cs" />
-    <Compile Include="Sprite\Sprite.Property.10.Text.cs" />
-    <Compile Include="Sprite\Sprite.Property.11.Image.cs" />
-    <Compile Include="Sprite\Sprite.Property.12.Line.cs" />
-    <Compile Include="Sprite\Sprite.Property.13.References.cs" />
-    <Compile Include="Util\PaintManager.cs" />
-    <Compile Include="Util\RandomColor.cs" />
-    <Compile Include="Util\RenderEngine.0.cs" />
-    <Compile Include="Util\RenderEngine.1.HLSColor.cs" />
-    <Compile Include="Util\RenderEngine.2.Color.cs" />
-    <Compile Include="Util\RenderEngine.3.Image.cs" />
-    <Compile Include="Util\RenderEngine.4.Brush.cs" />
-    <Compile Include="Util\RenderEngine.5.GraphicsPath.cs" />
-    <Compile Include="Util\RenderEngine.6.Render.cs" />
+    <Compile Include="DefaultTheme\DefaultTheme.00.Font.cs"/>
+    <Compile Include="DefaultTheme\DefaultTheme.01.CommonColor.cs"/>
+    <Compile Include="DefaultTheme\DefaultTheme.02.ForeColor.cs"/>
+    <Compile Include="DefaultTheme\DefaultTheme.03.BackColor.cs"/>
+    <Compile Include="DefaultTheme\DefaultTheme.04.BackColorAero.cs"/>
+    <Compile Include="DefaultTheme\DefaultTheme.05.BorderColor.cs"/>
+    <Compile Include="DefaultTheme\DefaultTheme.06.InnerBorderColor.cs"/>
+    <Compile Include="DefaultTheme\DefaultTheme.07.String.cs"/>
+    <Compile Include="Enums\AeroStyle.cs"/>
+    <Compile Include="Enums\BlendStyle.cs"/>
+    <Compile Include="Enums\BorderVisibleStyle.cs"/>
+    <Compile Include="Enums\CornerStyle.cs"/>
+    <Compile Include="Enums\ImageLayout9.cs"/>
+    <Compile Include="Enums\RoundStyle.cs"/>
+    <Compile Include="Enums\ShadowShapeStyle.cs"/>
+    <Compile Include="Enums\SizeStyle.cs"/>
+    <Compile Include="Enums\State.cs"/>
+    <Compile Include="Layout\LayoutData.cs"/>
+    <Compile Include="Layout\LayoutOptions.cs"/>
+    <Compile Include="Layout\LayoutUtils.cs"/>
+    <Compile Include="Properties\AssemblyInfo.cs"/>
+    <Compile Include="Sprite\Sprite.00.cs"/>
+    <Compile Include="Sprite\Sprite.Method.01.RenderPrepare.cs"/>
+    <Compile Include="Sprite\Sprite.Method.02.Render.cs"/>
+    <Compile Include="Sprite\Sprite.Method.03.IDisposable.cs"/>
+    <Compile Include="Sprite\Sprite.Method.04.Override.cs"/>
+    <Compile Include="Sprite\Sprite.Property.01.Owner.cs"/>
+    <Compile Include="Sprite\Sprite.Property.02.State.cs"/>
+    <Compile Include="Sprite\Sprite.Property.03.Round.cs"/>
+    <Compile Include="Sprite\Sprite.Property.04.BackColor.cs"/>
+    <Compile Include="Sprite\Sprite.Property.05.BackColorAero.cs"/>
+    <Compile Include="Sprite\Sprite.Property.06.BackgroundImage.cs"/>
+    <Compile Include="Sprite\Sprite.Property.07.BackgroundImage9.cs"/>
+    <Compile Include="Sprite\Sprite.Property.08.BorderColor.cs"/>
+    <Compile Include="Sprite\Sprite.Property.09.TextAndImage.cs"/>
+    <Compile Include="Sprite\Sprite.Property.10.Text.cs"/>
+    <Compile Include="Sprite\Sprite.Property.11.Image.cs"/>
+    <Compile Include="Sprite\Sprite.Property.12.Line.cs"/>
+    <Compile Include="Sprite\Sprite.Property.13.References.cs"/>
+    <Compile Include="Util\PaintManager.cs"/>
+    <Compile Include="Util\RandomColor.cs"/>
+    <Compile Include="Util\RenderEngine.0.cs"/>
+    <Compile Include="Util\RenderEngine.1.HLSColor.cs"/>
+    <Compile Include="Util\RenderEngine.2.Color.cs"/>
+    <Compile Include="Util\RenderEngine.3.Image.cs"/>
+    <Compile Include="Util\RenderEngine.4.Brush.cs"/>
+    <Compile Include="Util\RenderEngine.5.GraphicsPath.cs"/>
+    <Compile Include="Util\RenderEngine.6.Render.cs"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Drawing\Microsoft.Drawing.csproj">
@@ -184,12 +163,4 @@
       <Name>Microsoft</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

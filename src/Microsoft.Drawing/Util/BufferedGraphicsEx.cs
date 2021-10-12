@@ -19,8 +19,8 @@ namespace Microsoft.Drawing
         {
             Type type = typeof(BufferedGraphics);
             BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic;
-            FiTargetLoc = type.GetField("targetLoc", flags);
-            FiVirtulSize = type.GetField("virtualSize", flags);
+            FiTargetLoc = type.GetField("_targetLoc", flags);
+            FiVirtulSize = type.GetField("_virtualSize", flags);
         }
 
         /// <summary>
