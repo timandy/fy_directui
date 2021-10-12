@@ -12,16 +12,24 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\_Output\Debug\</OutputPath>
+    <DocumentationFile>..\_Output\Debug\Microsoft.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\_Output\Release\</OutputPath>
+    <DocumentationFile>..\_Output\Release\Microsoft.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    <Reference Include="System.Core"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Disposable.cs"/>
-    <Compile Include="DisposableMini.cs"/>
-    <Compile Include="IDisposed.cs"/>
-    <Compile Include="IDisposeState.cs"/>
-    <Compile Include="MathEx.cs"/>
-    <Compile Include="Properties\AssemblyInfo.cs"/>
+    <Compile Include="Disposable.cs" />
+    <Compile Include="DisposableMini.cs" />
+    <Compile Include="IDisposed.cs" />
+    <Compile Include="IDisposeState.cs" />
+    <Compile Include="MathEx.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 </Project>
